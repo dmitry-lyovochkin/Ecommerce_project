@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 abstract class AppTheme {
   static final light = ThemeData(
       // primarySwatch: Colors.indigo,
-      scaffoldBackgroundColor: Colors.grey[100],
+      scaffoldBackgroundColor: Colors.grey[200],
       backgroundColor: Colors.green,
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedItemColor: Colors.white,

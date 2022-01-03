@@ -10,30 +10,34 @@ class MainTabsScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Expanded(
-            child: Container()
-          ),
-          BottomNavigationBar(
-            currentIndex: 0,
-            items: const [
-              BottomNavigationBarItem(
-                backgroundColor: AppColors.buttonBarColor,
-                icon: Icon(CustomIcons.fiber_manual_record),
-                label: "Explorer",
+          Expanded(child: Container()),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(30.0),
+            child: SizedBox(
+              height: 72,
+              child: BottomNavigationBar(
+                currentIndex: 0,
+                items: const [
+                  BottomNavigationBarItem(
+                    backgroundColor: AppColors.buttonBarColor,
+                    icon: Icon(CustomIcons.brightness_1, size: 8),
+                    label: " ● Explorer", 
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(CustomIcons.vector, size: 18),
+                    label: "",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(CustomIcons.vector__1_, size: 18),
+                    label: "",
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Icon(CustomIcons.profile, size: 18),
+                    label: "",
+                  ),
+                ]
               ),
-              BottomNavigationBarItem(
-                icon: Icon(CustomIcons.brightness_1),
-                label: "Home",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(CustomIcons.profile),
-                label: "Home",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(CustomIcons.vector),
-                label: "Home",
-              ),
-            ]
+            )
           )
         ],
       ),
