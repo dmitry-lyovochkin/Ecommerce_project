@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 abstract class AppTheme {
   static final light = ThemeData(
+      fontFamily: 'MarkProbold',
       // primarySwatch: Colors.indigo,
       scaffoldBackgroundColor: Colors.grey[200],
       backgroundColor: Colors.green,

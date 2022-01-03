@@ -25,3 +25,26 @@ flutter:
     - family:  MyFlutterApp
       fonts:
         - asset: icons/MyFlutterApp.ttf
+    - family: MarkPronormal400
+      fonts:
+        - asset: fonts/MARKPRO.OTF
+          weight: 400
+    - family: MarkPronormal500
+      fonts:
+        - asset: fonts/MARKPRO.OTF
+          weight: 500
+    - family: MarkPronormal700
+      fonts:
+        - asset: fonts/MARKPRO.OTF
+          weight: 700
+    - family: MarkPronormal800
+      fonts:
+        - asset: fonts/MARKPRO.OTF
+          weight: 800
+    - family: MarkProbold
+      fonts:
+        - asset: fonts/MARKPRO-BOLD.OTF
+    - family:  MyIcons
+      fonts:
+        - asset: icons/MyIcons.ttf
+  uses-material-design: true
