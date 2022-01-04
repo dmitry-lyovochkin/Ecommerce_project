@@ -1,3 +1,4 @@
+import 'package:ecommerce_project/application/ui/screens/home_screen/category_widget.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/main_tabs_view_model.dart';
 import 'package:ecommerce_project/application/ui/themes/app_theme.dart';
 import 'package:ecommerce_project/application/ui/themes/custom_icons.dart';
@@ -26,6 +27,7 @@ class _BodyWidget extends StatelessWidget {
     return IndexedStack(
       index: currentIndex,
       children: const [
+        CategoryWidget(),
         Center(child: Text('1')),
         Center(child: Text('2')),
         Center(child: Text('3')),
@@ -66,7 +68,7 @@ class _NavBarWidget extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: 18, horizontal: 20),
                   ),
                   Text(
-                    '●  Explorer',
+                    '●  ', /* Explorer */
                     style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                 ],

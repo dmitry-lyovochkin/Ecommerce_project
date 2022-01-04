@@ -4,7 +4,7 @@ abstract class AppTheme {
   static final light = ThemeData(
       fontFamily: 'MarkProbold',
       // primarySwatch: Colors.indigo,
-      scaffoldBackgroundColor: Colors.grey[200],
+      scaffoldBackgroundColor: Colors.grey[300],
       backgroundColor: Colors.green,
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedItemColor: Colors.green,
