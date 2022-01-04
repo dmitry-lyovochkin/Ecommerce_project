@@ -7,7 +7,7 @@ abstract class AppTheme {
       scaffoldBackgroundColor: Colors.grey[200],
       backgroundColor: Colors.green,
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Colors.white,
+        selectedItemColor: Colors.green,
         unselectedItemColor: Colors.white,
       ));
 }

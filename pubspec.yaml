@@ -12,17 +12,16 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  
+  provider: ^6.0.2
 
 dev_dependencies:
   flutter_lints: ^1.0.4
   flutter_test:
     sdk: flutter
 
-
 flutter:
   fonts:
-    - family:  MyFlutterApp
+    - family: MyFlutterApp
       fonts:
         - asset: icons/MyFlutterApp.ttf
     - family: MarkPronormal400
@@ -44,7 +43,7 @@ flutter:
     - family: MarkProbold
       fonts:
         - asset: fonts/MARKPRO-BOLD.OTF
-    - family:  MyIcons
+    - family: MyIcons
       fonts:
         - asset: icons/MyIcons.ttf
   uses-material-design: true
