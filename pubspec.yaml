@@ -23,7 +23,7 @@ flutter:
   fonts:
     - family: MyFlutterApp
       fonts:
-        - asset: icons/MyFlutterApp.ttf
+        - asset: icons_font/MyFlutterApp.ttf
     - family: MarkPronormal400
       fonts:
         - asset: fonts/MARKPRO.OTF
@@ -45,5 +45,9 @@ flutter:
         - asset: fonts/MARKPRO-BOLD.OTF
     - family: MyIcons
       fonts:
-        - asset: icons/MyIcons.ttf
+        - asset: icons_font/MyIcons.ttf
   uses-material-design: true
+
+  assets:
+    - assets/
+    - assets/icons/
