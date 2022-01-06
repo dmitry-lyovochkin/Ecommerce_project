@@ -47,8 +47,8 @@ flutter:
     - family: MyIcons
       fonts:
         - asset: icons_font/MyIcons.ttf
-  uses-material-design: true
 
   assets:
     - assets/
     - assets/icons/
+  uses-material-design: true

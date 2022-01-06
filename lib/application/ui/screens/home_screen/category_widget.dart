@@ -1,12 +1,7 @@
+import 'package:ecommerce_project/application/ui/screens/home_screen/category.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/list_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-getSvgIcon(icon) {
-  return SvgPicture.asset(iconPath + icon);
-}
-
-const String iconPath = "assets/icons/";
 
 class CategoryWidget extends StatelessWidget {
   const CategoryWidget({Key? key}) : super(key: key);
@@ -14,134 +9,83 @@ class CategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: SizedBox(
-      width: double.infinity,
-      child: SingleChildScrollView(
-          padding: const EdgeInsets.only(top: 20),
-          child: Column(children: const [
-            SizedBox(height: 5),
+      child: CustomScrollView(
+        slivers: [
+          // SizedBox(height: 5),
+          // _GeolocWidget(),
+          // SizedBox(height: 10),
+          // SelectCategoryWidget(),
+          // _SearchWidget(),
+          // SizedBox(height: 5),
+          // _HotSalesWidget(),
+          // SizedBox(height: 10),
+          // SelectCategoryWidget(),
+          // const _LogoWidget(),
+          SliverPersistentHeader(
+            pinned: true,
+            delegate: _SliverAppBarDelegate(),
+          ),
+          SliverList(
+              delegate: SliverChildListDelegate([
+            //  SizedBox(height: 5),
             _GeolocWidget(),
-            SizedBox(height: 10),
+            SizedBox(height: 20),
+            _SectionButtonsWidgett(),
+            SizedBox(height: 40),
             _SearchWidget(),
-            SizedBox(height: 5),
-            _HotSalesWidget(),
-            SizedBox(height: 10),
-            SelectedCategory()
-          ])),
-    ));
+          ]))
+        ],
+      ),
+    );
   }
 }
 
-class SelectedCategory extends StatefulWidget {
-  const SelectedCategory({Key? key}) : super(key: key);
+
+class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
+  final double _height = 56;
 
   @override
-  State<SelectedCategory> createState() => _SelectedCategoryState();
+  double get minExtent => _height;
+  @override
+  double get maxExtent => _height;
+
+  @override
+  Widget build(
+    BuildContext context,
+    double shrinkOffset,
+    bool overlapsContent,
+  ) {
+    return const _SectionButtonsWidget();
+  }
+
+  @override
+  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
+    return false;
+  }
 }
 
-class _SelectedCategoryState extends State<SelectedCategory> {
-
+class _SectionButtonsWidget extends StatelessWidget {
+  const _SectionButtonsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        width: double.infinity,
-        child: SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: List.generate(listCategory.length, (index) {
-              return Container(
-                width: 120,
-                height: 120,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [getSvgIcon(listCategory[index]['IconPath'])],
-                ),
-              );
-            
-            }),
-        ),
-      ),
-    ));
+    return Container();
   }
 }
 
-// class SelectCategoryWidget extends StatefulWidget {
-//   const SelectCategoryWidget({Key? key}) : super(key: key);
+class _LogoWidget extends StatelessWidget {
+  const _LogoWidget({Key? key}) : super(key: key);
 
-//   @override
-//   State<SelectCategoryWidget> createState() => SelectCategoryWidgetState();
-// }
+  @override
+  Widget build(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: Container(
+        height: 200,
+      ),
+    );
+  }
+}
 
-// class SelectCategoryWidgetState extends State<SelectCategoryWidget> {
-//   List<Map> categories = [
-//     {'name': 'Phone', 'IconPath': 'assets/icons/Phone.png'},
-//     {'name': 'Computer', 'IconPath': 'assets/icons/Computer.png'},
-//     {'name': 'Health', 'IconPath': 'assets/icons/Health.png'},
-//     {'name': 'Books', 'IconPath': 'assets/icons/Books.png'},
-//     {'name': 'Phone', 'IconPath': 'assets/icons/Phone.png'},
-//     {'name': 'Phone', 'IconPath': 'assets/icons/Phone.png'},
-//     {'name': 'Phone', 'IconPath': 'assets/icons/Phone.png'}
-//   ];
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.black,
-//       body: SingleChildScrollView(
-//         child: Column(
-//           children: [
-//             const SizedBox(
-//               height: 250,
-//             ),
-//             const Text(
-//               'Categories',
-//               style: TextStyle(
-//                 fontSize: 40,
-//                 fontWeight: FontWeight.w700,
-//                 color: Colors.amber,
-//               ),
-//               textAlign: TextAlign.center,
-//             ),
-//             const SizedBox(height: 40),
-//             SizedBox(
-//               height: 150,
-//               child: ListView.builder(
-//                   scrollDirection: Axis.horizontal,
-//                   itemCount: categories.length,
-//                   itemBuilder: (context, index) {
-//                     return Row(
-//                       children: [
-//                         Container(
-//                           padding: const EdgeInsets.all(10),
-//                           margin: const EdgeInsets.only(left: 20),
-//                           decoration: BoxDecoration(
-//                             color: Colors.red,
-//                             borderRadius: BorderRadius.circular(20),
-//                           ),
-//                           child: Image.asset(
-//                             categories[index]['IconPath'],
-//                             height: 50,
-//                           ),
-//                         ),
-//                         const SizedBox(height: 10),
-//                         Text(categories[index]['name'],
-//                         style: const TextStyle(
-//                           color: Colors.white,
-//                         ),
-//                           textAlign: TextAlign.center
-//                         )
-//                       ],
-//                     );
-//                   }),
-//             )
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 
 class _HotSalesWidget extends StatelessWidget {
   const _HotSalesWidget({
@@ -161,14 +105,27 @@ class _GeolocWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(top: 24, left: 70),
-      child: Text('Zihuatanejo, Gro',
-          style: TextStyle(
-            fontFamily: 'MarkPronormal400',
-            fontSize: 15,
-            fontWeight: FontWeight.w700,
-          )),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 120),
+      child: Row(
+        children: [
+          const Text('Zihuatanejo, Gro',
+              style: TextStyle(
+                fontFamily: 'MarkPronormal400',
+                fontSize: 15,
+                fontWeight: FontWeight.w700,
+              )
+              ),
+              IconButton(
+                onPressed: () {}, 
+                icon: const ImageIcon(
+                  AssetImage("assets/icons/Geo.png"),
+                  color: Colors.red,
+                  size: 24,
+                ),
+              )
+              ],
+      ),
     );
   }
 }
@@ -180,46 +137,112 @@ class _SearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 15),
-      child: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 30),
-          height: 34,
-          width: 300,
-          decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(50)),
-          child: const TextField(
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(vertical: 0),
-              hintText: 'Search',
-              hintStyle: TextStyle(
-                  fontSize: 13,
-                  fontFamily: 'MarkPronormal400',
-                  fontWeight: FontWeight.w400),
-              prefixIcon: Icon(Icons.search, color: Colors.orange),
+    return Row(
+      children: [
+        Container(
+            margin: const EdgeInsets.symmetric(horizontal: 30),
+            height: 34,
+            width: 300,
+            decoration: BoxDecoration(
+                color: Colors.white, borderRadius: BorderRadius.circular(50)),
+            child: const TextField(
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.symmetric(vertical: 0),
+                hintText: 'Search',
+                hintStyle: TextStyle(
+                    fontSize: 13,
+                    fontFamily: 'MarkPronormal400',
+                    fontWeight: FontWeight.w400),
+                prefixIcon: Icon(Icons.search, color: Colors.orange),
+              ),
             ),
-          )),
+            ),
+              Ink(
+                decoration:  ShapeDecoration(
+                    color: Colors.orange[800],
+                    shape: const CircleBorder(),
+                ),
+                child: IconButton(
+                    onPressed: () {}, 
+                    icon: const ImageIcon(
+                      AssetImage("assets/icons/Search1.png"),
+                      color: Colors.white,
+                      size: 24,
+                    ),
+                  ),
+              )
+      ],
     );
   }
 }
 
-// class _SectionButtonsWidget extends StatelessWidget {
-//   const _SectionButtonsWidget({Key? key}) : super(key: key);
+class _SectionButtonsWidgett extends StatefulWidget {
+  const _SectionButtonsWidgett({Key? key}) : super(key: key);
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return ListView.separated(
-//       itemCount: 25,
-//       separatorBuilder: (BuildContext context, int index) => const Divider(),
-//       itemBuilder: (BuildContext context, int index) {
-//         return ListTile(
-//           title: Text('item $index'),
-//         );
-//       },
-//     );
-//   }
-// }
+  @override
+  State<_SectionButtonsWidgett> createState() => _SectionButtonsWidgettState();
+}
 
+class _SectionButtonsWidgettState extends State<_SectionButtonsWidgett> {
+  List<Map> categories = [
+    {'name': 'Phone', 'IconPath': 'assets/icons/GroupGroup.png'},
+    {'name': 'Computer', 'IconPath': 'assets/icons/Computer.png'},
+    {'name': 'Health', 'IconPath': 'assets/icons/Health.png'},
+    {'name': 'Books', 'IconPath': 'assets/icons/GroupGroup.png'},
+    {'name': 'Phone', 'IconPath': 'assets/icons/GroupGroup.png'},
+    {'name': 'Phone', 'IconPath': 'assets/icons/GroupGroup.png'},
+    {'name': 'Phone', 'IconPath': 'assets/icons/GroupGroup.png'}
+  ];
 
-
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      child: ListView.separated(
+          padding: const EdgeInsets.symmetric(horizontal: 27),
+          scrollDirection: Axis.horizontal,
+          itemCount: categories.length,
+          itemBuilder: (context, index) {
+            return Row(
+              children: [
+                Ink(
+                  decoration: const ShapeDecoration(
+                    color: Colors.white,
+                    shape: CircleBorder(),
+                    
+                  ),
+                  child: IconButton(
+                    iconSize: 27,
+                    onPressed: () {},
+                    color: Colors.grey,
+                    highlightColor: Colors.red,
+                    hoverColor: Colors.green,
+                    focusColor: Colors.purple,
+                    splashColor: Colors.yellow,
+                    disabledColor: Colors.amber,
+                    icon: Image.asset(
+                      categories[index]['IconPath'],
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 23),
+                Text(categories[index]['name'],
+                    style: const TextStyle(
+                      color: Colors.black,
+                    ),
+                    textAlign: TextAlign.end
+                    
+                )  
+              ],
+            );
+          },
+          separatorBuilder: (context, index) {
+            return const SizedBox(
+              width: 23,
+            );
+          }),
+    );
+  }
+}
