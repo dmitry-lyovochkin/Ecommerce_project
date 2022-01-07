@@ -1,6 +1,8 @@
 import 'package:ecommerce_project/application/ui/screens/home_screen/category.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/list_category.dart';
+import 'package:ecommerce_project/application/ui/screens/home_screen/svg_icons.dart';
 import 'package:ecommerce_project/application/ui/themes/app_theme.dart';
+import 'package:ecommerce_project/application/ui/themes/my_flutter_app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -12,30 +14,22 @@ class CategoryWidget extends StatelessWidget {
     return SafeArea(
       child: CustomScrollView(
         slivers: [
-          // SizedBox(height: 5),
-          // _GeolocWidget(),
-          // SizedBox(height: 10),
-          // SelectCategoryWidget(),
-          // _SearchWidget(),
-          // SizedBox(height: 5),
-          // _HotSalesWidget(),
-          // SizedBox(height: 10),
-          // SelectCategoryWidget(),
-          // const _LogoWidget(),
           SliverPersistentHeader(
             pinned: true,
             delegate: _SliverAppBarDelegate(),
           ),
           SliverList(
-              delegate: SliverChildListDelegate([
-            //  SizedBox(height: 5),
-            const _GeolocWidget(),
-            const SizedBox(height: 20),
-            const _TitleCategory(),
-            const SizedBox(height: 20),
-            const _SectionButtonsWidgett(),
-            const SizedBox(height: 40),
-            const _SearchWidget(),
+            delegate: SliverChildListDelegate([
+             const _GeolocWidget(),
+             const _TitleSelectCategory(),
+             const SizedBox(height: 10),
+             const _SectionButtonsWidgett(),
+             const SizedBox(height: 30),
+             const _SearchWidget(),
+             const SizedBox(height: 20),
+             const _TitleHotSales(),
+             const SizedBox(height: 150),
+             const _TitleBestSeller(),
           ]))
         ],
       ),
@@ -44,7 +38,7 @@ class CategoryWidget extends StatelessWidget {
 }
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  final double _height = 56;
+  final double _height = 32;
 
   @override
   double get minExtent => _height;
@@ -75,18 +69,6 @@ class _SectionButtonsWidget extends StatelessWidget {
   }
 }
 
-class _LogoWidget extends StatelessWidget {
-  const _LogoWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return SliverToBoxAdapter(
-      child: Container(
-        height: 200,
-      ),
-    );
-  }
-}
 
 class _HotSalesWidget extends StatelessWidget {
   const _HotSalesWidget({
@@ -107,23 +89,32 @@ class _GeolocWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 120),
+      padding: const EdgeInsets.only(left: 105),
       child: Row(
         children: [
-          const Text('Zihuatanejo, Gro',
-              style: TextStyle(
-                fontFamily: 'MarkPronormal400',
-                fontSize: 15,
-                fontWeight: FontWeight.w700,
-              )),
           IconButton(
+            padding: const EdgeInsets.only(left: 15),
             onPressed: () {},
-            icon: const ImageIcon(
-              AssetImage("assets/icons/Geo.png"),
-              color: IconColors.appColor,
-              size: 24,
-            ),
-          )
+            icon: svgGeolocation,
+          ),
+          const Text('Zihuatanejo, Gro',
+            style: TextStyle(
+              fontFamily: 'MarkPronormal400',
+              fontSize: 15,
+              fontWeight: FontWeight.w700,
+              color: AppColors.buttonBarColor
+            )
+          ),
+          IconButton(
+            padding: const EdgeInsets.only(right: 20),
+            onPressed: () {},
+            icon: svgDown,
+          ),
+          IconButton(
+            padding: const EdgeInsets.only(left: 34),
+            onPressed: () {},
+            icon: svgFilter,
+          ),
         ],
       ),
     );
@@ -140,44 +131,32 @@ class _SearchWidget extends StatelessWidget {
     return Row(
       children: [
         Container(
-          margin: const EdgeInsets.symmetric(horizontal: 30),
+          margin: const EdgeInsets.only(left: 30),
           height: 34,
           width: 300,
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(50)),
-          child: const TextField(
+            color: Colors.white, 
+            borderRadius: BorderRadius.circular(50)),
+          child:  TextField(
             decoration: InputDecoration(
               border: InputBorder.none,
-              contentPadding: EdgeInsets.symmetric(vertical: 0),
+              contentPadding: const EdgeInsets.symmetric(vertical: 0),
               hintText: 'Search',
-              hintStyle: TextStyle(
-                  fontSize: 13,
-                  fontFamily: 'MarkPronormal400',
-                  fontWeight: FontWeight.w400),
-              prefixIcon: Icon(Icons.search, color: IconColors.appColor),
+              hintStyle: const TextStyle(
+                fontSize: 13,
+                fontFamily: 'MarkPronormal400',
+                fontWeight: FontWeight.w400),
+              prefixIcon: svgSearch,
             ),
           ),
         ),
-        Ink(
-          decoration: const ShapeDecoration(
-            color: IconColors.appColor,
-            shape: CircleBorder(),
+        ElevatedButton(
+          onPressed: () {},
+          style: ElevatedButton.styleFrom(
+            shape: const CircleBorder(),
+            primary: IconColors.appColor,
           ),
-          child: IconButton(
-            // iconSize: 10,
-            color: Colors.grey,
-            highlightColor: Colors.red,
-            hoverColor: Colors.green,
-            focusColor: Colors.purple,
-            splashColor: Colors.yellow,
-            disabledColor: Colors.amber,
-            onPressed: () {},
-            icon: const ImageIcon(
-              AssetImage("assets/icons/Search1.png"),
-              color: Colors.white,
-              size: 17,
-            ),
-          ),
+          child: svgQrcode,
         )
       ],
     );
@@ -192,20 +171,11 @@ class _SectionButtonsWidgett extends StatefulWidget {
 }
 
 class _SectionButtonsWidgettState extends State<_SectionButtonsWidgett> {
-  List<Map> categories = [
-    {'name': 'Phone', 'IconPath': 'assets/icons/GroupGroup.png'},
-    {'name': 'Computer', 'IconPath': 'assets/icons/Computer.png'},
-    {'name': 'Health', 'IconPath': 'assets/icons/Health.png'},
-    {'name': 'Books', 'IconPath': 'assets/icons/GroupGroup.png'},
-    {'name': 'Phone', 'IconPath': 'assets/icons/GroupGroup.png'},
-    {'name': 'Phone', 'IconPath': 'assets/icons/GroupGroup.png'},
-    {'name': 'Phone', 'IconPath': 'assets/icons/GroupGroup.png'}
-  ];
+  
   late Color _buttonColor;
 
   @override
   void initState() {
-    //Начальное значение цвета кнопки
     _buttonColor = Colors.white;
     super.initState();
   }
@@ -215,58 +185,139 @@ class _SectionButtonsWidgettState extends State<_SectionButtonsWidgett> {
     return SizedBox(
       height: 80,
       child: ListView.separated(
-          padding: const EdgeInsets.symmetric(horizontal: 27),
-          scrollDirection: Axis.horizontal,
-          itemCount: categories.length,
-          itemBuilder: (context, index) {
-            return Row(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                  setState(() {
-                    if (_buttonColor == IconColors.appColor) {
-                      _buttonColor = Colors.white;
-                    } else {
-                      _buttonColor = IconColors.appColor;
-                    }
-                  });
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    primary: _buttonColor,
-                    // padding: const EdgeInsets.all(40),
-                   ),
-                  child: Center(
-                    child: Image.asset(
-                      categories[index]['IconPath'],
-                      color: Colors.grey,
-                      height: 50,
-                      
-                    ),
-                  ),
+        padding: const EdgeInsets.symmetric(horizontal: 27),
+        scrollDirection: Axis.horizontal,
+        itemCount: 1,
+        itemBuilder: (context, index) {
+          return Row(
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                setState(() {
+                  if (_buttonColor == IconColors.appColor) {
+                    _buttonColor = Colors.white;
+                  } else {
+                    _buttonColor = IconColors.appColor;
+                  }
+                });
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: const CircleBorder(),
+                  primary: _buttonColor,
                 ),
-                const SizedBox(
-                  width: 5,
+                child: Center(
+                  child: svgPhone
+                )
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              const Text(
+                'Phones',
+                style: TextStyle(
+                  color: Colors.black,
                 ),
-                Text(categories[index]['name'],
-                    style: const TextStyle(
-                      color: Colors.black,
-                    ),
-                    textAlign: TextAlign.end)
-              ],
-            );
-          },
-          separatorBuilder: (context, index) {
-            return const SizedBox(
-              width: 20,
-            );
-          }),
+                textAlign: TextAlign.end
+              ),
+              ElevatedButton(
+                onPressed: () {
+                setState(() {
+                  if (_buttonColor == IconColors.appColor) {
+                    _buttonColor = Colors.white;
+                  } else {
+                    _buttonColor = IconColors.appColor;
+                  }
+                });
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: const CircleBorder(),
+                  primary: _buttonColor,
+                ),
+                child: Center(
+                  child: svgComputer
+                ),
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              const Text(
+                'Computer',
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.end
+              ),
+              ElevatedButton(
+                onPressed: () {
+                setState(() {
+                  if (_buttonColor == IconColors.appColor) {
+                    _buttonColor = Colors.white;
+                  } else {
+                    _buttonColor = IconColors.appColor;
+                  }
+                });
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: const CircleBorder(),
+                  primary: _buttonColor,
+                ),
+                child: Center(
+                  child: svgHealth
+                ),
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              const Text(
+                'Health',
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.end
+              ),
+              ElevatedButton(
+                onPressed: () {
+                setState(() {
+                  if (_buttonColor == IconColors.appColor) {
+                    _buttonColor = Colors.white;
+                  } else {
+                    _buttonColor = IconColors.appColor;
+                  }
+                });
+                },
+                style: ElevatedButton.styleFrom(
+                  shape: const CircleBorder(),
+                  primary: _buttonColor,
+                ),
+                child: Center(
+                  child: svgBooks
+                ),
+              ),
+              const SizedBox(
+                width: 5,
+              ),
+              const Text(
+                'Books',
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+                textAlign: TextAlign.end
+              ),
+            ],
+          );
+        },
+        separatorBuilder: (context, index) {
+          return const SizedBox(
+            width: 20,
+          );
+        }
+      ),
     );
   }
 }
 
-class _TitleCategory extends StatelessWidget {
-  const _TitleCategory({Key? key}) : super(key: key);
+class _TitleSelectCategory extends StatelessWidget {
+  const _TitleSelectCategory({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -277,7 +328,10 @@ class _TitleCategory extends StatelessWidget {
         children: [
           const Text(
             'Select Category',
-            style: TextStyle(fontSize: 25),
+            style: TextStyle(
+              fontSize: 25, 
+              color: AppColors.buttonBarColor
+            ),
           ),
           TextButton(
             onPressed: () {},
@@ -288,6 +342,72 @@ class _TitleCategory extends StatelessWidget {
                   fontFamily: 'MarkPronormal400',
                   fontWeight: FontWeight.w500,
                   color: IconColors.appColor),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+class _TitleHotSales extends StatelessWidget {
+  const _TitleHotSales({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 20, left: 17),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text(
+            'Hot Sales',
+            style: TextStyle(
+              fontSize: 25, 
+              color: AppColors.buttonBarColor
+            ),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text(
+              'see more',
+              style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'MarkPronormal400',
+                  fontWeight: FontWeight.w500,
+                  color: IconColors.appColor),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+class _TitleBestSeller extends StatelessWidget {
+  const _TitleBestSeller({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 20, left: 17),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text(
+            'Best Seller',
+            style: TextStyle(
+              fontSize: 25, 
+              color: AppColors.buttonBarColor
+            ), 
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text(
+              'see more',
+              style: TextStyle(
+                fontSize: 15,
+                fontFamily: 'MarkPronormal400',
+                fontWeight: FontWeight.w500,
+                color: IconColors.appColor),
             ),
           )
         ],

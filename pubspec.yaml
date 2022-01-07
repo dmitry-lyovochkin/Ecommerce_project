@@ -25,6 +25,9 @@ flutter:
     - family: MyFlutterApp
       fonts:
         - asset: icons_font/MyFlutterApp.ttf
+    - family: CategoryIcons
+      fonts:
+        - asset: icons_font/CategoryIcons.ttf
     - family: MarkPronormal400
       fonts:
         - asset: fonts/MARKPRO.OTF
