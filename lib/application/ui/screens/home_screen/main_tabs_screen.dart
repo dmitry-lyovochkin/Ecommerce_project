@@ -68,7 +68,7 @@ class _NavBarWidget extends StatelessWidget {
                     padding: EdgeInsets.symmetric(vertical: 18, horizontal: 20),
                   ),
                   Text(
-                    '●  Explorer', /* Explorer */
+                    '●', /* Explorer */
                     style: TextStyle(color: Colors.white, fontSize: 15),
                   ),
                 ],

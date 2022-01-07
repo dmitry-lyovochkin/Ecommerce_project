@@ -16,3 +16,7 @@ abstract class AppTheme {
 abstract class AppColors {
   static const buttonBarColor = Color.fromRGBO(1, 0, 53, 1);
 }
+
+abstract class IconColors {
+  static const appColor = Color.fromRGBO(245, 110, 78, 1);
+}

@@ -1,5 +1,6 @@
 import 'package:ecommerce_project/application/ui/screens/home_screen/category.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/list_category.dart';
+import 'package:ecommerce_project/application/ui/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -28,18 +29,19 @@ class CategoryWidget extends StatelessWidget {
           SliverList(
               delegate: SliverChildListDelegate([
             //  SizedBox(height: 5),
-            _GeolocWidget(),
-            SizedBox(height: 20),
-            _SectionButtonsWidgett(),
-            SizedBox(height: 40),
-            _SearchWidget(),
+            const _GeolocWidget(),
+            const SizedBox(height: 20),
+            const _TitleCategory(),
+            const SizedBox(height: 20),
+            const _SectionButtonsWidgett(),
+            const SizedBox(height: 40),
+            const _SearchWidget(),
           ]))
         ],
       ),
     );
   }
 }
-
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
   final double _height = 56;
@@ -86,7 +88,6 @@ class _LogoWidget extends StatelessWidget {
   }
 }
 
-
 class _HotSalesWidget extends StatelessWidget {
   const _HotSalesWidget({
     Key? key,
@@ -114,17 +115,16 @@ class _GeolocWidget extends StatelessWidget {
                 fontFamily: 'MarkPronormal400',
                 fontSize: 15,
                 fontWeight: FontWeight.w700,
-              )
-              ),
-              IconButton(
-                onPressed: () {}, 
-                icon: const ImageIcon(
-                  AssetImage("assets/icons/Geo.png"),
-                  color: Colors.red,
-                  size: 24,
-                ),
-              )
-              ],
+              )),
+          IconButton(
+            onPressed: () {},
+            icon: const ImageIcon(
+              AssetImage("assets/icons/Geo.png"),
+              color: IconColors.appColor,
+              size: 24,
+            ),
+          )
+        ],
       ),
     );
   }
@@ -140,38 +140,45 @@ class _SearchWidget extends StatelessWidget {
     return Row(
       children: [
         Container(
-            margin: const EdgeInsets.symmetric(horizontal: 30),
-            height: 34,
-            width: 300,
-            decoration: BoxDecoration(
-                color: Colors.white, borderRadius: BorderRadius.circular(50)),
-            child: const TextField(
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.symmetric(vertical: 0),
-                hintText: 'Search',
-                hintStyle: TextStyle(
-                    fontSize: 13,
-                    fontFamily: 'MarkPronormal400',
-                    fontWeight: FontWeight.w400),
-                prefixIcon: Icon(Icons.search, color: Colors.orange),
-              ),
+          margin: const EdgeInsets.symmetric(horizontal: 30),
+          height: 34,
+          width: 300,
+          decoration: BoxDecoration(
+              color: Colors.white, borderRadius: BorderRadius.circular(50)),
+          child: const TextField(
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.symmetric(vertical: 0),
+              hintText: 'Search',
+              hintStyle: TextStyle(
+                  fontSize: 13,
+                  fontFamily: 'MarkPronormal400',
+                  fontWeight: FontWeight.w400),
+              prefixIcon: Icon(Icons.search, color: IconColors.appColor),
             ),
+          ),
+        ),
+        Ink(
+          decoration: const ShapeDecoration(
+            color: IconColors.appColor,
+            shape: CircleBorder(),
+          ),
+          child: IconButton(
+            // iconSize: 10,
+            color: Colors.grey,
+            highlightColor: Colors.red,
+            hoverColor: Colors.green,
+            focusColor: Colors.purple,
+            splashColor: Colors.yellow,
+            disabledColor: Colors.amber,
+            onPressed: () {},
+            icon: const ImageIcon(
+              AssetImage("assets/icons/Search1.png"),
+              color: Colors.white,
+              size: 17,
             ),
-              Ink(
-                decoration:  ShapeDecoration(
-                    color: Colors.orange[800],
-                    shape: const CircleBorder(),
-                ),
-                child: IconButton(
-                    onPressed: () {}, 
-                    icon: const ImageIcon(
-                      AssetImage("assets/icons/Search1.png"),
-                      color: Colors.white,
-                      size: 24,
-                    ),
-                  ),
-              )
+          ),
+        )
       ],
     );
   }
@@ -194,11 +201,19 @@ class _SectionButtonsWidgettState extends State<_SectionButtonsWidgett> {
     {'name': 'Phone', 'IconPath': 'assets/icons/GroupGroup.png'},
     {'name': 'Phone', 'IconPath': 'assets/icons/GroupGroup.png'}
   ];
+  late Color _buttonColor;
 
+  @override
+  void initState() {
+    //Начальное значение цвета кнопки
+    _buttonColor = Colors.white;
+    super.initState();
+  }
+  
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: 80,
       child: ListView.separated(
           padding: const EdgeInsets.symmetric(horizontal: 27),
           scrollDirection: Axis.horizontal,
@@ -206,43 +221,77 @@ class _SectionButtonsWidgettState extends State<_SectionButtonsWidgett> {
           itemBuilder: (context, index) {
             return Row(
               children: [
-                Ink(
-                  decoration: const ShapeDecoration(
-                    color: Colors.white,
-                    shape: CircleBorder(),
-                    
-                  ),
-                  child: IconButton(
-                    iconSize: 27,
-                    onPressed: () {},
-                    color: Colors.grey,
-                    highlightColor: Colors.red,
-                    hoverColor: Colors.green,
-                    focusColor: Colors.purple,
-                    splashColor: Colors.yellow,
-                    disabledColor: Colors.amber,
-                    icon: Image.asset(
+                ElevatedButton(
+                  onPressed: () {
+                  setState(() {
+                    if (_buttonColor == IconColors.appColor) {
+                      _buttonColor = Colors.white;
+                    } else {
+                      _buttonColor = IconColors.appColor;
+                    }
+                  });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                    primary: _buttonColor,
+                    // padding: const EdgeInsets.all(40),
+                   ),
+                  child: Center(
+                    child: Image.asset(
                       categories[index]['IconPath'],
                       color: Colors.grey,
+                      height: 50,
+                      
                     ),
                   ),
                 ),
-                const SizedBox(height: 23),
+                const SizedBox(
+                  width: 5,
+                ),
                 Text(categories[index]['name'],
                     style: const TextStyle(
                       color: Colors.black,
                     ),
-                    textAlign: TextAlign.end
-                    
-                )  
+                    textAlign: TextAlign.end)
               ],
             );
           },
           separatorBuilder: (context, index) {
             return const SizedBox(
-              width: 23,
+              width: 20,
             );
           }),
+    );
+  }
+}
+
+class _TitleCategory extends StatelessWidget {
+  const _TitleCategory({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 20, left: 17),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text(
+            'Select Category',
+            style: TextStyle(fontSize: 25),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: const Text(
+              'view all',
+              style: TextStyle(
+                  fontSize: 15,
+                  fontFamily: 'MarkPronormal400',
+                  fontWeight: FontWeight.w500,
+                  color: IconColors.appColor),
+            ),
+          )
+        ],
+      ),
     );
   }
 }
