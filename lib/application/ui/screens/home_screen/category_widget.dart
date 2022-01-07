@@ -215,10 +215,11 @@ class _SectionButtonsWidgettState extends State<_SectionButtonsWidgett> {
               const Text(
                 'Phones',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: AppColors.buttonBarColor,
                 ),
                 textAlign: TextAlign.end
               ),
+             
               ElevatedButton(
                 onPressed: () {
                 setState(() {
@@ -243,7 +244,7 @@ class _SectionButtonsWidgettState extends State<_SectionButtonsWidgett> {
               const Text(
                 'Computer',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: AppColors.buttonBarColor,
                 ),
                 textAlign: TextAlign.end
               ),
@@ -271,7 +272,7 @@ class _SectionButtonsWidgettState extends State<_SectionButtonsWidgett> {
               const Text(
                 'Health',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: AppColors.buttonBarColor,
                 ),
                 textAlign: TextAlign.end
               ),
@@ -299,7 +300,7 @@ class _SectionButtonsWidgettState extends State<_SectionButtonsWidgett> {
               const Text(
                 'Books',
                 style: TextStyle(
-                  color: Colors.black,
+                  color: AppColors.buttonBarColor,
                 ),
                 textAlign: TextAlign.end
               ),
