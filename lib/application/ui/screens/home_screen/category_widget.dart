@@ -183,126 +183,121 @@ class _SectionButtonsWidgettState extends State<_SectionButtonsWidgett> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80,
+      height: 120,
       child: ListView.separated(
         padding: const EdgeInsets.symmetric(horizontal: 27),
         scrollDirection: Axis.horizontal,
-        itemCount: 1,
+        itemCount: 2,
         itemBuilder: (context, index) {
           return Row(
             children: [
-              ElevatedButton(
-                onPressed: () {
-                setState(() {
-                  if (_buttonColor == IconColors.appColor) {
-                    _buttonColor = Colors.white;
-                  } else {
-                    _buttonColor = IconColors.appColor;
-                  }
-                });
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: const CircleBorder(),
-                  primary: _buttonColor,
-                ),
-                child: Center(
-                  child: svgPhone
-                )
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                    setState(() {
+                      if (_buttonColor == IconColors.appColor) {
+                        _buttonColor = Colors.white;
+                      } else {
+                        _buttonColor = IconColors.appColor;
+                      }
+                    });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      primary: _buttonColor,
+                    ),
+                    child: svgPhone,
+                  ),
+                  const Text(
+                    'Phones',
+                    style: TextStyle(
+                      color: AppColors.buttonBarColor,
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(
-                width: 5,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                    setState(() {
+                      if (_buttonColor == IconColors.appColor) {
+                        _buttonColor = Colors.white;
+                      } else {
+                        _buttonColor = IconColors.appColor;
+                      }
+                    });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      primary: _buttonColor,
+                    ),
+                    child: svgComputer,
+                  ),
+                  const Text(
+                    'Computer',
+                    style: TextStyle(
+                      color: AppColors.buttonBarColor,
+                    ),
+                  ),
+                ],
               ),
-              const Text(
-                'Phones',
-                style: TextStyle(
-                  color: AppColors.buttonBarColor,
-                ),
-                textAlign: TextAlign.end
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,          
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                    setState(() {
+                      if (_buttonColor == IconColors.appColor) {
+                        _buttonColor = Colors.white;
+                      } else {
+                        _buttonColor = IconColors.appColor;
+                      }
+                    });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      primary: _buttonColor,
+                    ),
+                    child: svgHealth,
+                  ),
+                  const Text(
+                    'Health',
+                    style: TextStyle(
+                      color: AppColors.buttonBarColor,
+                    ),
+                  ),
+                ],
               ),
-             
-              ElevatedButton(
-                onPressed: () {
-                setState(() {
-                  if (_buttonColor == IconColors.appColor) {
-                    _buttonColor = Colors.white;
-                  } else {
-                    _buttonColor = IconColors.appColor;
-                  }
-                });
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: const CircleBorder(),
-                  primary: _buttonColor,
-                ),
-                child: Center(
-                  child: svgComputer
-                ),
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              const Text(
-                'Computer',
-                style: TextStyle(
-                  color: AppColors.buttonBarColor,
-                ),
-                textAlign: TextAlign.end
-              ),
-              ElevatedButton(
-                onPressed: () {
-                setState(() {
-                  if (_buttonColor == IconColors.appColor) {
-                    _buttonColor = Colors.white;
-                  } else {
-                    _buttonColor = IconColors.appColor;
-                  }
-                });
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: const CircleBorder(),
-                  primary: _buttonColor,
-                ),
-                child: Center(
-                  child: svgHealth
-                ),
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              const Text(
-                'Health',
-                style: TextStyle(
-                  color: AppColors.buttonBarColor,
-                ),
-                textAlign: TextAlign.end
-              ),
-              ElevatedButton(
-                onPressed: () {
-                setState(() {
-                  if (_buttonColor == IconColors.appColor) {
-                    _buttonColor = Colors.white;
-                  } else {
-                    _buttonColor = IconColors.appColor;
-                  }
-                });
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: const CircleBorder(),
-                  primary: _buttonColor,
-                ),
-                child: Center(
-                  child: svgBooks
-                ),
-              ),
-              const SizedBox(
-                width: 5,
-              ),
-              const Text(
-                'Books',
-                style: TextStyle(
-                  color: AppColors.buttonBarColor,
-                ),
-                textAlign: TextAlign.end
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                    setState(() {
+                      if (_buttonColor == IconColors.appColor) {
+                        _buttonColor = Colors.white;
+                      } else {
+                        _buttonColor = IconColors.appColor;
+                      }
+                    });
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      primary: _buttonColor,
+                    ),
+                    child: svgBooks,
+                  ),
+                  const Text(
+                    'Books',
+                    style: TextStyle(
+                      color: AppColors.buttonBarColor,
+                    ),
+                  ),
+                ],
               ),
             ],
           );
