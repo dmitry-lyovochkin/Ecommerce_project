@@ -1,10 +1,7 @@
-import 'package:ecommerce_project/application/ui/screens/home_screen/category.dart';
-import 'package:ecommerce_project/application/ui/screens/home_screen/list_category.dart';
+import 'package:ecommerce_project/application/ui/screens/home_screen/Carousel/carousel_widget.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/svg_icons.dart';
 import 'package:ecommerce_project/application/ui/themes/app_theme.dart';
-import 'package:ecommerce_project/application/ui/themes/my_flutter_app_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CategoryWidget extends StatelessWidget {
   const CategoryWidget({Key? key}) : super(key: key);
@@ -22,13 +19,13 @@ class CategoryWidget extends StatelessWidget {
             delegate: SliverChildListDelegate([
              const _GeolocWidget(),
              const _TitleSelectCategory(),
-             const SizedBox(height: 10),
              const _SectionButtonsWidgett(),
-             const SizedBox(height: 30),
+             const SizedBox(height: 10),
              const _SearchWidget(),
-             const SizedBox(height: 20),
+             const SizedBox(height: 15),
              const _TitleHotSales(),
-             const SizedBox(height: 150),
+             CarouselWidget(),
+            //  const SizedBox(height: 180),
              const _TitleBestSeller(),
           ]))
         ],
@@ -38,7 +35,7 @@ class CategoryWidget extends StatelessWidget {
 }
 
 class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  final double _height = 32;
+  final double _height = 22;
 
   @override
   double get minExtent => _height;
@@ -69,11 +66,8 @@ class _SectionButtonsWidget extends StatelessWidget {
   }
 }
 
-
 class _HotSalesWidget extends StatelessWidget {
-  const _HotSalesWidget({
-    Key? key,
-  }) : super(key: key);
+  const _HotSalesWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -100,7 +94,7 @@ class _GeolocWidget extends StatelessWidget {
           const Text('Zihuatanejo, Gro',
             style: TextStyle(
               fontFamily: 'MarkPronormal400',
-              fontSize: 15,
+              fontSize: 14,
               fontWeight: FontWeight.w700,
               color: AppColors.buttonBarColor
             )
@@ -111,7 +105,7 @@ class _GeolocWidget extends StatelessWidget {
             icon: svgDown,
           ),
           IconButton(
-            padding: const EdgeInsets.only(left: 34),
+            padding: const EdgeInsets.only(left: 48),
             onPressed: () {},
             icon: svgFilter,
           ),
@@ -180,132 +174,155 @@ class _SectionButtonsWidgettState extends State<_SectionButtonsWidgett> {
     super.initState();
   }
   
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 120,
       child: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 27),
+        padding: const EdgeInsets.symmetric(horizontal: 13),
         scrollDirection: Axis.horizontal,
         itemCount: 2,
         itemBuilder: (context, index) {
           return Row(
             children: [
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                    setState(() {
-                      if (_buttonColor == IconColors.appColor) {
-                        _buttonColor = Colors.white;
-                      } else {
-                        _buttonColor = IconColors.appColor;
-                      }
-                    });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      primary: _buttonColor,
+              SizedBox(
+                width: 95,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                      setState(() {
+                        if (_buttonColor == IconColors.appColor) {
+                          _buttonColor = Colors.white;
+                        } else {
+                          _buttonColor = IconColors.appColor;
+                        }
+                      });
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: const CircleBorder(),
+                        primary: _buttonColor,
+                      ),
+                      child: svgPhone,
                     ),
-                    child: svgPhone,
-                  ),
-                  const Text(
-                    'Phones',
-                    style: TextStyle(
-                      color: AppColors.buttonBarColor,
+                    const Text(
+                      'Phones',
+                      style: TextStyle(
+                        color: AppColors.buttonBarColor,
+                        fontSize: 12,
+                        fontFamily: 'MarkPronormal400',
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                    setState(() {
-                      if (_buttonColor == IconColors.appColor) {
-                        _buttonColor = Colors.white;
-                      } else {
-                        _buttonColor = IconColors.appColor;
-                      }
-                    });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      primary: _buttonColor,
+              SizedBox(
+                width: 95,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                      setState(() {
+                        if (_buttonColor == IconColors.appColor) {
+                          _buttonColor = Colors.white;
+                        } else {
+                          _buttonColor = IconColors.appColor;
+                        }
+                      });
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: const CircleBorder(),
+                        primary: _buttonColor,
+                      ),
+                      child: svgComputer,
                     ),
-                    child: svgComputer,
-                  ),
-                  const Text(
-                    'Computer',
-                    style: TextStyle(
-                      color: AppColors.buttonBarColor,
+                    const Text(
+                      'Computer',
+                      style: TextStyle(
+                        color: AppColors.buttonBarColor,
+                        fontSize: 12,
+                        fontFamily: 'MarkPronormal400',
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,          
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                    setState(() {
-                      if (_buttonColor == IconColors.appColor) {
-                        _buttonColor = Colors.white;
-                      } else {
-                        _buttonColor = IconColors.appColor;
-                      }
-                    });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      primary: _buttonColor,
+              SizedBox(
+                width: 95,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,          
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                      setState(() {
+                        if (_buttonColor == IconColors.appColor) {
+                          _buttonColor = Colors.white;
+                        } else {
+                          _buttonColor = IconColors.appColor;
+                        }
+                      });
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: const CircleBorder(),
+                        primary: _buttonColor,
+                      ),
+                      child: svgHealth,
                     ),
-                    child: svgHealth,
-                  ),
-                  const Text(
-                    'Health',
-                    style: TextStyle(
-                      color: AppColors.buttonBarColor,
+                    const Text(
+                      'Health',
+                      style: TextStyle(
+                        color: AppColors.buttonBarColor,
+                        fontSize: 12,
+                        fontFamily: 'MarkPronormal400',
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                    setState(() {
-                      if (_buttonColor == IconColors.appColor) {
-                        _buttonColor = Colors.white;
-                      } else {
-                        _buttonColor = IconColors.appColor;
-                      }
-                    });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      primary: _buttonColor,
+              SizedBox(
+                width: 95,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                      setState(() {
+                        if (_buttonColor == IconColors.appColor) {
+                          _buttonColor = Colors.white;
+                        } else {
+                          _buttonColor = IconColors.appColor;
+                        }
+                      });
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: const CircleBorder(),
+                        primary: _buttonColor,
+                      ),
+                      child: svgBooks,
                     ),
-                    child: svgBooks,
-                  ),
-                  const Text(
-                    'Books',
-                    style: TextStyle(
-                      color: AppColors.buttonBarColor,
+                    const Text(
+                      'Books',
+                      style: TextStyle(
+                        color: AppColors.buttonBarColor,
+                        fontSize: 12,
+                        fontFamily: 'MarkPronormal400',
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ],
           );
         },
         separatorBuilder: (context, index) {
-          return const SizedBox(
-            width: 20,
-          );
+          return const SizedBox();
         }
       ),
     );

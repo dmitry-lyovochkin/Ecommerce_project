@@ -7,7 +7,7 @@ const String assetPhone = 'assets/Phone.svg';
 final Widget svgPhone = SvgPicture.asset(
   assetPhone,
   color: Colors.grey,
-  height: 78,
+  height: 74,
   fit: BoxFit.scaleDown,
 );
 
@@ -16,7 +16,7 @@ const String assetComputer = 'assets/Computer.svg';
 final Widget svgComputer = SvgPicture.asset(
   assetComputer,
   color: Colors.grey,
-  height: 78,
+  height: 74,
   fit: BoxFit.scaleDown,
 );
 
@@ -24,7 +24,7 @@ const String assetHealth = 'assets/Health.svg';
 final Widget svgHealth = SvgPicture.asset(
   assetHealth,
   color: Colors.grey,
-  height: 78,
+  height: 74,
   fit: BoxFit.scaleDown,
 );
 
@@ -32,7 +32,7 @@ const String assetBooks = 'assets/Books.svg';
 final Widget svgBooks = SvgPicture.asset(
   assetBooks,
   color: Colors.grey,
-  height: 78,
+  height: 74,
   fit: BoxFit.scaleDown,
 );
 
