@@ -1,6 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerce_project/application/ui/screens/home_screen/Carousel/Models/get_model.dart';
-import 'package:ecommerce_project/application/ui/screens/home_screen/Carousel/Models/picture_list_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
