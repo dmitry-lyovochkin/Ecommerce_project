@@ -6,7 +6,7 @@ part of 'get_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ShopApi _$ShopApiFromJson(Map<String, dynamic> json) => ShopApi(
+ShopApiResponseEntity _$ShopApiFromJson(Map<String, dynamic> json) => ShopApiResponseEntity(
       id: json['id'] as String,
       homestore: (json['homestore'] as List<dynamic>)
           .map((e) => Homestore.fromJson(e as Map<String, dynamic>))
@@ -16,7 +16,7 @@ ShopApi _$ShopApiFromJson(Map<String, dynamic> json) => ShopApi(
           .toList(),
     );
 
-Map<String, dynamic> _$ShopApiToJson(ShopApi instance) => <String, dynamic>{
+Map<String, dynamic> _$ShopApiToJson(ShopApiResponseEntity instance) => <String, dynamic>{
       'id': instance.id,
       'homestore': instance.homestore.map((e) => e.toJson()).toList(),
       'bestseller': instance.bestseller.map((e) => e.toJson()).toList(),

@@ -6,18 +6,18 @@ import 'package:json_annotation/json_annotation.dart';
 part 'get_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-class ShopApi {
+class ShopApiResponseEntity {
   final String id;
   final List<Homestore> homestore;
   final List<Bestseller> bestseller;
   
-  ShopApi({
+  ShopApiResponseEntity({
     required this.id,
     required this.homestore,
     required this.bestseller,
   });
 
-  factory ShopApi.fromJson(Map<String, dynamic> json) =>
+  factory ShopApiResponseEntity.fromJson(Map<String, dynamic> json) =>
       _$ShopApiFromJson(json);
 
   Map<String, dynamic> toJson() => _$ShopApiToJson(this);
