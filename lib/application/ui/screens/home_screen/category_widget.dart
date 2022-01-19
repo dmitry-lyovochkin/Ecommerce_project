@@ -24,7 +24,7 @@ class CategoryWidget extends StatelessWidget {
              const _SearchWidget(),
              const SizedBox(height: 15),
              const _TitleHotSales(),
-             CarouselWidget(),
+            //  CarouselWidget(),
             //  const SizedBox(height: 180),
              const _TitleBestSeller(),
           ]))
