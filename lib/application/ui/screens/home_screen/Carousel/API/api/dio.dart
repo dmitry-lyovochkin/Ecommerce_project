@@ -26,65 +26,65 @@ class DioClient {
 // }
 
 class HomeStoreProvider {
-  Future<List<Reposnsestore>> getHomestore() async {
+  Future<List<Home_store>> getHomestore() async {
     final response = await http.get(
         Uri.parse('https://shopapi-0575.restdb.io/rest/home'),
         headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
 
     if (response.statusCode == 200) {
-      final List<String> HomestoreJson = json.decode(response.body);
-      return HomestoreJson.map((json) => Reposnsestore.fromJson(json)).toList();
+      final List<String> HomeJson = json.decode(response.body);
+      return HomeJson.map((json) => Home_store.fromJson(json)).toList();
     } else {
       throw Exception('Error fetching Homestore');
     }
   }
 }
 
-// void main() => runApp(const MyApp1());
+void main() => runApp(const MyApp1());
 
-// class MyApp1 extends StatefulWidget {
-//   const MyApp1({Key? key}) : super(key: key);
+class MyApp1 extends StatefulWidget {
+  const MyApp1({Key? key}) : super(key: key);
 
-//   @override
-//   _MyAppState createState() => _MyAppState();
-// }
+  @override
+  _MyAppState createState() => _MyAppState();
+}
 
-// class _MyAppState extends State<MyApp1> {
-//   late Future<Reposnsestore> futureAlbum;
+class _MyAppState extends State<MyApp1> {
+  late Future<Home_store> futureAlbum;
 
-//   @override
-//   void initState() {
-//     super.initState();
-//     futureAlbum = getHomestore();
-//   }
+  @override
+  void initState() {
+    super.initState();
+    // futureAlbum = getHomestore();
+  }
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Fetch Data Example',
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       home: Scaffold(
-//         appBar: AppBar(
-//           title: const Text('Fetch Data Example'),
-//         ),
-//         body: Center(
-//           child: FutureBuilder<Reposnsestore>(
-//             future: futureAlbum,
-//             builder: (context, snapshot) {
-//               if (snapshot.hasData) {
-//                 return Text(snapshot.data!.title);
-//               } else if (snapshot.hasError) {
-//                 return Text('${snapshot.error}');
-//               }
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Fetch Data Example',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Fetch Data Example'),
+        ),
+        body: Center(
+          child: FutureBuilder<Home_store>(
+            future: futureAlbum,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return Text(snapshot.data!.title);
+              } else if (snapshot.hasError) {
+                return Text('${snapshot.error}');
+              }
 
-//               // By default, show a loading spinner.
-//               return const CircularProgressIndicator();
-//             },
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }
+              // By default, show a loading spinner.
+              return const CircularProgressIndicator();
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}

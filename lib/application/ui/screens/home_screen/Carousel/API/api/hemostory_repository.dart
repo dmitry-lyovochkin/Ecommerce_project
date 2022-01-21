@@ -4,5 +4,5 @@ import 'package:ecommerce_project/application/ui/screens/home_screen/Carousel/AP
 
 class HomestoreRepository {
   final HomeStoreProvider _homestoreProvider = HomeStoreProvider();
-  Future<List<Reposnsestore>>getAllHome() => _homestoreProvider.getHomestore();
+  Future<List<Home_store>>getAllHome() => _homestoreProvider.getHomestore();
 }
