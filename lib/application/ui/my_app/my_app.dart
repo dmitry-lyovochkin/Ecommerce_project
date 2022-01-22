@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: AppTheme.light,
       debugShowCheckedModeBanner: false,
-      routes: mainNavigation.routes,
+      routes: mainNavigation.routes,  
     );
   }
 }

@@ -1,16 +1,16 @@
 
 
 import 'package:ecommerce_project/application/ui/screens/home_screen/Carousel/http/Models/get_list.dart';
-import 'package:ecommerce_project/application/ui/screens/home_screen/Carousel/http/get_http.dart';
+// import 'package:ecommerce_project/application/ui/screens/home_screen/Carousel/http/get_http.dart';
 import 'package:flutter/material.dart';
 
 class WidgetModel extends ChangeNotifier {
-  final apiClient = ApiClient();
+  // final apiClient = ApiClient();
   var _posts = <HomeStore>[];
   List<HomeStore> get posts => _posts;
 
   Future<void> reloadPosts() async {
-    final posts = await apiClient.getPosts();
+    // final posts = await apiClient.getPosts();
     _posts += posts;
     notifyListeners();
   }
