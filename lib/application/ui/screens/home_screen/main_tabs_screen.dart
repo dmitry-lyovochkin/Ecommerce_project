@@ -11,19 +11,19 @@ class MainTabsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: _BodyWidget(),
-        bottomNavigationBar: _NavBarWidget()
-    );
+        body: _BodyWidget(), bottomNavigationBar: _NavBarWidget());
   }
 }
 
 class _BodyWidget extends StatelessWidget {
-  const _BodyWidget({Key? key,}) : super(key: key);
+  const _BodyWidget({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final currentIndex =
-      context.select((MainTabsViewModel vm) => vm.currentTabIndex);
+        context.select((MainTabsViewModel vm) => vm.currentTabIndex);
     return IndexedStack(
       index: currentIndex,
       children: const [
@@ -53,42 +53,43 @@ class _NavBarWidget extends StatelessWidget {
       //   topLeft: const Radius.circular(30.0),
       //   topRight: const Radius.circular(30.0)),
       child: SizedBox(
-        height: 72,
+        height: 69,
         child: BottomNavigationBar(
-          currentIndex: currentIndex,
-          onTap: model.setCurrentTabIndex,
-          items: [
-            BottomNavigationBarItem(
-              backgroundColor: AppColors.buttonBarColor,
-              icon: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.symmetric(vertical: 18, horizontal: 20),
-                  ),
-                  Text(
-                    '●   Explorer', /* Explorer */
-                    style: TextStyle(color: Colors.white, fontSize: 15),
-                  ),
-                ],
+            currentIndex: currentIndex,
+            onTap: model.setCurrentTabIndex,
+            items: [
+              BottomNavigationBarItem(
+                backgroundColor: AppColors.buttonBarColor,
+                icon: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: const [
+                    Padding(
+                      padding:
+                          EdgeInsets.symmetric(vertical: 18, horizontal: 20),
+                    ),
+                    Text(
+                      '●   Explorer',
+                      /* Explorer */
+                      style: TextStyle(color: Colors.white, fontSize: 15),
+                    ),
+                  ],
+                ),
+                label: "",
               ),
-              label: "",
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(CustomIcons.vector, size: 19),
-              label: "",
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(CustomIcons.vector__1_, size: 18),
-              label: "",
-            ),
-            const BottomNavigationBarItem(
-              icon: Icon(CustomIcons.profile, size: 18),
-              label: "",
-            ),
-          ]
-        ),
+              const BottomNavigationBarItem(
+                icon: Icon(CustomIcons.vector, size: 19),
+                label: "",
+              ),
+              const BottomNavigationBarItem(
+                icon: Icon(CustomIcons.vector__1_, size: 18),
+                label: "",
+              ),
+              const BottomNavigationBarItem(
+                icon: Icon(CustomIcons.profile, size: 18),
+                label: "",
+              ),
+            ]),
       ),
     );
   }

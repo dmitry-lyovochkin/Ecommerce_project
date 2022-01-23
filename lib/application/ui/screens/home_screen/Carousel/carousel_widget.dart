@@ -19,30 +19,27 @@ class _HotSalesWidgetState extends State<HotSalesWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: FutureBuilder(
-          future: getPosts(),
-          builder: (context, snapshot) {
-            if (snapshot.hasData){
-              return CarouselSlider.builder(
-                itemCount: (snapshot.data as List<Home_store>).length, 
-                itemBuilder: (context, index, _) => 
-                  NewWidget(pictureUrl: (snapshot.data as List<Home_store>)[index].picture),
-                options: CarouselOptions(
-                  height: 200,
-                  aspectRatio: 5.0,
-                  initialPage: 0,
-                  viewportFraction: 1,
-                ),
-             );
-            } else {
-              return const SizedBox.shrink();                
-            }
-          }
-        )
-      ),
-    );
+    return Container(
+        child: FutureBuilder(
+            future: getPosts(),
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                return CarouselSlider.builder(
+                  itemCount: (snapshot.data as List<Home_store>).length,
+                  itemBuilder: (context, index, _) => NewWidget(
+                      pictureUrl:
+                          (snapshot.data as List<Home_store>)[index].picture),
+                  options: CarouselOptions(
+                    height: 200,
+                    aspectRatio: 5.0,
+                    initialPage: 0,
+                    viewportFraction: 1,
+                  ),
+                );
+              } else {
+                return const SizedBox.shrink();
+              }
+            }));
   }
 }
 
@@ -56,11 +53,13 @@ class NewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.only(top: 20.0, left: 20.0),
+        margin: const EdgeInsets.symmetric(horizontal: 17),
         decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
             image: NetworkImage(pictureUrl),
-            fit: BoxFit.fitHeight,
+            fit: BoxFit.cover,
+            alignment: Alignment.topLeft,
           ),
         ));
   }

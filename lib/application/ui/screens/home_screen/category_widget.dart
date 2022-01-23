@@ -8,28 +8,22 @@ class CategoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverPersistentHeader(
-          pinned: true,
-          delegate: _SliverAppBarDelegate(),
-        ),
-        SliverList(
-            delegate: SliverChildListDelegate([
-          const _GeolocWidget(),
-          const _TitleSelectCategory(),
-          const _SectionButtonsWidgett(),
-          const SizedBox(height: 10),
-          const _SearchWidget(),
-          const SizedBox(height: 15),
-          const _TitleHotSales(),
-          const SizedBox(height: 180),
-          const SizedBox(height: 180),
-          const _TitleBestSeller(),
-          const SizedBox(height: 180),
+    return SingleChildScrollView(
+      child: Column(
+        children: const [
+          SizedBox(height: 45),
+          _GeolocWidget(),
+          _TitleSelectCategory(),
+          _SectionButtonsWidgett(),
+          SizedBox(height: 10),
+          _SearchWidget(),
+          SizedBox(height: 15),
+          _TitleHotSales(),
           HotSalesWidget(),
-        ]))
-      ],
+          _TitleBestSeller(),
+          // Text('')
+        ]
+      )
     );
   }
 }
