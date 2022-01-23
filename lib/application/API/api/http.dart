@@ -1,8 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:ecommerce_project/application/ui/screens/home_screen/Carousel/API/api/api_list.dart';
-import 'package:ecommerce_project/application/ui/screens/home_screen/Carousel/http/Models/get_list.dart';
+import 'package:ecommerce_project/application/API/api/api_list.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;

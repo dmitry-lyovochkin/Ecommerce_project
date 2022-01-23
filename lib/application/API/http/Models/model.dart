@@ -1,7 +1,6 @@
 
 
-import 'package:ecommerce_project/application/ui/screens/home_screen/Carousel/http/Models/get_list.dart';
-// import 'package:ecommerce_project/application/ui/screens/home_screen/Carousel/http/get_http.dart';
+import 'package:ecommerce_project/application/API/http_example/models/source_model.dart';
 import 'package:flutter/material.dart';
 
 class WidgetModel extends ChangeNotifier {

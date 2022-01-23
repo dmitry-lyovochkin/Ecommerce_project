@@ -8,28 +8,28 @@ class CategoryWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: CustomScrollView(
-        slivers: [
-          SliverPersistentHeader(
-            pinned: true,
-            delegate: _SliverAppBarDelegate(),
-          ),
-          SliverList(
+    return CustomScrollView(
+      slivers: [
+        SliverPersistentHeader(
+          pinned: true,
+          delegate: _SliverAppBarDelegate(),
+        ),
+        SliverList(
             delegate: SliverChildListDelegate([
-             const _GeolocWidget(),
-             const _TitleSelectCategory(),
-             const _SectionButtonsWidgett(),
-             const SizedBox(height: 10),
-             const _SearchWidget(),
-             const SizedBox(height: 15),
-             const _TitleHotSales(),
-            //  CarouselWidget(),
-            //  const SizedBox(height: 180),
-             const _TitleBestSeller(),
-          ]))
-        ],
-      ),
+          const _GeolocWidget(),
+          const _TitleSelectCategory(),
+          const _SectionButtonsWidgett(),
+          const SizedBox(height: 10),
+          const _SearchWidget(),
+          const SizedBox(height: 15),
+          const _TitleHotSales(),
+          const SizedBox(height: 180),
+          const SizedBox(height: 180),
+          const _TitleBestSeller(),
+          const SizedBox(height: 180),
+          HotSalesWidget(),
+        ]))
+      ],
     );
   }
 }
@@ -92,13 +92,11 @@ class _GeolocWidget extends StatelessWidget {
             icon: svgGeolocation,
           ),
           const Text('Zihuatanejo, Gro',
-            style: TextStyle(
-              fontFamily: 'MarkPronormal400',
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
-              color: AppColors.buttonBarColor
-            )
-          ),
+              style: TextStyle(
+                  fontFamily: 'MarkPronormal400',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.buttonBarColor)),
           IconButton(
             padding: const EdgeInsets.only(right: 20),
             onPressed: () {},
@@ -129,17 +127,16 @@ class _SearchWidget extends StatelessWidget {
           height: 34,
           width: 300,
           decoration: BoxDecoration(
-            color: Colors.white, 
-            borderRadius: BorderRadius.circular(50)),
-          child:  TextField(
+              color: Colors.white, borderRadius: BorderRadius.circular(50)),
+          child: TextField(
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: const EdgeInsets.symmetric(vertical: 0),
               hintText: 'Search',
               hintStyle: const TextStyle(
-                fontSize: 13,
-                fontFamily: 'MarkPronormal400',
-                fontWeight: FontWeight.w400),
+                  fontSize: 13,
+                  fontFamily: 'MarkPronormal400',
+                  fontWeight: FontWeight.w400),
               prefixIcon: svgSearch,
             ),
           ),
@@ -165,7 +162,6 @@ class _SectionButtonsWidgett extends StatefulWidget {
 }
 
 class _SectionButtonsWidgettState extends State<_SectionButtonsWidgett> {
-  
   late Color _buttonColor;
 
   @override
@@ -173,158 +169,156 @@ class _SectionButtonsWidgettState extends State<_SectionButtonsWidgett> {
     _buttonColor = Colors.white;
     super.initState();
   }
-  
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 120,
       child: ListView.separated(
-        padding: const EdgeInsets.symmetric(horizontal: 13),
-        scrollDirection: Axis.horizontal,
-        itemCount: 2,
-        itemBuilder: (context, index) {
-          return Row(
-            children: [
-              SizedBox(
-                width: 95,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                      setState(() {
-                        if (_buttonColor == IconColors.appColor) {
-                          _buttonColor = Colors.white;
-                        } else {
-                          _buttonColor = IconColors.appColor;
-                        }
-                      });
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: const CircleBorder(),
-                        primary: _buttonColor,
+          padding: const EdgeInsets.symmetric(horizontal: 13),
+          scrollDirection: Axis.horizontal,
+          itemCount: 2,
+          itemBuilder: (context, index) {
+            return Row(
+              children: [
+                SizedBox(
+                  width: 95,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            if (_buttonColor == IconColors.appColor) {
+                              _buttonColor = Colors.white;
+                            } else {
+                              _buttonColor = IconColors.appColor;
+                            }
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                          primary: _buttonColor,
+                        ),
+                        child: svgPhone,
                       ),
-                      child: svgPhone,
-                    ),
-                    const Text(
-                      'Phones',
-                      style: TextStyle(
-                        color: AppColors.buttonBarColor,
-                        fontSize: 12,
-                        fontFamily: 'MarkPronormal400',
-                        fontWeight: FontWeight.w600,
+                      const Text(
+                        'Phones',
+                        style: TextStyle(
+                          color: AppColors.buttonBarColor,
+                          fontSize: 12,
+                          fontFamily: 'MarkPronormal400',
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: 95,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                      setState(() {
-                        if (_buttonColor == IconColors.appColor) {
-                          _buttonColor = Colors.white;
-                        } else {
-                          _buttonColor = IconColors.appColor;
-                        }
-                      });
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: const CircleBorder(),
-                        primary: _buttonColor,
+                SizedBox(
+                  width: 95,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            if (_buttonColor == IconColors.appColor) {
+                              _buttonColor = Colors.white;
+                            } else {
+                              _buttonColor = IconColors.appColor;
+                            }
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                          primary: _buttonColor,
+                        ),
+                        child: svgComputer,
                       ),
-                      child: svgComputer,
-                    ),
-                    const Text(
-                      'Computer',
-                      style: TextStyle(
-                        color: AppColors.buttonBarColor,
-                        fontSize: 12,
-                        fontFamily: 'MarkPronormal400',
-                        fontWeight: FontWeight.w600,
+                      const Text(
+                        'Computer',
+                        style: TextStyle(
+                          color: AppColors.buttonBarColor,
+                          fontSize: 12,
+                          fontFamily: 'MarkPronormal400',
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: 95,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,          
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                      setState(() {
-                        if (_buttonColor == IconColors.appColor) {
-                          _buttonColor = Colors.white;
-                        } else {
-                          _buttonColor = IconColors.appColor;
-                        }
-                      });
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: const CircleBorder(),
-                        primary: _buttonColor,
+                SizedBox(
+                  width: 95,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            if (_buttonColor == IconColors.appColor) {
+                              _buttonColor = Colors.white;
+                            } else {
+                              _buttonColor = IconColors.appColor;
+                            }
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                          primary: _buttonColor,
+                        ),
+                        child: svgHealth,
                       ),
-                      child: svgHealth,
-                    ),
-                    const Text(
-                      'Health',
-                      style: TextStyle(
-                        color: AppColors.buttonBarColor,
-                        fontSize: 12,
-                        fontFamily: 'MarkPronormal400',
-                        fontWeight: FontWeight.w600,
+                      const Text(
+                        'Health',
+                        style: TextStyle(
+                          color: AppColors.buttonBarColor,
+                          fontSize: 12,
+                          fontFamily: 'MarkPronormal400',
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                width: 95,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                      setState(() {
-                        if (_buttonColor == IconColors.appColor) {
-                          _buttonColor = Colors.white;
-                        } else {
-                          _buttonColor = IconColors.appColor;
-                        }
-                      });
-                      },
-                      style: ElevatedButton.styleFrom(
-                        shape: const CircleBorder(),
-                        primary: _buttonColor,
+                SizedBox(
+                  width: 95,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            if (_buttonColor == IconColors.appColor) {
+                              _buttonColor = Colors.white;
+                            } else {
+                              _buttonColor = IconColors.appColor;
+                            }
+                          });
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: const CircleBorder(),
+                          primary: _buttonColor,
+                        ),
+                        child: svgBooks,
                       ),
-                      child: svgBooks,
-                    ),
-                    const Text(
-                      'Books',
-                      style: TextStyle(
-                        color: AppColors.buttonBarColor,
-                        fontSize: 12,
-                        fontFamily: 'MarkPronormal400',
-                        fontWeight: FontWeight.w600,
+                      const Text(
+                        'Books',
+                        style: TextStyle(
+                          color: AppColors.buttonBarColor,
+                          fontSize: 12,
+                          fontFamily: 'MarkPronormal400',
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          );
-        },
-        separatorBuilder: (context, index) {
-          return const SizedBox();
-        }
-      ),
+              ],
+            );
+          },
+          separatorBuilder: (context, index) {
+            return const SizedBox();
+          }),
     );
   }
 }
@@ -341,10 +335,7 @@ class _TitleSelectCategory extends StatelessWidget {
         children: [
           const Text(
             'Select Category',
-            style: TextStyle(
-              fontSize: 25, 
-              color: AppColors.buttonBarColor
-            ),
+            style: TextStyle(fontSize: 25, color: AppColors.buttonBarColor),
           ),
           TextButton(
             onPressed: () {},
@@ -362,6 +353,7 @@ class _TitleSelectCategory extends StatelessWidget {
     );
   }
 }
+
 class _TitleHotSales extends StatelessWidget {
   const _TitleHotSales({Key? key}) : super(key: key);
 
@@ -374,10 +366,7 @@ class _TitleHotSales extends StatelessWidget {
         children: [
           const Text(
             'Hot Sales',
-            style: TextStyle(
-              fontSize: 25, 
-              color: AppColors.buttonBarColor
-            ),
+            style: TextStyle(fontSize: 25, color: AppColors.buttonBarColor),
           ),
           TextButton(
             onPressed: () {},
@@ -395,6 +384,7 @@ class _TitleHotSales extends StatelessWidget {
     );
   }
 }
+
 class _TitleBestSeller extends StatelessWidget {
   const _TitleBestSeller({Key? key}) : super(key: key);
 
@@ -407,20 +397,17 @@ class _TitleBestSeller extends StatelessWidget {
         children: [
           const Text(
             'Best Seller',
-            style: TextStyle(
-              fontSize: 25, 
-              color: AppColors.buttonBarColor
-            ), 
+            style: TextStyle(fontSize: 25, color: AppColors.buttonBarColor),
           ),
           TextButton(
             onPressed: () {},
             child: const Text(
               'see more',
               style: TextStyle(
-                fontSize: 15,
-                fontFamily: 'MarkPronormal400',
-                fontWeight: FontWeight.w500,
-                color: IconColors.appColor),
+                  fontSize: 15,
+                  fontFamily: 'MarkPronormal400',
+                  fontWeight: FontWeight.w500,
+                  color: IconColors.appColor),
             ),
           )
         ],

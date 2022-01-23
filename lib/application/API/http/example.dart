@@ -1,4 +1,4 @@
-import 'package:ecommerce_project/application/ui/screens/home_screen/Carousel/http/Models/model.dart';
+import 'package:ecommerce_project/application/API/http/Models/model.dart';
 import 'package:flutter/material.dart';
 
 class Example extends StatefulWidget {
