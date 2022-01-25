@@ -57,6 +57,10 @@ flutter:
     - family: MyIcons
       fonts:
         - asset: icons_font/MyIcons.ttf
+    - family: SFPro
+      fonts:
+        - asset: fonts/SF-Pro-Display-Regular.otf
+          weight: 400
 
   assets:
     - assets/

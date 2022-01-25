@@ -1,4 +1,5 @@
-import 'package:ecommerce_project/application/ui/screens/home_screen/Carousel/carousel_widget.dart';
+import 'package:ecommerce_project/application/ui/screens/home_screen/Hot_sales/Slider_widget.dart';
+import 'package:ecommerce_project/application/ui/screens/home_screen/Select_category/Section_buttons.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/svg_icons.dart';
 import 'package:ecommerce_project/application/ui/themes/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -14,13 +15,14 @@ class CategoryWidget extends StatelessWidget {
           SizedBox(height: 45),
           _GeolocWidget(),
           _TitleSelectCategory(),
-          _SectionButtonsWidgett(),
+          SectionButtonsWidget(),
           SizedBox(height: 10),
           _SearchWidget(),
           SizedBox(height: 15),
           _TitleHotSales(),
           HotSalesWidget(),
           _TitleBestSeller(),
+          SizedBox(height: 550),
           // Text('')
         ]
       )
@@ -28,46 +30,6 @@ class CategoryWidget extends StatelessWidget {
   }
 }
 
-class _SliverAppBarDelegate extends SliverPersistentHeaderDelegate {
-  final double _height = 22;
-
-  @override
-  double get minExtent => _height;
-  @override
-  double get maxExtent => _height;
-
-  @override
-  Widget build(
-    BuildContext context,
-    double shrinkOffset,
-    bool overlapsContent,
-  ) {
-    return const _SectionButtonsWidget();
-  }
-
-  @override
-  bool shouldRebuild(_SliverAppBarDelegate oldDelegate) {
-    return false;
-  }
-}
-
-class _SectionButtonsWidget extends StatelessWidget {
-  const _SectionButtonsWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-class _HotSalesWidget extends StatelessWidget {
-  const _HotSalesWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
-}
 
 class _GeolocWidget extends StatelessWidget {
   const _GeolocWidget({
@@ -148,174 +110,7 @@ class _SearchWidget extends StatelessWidget {
   }
 }
 
-class _SectionButtonsWidgett extends StatefulWidget {
-  const _SectionButtonsWidgett({Key? key}) : super(key: key);
 
-  @override
-  State<_SectionButtonsWidgett> createState() => _SectionButtonsWidgettState();
-}
-
-class _SectionButtonsWidgettState extends State<_SectionButtonsWidgett> {
-  late Color _buttonColor;
-
-  @override
-  void initState() {
-    _buttonColor = Colors.white;
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 120,
-      child: ListView.separated(
-          padding: const EdgeInsets.symmetric(horizontal: 13),
-          scrollDirection: Axis.horizontal,
-          itemCount: 2,
-          itemBuilder: (context, index) {
-            return Row(
-              children: [
-                SizedBox(
-                  width: 95,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            if (_buttonColor == IconColors.appColor) {
-                              _buttonColor = Colors.white;
-                            } else {
-                              _buttonColor = IconColors.appColor;
-                            }
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          primary: _buttonColor,
-                        ),
-                        child: svgPhone,
-                      ),
-                      const Text(
-                        'Phones',
-                        style: TextStyle(
-                          color: AppColors.buttonBarColor,
-                          fontSize: 12,
-                          fontFamily: 'MarkPronormal400',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: 95,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            if (_buttonColor == IconColors.appColor) {
-                              _buttonColor = Colors.white;
-                            } else {
-                              _buttonColor = IconColors.appColor;
-                            }
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          primary: _buttonColor,
-                        ),
-                        child: svgComputer,
-                      ),
-                      const Text(
-                        'Computer',
-                        style: TextStyle(
-                          color: AppColors.buttonBarColor,
-                          fontSize: 12,
-                          fontFamily: 'MarkPronormal400',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: 95,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            if (_buttonColor == IconColors.appColor) {
-                              _buttonColor = Colors.white;
-                            } else {
-                              _buttonColor = IconColors.appColor;
-                            }
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          primary: _buttonColor,
-                        ),
-                        child: svgHealth,
-                      ),
-                      const Text(
-                        'Health',
-                        style: TextStyle(
-                          color: AppColors.buttonBarColor,
-                          fontSize: 12,
-                          fontFamily: 'MarkPronormal400',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  width: 95,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            if (_buttonColor == IconColors.appColor) {
-                              _buttonColor = Colors.white;
-                            } else {
-                              _buttonColor = IconColors.appColor;
-                            }
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          primary: _buttonColor,
-                        ),
-                        child: svgBooks,
-                      ),
-                      const Text(
-                        'Books',
-                        style: TextStyle(
-                          color: AppColors.buttonBarColor,
-                          fontSize: 12,
-                          fontFamily: 'MarkPronormal400',
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            );
-          },
-          separatorBuilder: (context, index) {
-            return const SizedBox();
-          }),
-    );
-  }
-}
 
 class _TitleSelectCategory extends StatelessWidget {
   const _TitleSelectCategory({Key? key}) : super(key: key);
