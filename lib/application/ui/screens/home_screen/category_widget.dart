@@ -1,3 +1,4 @@
+import 'package:ecommerce_project/application/ui/screens/home_screen/Best_seller/Best_seller_widget.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/Hot_sales/Slider_widget.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/Select_category/Section_buttons.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/svg_icons.dart';
@@ -21,7 +22,10 @@ class CategoryWidget extends StatelessWidget {
           SizedBox(height: 15),
           _TitleHotSales(),
           HotSalesWidget(),
+          SizedBox(height: 10),
           _TitleBestSeller(),
+          // SizedBox(height: 50),
+          BestSellerWidget(),
           SizedBox(height: 550),
           // Text('')
         ]
