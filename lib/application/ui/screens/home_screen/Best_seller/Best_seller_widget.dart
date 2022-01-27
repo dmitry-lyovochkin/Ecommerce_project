@@ -15,6 +15,9 @@ class BestSellerWidget extends StatefulWidget {
 class _BestSellerWidgetState extends State<BestSellerWidget> {
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+    final double itemHeight = (size.height - kToolbarHeight - 138) / 2;
+    final double itemWidth = size.width / 2;
     return FutureBuilder(
         future: getPostsBestSeller(),
         builder: (context, snapshot) {
@@ -34,11 +37,12 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
               // isFavorites:
               //     (snapshot.data as List<Best_seller>)[index].discount_price),
 
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate:  SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
+                childAspectRatio: (itemWidth / itemHeight),
                 // childAspectRatio: 20,
-                crossAxisSpacing: 7,
-                mainAxisSpacing: 7
+                // crossAxisSpacing: 7,
+                // mainAxisSpacing: 7
               ),
               // scrollDirection: Axis.vertical,
               physics: const NeverScrollableScrollPhysics(),
@@ -72,151 +76,155 @@ class GridWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      // height: double.maxFinite,
-      // margin: EdgeInsets.all(10),
-      width: 150,
-      height: 150,
-      child: Card(
-        
-        elevation: 5,
-        shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(12),
-    ),
-        // semanticContainer: true,
-        // // clipBehavior: Clip.antiAliasWithSaveLayer,
-           child: InkWell(
-             onTap: () {},
-         child: Column(
-         children: [
-           Image.network(
-             pictureUrls,
-             height: 150,
-             fit: BoxFit.contain,
-           ),
-           
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30),
-              child: Row(
-               children: [
-                 Text(
-                   priceWithoutDiscount.toString(), 
-                   style: const TextStyle(
-                     fontFamily: 'MarkProbold',
-                     fontSize: 18,
-                     fontWeight: FontWeight.w700,
-                     color: AppColors.buttonBarColor
-                   )
-                  ),
-                  const SizedBox(width: 10),
-                 Text(
-                   discountPrice.toString(),
-                   style: const TextStyle(
-                     fontFamily: 'MarkPronormal400',
-                     fontSize: 11,
-                     fontWeight: FontWeight.w700,
-                     color: Colors.grey,
-                     decoration: TextDecoration.lineThrough
-                   )
-                 ),
-               ],
-           ),
-            ),
-           Row(
-             // crossAxisAlignment: CrossAxisAlignment.end,
-             // mainAxisAlignment: Main,
-             children: [
-               Padding(
-                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 3),
-                 child: Text(
-                   titleItems,
-                   textAlign: TextAlign.end,
-                   style: const TextStyle(
-                       fontFamily: 'MarkPronormal400',
-                       fontSize: 10,
-                       fontWeight: FontWeight.w700,
-                       color: AppColors.buttonBarColor
-                     )
-                 ),
-               ),
-             ],
-           ),
-           // ElevatedButton(
-           //   onPressed: () {},
-           //   style: ElevatedButton.styleFrom(
-           //     shape: const CircleBorder(),
-           //     padding: const EdgeInsets.all(5),
-           //     primary: Colors.white,
-           //     minimumSize: const Size(15,15)
-           //   ),
-           //   child: const Icon(
-           //     Icons.favorite_border, 
-           //     color: IconColors.appColor, 
-           //     size: 15
-           //   ),
-           // ),
-          
-           
-           // child:  Stack(
-           //   children: [
-           //     Padding(
-           //       padding: const EdgeInsets.symmetric(vertical: 70, horizontal: 15),
-           //       child: Text(titleItems,
-           //       style: const TextStyle(
-           //            fontFamily: 'MarkPronormal400',
-           //            fontSize: 10,
-           //            fontWeight: FontWeight.w700,
-           //            color: Colors.black
-           //          )
-           //          ),
-           //     ),
-           //           Padding(
-           //           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-           //           child: ElevatedButton(
-           //             onPressed: () {},
-           //             style: ElevatedButton.styleFrom(
-           //               shape: const CircleBorder(),
-           //               padding: const EdgeInsets.all(5),
-           //               primary: Colors.white,
-           //               minimumSize: const Size(15,15)
-           //             ),
-           //             child: const Icon(
-           //               Icons.favorite_border, 
-           //               color: IconColors.appColor, 
-           //               size: 15
-           //             ),
-           //           // new Text(country.capital),
-           //           ),
-           //           ),
-           //           Padding(
-           //             padding: const EdgeInsets.all(1.0),
-           //             child: Text(
-           //               priceWithoutDiscount.toString(), 
-           //               style: const TextStyle(
-           //                 fontFamily: 'MarkPronormal400',
-           //                 fontSize: 20,
-           //                 fontWeight: FontWeight.w700,
-           //                 color: Colors.red
-           //               )
-           //               ),
-           //           ),
-           //           Text(
-           //             discountPrice.toString(),
-           //             style: const TextStyle(
-           //               fontFamily: 'MarkPronormal400',
-           //               fontSize: 14,
-           //               fontWeight: FontWeight.w700,
-           //               color: Colors.red
-           //             )
-           //             ),
-                     
-           //       ])
-                     
-                 // ),
-             
-         ]),
+    return Card(
+      margin: const EdgeInsets.all(7),
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
       ),
-     ) );
+        child: InkWell(
+          onTap: () {},
+        child: Stack(
+          alignment: Alignment.topCenter,
+        children: [
+          SizedBox(
+            // height: 120,
+            // width: 190,
+            child: Image.network(
+              pictureUrls,
+              height: 180,
+              // width: 180,
+              fit: BoxFit.cover,
+              // alignment: Alignment.center,
+            ),
+          ),
+           Positioned(
+            //  top: 2,
+             right: 15,
+             child: ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                shape: const CircleBorder(),
+                padding: const EdgeInsets.all(5),
+                primary: Colors.white,
+                minimumSize: const Size(15,15)
+              ),
+              child: const Icon(
+                Icons.favorite_border, 
+                color: IconColors.appColor, 
+                size: 15
+              ),
+          ),
+           ),
+          Positioned(
+            bottom: 32,
+            left: 34,
+            child: Row(
+              children: [
+                Text(
+                  '\$' + priceWithoutDiscount.toString(), 
+                  style: const TextStyle(
+                    fontFamily: 'MarkProbold',
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.buttonBarColor
+                  )
+                ),
+                const SizedBox(width: 10),
+                Text(
+                  '\$' + discountPrice.toString(),
+                  style: TextStyle(
+                    fontFamily: 'MarkPronormal400',
+                    fontSize: 11,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.grey[400],
+                    decoration: TextDecoration.lineThrough
+                  )
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 16,
+            left: 35,
+            child: Text(
+              titleItems,
+              textAlign: TextAlign.end,
+              style: const TextStyle(
+                fontFamily: 'MarkPronormal400',
+                fontSize: 10,
+                fontWeight: FontWeight.w700,
+                color: AppColors.buttonBarColor
+              )
+            ),
+          ),
+        
+    
+    // child:  Stack(
+    //   children: [
+    //     Padding(
+    //       padding: const EdgeInsets.symmetric(vertical: 70, horizontal: 15),
+    //       child: Text(titleItems,
+    //       style: const TextStyle(
+    //            fontFamily: 'MarkPronormal400',
+    //            fontSize: 10,
+    //            fontWeight: FontWeight.w700,
+    //            color: Colors.black
+    //          )
+    //          ),
+    //     ),
+    //           Padding(
+    //           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+    //           child: ElevatedButton(
+    //             onPressed: () {},
+    //             style: ElevatedButton.styleFrom(
+    //               shape: const CircleBorder(),
+    //               padding: const EdgeInsets.all(5),
+    //               primary: Colors.white,
+    //               minimumSize: const Size(15,15)
+    //             ),
+    //             child: const Icon(
+    //               Icons.favorite_border, 
+         //               Icons.favorite_border, 
+    //               Icons.favorite_border, 
+    //               color: IconColors.appColor, 
+         //               color: IconColors.appColor, 
+    //               color: IconColors.appColor, 
+    //               size: 15
+    //             ),
+    //           // new Text(country.capital),
+    //           ),
+    //           ),
+    //           Padding(
+    //             padding: const EdgeInsets.all(1.0),
+    //             child: Text(
+    //               priceWithoutDiscount.toString(), 
+         //               priceWithoutDiscount.toString(), 
+    //               priceWithoutDiscount.toString(), 
+    //               style: const TextStyle(
+    //                 fontFamily: 'MarkPronormal400',
+    //                 fontSize: 20,
+    //                 fontWeight: FontWeight.w700,
+    //                 color: Colors.red
+    //               )
+    //               ),
+    //           ),
+    //           Text(
+    //             discountPrice.toString(),
+    //             style: const TextStyle(
+    //               fontFamily: 'MarkPronormal400',
+    //               fontSize: 14,
+    //               fontWeight: FontWeight.w700,
+    //               color: Colors.red
+    //             )
+    //             ),
+              
+    //       ])
+              
+          // ),
+      
+       ]),
+    ) );
             
       
     
