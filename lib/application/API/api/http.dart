@@ -31,7 +31,7 @@ import 'package:http/http.dart' as http;
       final List<dynamic> userJson = json.decode(response.body);
       List<Best_seller> list = [];
       userJson.map((json) {
-        for (var i = 0; i < json.length; i++) {
+        for (var i = 0; i < json['best_seller'].length; i++) {
           list.add(Best_seller.fromMap(json['best_seller'][i]));
         }
       }).toList();

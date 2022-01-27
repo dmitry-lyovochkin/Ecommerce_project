@@ -29,7 +29,7 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
                     (snapshot.data as List<Best_seller>)[index]
                         .price_without_discount,
                 discountPrice: (snapshot.data as List<Best_seller>)[index]
-                    .price_without_discount,
+                    .discount_price,
               ),
               // isFavorites:
               //     (snapshot.data as List<Best_seller>)[index].discount_price),
@@ -41,7 +41,9 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
                 mainAxisSpacing: 7
               ),
               // scrollDirection: Axis.vertical,
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
+              scrollDirection: Axis.vertical,
             );
           } else if (snapshot.hasError) {
             return const Text('Error');
@@ -70,60 +72,151 @@ class GridWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      // elevation: 5.5,
-      // color: Colors.red,
-        child: 
-      // crossAxisAlignment: CrossAxisAlignment.stretch,
-      // mainAxisSize: MainAxisSize.min,
-      // verticalDirection: VerticalDirection.down,
-      
-        Container(
-          height: 170,
-          width: 190,
-          // padding: const EdgeInsets.symmetric(vertical: 200.0),
-            decoration: BoxDecoration(
-              
-              // color: Colors.amberAccent,
-              // borderRadius: BorderRadius.circular(10),
-              image: DecorationImage(
-                image: NetworkImage(pictureUrls),
-                fit: BoxFit.contain,
-                // alignment: Alignment.topLeft,
-              ),
+    return SizedBox(
+      // height: double.maxFinite,
+      // margin: EdgeInsets.all(10),
+      width: 150,
+      height: 150,
+      child: Card(
+        
+        elevation: 5,
+        shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(12),
+    ),
+        // semanticContainer: true,
+        // // clipBehavior: Clip.antiAliasWithSaveLayer,
+           child: InkWell(
+             onTap: () {},
+         child: Column(
+         children: [
+           Image.network(
+             pictureUrls,
+             height: 150,
+             fit: BoxFit.contain,
+           ),
+           
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              child: Row(
+               children: [
+                 Text(
+                   priceWithoutDiscount.toString(), 
+                   style: const TextStyle(
+                     fontFamily: 'MarkProbold',
+                     fontSize: 18,
+                     fontWeight: FontWeight.w700,
+                     color: AppColors.buttonBarColor
+                   )
+                  ),
+                  const SizedBox(width: 10),
+                 Text(
+                   discountPrice.toString(),
+                   style: const TextStyle(
+                     fontFamily: 'MarkPronormal400',
+                     fontSize: 11,
+                     fontWeight: FontWeight.w700,
+                     color: Colors.grey,
+                     decoration: TextDecoration.lineThrough
+                   )
+                 ),
+               ],
+           ),
             ),
-            child:  Column(
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                     Text(titleItems),
-                      Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        style: ElevatedButton.styleFrom(
-                          shape: const CircleBorder(),
-                          padding: const EdgeInsets.all(5),
-                          primary: Colors.white,
-                          minimumSize: const Size(15,15)
-                        ),
-                        child: const Icon(
-                          Icons.favorite_border, 
-                          color: IconColors.appColor, 
-                          size: 15
-                        ),
-                      // new Text(priceWithoutDiscount),
-                      // new Text(country.capital),
-                      ),
-                      )
-                  ],
-                ),
-              ],
-            )
-            ),
-            
-        );
+           Row(
+             // crossAxisAlignment: CrossAxisAlignment.end,
+             // mainAxisAlignment: Main,
+             children: [
+               Padding(
+                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 3),
+                 child: Text(
+                   titleItems,
+                   textAlign: TextAlign.end,
+                   style: const TextStyle(
+                       fontFamily: 'MarkPronormal400',
+                       fontSize: 10,
+                       fontWeight: FontWeight.w700,
+                       color: AppColors.buttonBarColor
+                     )
+                 ),
+               ),
+             ],
+           ),
+           // ElevatedButton(
+           //   onPressed: () {},
+           //   style: ElevatedButton.styleFrom(
+           //     shape: const CircleBorder(),
+           //     padding: const EdgeInsets.all(5),
+           //     primary: Colors.white,
+           //     minimumSize: const Size(15,15)
+           //   ),
+           //   child: const Icon(
+           //     Icons.favorite_border, 
+           //     color: IconColors.appColor, 
+           //     size: 15
+           //   ),
+           // ),
+          
+           
+           // child:  Stack(
+           //   children: [
+           //     Padding(
+           //       padding: const EdgeInsets.symmetric(vertical: 70, horizontal: 15),
+           //       child: Text(titleItems,
+           //       style: const TextStyle(
+           //            fontFamily: 'MarkPronormal400',
+           //            fontSize: 10,
+           //            fontWeight: FontWeight.w700,
+           //            color: Colors.black
+           //          )
+           //          ),
+           //     ),
+           //           Padding(
+           //           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+           //           child: ElevatedButton(
+           //             onPressed: () {},
+           //             style: ElevatedButton.styleFrom(
+           //               shape: const CircleBorder(),
+           //               padding: const EdgeInsets.all(5),
+           //               primary: Colors.white,
+           //               minimumSize: const Size(15,15)
+           //             ),
+           //             child: const Icon(
+           //               Icons.favorite_border, 
+           //               color: IconColors.appColor, 
+           //               size: 15
+           //             ),
+           //           // new Text(country.capital),
+           //           ),
+           //           ),
+           //           Padding(
+           //             padding: const EdgeInsets.all(1.0),
+           //             child: Text(
+           //               priceWithoutDiscount.toString(), 
+           //               style: const TextStyle(
+           //                 fontFamily: 'MarkPronormal400',
+           //                 fontSize: 20,
+           //                 fontWeight: FontWeight.w700,
+           //                 color: Colors.red
+           //               )
+           //               ),
+           //           ),
+           //           Text(
+           //             discountPrice.toString(),
+           //             style: const TextStyle(
+           //               fontFamily: 'MarkPronormal400',
+           //               fontSize: 14,
+           //               fontWeight: FontWeight.w700,
+           //               color: Colors.red
+           //             )
+           //             ),
+                     
+           //       ])
+                     
+                 // ),
+             
+         ]),
+      ),
+     ) );
             
       
     

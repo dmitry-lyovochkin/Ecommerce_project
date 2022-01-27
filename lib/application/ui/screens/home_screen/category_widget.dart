@@ -26,7 +26,7 @@ class CategoryWidget extends StatelessWidget {
           _TitleBestSeller(),
           // SizedBox(height: 50),
           BestSellerWidget(),
-          SizedBox(height: 550),
+          SizedBox(height: 280),
           // Text('')
         ]
       )
@@ -197,10 +197,11 @@ class _TitleBestSeller extends StatelessWidget {
             child: const Text(
               'see more',
               style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'MarkPronormal400',
-                  fontWeight: FontWeight.w500,
-                  color: IconColors.appColor),
+                fontSize: 15,
+                fontFamily: 'MarkPronormal400',
+                fontWeight: FontWeight.w500,
+                color: IconColors.appColor
+              ),
             ),
           )
         ],

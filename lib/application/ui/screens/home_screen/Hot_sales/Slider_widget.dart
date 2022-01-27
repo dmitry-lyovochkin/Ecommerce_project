@@ -1,12 +1,13 @@
 import 'dart:convert';
 
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerce_project/application/API/api/model.dart';
-import 'package:ecommerce_project/application/API/api/http.dart';
-import 'package:ecommerce_project/application/ui/themes/app_theme.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:ecommerce_project/application/API/api/http.dart';
+import 'package:ecommerce_project/application/API/api/model.dart';
+import 'package:ecommerce_project/application/ui/themes/app_theme.dart';
 
 class HotSalesWidget extends StatefulWidget {
   const HotSalesWidget({Key? key}) : super(key: key);
@@ -32,7 +33,9 @@ class _HotSalesWidgetState extends State<HotSalesWidget> {
                 titlePhone: 
                     (snapshot.data as List<Home_store>)[index].title,
                 subtitleSuper: 
-                    (snapshot.data as List<Home_store>)[index].subtitle),
+                    (snapshot.data as List<Home_store>)[index].subtitle,
+                isNew: 
+                    (snapshot.data as List<Home_store>)[index].is_new),
               options: CarouselOptions(
                 height: 200,
                 aspectRatio: 5.0,
@@ -54,11 +57,13 @@ class NewWidget extends StatelessWidget {
   final String pictureUrl;
   final String titlePhone;
   final String subtitleSuper;
-  const NewWidget({
+   bool isNew;
+   NewWidget({
     Key? key,
     required this.pictureUrl,
     required this.titlePhone,
     required this.subtitleSuper,
+    required this.isNew,
   }) : super(key: key);
 
   @override
@@ -101,7 +106,7 @@ class NewWidget extends StatelessWidget {
             Positioned(
               top: 10,
               left: 16,
-              child: ElevatedButton(
+              child: isNew != false ? ElevatedButton( /* показ New */
                 onPressed: () {}, 
                 child: const Text('New', 
                   style: TextStyle(
@@ -116,7 +121,8 @@ class NewWidget extends StatelessWidget {
                   minimumSize: const Size(15,30),
                   shape: const CircleBorder()
                 ),
-              ),
+              )
+              : Container()
             ),
             Positioned(
               top: 130,
