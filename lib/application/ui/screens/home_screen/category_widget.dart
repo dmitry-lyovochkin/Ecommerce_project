@@ -1,4 +1,5 @@
 import 'package:ecommerce_project/application/ui/screens/home_screen/Best_seller/Best_seller_widget.dart';
+import 'package:ecommerce_project/application/ui/screens/home_screen/Best_seller/Filter_options.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/Hot_sales/Slider_widget.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/Select_category/Section_buttons.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/svg_icons.dart';
@@ -11,29 +12,25 @@ class CategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: const [
-          SizedBox(height: 45),
-          _GeolocWidget(),
-          _TitleSelectCategory(),
-          SectionButtonsWidget(),
-          SizedBox(height: 10),
-          _SearchWidget(),
-          SizedBox(height: 15),
-          _TitleHotSales(),
-          HotSalesWidget(),
-          SizedBox(height: 10),
-          _TitleBestSeller(),
-          // SizedBox(height: 50),
-          BestSellerWidget(),
-          SizedBox(height: 280),
-          // Text('')
-        ]
-      )
-    );
+        child: Column(children: const [
+      SizedBox(height: 45),
+      _GeolocWidget(),
+      _TitleSelectCategory(),
+      SectionButtonsWidget(),
+      SizedBox(height: 10),
+      _SearchWidget(),
+      SizedBox(height: 15),
+      _TitleHotSales(),
+      HotSalesWidget(),
+      SizedBox(height: 10),
+      _TitleBestSeller(),
+      // SizedBox(height: 50),
+      BestSellerWidget(),
+      SizedBox(height: 280),
+      // Text('')
+    ]));
   }
 }
-
 
 class _GeolocWidget extends StatelessWidget {
   const _GeolocWidget({
@@ -114,8 +111,6 @@ class _SearchWidget extends StatelessWidget {
   }
 }
 
-
-
 class _TitleSelectCategory extends StatelessWidget {
   const _TitleSelectCategory({Key? key}) : super(key: key);
 
@@ -193,19 +188,27 @@ class _TitleBestSeller extends StatelessWidget {
             style: TextStyle(fontSize: 25, color: AppColors.buttonBarColor),
           ),
           TextButton(
-            onPressed: () {},
             child: const Text(
               'see more',
               style: TextStyle(
-                fontSize: 15,
-                fontFamily: 'MarkPronormal400',
-                fontWeight: FontWeight.w500,
-                color: IconColors.appColor
-              ),
+                  fontSize: 15,
+                  fontFamily: 'MarkPronormal400',
+                  fontWeight: FontWeight.w500,
+                  color: IconColors.appColor),
             ),
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (BuildContext context) {
+                  return const FilterOptionsWidget();
+                }
+              );
+            },
           )
         ],
       ),
     );
   }
 }
+
+
