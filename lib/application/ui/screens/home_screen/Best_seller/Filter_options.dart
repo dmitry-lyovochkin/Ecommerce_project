@@ -222,7 +222,7 @@ class FilterPriceWidget extends StatefulWidget {
   @override
   State<FilterPriceWidget> createState() => _FilterPriceWidgetState();
 }
-  String dropdownValueInt = '\$''300 - 500';
+  String dropdownValueInt = '\$300 - \$500';
 
 class _FilterPriceWidgetState extends State<FilterPriceWidget> {
   @override
@@ -246,7 +246,7 @@ class _FilterPriceWidgetState extends State<FilterPriceWidget> {
           dropdownValue = newValue!;
         });
       },
-      items: <String>['\$''300 - 500', '\$''500 - 800', '\$''800 - 1100', '\$''1100 - 1400']
+      items: <String>['\$300 - \$500', '\$500 - \$800', '\$800 - \$1100', '\$1100 - \$1400']
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
