@@ -2,7 +2,7 @@ import 'package:ecommerce_project/application/ui/screens/home_screen/Best_seller
 import 'package:ecommerce_project/application/ui/screens/home_screen/Best_seller/Filter_options.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/Hot_sales/Slider_widget.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/Select_category/Section_buttons.dart';
-import 'package:ecommerce_project/application/ui/screens/home_screen/svg_icons.dart';
+import 'package:ecommerce_project/application/ui/themes/svg_icons.dart';
 import 'package:ecommerce_project/application/ui/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 

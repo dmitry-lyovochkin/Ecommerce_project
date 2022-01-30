@@ -64,3 +64,11 @@ const String assetGeolocation = 'assets/Geolocation.svg';
 final Widget svgGeolocation = SvgPicture.asset(
   assetGeolocation,
 );
+
+const String assetStar5 = "assets/Star5.svg";
+final Widget svgStar5 = SvgPicture.asset(
+  assetStar5,
+  // color: Colors.red,
+  // height: 74,
+  // fit: BoxFit.scaleDown,
+);

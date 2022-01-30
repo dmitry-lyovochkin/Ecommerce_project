@@ -1,5 +1,5 @@
-import 'package:ecommerce_project/application/ui/screens/Product%20Details/Product_details.dart';
-import 'package:ecommerce_project/application/ui/screens/home_screen/svg_icons.dart';
+import 'package:ecommerce_project/application/ui/screens/Product%20Details/Product_details_main.dart';
+import 'package:ecommerce_project/application/ui/themes/svg_icons.dart';
 import 'package:ecommerce_project/application/ui/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
