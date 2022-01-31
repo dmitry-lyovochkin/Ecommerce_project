@@ -126,47 +126,33 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 260,
-        width: 400,
-      child: Card(
-        elevation: 15,
-          color: Colors.white,
-          margin: const EdgeInsets.only(
-            top: 10, 
-            bottom: 10,
-            left: 70,
-            right: 50,
+    return FutureBuilder<List<GetDetails>>(
+      future: PostsRepository().getProducts(),
+      builder: (context, snapshot) {
+      if (snapshot.hasData) {
+        return CarouselSlider.builder(
+          itemCount: snapshot.data?.length,
+          itemBuilder: (context, index, _) => 
+              ModelWidget(imagesUrl: snapshot.data![index].images[index],
+              titlePhone: snapshot.data![index].title[index]),
+          options: CarouselOptions(
+            height: 260,
+            aspectRatio: 5.0,
+            initialPage: 0,
+            viewportFraction: 0.6,
+            enlargeCenterPage: true,
+            enableInfiniteScroll: true,
+            scrollDirection: Axis.horizontal,
           ),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-        child: FutureBuilder<List<GetDetails>>(
-          future: PostsRepository().getProducts(),
-          builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return CarouselSlider.builder(
-              itemCount: snapshot.data?.length,
-              itemBuilder: (context, index, _) => 
-                  ModelWidget(imagesUrl: snapshot.data![index].images[index],
-                  titlePhone: snapshot.data![index].title[index]),
-              options: CarouselOptions(
-                height: 220,
-                aspectRatio: 5.0,
-                initialPage: 0,
-                viewportFraction: 1,
-              ),
-                    
-            );
-          } else if (snapshot.hasError) {
-            return const Text('Error');
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }),
-      ),
-    );
+                
+        );
+      } else if (snapshot.hasError) {
+        return const Text('Error');
+      }
+      return const Center(
+        child: CircularProgressIndicator(),
+      );
+    });
   }
 }
 
