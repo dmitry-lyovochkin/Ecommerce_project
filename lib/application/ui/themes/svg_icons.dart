@@ -72,3 +72,11 @@ final Widget svgStar5 = SvgPicture.asset(
   // height: 74,
   // fit: BoxFit.scaleDown,
 );
+
+const String assetGroup18 = "assets/Group18.svg";
+final Widget svgGroup18 = SvgPicture.asset(
+  assetGroup18,
+  // color: Colors.red,
+  // height: 74,
+  // fit: BoxFit.scaleDown,
+);

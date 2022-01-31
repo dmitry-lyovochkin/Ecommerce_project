@@ -7,6 +7,7 @@ import 'package:ecommerce_project/application/ui/screens/Product%20Details/Botto
 import 'package:ecommerce_project/application/ui/themes/svg_icons.dart';
 import 'package:ecommerce_project/application/ui/themes/app_theme.dart';
 import 'package:ecommerce_project/application/ui/themes/custom_icons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductDetailsWidget extends StatelessWidget {
   const ProductDetailsWidget({Key? key}) : super(key: key);
@@ -14,109 +15,102 @@ class ProductDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Container(
-        // color: Colors.grey[100],
-        child: Column(
-          children: [
-          Padding(
-            padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                // crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Icon(Icons.arrow_back_ios,
-                        size: 19, color: Colors.white),
-                    style: ElevatedButton.styleFrom(
-                        primary: AppColors.buttonBarColor,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        padding: const EdgeInsets.all(10),
-                        minimumSize: const Size(15, 15)),
-                  ),
-                  const Text('Product Details',
-                      style: TextStyle(
-                        fontFamily: 'MarkPronormal400',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.buttonBarColor,
-                      )),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Icon(
-                      CustomIcons.vector,
-                      color: Colors.white,
-                      size: 15,
-                    ),
-                    style: ElevatedButton.styleFrom(
-                        primary: IconColors.appColor,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        padding: const EdgeInsets.all(11),
-                        minimumSize: const Size(15, 15)),
-                  )
-                ]),
-          ),
-          // const ProductSliderWidget()
-          Container(
-            height: 240,
-            width: 200,
-            color: Colors.blue,
-          ),
-          SizedBox(
-            height: 365,
-            child: Card(
-              color: Colors.white,
-              elevation: 2,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      // crossAxisAlignment: CrossAxisAlignment.end,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('Galaxy Note 20 Ultra',
-                          style: TextStyle(fontSize: 24)
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: const Icon(
-                            Icons.favorite_border,
-                            color: Colors.grey,
-                            size: 18,
-                          ),
-                          style: ElevatedButton.styleFrom(
-                              primary: AppColors.buttonBarColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 7),
-                              minimumSize: const Size(7, 7)),
-                        )
-                      ],
-                    ),
-                    IconButton(
-                      alignment: Alignment.topLeft,
-                      padding: const EdgeInsets.only(right: 20),
-                      onPressed: () {},
-                      icon: svgStar5,
-                      color: Colors.red,
-                    ),
-                    MyDemo(),
-                  ],
+      child: Column(children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
+          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              // crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(Icons.arrow_back_ios,
+                      size: 19, color: Colors.white),
+                  style: ElevatedButton.styleFrom(
+                      primary: AppColors.buttonBarColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      padding: const EdgeInsets.all(10),
+                      minimumSize: const Size(15, 15)),
                 ),
+                const Text('Product Details',
+                    style: TextStyle(
+                      fontFamily: 'MarkPronormal400',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.buttonBarColor,
+                    )),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: const Icon(
+                    CustomIcons.vector,
+                    color: Colors.white,
+                    size: 15,
+                  ),
+                  style: ElevatedButton.styleFrom(
+                      primary: IconColors.appColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      padding: const EdgeInsets.all(11),
+                      minimumSize: const Size(15, 15)),
+                )
+              ]),
+        ),
+        const ProductSliderWidget(),
+        // Container(
+        //   height: 240,
+        //   width: 200,
+        //   color: Colors.blue,
+        // ),
+        SizedBox(
+          height: 345,
+          child: Card(
+            color: Colors.white,
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    // crossAxisAlignment: CrossAxisAlignment.end,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                       const Text('Galaxy Note 20 Ultra',
+                          style:  TextStyle(
+                            fontSize: 24, 
+                            color: AppColors.buttonBarColor
+                          ),
+                       ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: const Icon(
+                          Icons.favorite_border,
+                          color: Colors.grey,
+                          size: 18,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            primary: AppColors.buttonBarColor,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 9, vertical: 7),
+                            minimumSize: const Size(7, 7)),
+                      )
+                    ],
+                  ),
+                  const Icon(Icons.star_outlined, color: Colors.amber, size: 22,),
+                  MyDemo(),
+                ],
               ),
             ),
-          )
-        ]),
-      ),
+          ),
+        )
+      ]),
     );
   }
 }
@@ -129,28 +123,40 @@ class ProductSliderWidget extends StatefulWidget {
 }
 
 class _HotSalesWidgetState extends State<ProductSliderWidget> {
-// Написать сюда модельку(рефакторинг возможно как у Жени)
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-        future: getProducts(),
-        builder: (context, snapshot) {
+    return SizedBox(
+      height: 260,
+        width: 400,
+      child: Card(
+        elevation: 15,
+          color: Colors.white,
+          margin: const EdgeInsets.only(
+            top: 10, 
+            bottom: 10,
+            left: 70,
+            right: 50,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+        child: FutureBuilder<List<GetDetails>>(
+          future: PostsRepository().getProducts(),
+          builder: (context, snapshot) {
           if (snapshot.hasData) {
             return CarouselSlider.builder(
-              itemCount: (snapshot.data as List<ProductDetailsModel>).length,
-              itemBuilder: (context, index, _) =>
-                  ModelWidget(imagesUrl: (snapshot.data as List)[index].images),
-              // titlePhone: (snapshot.data as List<ProductDetailsModel>)[index].title,
-              // subtitleSuper:
-              //     (snapshot.data as List<ProductDetailsModel>)[index].subtitle,
-              // isNew: (snapshot.data as List<ProductDetailsModel>)[index].is_new),
+              itemCount: snapshot.data?.length,
+              itemBuilder: (context, index, _) => 
+                  ModelWidget(imagesUrl: snapshot.data![index].images[index],
+                  titlePhone: snapshot.data![index].title[index]),
               options: CarouselOptions(
-                height: 200,
+                height: 220,
                 aspectRatio: 5.0,
                 initialPage: 0,
                 viewportFraction: 1,
               ),
+                    
             );
           } else if (snapshot.hasError) {
             return const Text('Error');
@@ -158,19 +164,21 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
           return const Center(
             child: CircularProgressIndicator(),
           );
-        });
+        }),
+      ),
+    );
   }
 }
 
 class ModelWidget extends StatelessWidget {
   final String imagesUrl;
-  // final String titlePhone;
+  final String titlePhone;
   // final String subtitleSuper;
   // bool isNew;
   const ModelWidget({
     Key? key,
     required this.imagesUrl,
-    // required this.titlePhone,
+    required this.titlePhone,
     // required this.subtitleSuper,
     // required this.isNew,
   }) : super(key: key);
@@ -178,13 +186,15 @@ class ModelWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 17),
+      // width: 250,
+      // color: Colors.amber,
+        // margin: const EdgeInsets.symmetric(horizontal: 17),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          // borderRadius: BorderRadius.circular(10),
           image: DecorationImage(
             image: NetworkImage(imagesUrl),
-            fit: BoxFit.cover,
-            alignment: Alignment.topLeft,
+            fit: BoxFit.contain,
+            alignment: Alignment.center,
           ),
         ));
   }
@@ -199,8 +209,6 @@ class MyDemo extends StatelessWidget {
 
   MyDemo({Key? key}) : super(key: key);
 
- 
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -212,35 +220,34 @@ class MyDemo extends StatelessWidget {
               Container(
                 constraints: const BoxConstraints.expand(height: 32),
                 child: TabBar(
-                    labelStyle: const TextStyle(
-                      fontFamily: 'MarkPronormal400',
-                      fontSize: 19,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.buttonBarColor,
-                    ),
-                    labelColor: AppColors.buttonBarColor,
-                    indicator: const UnderlineTabIndicator(
-                      borderSide:
-                          BorderSide(color: IconColors.appColor, width: 3),
-                      insets: EdgeInsets.symmetric(horizontal: 20),
-                    ),
-                    unselectedLabelColor: Colors.grey,
-                    unselectedLabelStyle: const TextStyle(
-                      fontFamily: 'MarkPronormal400',
-                      fontSize: 19,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.buttonBarColor,
-                    ),
-                    tabs: tabss,
-              ),),
+                  labelStyle: const TextStyle(
+                    fontFamily: 'MarkPronormal400',
+                    fontSize: 19,
+                    fontWeight: FontWeight.w700,
+                    color: AppColors.buttonBarColor,
+                  ),
+                  labelColor: AppColors.buttonBarColor,
+                  indicator: const UnderlineTabIndicator(
+                    borderSide:
+                        BorderSide(color: IconColors.appColor, width: 3),
+                    insets: EdgeInsets.symmetric(horizontal: 20),
+                  ),
+                  unselectedLabelColor: Colors.grey,
+                  unselectedLabelStyle: const TextStyle(
+                    fontFamily: 'MarkPronormal400',
+                    fontSize: 19,
+                    fontWeight: FontWeight.w400,
+                    color: AppColors.buttonBarColor,
+                  ),
+                  tabs: tabss,
+                ),
+              ),
               const Expanded(
-                child: TabBarView(
-                  children: [
-                    DetailsWidget(),
+                child: TabBarView(children: [
+                  DetailsWidget(),
                   Text("Articles Body"),
                   Text("User Body"),
-                ]
-                ),
+                ]),
               )
             ],
           ),
@@ -255,18 +262,23 @@ class DetailsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Align(
-          alignment: Alignment.topLeft,
-          child: Text(
-            'Select color and capacity', 
-            style: TextStyle(
-              fontFamily: 'MarkPronormal400',
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              color: AppColors.buttonBarColor,
-            ),
-          )
+        SvgPicture.asset(
+          assetGroup18,
+          height: 90,
+          fit: BoxFit.contain,
         ),
+        const Align(
+            alignment: Alignment.topLeft,
+            child: Text(
+              'Select color and capacity',
+              style: TextStyle(
+                fontFamily: 'MarkPronormal400',
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+                color: AppColors.buttonBarColor,
+              ),
+            )),
+        const SizedBox(height: 45,),
         ElevatedButton(
           onPressed: () {},
           child: const Text(
@@ -279,11 +291,10 @@ class DetailsWidget extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          style:  ElevatedButton.styleFrom(
+          style: ElevatedButton.styleFrom(
             primary: IconColors.appColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10)
-            ),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 49),
           ),
         ),
