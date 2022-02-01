@@ -1,4 +1,5 @@
 import 'package:ecommerce_project/application/ui/navigation/main_navigation.dart';
+import 'package:ecommerce_project/application/ui/screens/home_screen/Button_nav_bar/main_tabs_screen.dart';
 import 'package:ecommerce_project/application/ui/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 

@@ -11,7 +11,9 @@ class MainTabsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-        body: _BodyWidget(), bottomNavigationBar: _NavBarWidget());
+      body: _BodyWidget(), 
+      bottomNavigationBar: _NavBarWidget()
+    );
   }
 }
 
@@ -49,47 +51,113 @@ class _NavBarWidget extends StatelessWidget {
         context.select((MainTabsViewModel vm) => vm.currentTabIndex);
     return ClipRRect(
       borderRadius: BorderRadius.circular(25),
-      // borderRadius: BorderRadius.only(
-      //   topLeft: const Radius.circular(30.0),
-      //   topRight: const Radius.circular(30.0)),
       child: SizedBox(
         height: 69,
         child: BottomNavigationBar(
-            currentIndex: currentIndex,
-            onTap: model.setCurrentTabIndex,
-            items: [
-              BottomNavigationBarItem(
-                backgroundColor: AppColors.buttonBarColor,
-                icon: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: const [
-                    Padding(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 18, horizontal: 20),
-                    ),
-                    Text(
-                      '●   Explorer',
-                      /* Explorer */
-                      style: TextStyle(color: Colors.white, fontSize: 15),
-                    ),
-                  ],
+          currentIndex: currentIndex,
+          onTap: model.setCurrentTabIndex,
+          type: BottomNavigationBarType.fixed,
+          elevation: 5,
+          // backgroundColor: Colors.black,
+          backgroundColor: AppColors.buttonBarColor,
+          items: const [
+            BottomNavigationBarItem(
+              icon: 
+                Text(
+                  '●   Explorer',
+                  style: TextStyle(
+                    color: Colors.white, 
+                    fontSize: 15
+                  ),
+                ),
+              label: "",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CustomIcons.vector, size: 19),
+              label: "",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CustomIcons.vector__1_, size: 18),
+              label: "",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(CustomIcons.profile, size: 18),
+              label: "",
+            ),
+          ]
+        ),
+      ),
+    );
+  }
+}
+
+
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MyStatefulWidget> createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int _selectedIndex = 0;
+  static const List _widgetOptions = [
+    CategoryWidget(),
+    Text(
+      'Index 2: Business',
+    ),
+    Text(
+      'Index 3: School',
+    ),
+    Text(
+      'Index 4: School',
+    ),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // return ClipRRect(
+    //   borderRadius: BorderRadius.circular(25),
+      // child: Scaffold(
+      //   height: 69,
+      return Scaffold(
+        // height: 69,
+        // width: double.maxFinite,
+        // color: Colors.amber,
+      body:  _widgetOptions.elementAt(_selectedIndex),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [ 
+          BottomNavigationBarItem(
+                // backgroundColor: Colors.amber,
+                icon: Text(
+                  '●   Explorer',
+                  /* Explorer */
+                  style: TextStyle(color: Colors.black, fontSize: 15),
                 ),
                 label: "",
               ),
-              const BottomNavigationBarItem(
+              BottomNavigationBarItem(
                 icon: Icon(CustomIcons.vector, size: 19),
                 label: "",
               ),
-              const BottomNavigationBarItem(
+              BottomNavigationBarItem(
                 icon: Icon(CustomIcons.vector__1_, size: 18),
                 label: "",
               ),
-              const BottomNavigationBarItem(
+              BottomNavigationBarItem(
                 icon: Icon(CustomIcons.profile, size: 18),
                 label: "",
               ),
-            ]),
+        ],
+      currentIndex: _selectedIndex,
+      onTap: _onItemTapped,
+      type: BottomNavigationBarType.fixed,
       ),
     );
   }

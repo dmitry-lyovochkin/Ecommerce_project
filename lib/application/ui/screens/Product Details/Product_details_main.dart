@@ -1,8 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommerce_project/application/services/API/http.dart';
+import 'package:ecommerce_project/application/services/API/model_product.dart';
 import 'package:flutter/material.dart';
 
-import 'package:ecommerce_project/application/API/api/http.dart';
-import 'package:ecommerce_project/application/API/api/model_product.dart';
 import 'package:ecommerce_project/application/ui/screens/Product%20Details/Bottom_card.dart';
 import 'package:ecommerce_project/application/ui/themes/svg_icons.dart';
 import 'package:ecommerce_project/application/ui/themes/app_theme.dart';

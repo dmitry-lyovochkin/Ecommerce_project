@@ -1,12 +1,12 @@
 import 'dart:convert';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommerce_project/application/services/API/http.dart';
+import 'package:ecommerce_project/application/services/API/model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:ecommerce_project/application/API/api/http.dart';
-import 'package:ecommerce_project/application/API/api/model.dart';
 import 'package:ecommerce_project/application/ui/themes/app_theme.dart';
 
 class HotSalesWidget extends StatefulWidget {
