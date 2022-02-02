@@ -2,8 +2,8 @@ import 'package:ecommerce_project/application/ui/screens/home_screen/Best_seller
 import 'package:ecommerce_project/application/ui/screens/home_screen/Best_seller/Filter_options.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/Hot_sales/Slider_widget.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/Select_category/Section_buttons.dart';
-import 'package:ecommerce_project/application/ui/themes/svg_icons.dart';
-import 'package:ecommerce_project/application/ui/themes/app_theme.dart';
+import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
+import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
 import 'package:flutter/material.dart';
 
 class CategoryWidget extends StatelessWidget {
@@ -12,23 +12,26 @@ class CategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        child: Column(children: const [
-      SizedBox(height: 45),
-      _GeolocWidget(),
-      _TitleSelectCategory(),
-      SectionButtonsWidget(),
-      SizedBox(height: 10),
-      _SearchWidget(),
-      SizedBox(height: 15),
-      _TitleHotSales(),
-      HotSalesWidget(),
-      SizedBox(height: 10),
-      _TitleBestSeller(),
-      // SizedBox(height: 50),
-      BestSellerWidget(),
-      SizedBox(height: 280),
-      // Text('')
-    ]));
+      child: Column(
+        children: const [
+          SizedBox(height: 45),
+          _GeolocWidget(),
+          _TitleSelectCategory(),
+          SectionButtonsWidget(),
+          SizedBox(height: 10),
+          _SearchWidget(),
+          SizedBox(height: 15),
+          _TitleHotSales(),
+          HotSalesWidget(),
+          SizedBox(height: 10),
+          _TitleBestSeller(),
+          // SizedBox(height: 50),
+          BestSellerWidget(),
+          SizedBox(height: 280),
+          // Text('')
+        ]
+      )
+    );
   }
 }
 

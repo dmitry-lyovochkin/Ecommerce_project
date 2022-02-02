@@ -1,12 +1,10 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_project/application/services/API/http.dart';
 import 'package:ecommerce_project/application/services/API/model_product.dart';
+import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
+import 'package:ecommerce_project/application/ui/theme/custom_icons.dart';
+import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
 import 'package:flutter/material.dart';
-
-import 'package:ecommerce_project/application/ui/screens/Product%20Details/Bottom_card.dart';
-import 'package:ecommerce_project/application/ui/themes/svg_icons.dart';
-import 'package:ecommerce_project/application/ui/themes/app_theme.dart';
-import 'package:ecommerce_project/application/ui/themes/custom_icons.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductDetailsWidget extends StatelessWidget {
@@ -15,54 +13,60 @@ class ProductDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Column(children: [
+      child: Column(
+        children: [
         Padding(
           padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
-          child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              // crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Icon(Icons.arrow_back_ios,
-                      size: 19, color: Colors.white),
-                  style: ElevatedButton.styleFrom(
-                      primary: AppColors.buttonBarColor,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: const EdgeInsets.all(10),
-                      minimumSize: const Size(15, 15)),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Icon(
+                  Icons.arrow_back_ios_new_sharp,
+                  size: 19, 
+                  color: Colors.white
                 ),
-                const Text('Product Details',
-                    style: TextStyle(
-                      fontFamily: 'MarkPronormal400',
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.buttonBarColor,
-                    )),
-                ElevatedButton(
-                  onPressed: () {},
-                  child: const Icon(
-                    CustomIcons.vector,
-                    color: Colors.white,
-                    size: 15,
+                style: ElevatedButton.styleFrom(
+                  primary: AppColors.buttonBarColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)
                   ),
-                  style: ElevatedButton.styleFrom(
-                      primary: IconColors.appColor,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      padding: const EdgeInsets.all(11),
-                      minimumSize: const Size(15, 15)),
+                  padding: const EdgeInsets.all(10),
+                  minimumSize: const Size(15, 15),
+                  
+                ),
+              ),
+              const Text('Product Details',
+                style: TextStyle(
+                  fontFamily: 'MarkPronormal400',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.buttonBarColor,
                 )
-              ]),
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: const Icon(
+                  CustomIcons.vector,
+                  color: Colors.white,
+                  size: 15,
+                ),
+                style: ElevatedButton.styleFrom(
+                  primary: IconColors.appColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  padding: const EdgeInsets.all(11),
+                  minimumSize: const Size(15, 15)
+                ),
+              )
+            ]
+          ),
         ),
         const ProductSliderWidget(),
-        // Container(
-        //   height: 240,
-        //   width: 200,
-        //   color: Colors.blue,
-        // ),
         SizedBox(
           height: 345,
           child: Card(
@@ -133,8 +137,10 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
         return CarouselSlider.builder(
           itemCount: snapshot.data?.length,
           itemBuilder: (context, index, _) => 
-              ModelWidget(imagesUrl: snapshot.data![index].images[index],
-              titlePhone: snapshot.data![index].title[index]),
+              ModelWidget(
+                imagesUrl: snapshot.data![index].images[index],
+                titlePhone: snapshot.data![index].title[index]
+              ),
           options: CarouselOptions(
             height: 260,
             aspectRatio: 5.0,
@@ -144,7 +150,6 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
             enableInfiniteScroll: true,
             scrollDirection: Axis.horizontal,
           ),
-                
         );
       } else if (snapshot.hasError) {
         return const Text('Error');
