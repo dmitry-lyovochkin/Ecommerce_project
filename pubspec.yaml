@@ -54,9 +54,7 @@ flutter:
     - family: MarkProbold
       fonts:
         - asset: fonts/MARKPRO-BOLD.OTF
-    - family: MyIcons
-      fonts:
-        - asset: icons_font/MyIcons.ttf
+    
     - family: SFPro
       fonts:
         - asset: fonts/SF-Pro-Display-Regular.otf
