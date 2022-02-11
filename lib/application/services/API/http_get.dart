@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:ecommerce_project/application/services/API/model.dart';
-import 'package:ecommerce_project/application/services/API/model_product.dart';
+import 'package:ecommerce_project/application/services/API/model_store.dart';
+import 'package:ecommerce_project/application/services/API/model_details.dart';
 import 'package:http/http.dart' as http;
 
 Future<List<Home_store>> getPosts() async {
@@ -42,7 +42,7 @@ Future<List<Best_seller>> getPostsBestSeller() async {
   }
 }
 
-class PostsRepository {
+class DetailsList {
   Future<List<GetDetails>> getProducts() async {
     final response = await http.get(
         Uri.parse('https://shopapi-0575.restdb.io/rest/detail'),

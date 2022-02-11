@@ -1,112 +1,132 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerce_project/application/services/API/http.dart';
-import 'package:ecommerce_project/application/services/API/model_product.dart';
+import 'package:ecommerce_project/application/services/API/http_get.dart';
+import 'package:ecommerce_project/application/services/API/model_details.dart';
+import 'package:ecommerce_project/application/services/bloc/details_bloc.dart';
+import 'package:ecommerce_project/application/services/bloc/details_repository.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/custom_icons.dart';
 import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductDetailsWidget extends StatelessWidget {
-  const ProductDetailsWidget({Key? key}) : super(key: key);
+  ProductDetailsWidget({Key? key}) : super(key: key);
+  final detailsRepository = DetailsRepository();
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Column(children: [
-        Padding(
-          padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
-          child:
-              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Icon(Icons.arrow_back_ios_new_sharp,
-                  size: 19, color: Colors.white),
-              style: ElevatedButton.styleFrom(
-                primary: AppColors.buttonBarColor,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10)),
-                padding: const EdgeInsets.all(10),
-                minimumSize: const Size(15, 15),
-              ),
-            ),
-            const Text('Product Details',
-                style: TextStyle(
-                  fontFamily: 'MarkPronormal400',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.buttonBarColor,
-                )),
-            ElevatedButton(
-              onPressed: () {},
-              child: const Icon(
-                CustomIcons.vector,
-                color: Colors.white,
-                size: 15,
-              ),
-              style: ElevatedButton.styleFrom(
-                  primary: IconColors.appColor,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)),
-                  padding: const EdgeInsets.all(11),
-                  minimumSize: const Size(15, 15)),
-            )
-          ]),
-        ),
-        const ProductSliderWidget(),
-        SizedBox(
-          height: 345,
-          child: Card(
-            color: Colors.white,
-            elevation: 2,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return BlocProvider<DetailsBloc>(
+      create: (context) => DetailsBloc(detailsRepository),
+      child: Scaffold(
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween, 
                 children: [
-                  Row(
-                    // crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        'Galaxy Note 20 Ultra',
-                        style: TextStyle(
-                            fontSize: 24, color: AppColors.buttonBarColor),
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Icons.arrow_back_ios_new_sharp,
+                      size: 19, color: Colors.white
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: AppColors.buttonBarColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)
                       ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: const Icon(
-                          Icons.favorite_border,
-                          color: Colors.grey,
-                          size: 18,
-                        ),
-                        style: ElevatedButton.styleFrom(
-                            primary: AppColors.buttonBarColor,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            padding: const EdgeInsets.symmetric(
+                      padding: const EdgeInsets.all(10),
+                      minimumSize: const Size(15, 15),
+                    ),
+                  ),
+                  const Text(
+                    'Product Details',
+                    style: TextStyle(
+                      fontFamily: 'MarkPronormal400',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.buttonBarColor,
+                    )
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Icon(
+                      CustomIcons.vector,
+                      color: Colors.white,
+                      size: 15,
+                    ),
+                    style: ElevatedButton.styleFrom(
+                        primary: IconColors.appColor,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        padding: const EdgeInsets.all(11),
+                        minimumSize: const Size(15, 15)),
+                  )
+                ]
+              ),
+            ),
+            const ProductSliderWidget(),
+            SizedBox(
+              height: 345,
+              child: Card(
+                color: Colors.white,
+                elevation: 2,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        // crossAxisAlignment: CrossAxisAlignment.end,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Galaxy Note 20 Ultra',
+                            style: TextStyle(
+                              fontSize: 24, 
+                              color: AppColors.buttonBarColor
+                            ),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: const Icon(
+                              Icons.favorite_border,
+                              color: Colors.grey,
+                              size: 18,
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              primary: AppColors.buttonBarColor,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)
+                              ),
+                              padding: const EdgeInsets.symmetric(
                                 horizontal: 9, vertical: 7),
-                            minimumSize: const Size(7, 7)),
-                      )
+                              minimumSize: const Size(7, 7)
+                            ),
+                          )
+                        ],
+                      ),
+                      const Icon(
+                        Icons.star_outlined,
+                        color: Colors.amber,
+                        size: 22,
+                      ),
+                      MyDemo(),
                     ],
                   ),
-                  const Icon(
-                    Icons.star_outlined,
-                    color: Colors.amber,
-                    size: 22,
-                  ),
-                  MyDemo(),
-                ],
+                ),
               ),
-            ),
-          ),
-        )
-      ]),
+            )
+          ]
+        ),
+      )
     );
   }
 }
@@ -122,31 +142,33 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<GetDetails>>(
-        future: PostsRepository().getProducts(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return CarouselSlider.builder(
-              itemCount: snapshot.data?.length,
-              itemBuilder: (context, index, _) => ModelWidget(
-                  imagesUrl: snapshot.data![index].images[index],
-                  titlePhone: snapshot.data![index].title[index]),
-              options: CarouselOptions(
-                height: 260,
-                aspectRatio: 5.0,
-                initialPage: 0,
-                viewportFraction: 0.6,
-                enlargeCenterPage: true,
-                enableInfiniteScroll: true,
-                scrollDirection: Axis.horizontal,
-              ),
-            );
-          } else if (snapshot.hasError) {
-            return const Text('Error');
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
+      future: DetailsList().getProducts(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return CarouselSlider.builder(
+            itemCount: snapshot.data?.length,
+            itemBuilder: (context, index, _) => ModelWidget(
+              imagesUrl: snapshot.data![index].images[index],
+              titlePhone: snapshot.data![index].title[index]
+            ),
+            options: CarouselOptions(
+              height: 260,
+              aspectRatio: 5.0,
+              initialPage: 0,
+              viewportFraction: 0.6,
+              enlargeCenterPage: true,
+              enableInfiniteScroll: true,
+              scrollDirection: Axis.horizontal,
+            ),
           );
-        });
+        } else if (snapshot.hasError) {
+          return const Text('Error');
+        }
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+    );
   }
 }
 

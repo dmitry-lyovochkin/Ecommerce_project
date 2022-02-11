@@ -25,11 +25,9 @@ class CategoryWidget extends StatelessWidget {
           HotSalesWidget(),
           SizedBox(height: 10),
           _TitleBestSeller(),
-          // SizedBox(height: 50),
           BestSellerWidget(),
-          SizedBox(height: 280),
-          // Text('')
-        ]
+          SizedBox(height: 40),
+      ]
       )
     );
   }
@@ -201,11 +199,10 @@ class _TitleBestSeller extends StatelessWidget {
             ),
             onPressed: () {
               showModalBottomSheet(
-                context: context,
-                builder: (BuildContext context) {
-                  return const FilterOptionsWidget();
-                }
-              );
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const FilterOptionsWidget();
+                  });
             },
           )
         ],
@@ -213,5 +210,3 @@ class _TitleBestSeller extends StatelessWidget {
     );
   }
 }
-
-
