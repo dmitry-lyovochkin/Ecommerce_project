@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_project/application/services/API/http_get.dart';
 import 'package:ecommerce_project/application/services/API/model_details.dart';
 import 'package:ecommerce_project/application/services/bloc/details_bloc.dart';
+import 'package:ecommerce_project/application/services/bloc/details_event.dart';
 import 'package:ecommerce_project/application/services/bloc/details_repository.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/custom_icons.dart';
@@ -139,6 +140,15 @@ class ProductSliderWidget extends StatefulWidget {
 }
 
 class _HotSalesWidgetState extends State<ProductSliderWidget> {
+  
+  @override
+  void initState() {
+    super.initState();
+    final DetailsBloc detailsBloc = BlocProvider.of<DetailsBloc>(context);
+    detailsBloc.add(DetailsLoadEvent());
+    
+  }
+
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<GetDetails>>(
