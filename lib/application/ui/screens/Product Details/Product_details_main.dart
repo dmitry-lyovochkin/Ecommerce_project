@@ -1,9 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerce_project/application/services/API/http_get.dart';
-import 'package:ecommerce_project/application/services/API/model_details.dart';
 import 'package:ecommerce_project/application/services/bloc/details_bloc.dart';
 import 'package:ecommerce_project/application/services/bloc/details_event.dart';
 import 'package:ecommerce_project/application/services/bloc/details_repository.dart';
+import 'package:ecommerce_project/application/services/bloc/details_state.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/custom_icons.dart';
 import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
@@ -138,28 +137,35 @@ class ProductSliderWidget extends StatefulWidget {
   @override
   _HotSalesWidgetState createState() => _HotSalesWidgetState();
 }
-
 class _HotSalesWidgetState extends State<ProductSliderWidget> {
   
-  @override
-  void initState() {
-    super.initState();
-    final DetailsBloc detailsBloc = BlocProvider.of<DetailsBloc>(context);
-    detailsBloc.add(DetailsLoadEvent());
-    
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   final DetailsBloc detailsBloc = BlocProvider.of<DetailsBloc>(context);
+  //   detailsBloc.add(DetailsLoadEvent());
+  // }
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<GetDetails>>(
-      future: DetailsList().getProducts(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
+    return BlocBuilder<DetailsBloc, DetailsState>(
+      builder: (context, state) {
+        if (state is DetailsEmptyState) {
+          return const Center(
+            child: Text('No data'),
+          );
+        }
+        if (state is DetailsLoadingState) {
+          return const Center( 
+            child: CircularProgressIndicator()
+          );
+        }
+        if (state is DetailsLoadedState) {
           return CarouselSlider.builder(
-            itemCount: snapshot.data?.length,
+            itemCount: state.loadedDetails.length,
             itemBuilder: (context, index, _) => ModelWidget(
-              imagesUrl: snapshot.data![index].images[index],
-              titlePhone: snapshot.data![index].title[index]
+              imagesUrl: state.loadedDetails[index].images[index],
+              titlePhone: state.loadedDetails[index].title[index]
             ),
             options: CarouselOptions(
               height: 260,
@@ -171,12 +177,13 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
               scrollDirection: Axis.horizontal,
             ),
           );
-        } else if (snapshot.hasError) {
-          return const Text('Error');
+        } 
+        if (state is DetailsErrorState) {
+          return const Center(
+            child: Text('Error getcing details')
+          );
         }
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
+        return const CircularProgressIndicator();
       }
     );
   }
@@ -257,8 +264,8 @@ class MyDemo extends StatelessWidget {
               const Expanded(
                 child: TabBarView(children: [
                   DetailsWidget(),
-                  Text("Articles Body"),
-                  Text("User Body"),
+                  Text("Details Body"),
+                  Text("Features Body"),
                 ]),
               )
             ],
@@ -308,7 +315,7 @@ class DetailsWidget extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             primary: IconColors.appColor,
             shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 49),
           ),
         ),

@@ -10,19 +10,20 @@ String getDetailsToJson(List<GetDetails> data) => json.encode(List<dynamic>.from
 
 class GetDetails {
     GetDetails({
-        required this.id,
-        required this.cpu,
-        required this.camera,
-        required this.isFavorites,
-        required this.price,
-        required this.rating,
-        required this.sd,
-        required this.ssd,
-        required this.title,
-        required this.images,
-        required this.color,
-        required this.capacity,
-    });
+      required this.id,
+      required this.cpu,
+      required this.camera,
+      required this.isFavorites,
+      required this.price,
+      required this.rating,
+      required this.sd,
+      required this.ssd,
+      required this.title,
+      required this.images,
+      required this.color,
+      required this.capacity,
+      }
+    );
 
     String id;
     String cpu;
