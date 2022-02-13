@@ -17,171 +17,171 @@ class ProductDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<DetailsBloc>(
-      create: (context) => DetailsBloc(detailsRepository)..add(DetailsLoadEvent()),
+      create: (context) => 
+        DetailsBloc(detailsRepository)..add(DetailsLoadEvent()),
       child: Scaffold(
-        body: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween, 
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    child: const Icon(
-                      Icons.arrow_back_ios_new_sharp,
-                      size: 19, color: Colors.white
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      primary: AppColors.buttonBarColor,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)
+        body: BlocBuilder<DetailsBloc, DetailsState>(
+          builder: (context, state) {
+          if (state is DetailsLoadingState) {
+            return const Center( 
+              child: CircularProgressIndicator()
+            );
+          }
+          if (state is DetailsLoadedState) { 
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Icon(
+                        Icons.arrow_back_ios_new_sharp,
+                        size: 19, color: Colors.white
                       ),
-                      padding: const EdgeInsets.all(10),
-                      minimumSize: const Size(15, 15),
-                    ),
-                  ),
-                  const Text(
-                    'Product Details',
-                    style: TextStyle(
-                      fontFamily: 'MarkPronormal400',
-                      fontSize: 18,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.buttonBarColor,
-                    )
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: const Icon(
-                      CustomIcons.vector,
-                      color: Colors.white,
-                      size: 15,
-                    ),
-                    style: ElevatedButton.styleFrom(
-                        primary: IconColors.appColor,
+                      style: ElevatedButton.styleFrom(
+                        primary: AppColors.buttonBarColor,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        padding: const EdgeInsets.all(11),
-                        minimumSize: const Size(15, 15)),
-                  )
-                ]
-              ),
-            ),
-            const ProductSliderWidget(),
-            SizedBox(
-              height: 345,
-              child: Card(
-                color: Colors.white,
-                elevation: 2,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(10)
+                        ),
+                        padding: const EdgeInsets.all(10),
+                        minimumSize: const Size(15, 15),
+                      ),
+                    ),
+                    const Text(
+                      'Product Details',
+                      style: TextStyle(
+                        fontFamily: 'MarkPronormal400',
+                        fontSize: 18,
+                        fontWeight: FontWeight.w700,
+                        color: AppColors.buttonBarColor,
+                      )
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: const Icon(
+                        CustomIcons.vector,
+                        color: Colors.white,
+                        size: 15,
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          primary: IconColors.appColor,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)),
+                          padding: const EdgeInsets.all(11),
+                          minimumSize: const Size(15, 15)),
+                    )
+                  ]
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        // crossAxisAlignment: CrossAxisAlignment.end,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const Text(
-                            'Galaxy Note 20 Ultra',
-                            style: TextStyle(
-                              fontSize: 24, 
-                              color: AppColors.buttonBarColor
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {},
-                            child: const Icon(
-                              Icons.favorite_border,
-                              color: Colors.grey,
-                              size: 18,
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              primary: AppColors.buttonBarColor,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)
+              ),
+              ProductSliderWidget(list: state.loadedDetails),
+              SizedBox(
+                height: 345,
+                child: Card(
+                  color: Colors.white,
+                  elevation: 2,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          // crossAxisAlignment: CrossAxisAlignment.end,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            const Text(
+                              'Galaxy Note 20 Ultra',
+                              style: TextStyle(
+                                fontSize: 24, 
+                                color: AppColors.buttonBarColor
                               ),
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 9, vertical: 7),
-                              minimumSize: const Size(7, 7)
                             ),
-                          )
-                        ],
-                      ),
-                      const Icon(
-                        Icons.star_outlined,
-                        color: Colors.amber,
-                        size: 22,
-                      ),
-                      MyDemo(),
-                    ],
+                            ElevatedButton(
+                              onPressed: () {},
+                              child: const Icon(
+                                Icons.favorite_border,
+                                color: Colors.grey,
+                                size: 18,
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                primary: AppColors.buttonBarColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)
+                                ),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 9, vertical: 7),
+                                minimumSize: const Size(7, 7)
+                              ),
+                            )
+                          ],
+                        ),
+                        const Icon(
+                          Icons.star_outlined,
+                          color: Colors.amber,
+                          size: 22,
+                        ),
+                        MyDemo(),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            )
-          ]
-        ),
+              )
+            ]
+          );
+        } 
+        if (state is DetailsErrorState) {
+            return const Center(
+              child: Text('Error getcing details')
+            );
+          }
+          return const CircularProgressIndicator();
+          }
+        )
       )
     );
   }
 }
 
+
 class ProductSliderWidget extends StatefulWidget {
-  const ProductSliderWidget({Key? key}) : super(key: key);
+  final List<dynamic> list;
+
+  const ProductSliderWidget({
+    Key? key, 
+    required this.list
+  }) : super(key: key);
 
   @override
   _HotSalesWidgetState createState() => _HotSalesWidgetState();
 }
 class _HotSalesWidgetState extends State<ProductSliderWidget> {
-  
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   final DetailsBloc detailsBloc = BlocProvider.of<DetailsBloc>(context);
-  //   detailsBloc.add(DetailsLoadEvent());
-  // }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DetailsBloc, DetailsState>(
-      builder: (context, state) {
-        if (state is DetailsLoadingState) {
-          return const Center( 
-            child: CircularProgressIndicator()
-          );
-        }
-        if (state is DetailsLoadedState) {
-          return CarouselSlider.builder(
-            itemCount: state.loadedDetails.length,
-            itemBuilder: (context, index, _) => ModelWidget(
-              imagesUrl: state.loadedDetails[index].images[index],
-              // titlePhone: state.loadedDetails[index].title[index]
-            ),
-            options: CarouselOptions(
-              height: 260,
-              aspectRatio: 5.0,
-              initialPage: 0,
-              viewportFraction: 0.6,
-              enlargeCenterPage: true,
-              enableInfiniteScroll: true,
-              scrollDirection: Axis.horizontal,
-            ),
-          );
-        } 
-        if (state is DetailsErrorState) {
-          return const Center(
-            child: Text('Error getcing details')
-          );
-        }
-        return const CircularProgressIndicator();
-      }
+    return CarouselSlider.builder(
+      itemCount: widget.list.length,
+      itemBuilder: (context, index, _) => ModelWidget(
+        imagesUrl: widget.list[index].images[index],
+        // titlePhone: state.loadedDetails[index].title[index]
+      ),
+      options: CarouselOptions(
+        height: 260,
+        aspectRatio: 5.0,
+        initialPage: 0,
+        viewportFraction: 0.6,
+        enlargeCenterPage: true,
+        enableInfiniteScroll: true,
+        scrollDirection: Axis.horizontal,
+      ),
     );
-  }
+  } 
 }
 
 class ModelWidget extends StatelessWidget {
@@ -285,7 +285,7 @@ class ProductWidget extends StatelessWidget {
             ),
           )
         ),
-        const ToggleWidget(),
+        ToggleWidget(),
         ElevatedButton(
           onPressed: () {},
           child: const Text(
@@ -310,28 +310,28 @@ class ProductWidget extends StatelessWidget {
 }
 
 class ToggleWidget extends StatefulWidget {
+  // final List<dynamic> listCard;
   const ToggleWidget({
-    Key? key
+    Key? key, /* required this.listCard */
   }) : super(key: key);
 
   @override
   State<ToggleWidget> createState() => _ToggleWidgetState();
 }
-
 class _ToggleWidgetState extends State<ToggleWidget> {
   bool _hasBeenPressed = false;
   bool _hasBeenPressed1 = false;
   bool _hasBeenPressed2 = false;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DetailsBloc, DetailsState>(
-      builder: (context, state) {
-        if (state is DetailsLoadingState) {
-          return const Center( 
-            child: CircularProgressIndicator()
-          );
-        }
-        if (state is DetailsLoadedState) {
+    // return BlocBuilder<DetailsBloc, DetailsState>(
+    //   builder: (context, state) {
+    //     if (state is DetailsLoadingState) {
+    //       return const Center( 
+    //         child: CircularProgressIndicator()
+    //       );
+    //     }
+    //     if (state is DetailsLoadedState) {
           return Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
@@ -351,7 +351,7 @@ class _ToggleWidgetState extends State<ToggleWidget> {
                 iconSize: 40,
               ),
               ElevatedButton(
-                child: Text(state.loadedDetails[index].capacity[index], style: const TextStyle(color: Colors.grey),),
+                child: Text(/* widget.listCard[0].capacity[0] */'button1', style: const TextStyle(color: Colors.grey),),
                 onPressed: () => {
                     setState(() {
                       _hasBeenPressed1 = !_hasBeenPressed1;
@@ -368,7 +368,7 @@ class _ToggleWidgetState extends State<ToggleWidget> {
                 ),
               ),
               ElevatedButton(
-                child: const Text('Button', style: TextStyle(color: Colors.grey),),
+                child: Text(/* widget.listCard[1].capacity[1] */'button2', style: const TextStyle(color: Colors.grey),),
                 onPressed: () => {
                     setState(() {
                       _hasBeenPressed2 = !_hasBeenPressed2;
@@ -387,14 +387,14 @@ class _ToggleWidgetState extends State<ToggleWidget> {
             ]
           );
         } 
-        if (state is DetailsErrorState) {
-          return const Center(
-            child: Text('Error getcing details')
-          );
-        }
-        return const CircularProgressIndicator();
+        // if (state is DetailsErrorState) {
+        //   return const Center(
+        //     child: Text('Error getcing details')
+        //   );
+        // }
+        // return const CircularProgressIndicator();
       }
-    );
+    // );
     
-}
-}
+// }
+// }
