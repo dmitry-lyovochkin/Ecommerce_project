@@ -17,7 +17,7 @@ class ProductDetailsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<DetailsBloc>(
-      create: (context) => DetailsBloc(detailsRepository),
+      create: (context) => DetailsBloc(detailsRepository)..add(DetailsLoadEvent()),
       child: Scaffold(
         body: Column(
           children: [
@@ -165,7 +165,7 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
             itemCount: state.loadedDetails.length,
             itemBuilder: (context, index, _) => ModelWidget(
               imagesUrl: state.loadedDetails[index].images[index],
-              titlePhone: state.loadedDetails[index].title[index]
+              // titlePhone: state.loadedDetails[index].title[index]
             ),
             options: CarouselOptions(
               height: 260,
@@ -191,31 +191,23 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
 
 class ModelWidget extends StatelessWidget {
   final String imagesUrl;
-  final String titlePhone;
-  // final String subtitleSuper;
-  // bool isNew;
+  
   const ModelWidget({
     Key? key,
     required this.imagesUrl,
-    required this.titlePhone,
-    // required this.subtitleSuper,
-    // required this.isNew,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        // width: 250,
-        // color: Colors.amber,
-        // margin: const EdgeInsets.symmetric(horizontal: 17),
-        decoration: BoxDecoration(
-      // borderRadius: BorderRadius.circular(10),
-      image: DecorationImage(
-        image: NetworkImage(imagesUrl),
-        fit: BoxFit.contain,
-        alignment: Alignment.center,
-      ),
-    ));
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage(imagesUrl),
+          fit: BoxFit.contain,
+          alignment: Alignment.center,
+        ),
+      )
+    );
   }
 }
 
@@ -263,7 +255,7 @@ class MyDemo extends StatelessWidget {
               ),
               const Expanded(
                 child: TabBarView(children: [
-                  DetailsWidget(),
+                  ProductWidget(),
                   Text("Details Body"),
                   Text("Features Body"),
                 ]),
@@ -274,8 +266,8 @@ class MyDemo extends StatelessWidget {
   }
 }
 
-class DetailsWidget extends StatelessWidget {
-  const DetailsWidget({Key? key}) : super(key: key);
+class ProductWidget extends StatelessWidget {
+  const ProductWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

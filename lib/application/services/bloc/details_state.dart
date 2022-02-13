@@ -1,5 +1,17 @@
 // описание состояний - не пришли, загружаются, загружены, при загрузке данных произошла ошибка
 
+// part of 'details_bloc.dart'; 
+
+// @freezed
+// class DetailsState with _$DetailsState {
+//   const factory DetailsState.loading() = _DetailsLoadingState;
+//   const factory DetailsState.loaded() = _DetailsLoadedState;
+
+// }
+
+
+
+// первая реализация
 abstract class DetailsState {}
 
 class DetailsEmptyState extends DetailsState {}
