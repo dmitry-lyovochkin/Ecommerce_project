@@ -14,7 +14,7 @@
 // первая реализация
 abstract class DetailsState {}
 
-class DetailsEmptyState extends DetailsState {}
+// class DetailsEmptyState extends DetailsState {}
 
 class DetailsLoadingState extends DetailsState {}
 

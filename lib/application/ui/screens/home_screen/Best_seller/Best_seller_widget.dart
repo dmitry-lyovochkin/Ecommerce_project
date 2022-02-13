@@ -86,7 +86,7 @@ class GridWidget extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => ProductDetailsWidget()),
+                builder: (context) => ProductDetailsWidget()),
             );
           },
           child: Stack(alignment: Alignment.topCenter, children: [
@@ -140,183 +140,18 @@ class GridWidget extends StatelessWidget {
             Positioned(
               bottom: 16,
               left: 35,
-              child: Text(titleItems,
-                  textAlign: TextAlign.end,
-                  style: const TextStyle(
-                      fontFamily: 'MarkPronormal400',
-                      fontSize: 10,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.buttonBarColor)),
+              child: Text(
+                titleItems,
+                textAlign: TextAlign.end,
+                style: const TextStyle(
+                  fontFamily: 'MarkPronormal400',
+                  fontSize: 10,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.buttonBarColor)
+              ),
             ),
-
-            // child:  Stack(
-            //   children: [
-            //     Padding(
-            //       padding: const EdgeInsets.symmetric(vertical: 70, horizontal: 15),
-            //       child: Text(titleItems,
-            //       style: const TextStyle(
-            //            fontFamily: 'MarkPronormal400',
-            //            fontSize: 10,
-            //            fontWeight: FontWeight.w700,
-            //            color: Colors.black
-            //          )
-            //          ),
-            //     ),
-            //           Padding(
-            //           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-            //           child: ElevatedButton(
-            //             onPressed: () {},
-            //             style: ElevatedButton.styleFrom(
-            //               shape: const CircleBorder(),
-            //               padding: const EdgeInsets.all(5),
-            //               primary: Colors.white,
-            //               minimumSize: const Size(15,15)
-            //             ),
-            //             child: const Icon(
-            //               Icons.favorite_border,
-            //               Icons.favorite_border,
-            //               Icons.favorite_border,
-            //               color: IconColors.appColor,
-            //               color: IconColors.appColor,
-            //               color: IconColors.appColor,
-            //               size: 15
-            //             ),
-            //           // new Text(country.capital),
-            //           ),
-            //           ),
-            //           Padding(
-            //             padding: const EdgeInsets.all(1.0),
-            //             child: Text(
-            //               priceWithoutDiscount.toString(),
-            //               priceWithoutDiscount.toString(),
-            //               priceWithoutDiscount.toString(),
-            //               style: const TextStyle(
-            //                 fontFamily: 'MarkPronormal400',
-            //                 fontSize: 20,
-            //                 fontWeight: FontWeight.w700,
-            //                 color: Colors.red
-            //               )
-            //               ),
-            //           ),
-            //           Text(
-            //             discountPrice.toString(),
-            //             style: const TextStyle(
-            //               fontFamily: 'MarkPronormal400',
-            //               fontSize: 14,
-            //               fontWeight: FontWeight.w700,
-            //               color: Colors.red
-            //             )
-            //             ),
-
-            //       ])
-
-            // ),
           ]),
         ));
 
-    // alignment: Alignment.bottomCenter,
-    // height: 230,
-    // width: 230,
-    // color: Colors.red,
-    // margin: const EdgeInsets.symmetric(horizontal: 30, vertical: 30),
-    // decoration: BoxDecoration(
-    //   // color: Colors.amberAccent,
-    //   // borderRadius: BorderRadius.circular(10),
-    //   image: DecorationImage(
-    //     image: NetworkImage(pictureUrls),
-    //     fit: BoxFit.contain,
-    //     // alignment: Alignment.topLeft,
-    //   ),
-    // ),
-    // child: Text(titleItems,
-    //     style: const TextStyle(
-    //         fontFamily: 'SFPro',
-    //         fontSize: 15,
-    //         fontWeight: FontWeight.w800,
-    //         color: Colors.black)),
-
-    // child: Column(
-    //   children: [
-
-    //       // height: ,
-    //       // width: 200,
-    //        Container(
-    //          height: 100,
-    //          child: Column(
-    //   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-    //            children: [
-    //              Text(titleItems,
-    //               style: const TextStyle(
-    //                 fontFamily: 'SFPro',
-    //                 fontSize: 15,
-    //                 fontWeight: FontWeight.w800,
-    //                 color: Colors.black)),
-    //            ],
-    //          ),
-    //        ),
-
-    //  const Positioned(
-    //   // top: 203,
-    //   // left: 28,
-    //   child: Text("discountPrice",
-    //     style: TextStyle(
-    //       fontFamily: 'SFPro',
-    //       fontSize: 12,
-    //       fontWeight: FontWeight.w400,
-    //       color: Colors.white),
-    // ),
-    //  ),
-    //  Positioned(
-    //   top: 103,
-    //   left: 28,
-    //   child: Text(priceWithoutDiscount,
-    //     style: TextStyle(
-    //       fontFamily: 'SFPro',
-    //       fontSize: 12,
-    //       fontWeight: FontWeight.w400,
-    //       color: Colors.white),
-    // ),
-
-    // Positioned(
-    //   // top: 10,
-    //   // left: 16,
-    //   child: ElevatedButton(
-    //     onPressed: () {},
-    //     child: const Text('New',
-    //       style: TextStyle(
-    //         fontFamily: 'SFPro',
-    //         fontSize: 11,
-    //         fontWeight: FontWeight.w800,
-    //         color: Colors.white
-    //       )
-    //     ),
-    //     style: ElevatedButton.styleFrom(
-    //       primary: IconColors.appColor,
-    //       minimumSize: const Size(15,30),
-    //       shape: const CircleBorder()
-    //     ),
-    //   ),
-    // ),
-    // Padding(
-    //   padding: const EdgeInsets.all(38.0),
-    //   child: ElevatedButton(
-    //     onPressed: () {},
-    //     child: const Text('Buy now!',
-    //       style: TextStyle(
-    //         fontFamily: 'SFPro',
-    //         fontSize: 12,
-    //         fontWeight: FontWeight.w800,
-    //         color: Colors.black
-    //       )
-    //     ),
-    //     style: ElevatedButton.styleFrom(
-    //       primary: Colors.white,
-    //       padding: const EdgeInsets.symmetric(horizontal: 29),
-    //       minimumSize: const Size(15,25)
-    //     ),
-    //   ),
-    // )
-
-    //  ],
   }
 }

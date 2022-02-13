@@ -32,7 +32,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
   final DetailsRepository detailsRepository;
   
-  DetailsBloc(this.detailsRepository) : super(DetailsEmptyState()) {
+  DetailsBloc(this.detailsRepository) : super(DetailsLoadingState()) {
     on<DetailsLoadEvent>((event, emit) async {
       emit(DetailsLoadingState());
       try {

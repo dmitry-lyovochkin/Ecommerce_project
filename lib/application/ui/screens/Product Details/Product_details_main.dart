@@ -150,11 +150,6 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
   Widget build(BuildContext context) {
     return BlocBuilder<DetailsBloc, DetailsState>(
       builder: (context, state) {
-        if (state is DetailsEmptyState) {
-          return const Center(
-            child: Text('No data'),
-          );
-        }
         if (state is DetailsLoadingState) {
           return const Center( 
             child: CircularProgressIndicator()
@@ -279,19 +274,18 @@ class ProductWidget extends StatelessWidget {
           fit: BoxFit.contain,
         ),
         const Align(
-            alignment: Alignment.topLeft,
-            child: Text(
-              'Select color and capacity',
-              style: TextStyle(
-                fontFamily: 'MarkPronormal400',
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                color: AppColors.buttonBarColor,
-              ),
-            )),
-        const SizedBox(
-          height: 45,
+          alignment: Alignment.topLeft,
+          child: Text(
+            'Select color and capacity',
+            style: TextStyle(
+              fontFamily: 'MarkPronormal400',
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              color: AppColors.buttonBarColor,
+            ),
+          )
         ),
+        const ToggleWidget(),
         ElevatedButton(
           onPressed: () {},
           child: const Text(
@@ -306,12 +300,101 @@ class ProductWidget extends StatelessWidget {
           ),
           style: ElevatedButton.styleFrom(
             primary: IconColors.appColor,
-            shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 49),
           ),
         ),
       ],
     );
   }
+}
+
+class ToggleWidget extends StatefulWidget {
+  const ToggleWidget({
+    Key? key
+  }) : super(key: key);
+
+  @override
+  State<ToggleWidget> createState() => _ToggleWidgetState();
+}
+
+class _ToggleWidgetState extends State<ToggleWidget> {
+  bool _hasBeenPressed = false;
+  bool _hasBeenPressed1 = false;
+  bool _hasBeenPressed2 = false;
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<DetailsBloc, DetailsState>(
+      builder: (context, state) {
+        if (state is DetailsLoadingState) {
+          return const Center( 
+            child: CircularProgressIndicator()
+          );
+        }
+        if (state is DetailsLoadedState) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              IconButton(
+                onPressed: () => {
+                  setState(() {
+                    _hasBeenPressed = !_hasBeenPressed;
+                  })
+                },
+                color: _hasBeenPressed ? Colors.blue : Colors.black,
+                icon: const Icon(Icons.circle),
+                iconSize: 40,
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.circle), 
+                iconSize: 40,
+              ),
+              ElevatedButton(
+                child: Text(state.loadedDetails[index].capacity[index], style: const TextStyle(color: Colors.grey),),
+                onPressed: () => {
+                    setState(() {
+                      _hasBeenPressed1 = !_hasBeenPressed1;
+                    }
+                  )
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: _hasBeenPressed1 ? IconColors.appColor : Colors.white,
+                  elevation: 0,
+                  padding: const EdgeInsets.all(7),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)
+                  )
+                ),
+              ),
+              ElevatedButton(
+                child: const Text('Button', style: TextStyle(color: Colors.grey),),
+                onPressed: () => {
+                    setState(() {
+                      _hasBeenPressed2 = !_hasBeenPressed2;
+                    }
+                  )
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: _hasBeenPressed2 ? IconColors.appColor : Colors.white,
+                  elevation: 0,
+                  padding: const EdgeInsets.all(7),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)
+                  )
+                ),
+              )
+            ]
+          );
+        } 
+        if (state is DetailsErrorState) {
+          return const Center(
+            child: Text('Error getcing details')
+          );
+        }
+        return const CircularProgressIndicator();
+      }
+    );
+    
+}
 }

@@ -2,7 +2,7 @@ abstract class DetailsEvent {}
 
 class DetailsLoadEvent extends DetailsEvent {}
 
-class DetailsClearEvent extends DetailsEvent {}
+// class DetailsClearEvent extends DetailsEvent {}
 
 
 // part of 'details_bloc.dart';
