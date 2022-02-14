@@ -291,7 +291,8 @@ class ProductWidget extends StatelessWidget {
             ),
           )
         ),
-        ButtonsRowWidget(),
+        const ButtonsRowWidget(),
+        const SizedBox(height: 5,),
         ElevatedButton(
           onPressed: () {},
           child: const Text(
@@ -330,15 +331,24 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
 //   final counterBloc = BlocProvider.of<DetailsBloc>(context)..add(DetailsLoadEvent());
   
 // }
-  bool _hasBeenPressed = false;
-  bool _hasBeenPressed1 = false;
-  bool _hasBeenPressed2 = false;
-  bool _hasBeenPressed3 = false;
+  bool _toggle = true;
+  bool _toggle1 = false;
+
   
   Color _colorFromApi(String hexColor) {
     final hexCode = hexColor.replaceAll('#', '');
     return Color(int.parse('FF$hexCode', radix: 16));
   }
+
+  Icon fab = const Icon(
+    Icons.circle,
+  );
+  Icon fab1 = const Icon(
+    Icons.circle,
+  );
+
+  int fabIconNumber = 0;
+  int fab1IconNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -350,40 +360,66 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
             child: CircularProgressIndicator()
           );
         }
-      if (state is DetailsLoadedState) {
-        return Row(
+        if (state is DetailsLoadedState) {
+          return Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              IconButton(
-                onPressed: () => {
-                  setState(() {
-                    _hasBeenPressed = !_hasBeenPressed;
-                  })
-                },
-                color: _hasBeenPressed ? _colorFromApi(state.loadedDetails[0].color[0]) : Colors.red,
-                icon: const Icon(Icons.circle),
-                iconSize: 40,
+              SizedBox(
+                height: 40,
+                child: FloatingActionButton(
+                  elevation: 0,
+                  child: fab,
+                  backgroundColor: _colorFromApi(state.loadedDetails[0].color[0]),
+                  foregroundColor: Colors.white,
+                  onPressed: () => setState(() {
+                    if (fabIconNumber == 0) {
+                      fab = const Icon(
+                        Icons.check_outlined,
+                      );
+                      fabIconNumber = 1;
+                    } else {
+                      fab = Icon(Icons.check_outlined, color: _colorFromApi(state.loadedDetails[0].color[0]),);
+                      fabIconNumber = 0;
+                    }
+                  }),
+                ),
               ),
-              IconButton(
-                onPressed: () => {
-                  setState(() {
-                    _hasBeenPressed3 = !_hasBeenPressed3;
-                  })
-                },
-                icon: const Icon(Icons.circle), 
-                color: _hasBeenPressed3 ? _colorFromApi(state.loadedDetails[0].color[1]) : Colors.green,
-                iconSize: 40,
+              SizedBox(
+                height: 40,
+                child: FloatingActionButton(
+                  elevation: 0,
+                  child: fab1,
+                  backgroundColor: _colorFromApi(state.loadedDetails[0].color[1]),
+                  foregroundColor: Colors.white,
+                  onPressed: () => setState(() {
+                    if (fab1IconNumber == 0) {
+                      fab1 = const Icon(
+                        Icons.check_outlined,
+                      );
+                      fab1IconNumber = 1;
+                    } else {
+                      fab1 = Icon(Icons.check_outlined, color: _colorFromApi(state.loadedDetails[0].color[1]),);
+                      fab1IconNumber = 0;
+                    }
+                  }),
+                ),
               ),
+              const SizedBox(width: 60),
               ElevatedButton(
-                child: Text(state.loadedDetails[0].capacity[0], style: const TextStyle(color: Colors.grey),),
+                child: Text(
+                  state.loadedDetails[0].capacity[0], 
+                  style: TextStyle(
+                    color: _toggle ? Colors.white : Colors.grey,
+                  ),
+                ),
                 onPressed: () => {
                     setState(() {
-                      _hasBeenPressed1 = !_hasBeenPressed1;
+                      _toggle = !_toggle;
                     }
                   )
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: _hasBeenPressed1 ? IconColors.appColor : Colors.white,
+                  primary: _toggle ? IconColors.appColor : Colors.white,
                   elevation: 0,
                   padding: const EdgeInsets.all(7),
                   shape: RoundedRectangleBorder(
@@ -391,18 +427,24 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
                   )
                 ),
               ),
+              const SizedBox(width: 20),
               ElevatedButton(
-                child: Text(state.loadedDetails[0].capacity[1], style: const TextStyle(color: Colors.grey),),
+                child: Text(
+                  state.loadedDetails[0].capacity[1], 
+                  style: TextStyle(
+                    color: _toggle1 ? Colors.white : Colors.grey,
+                  ),
+                ),
                 onPressed: () => {
                     setState(() {
-                      _hasBeenPressed2 = !_hasBeenPressed2;
+                      _toggle1 = !_toggle1;
                     }
                   )
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: _hasBeenPressed2 ? IconColors.appColor : Colors.white,
+                  primary: _toggle1 ? IconColors.appColor : Colors.white,
                   elevation: 0,
-                  padding: const EdgeInsets.all(7),
+                  padding: const EdgeInsets.all(5),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)
                   )
@@ -419,6 +461,5 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
         return const CircularProgressIndicator();
       }
     );
-    
-}
+  }
 }
