@@ -10,8 +10,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ProductDetailsWidget extends StatelessWidget {
-  ProductDetailsWidget({Key? key}) : super(key: key);
+class ProductDetailsWidget extends StatefulWidget {
+  const ProductDetailsWidget({Key? key}) : super(key: key);
+
+  @override
+  State<ProductDetailsWidget> createState() => _ProductDetailsWidgetState();
+}
+
+class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
   final detailsRepository = DetailsRepository();
 
   @override
@@ -155,7 +161,7 @@ class ProductSliderWidget extends StatefulWidget {
 
   const ProductSliderWidget({
     Key? key, 
-    required this.list
+    required this.list  
   }) : super(key: key);
 
   @override
@@ -167,10 +173,10 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
   Widget build(BuildContext context) {
     return CarouselSlider.builder(
       itemCount: widget.list.length,
-      itemBuilder: (context, index, _) => ModelWidget(
-        imagesUrl: widget.list[index].images[index],
-        // titlePhone: state.loadedDetails[index].title[index]
-      ),
+      itemBuilder: (context, index, _) 
+        => ModelWidget(
+            imagesUrl: widget.list[index].images[index],
+        ),
       options: CarouselOptions(
         height: 260,
         aspectRatio: 5.0,
@@ -285,7 +291,7 @@ class ProductWidget extends StatelessWidget {
             ),
           )
         ),
-        ToggleWidget(),
+        ButtonsRowWidget(),
         ElevatedButton(
           onPressed: () {},
           child: const Text(
@@ -309,30 +315,43 @@ class ProductWidget extends StatelessWidget {
   }
 }
 
-class ToggleWidget extends StatefulWidget {
-  // final List<dynamic> listCard;
-  const ToggleWidget({
+class ButtonsRowWidget extends StatefulWidget {
+  /* final List<dynamic> listCard; */
+  const ButtonsRowWidget({
     Key? key, /* required this.listCard */
   }) : super(key: key);
-
   @override
-  State<ToggleWidget> createState() => _ToggleWidgetState();
+  State<ButtonsRowWidget> createState() => _ButtonsRowWidgetState();
 }
-class _ToggleWidgetState extends State<ToggleWidget> {
+class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
+// @override
+// void initState() {
+//   super.initState();
+//   final counterBloc = BlocProvider.of<DetailsBloc>(context)..add(DetailsLoadEvent());
+  
+// }
   bool _hasBeenPressed = false;
   bool _hasBeenPressed1 = false;
   bool _hasBeenPressed2 = false;
+  bool _hasBeenPressed3 = false;
+  
+  Color _colorFromApi(String hexColor) {
+    final hexCode = hexColor.replaceAll('#', '');
+    return Color(int.parse('FF$hexCode', radix: 16));
+  }
+
   @override
   Widget build(BuildContext context) {
-    // return BlocBuilder<DetailsBloc, DetailsState>(
-    //   builder: (context, state) {
-    //     if (state is DetailsLoadingState) {
-    //       return const Center( 
-    //         child: CircularProgressIndicator()
-    //       );
-    //     }
-    //     if (state is DetailsLoadedState) {
-          return Row(
+// Color color1 = _colorFromHex(state.loadedDetails[0].color[0]);
+    return BlocBuilder<DetailsBloc, DetailsState>(
+      builder: (context, state) {
+        if (state is DetailsLoadingState) {
+          return const Center( 
+            child: CircularProgressIndicator()
+          );
+        }
+      if (state is DetailsLoadedState) {
+        return Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               IconButton(
@@ -341,17 +360,22 @@ class _ToggleWidgetState extends State<ToggleWidget> {
                     _hasBeenPressed = !_hasBeenPressed;
                   })
                 },
-                color: _hasBeenPressed ? Colors.blue : Colors.black,
+                color: _hasBeenPressed ? _colorFromApi(state.loadedDetails[0].color[0]) : Colors.red,
                 icon: const Icon(Icons.circle),
                 iconSize: 40,
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () => {
+                  setState(() {
+                    _hasBeenPressed3 = !_hasBeenPressed3;
+                  })
+                },
                 icon: const Icon(Icons.circle), 
+                color: _hasBeenPressed3 ? _colorFromApi(state.loadedDetails[0].color[1]) : Colors.green,
                 iconSize: 40,
               ),
               ElevatedButton(
-                child: Text(/* widget.listCard[0].capacity[0] */'button1', style: const TextStyle(color: Colors.grey),),
+                child: Text(state.loadedDetails[0].capacity[0], style: const TextStyle(color: Colors.grey),),
                 onPressed: () => {
                     setState(() {
                       _hasBeenPressed1 = !_hasBeenPressed1;
@@ -368,7 +392,7 @@ class _ToggleWidgetState extends State<ToggleWidget> {
                 ),
               ),
               ElevatedButton(
-                child: Text(/* widget.listCard[1].capacity[1] */'button2', style: const TextStyle(color: Colors.grey),),
+                child: Text(state.loadedDetails[0].capacity[1], style: const TextStyle(color: Colors.grey),),
                 onPressed: () => {
                     setState(() {
                       _hasBeenPressed2 = !_hasBeenPressed2;
@@ -387,14 +411,14 @@ class _ToggleWidgetState extends State<ToggleWidget> {
             ]
           );
         } 
-        // if (state is DetailsErrorState) {
-        //   return const Center(
-        //     child: Text('Error getcing details')
-        //   );
-        // }
-        // return const CircularProgressIndicator();
+        if (state is DetailsErrorState) {
+          return const Center(
+            child: Text('Error getcing details')
+          );
+        }
+        return const CircularProgressIndicator();
       }
-    // );
+    );
     
-// }
-// }
+}
+}
