@@ -16,20 +16,35 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   int _selectedIndex = 0;
   static const List _widgetOptions = [
     CategoryWidget(),
-    CartWidget(),
     Text(
       'Index 3: School',
     ),
     Text(
       'Index 4: School',
     ),
+    Text(
+      'Index 5: School',
+    ),
   ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    // без BottomNavBar
+    void onSelectTub(int index) {
+    if (index != 1) {
+      setState(() {
+        _selectedIndex = index;
+      });
+    } else {
+      Navigator.push<Widget>(
+        context,
+        MaterialPageRoute(builder: (context) => const CartWidget()),
+      );
+    }
   }
+
+  // void _onItemTapped(int index) {
+  //   setState(() {
+  //     _selectedIndex = index;
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +60,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
             showUnselectedLabels: false,
             backgroundColor: AppColors.buttonBarColor,
             unselectedItemColor: Colors.white,
-            onTap: _onItemTapped,
+            onTap: onSelectTub,
             items: [   
               BottomNavigationBarItem(
                 icon: Row(
