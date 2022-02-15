@@ -1,5 +1,5 @@
 import 'package:ecommerce_project/application/ui/screens/home_screen/Best_seller/Best_seller_widget.dart';
-import 'package:ecommerce_project/application/ui/screens/home_screen/Best_seller/Filter_options.dart';
+import 'package:ecommerce_project/application/ui/screens/home_screen/Filter_options.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/Hot_sales/Slider_widget.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/Select_category/Section_buttons.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
@@ -50,11 +50,11 @@ class _GeolocWidget extends StatelessWidget {
             icon: svgGeolocation,
           ),
           const Text('Zihuatanejo, Gro',
-              style: TextStyle(
-                  fontFamily: 'MarkPronormal400',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.buttonBarColor)),
+            style: TextStyle(
+              fontFamily: 'MarkPronormal400',
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+              color: AppColors.buttonBarColor)),
           IconButton(
             padding: const EdgeInsets.only(right: 20),
             onPressed: () {},
@@ -85,16 +85,16 @@ class _SearchWidget extends StatelessWidget {
           height: 34,
           width: 300,
           decoration: BoxDecoration(
-              color: Colors.white, borderRadius: BorderRadius.circular(50)),
+            color: Colors.white, borderRadius: BorderRadius.circular(50)),
           child: TextField(
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: const EdgeInsets.symmetric(vertical: 0),
               hintText: 'Search',
               hintStyle: const TextStyle(
-                  fontSize: 13,
-                  fontFamily: 'MarkPronormal400',
-                  fontWeight: FontWeight.w400),
+                fontSize: 13,
+                fontFamily: 'MarkPronormal400',
+                fontWeight: FontWeight.w400),
               prefixIcon: svgSearch,
             ),
           ),

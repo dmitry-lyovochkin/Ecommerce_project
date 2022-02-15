@@ -1,3 +1,4 @@
+import 'package:ecommerce_project/application/ui/screens/cart/cart.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/category_widget.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/custom_icons.dart';
@@ -15,9 +16,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   int _selectedIndex = 0;
   static const List _widgetOptions = [
     CategoryWidget(),
-    Text(
-      'Index 2: Business',
-    ),
+    CartWidget(),
     Text(
       'Index 3: School',
     ),

@@ -3,6 +3,7 @@ import 'package:ecommerce_project/application/services/bloc/details_bloc.dart';
 import 'package:ecommerce_project/application/services/bloc/details_event.dart';
 import 'package:ecommerce_project/application/services/bloc/details_repository.dart';
 import 'package:ecommerce_project/application/services/bloc/details_state.dart';
+import 'package:ecommerce_project/application/ui/screens/cart/cart.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/custom_icons.dart';
 import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
@@ -102,9 +103,11 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                           // crossAxisAlignment: CrossAxisAlignment.end,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
-                              'Galaxy Note 20 Ultra',
-                              style: TextStyle(
+                            Text(
+                              state.loadedDetails[0].title,
+                              style: const TextStyle(
+                                fontFamily: 'MarkPronormal400',
+                                fontWeight: FontWeight.w700,
                                 fontSize: 24, 
                                 color: AppColors.buttonBarColor
                               ),
@@ -291,10 +294,17 @@ class ProductWidget extends StatelessWidget {
             ),
           )
         ),
+        const SizedBox(height: 3),
         const ButtonsRowWidget(),
-        const SizedBox(height: 5,),
+        const SizedBox(height: 5),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const CartWidget()),
+            );
+          },
           child: const Text(
             'Add to Cart     \$1,500.00',
             // textAlign: TextAlign.start,
@@ -333,7 +343,11 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
 // }
   bool _toggle = true;
   bool _toggle1 = false;
-
+  bool button = false;
+  int button1 = 0;
+  bool array = false;
+  final List<bool> aarray = [true];
+  final List<bool> aarray1 = [false];
   
   Color _colorFromApi(String hexColor) {
     final hexCode = hexColor.replaceAll('#', '');
@@ -341,10 +355,10 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
   }
 
   Icon fab = const Icon(
-    Icons.circle,
+    Icons.check_outlined,
   );
   Icon fab1 = const Icon(
-    Icons.circle,
+    Icons.check_outlined,
   );
 
   int fabIconNumber = 0;
@@ -367,40 +381,36 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
               SizedBox(
                 height: 40,
                 child: FloatingActionButton(
+                  heroTag: "btn1",
                   elevation: 0,
-                  child: fab,
+                  child: Visibility(
+                    visible: aarray[0],
+                    child: const Icon(
+                      Icons.check_outlined
+                    )
+                  ),
                   backgroundColor: _colorFromApi(state.loadedDetails[0].color[0]),
                   foregroundColor: Colors.white,
                   onPressed: () => setState(() {
-                    if (fabIconNumber == 0) {
-                      fab = const Icon(
-                        Icons.check_outlined,
-                      );
-                      fabIconNumber = 1;
-                    } else {
-                      fab = Icon(Icons.check_outlined, color: _colorFromApi(state.loadedDetails[0].color[0]),);
-                      fabIconNumber = 0;
-                    }
+                    aarray[0] = !aarray[0];
                   }),
                 ),
               ),
               SizedBox(
                 height: 40,
                 child: FloatingActionButton(
+                  heroTag: "btn2",
                   elevation: 0,
-                  child: fab1,
+                  child: Visibility(
+                    visible: aarray1[0],
+                    child: const Icon(
+                      Icons.check_outlined
+                    )
+                  ),
                   backgroundColor: _colorFromApi(state.loadedDetails[0].color[1]),
                   foregroundColor: Colors.white,
                   onPressed: () => setState(() {
-                    if (fab1IconNumber == 0) {
-                      fab1 = const Icon(
-                        Icons.check_outlined,
-                      );
-                      fab1IconNumber = 1;
-                    } else {
-                      fab1 = Icon(Icons.check_outlined, color: _colorFromApi(state.loadedDetails[0].color[1]),);
-                      fab1IconNumber = 0;
-                    }
+                    aarray1[0] = !aarray1[0];
                   }),
                 ),
               ),
