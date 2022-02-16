@@ -158,7 +158,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                             // print(rating1);
                           },
                         ),
-                        SizedBox(height: 5,),
+                        const SizedBox(height: 5,),
                         MyDemo(),
                       ],
                     ),

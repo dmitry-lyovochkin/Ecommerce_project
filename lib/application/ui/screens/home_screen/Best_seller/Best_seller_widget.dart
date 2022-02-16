@@ -86,7 +86,7 @@ class GridWidget extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => ProductDetailsWidget()),
+                builder: (context) => const ProductDetailsWidget()),
             );
           },
           child: Stack(alignment: Alignment.topCenter, children: [
