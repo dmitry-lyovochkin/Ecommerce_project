@@ -1,14 +1,15 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerce_project/application/services/bloc/details_bloc.dart';
-import 'package:ecommerce_project/application/services/bloc/details_event.dart';
-import 'package:ecommerce_project/application/services/bloc/details_repository.dart';
-import 'package:ecommerce_project/application/services/bloc/details_state.dart';
+import 'package:ecommerce_project/application/services/bloc/details_bloc/details_bloc.dart';
+import 'package:ecommerce_project/application/services/bloc/details_bloc/details_repository.dart';
+import 'package:ecommerce_project/application/services/bloc/details_bloc/details_state.dart';
+import 'package:ecommerce_project/application/services/bloc/details_bloc/details_event.dart';
 import 'package:ecommerce_project/application/ui/screens/cart/cart.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/custom_icons.dart';
 import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProductDetailsWidget extends StatefulWidget {
@@ -20,6 +21,14 @@ class ProductDetailsWidget extends StatefulWidget {
 
 class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
   final detailsRepository = DetailsRepository();
+
+  // var ListOfStars = List.generate(state.loadedDetails.rating) {
+  //   return const Icon(
+    //   Icons.star_outlined,
+    //   color: Colors.amber,
+    //   size: 22,
+    //   );
+  //  };
 
   @override
   Widget build(BuildContext context) {
@@ -90,12 +99,12 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                 height: 345,
                 child: Card(
                   color: Colors.white,
-                  elevation: 2,
+                  elevation: 1,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 10, left: 30, right: 30),
+                    padding: const EdgeInsets.only(top: 5, left: 30, right: 30),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -131,11 +140,25 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                             )
                           ],
                         ),
-                        const Icon(
-                          Icons.star_outlined,
-                          color: Colors.amber,
-                          size: 22,
+                        RatingBar.builder(
+                          itemSize: 22,
+                          initialRating: state.loadedDetails[0].rating.toDouble(),
+                          minRating: 1,
+                          direction: Axis.horizontal,
+                          allowHalfRating: true,
+                          ignoreGestures: true,
+                          itemCount: 5,
+                          itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                          itemBuilder: (context, _) => const Icon(
+                            Icons.star,
+                            color: Colors.amber,
+                          ),
+                          
+                          onRatingUpdate: (rating1) {
+                            // print(rating1);
+                          },
                         ),
+                        SizedBox(height: 5,),
                         MyDemo(),
                       ],
                     ),

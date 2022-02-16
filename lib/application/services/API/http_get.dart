@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:ecommerce_project/application/services/API/model_cart.dart';
 import 'package:ecommerce_project/application/services/API/model_store.dart';
 import 'package:ecommerce_project/application/services/API/model_details.dart';
 import 'package:http/http.dart' as http;
@@ -56,3 +57,24 @@ class DetailsList {
   }
 }
 /* проверку на null возможно */
+
+class CartList {
+  Future<List<GetCartItems>> getCarts() async {
+    final response = await http.get(
+        Uri.parse('https://shopapi-0575.restdb.io/rest/home'),
+        headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
+
+    if (response.statusCode == 200) {
+      final List<dynamic> userJson = json.decode(response.body);
+      List<GetCartItems> list = [];
+      userJson.map((json) {
+        for (var i = 0; i < json.length; i++) {
+          list.add(GetCartItems.fromJson(json['basket'][i]));
+        }
+      }).toList();
+      return list;
+    } else {
+      throw Exception('Failed to load');
+    }
+  }
+}

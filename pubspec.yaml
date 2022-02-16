@@ -16,6 +16,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1
+  flutter_rating_bar: ^4.0.0
   flutter_svg: ^1.0.0
   freezed: ^1.1.1
   freezed_annotation: ^1.1.0

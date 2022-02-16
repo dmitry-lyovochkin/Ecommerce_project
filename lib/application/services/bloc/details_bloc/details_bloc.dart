@@ -24,9 +24,9 @@
 
 // вторая версия
 import 'package:ecommerce_project/application/services/API/model_details.dart';
-import 'package:ecommerce_project/application/services/bloc/details_event.dart';
-import 'package:ecommerce_project/application/services/bloc/details_repository.dart';
-import 'package:ecommerce_project/application/services/bloc/details_state.dart';
+import 'package:ecommerce_project/application/services/bloc/details_bloc/details_repository.dart';
+import 'package:ecommerce_project/application/services/bloc/details_bloc/details_event.dart';
+import 'package:ecommerce_project/application/services/bloc/details_bloc/details_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
