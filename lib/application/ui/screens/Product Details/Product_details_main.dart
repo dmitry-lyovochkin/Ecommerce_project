@@ -88,6 +88,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                   ),
                 ),
                 ProductSliderWidget(list: state.loadedDetails),
+                const SizedBox(height: 10),
                 SizedBox(
                   height: 450,
                   child: Card(
@@ -150,7 +151,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                               // print(rating1);
                             },
                           ),
-                          const SizedBox(height: 25,),
+                          const SizedBox(height: 25),
                           MyDemo(),
                         ],
                       ),
@@ -197,10 +198,10 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
             imagesUrl: widget.list[index].images[index],
         ),
       options: CarouselOptions(
-        height: 260,
+        height: 330,
         aspectRatio: 5.0,
         initialPage: 0,
-        viewportFraction: 0.6,
+        viewportFraction: 0.74,
         enlargeCenterPage: true,
         enableInfiniteScroll: true,
         scrollDirection: Axis.horizontal,
@@ -223,7 +224,7 @@ class ModelWidget extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(imagesUrl),
-          fit: BoxFit.cover,
+          fit: BoxFit.fitWidth,
           alignment: Alignment.center,
         ),
       )
