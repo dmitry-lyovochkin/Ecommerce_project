@@ -21,15 +21,7 @@ class ProductDetailsWidget extends StatefulWidget {
 
 class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
   final detailsRepository = DetailsRepository();
-
-  // var ListOfStars = List.generate(state.loadedDetails.rating) {
-  //   return const Icon(
-    //   Icons.star_outlined,
-    //   color: Colors.amber,
-    //   size: 22,
-    //   );
-  //  };
-
+  
   @override
   Widget build(BuildContext context) {
     return BlocProvider<DetailsBloc>(
@@ -44,128 +36,129 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
             );
           }
           if (state is DetailsLoadedState) { 
-          return Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween, 
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Icon(
-                        Icons.arrow_back_ios_new_sharp,
-                        size: 19, color: Colors.white
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        primary: AppColors.buttonBarColor,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)
+          return SingleChildScrollView(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 40, bottom: 20, left: 30, right: 30),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Icon(
+                          Icons.arrow_back_ios_new_sharp,
+                          size: 19, color: Colors.white
                         ),
-                        padding: const EdgeInsets.all(10),
-                        minimumSize: const Size(15, 15),
-                      ),
-                    ),
-                    const Text(
-                      'Product Details',
-                      style: TextStyle(
-                        fontFamily: 'MarkPronormal400',
-                        fontSize: 18,
-                        fontWeight: FontWeight.w700,
-                        color: AppColors.buttonBarColor,
-                      )
-                    ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      child: const Icon(
-                        CustomIcons.vector,
-                        color: Colors.white,
-                        size: 15,
-                      ),
-                      style: ElevatedButton.styleFrom(
-                          primary: IconColors.appColor,
+                        style: ElevatedButton.styleFrom(
+                          primary: AppColors.buttonBarColor,
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          padding: const EdgeInsets.all(11),
-                          minimumSize: const Size(15, 15)),
-                    )
-                  ]
-                ),
-              ),
-              ProductSliderWidget(list: state.loadedDetails),
-              SizedBox(
-                height: 345,
-                child: Card(
-                  color: Colors.white,
-                  elevation: 1,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 5, left: 30, right: 30),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          // crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              state.loadedDetails[0].title,
-                              style: const TextStyle(
-                                fontFamily: 'MarkPronormal400',
-                                fontWeight: FontWeight.w700,
-                                fontSize: 24, 
-                                color: AppColors.buttonBarColor
-                              ),
-                            ),
-                            ElevatedButton(
-                              onPressed: () {},
-                              child: const Icon(
-                                Icons.favorite_border,
-                                color: Colors.grey,
-                                size: 18,
-                              ),
-                              style: ElevatedButton.styleFrom(
-                                primary: AppColors.buttonBarColor,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)
-                                ),
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 9, vertical: 7),
-                                minimumSize: const Size(7, 7)
-                              ),
-                            )
-                          ],
-                        ),
-                        RatingBar.builder(
-                          itemSize: 22,
-                          initialRating: state.loadedDetails[0].rating.toDouble(),
-                          minRating: 1,
-                          direction: Axis.horizontal,
-                          allowHalfRating: true,
-                          ignoreGestures: true,
-                          itemCount: 5,
-                          itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                          itemBuilder: (context, _) => const Icon(
-                            Icons.star,
-                            color: Colors.amber,
+                            borderRadius: BorderRadius.circular(10)
                           ),
-                          
-                          onRatingUpdate: (rating1) {
-                            // print(rating1);
-                          },
+                          padding: const EdgeInsets.all(10),
+                          minimumSize: const Size(15, 15),
                         ),
-                        const SizedBox(height: 5,),
-                        MyDemo(),
-                      ],
+                      ),
+                      const Text(
+                        'Product Details',
+                        style: TextStyle(
+                          fontFamily: 'MarkPronormal400',
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.buttonBarColor,
+                        )
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: const Icon(
+                          CustomIcons.vector,
+                          color: Colors.white,
+                          size: 15,
+                        ),
+                        style: ElevatedButton.styleFrom(
+                            primary: IconColors.appColor,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            padding: const EdgeInsets.all(11),
+                            minimumSize: const Size(15, 15)),
+                      )
+                    ]
+                  ),
+                ),
+                ProductSliderWidget(list: state.loadedDetails),
+                SizedBox(
+                  height: 450,
+                  child: Card(
+                    color: Colors.white,
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.only(top: 5, left: 30, right: 30),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            // crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                state.loadedDetails[0].title,
+                                style: const TextStyle(
+                                  fontFamily: 'MarkPronormal400',
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 24, 
+                                  color: AppColors.buttonBarColor
+                                ),
+                              ),
+                              ElevatedButton(
+                                onPressed: () {},
+                                child: const Icon(
+                                  Icons.favorite_border,
+                                  color: Colors.grey,
+                                  size: 18,
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  primary: AppColors.buttonBarColor,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)
+                                  ),
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 9, vertical: 7),
+                                  minimumSize: const Size(7, 7)
+                                ),
+                              )
+                            ],
+                          ),
+                          RatingBar.builder(
+                            itemSize: 22,
+                            initialRating: state.loadedDetails[0].rating.toDouble(),
+                            minRating: 1,
+                            direction: Axis.horizontal,
+                            allowHalfRating: true,
+                            ignoreGestures: true,
+                            itemCount: 5,
+                            itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                            itemBuilder: (context, _) => const Icon(
+                              Icons.star,
+                              color: Colors.amber,
+                            ),
+                            onRatingUpdate: (rating1) {
+                              // print(rating1);
+                            },
+                          ),
+                          const SizedBox(height: 25,),
+                          MyDemo(),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              )
-            ]
+                )
+              ]
+            ),
           );
         } 
         if (state is DetailsErrorState) {
@@ -230,7 +223,7 @@ class ModelWidget extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(imagesUrl),
-          fit: BoxFit.contain,
+          fit: BoxFit.cover,
           alignment: Alignment.center,
         ),
       )
@@ -249,14 +242,13 @@ class MyDemo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        height: 250,
+    return Expanded(
         child: DefaultTabController(
           length: 3,
           child: Column(
             children: <Widget>[
               Container(
-                constraints: const BoxConstraints.expand(height: 32),
+                constraints: const BoxConstraints.expand(height: 35),
                 child: TabBar(
                   labelStyle: const TextStyle(
                     fontFamily: 'MarkPronormal400',
@@ -280,6 +272,7 @@ class MyDemo extends StatelessWidget {
                   tabs: tabss,
                 ),
               ),
+              const SizedBox(height: 18),
               const Expanded(
                 child: TabBarView(children: [
                   ProductWidget(),
@@ -305,6 +298,7 @@ class ProductWidget extends StatelessWidget {
           height: 90,
           fit: BoxFit.contain,
         ),
+        const SizedBox(height: 10),
         const Align(
           alignment: Alignment.topLeft,
           child: Text(
@@ -317,9 +311,9 @@ class ProductWidget extends StatelessWidget {
             ),
           )
         ),
-        const SizedBox(height: 3),
+        const SizedBox(height: 10),
         const ButtonsRowWidget(),
-        const SizedBox(height: 5),
+        const SizedBox(height: 25),
         ElevatedButton(
           onPressed: () {
             Navigator.push(
@@ -330,7 +324,6 @@ class ProductWidget extends StatelessWidget {
           },
           child: const Text(
             'Add to Cart     \$1,500.00',
-            // textAlign: TextAlign.start,
             style: TextStyle(
               fontFamily: 'MarkPronormal400',
               fontSize: 20,
@@ -401,22 +394,24 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
           return Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              SizedBox(
-                height: 40,
-                child: FloatingActionButton(
-                  heroTag: "btn1",
-                  elevation: 0,
-                  child: Visibility(
-                    visible: aarray[0],
-                    child: const Icon(
-                      Icons.check_outlined
-                    )
+              Center(
+                child: SizedBox(
+                  height: 40,
+                  child: FloatingActionButton(
+                    heroTag: "btn1",
+                    elevation: 0,
+                    child: Visibility(
+                      visible: aarray[0],
+                      child: const Icon(
+                        Icons.check_outlined
+                      )
+                    ),
+                    backgroundColor: _colorFromApi(state.loadedDetails[0].color[0]),
+                    foregroundColor: Colors.white,
+                    onPressed: () => setState(() {
+                      aarray[0] = !aarray[0];
+                    }),
                   ),
-                  backgroundColor: _colorFromApi(state.loadedDetails[0].color[0]),
-                  foregroundColor: Colors.white,
-                  onPressed: () => setState(() {
-                    aarray[0] = !aarray[0];
-                  }),
                 ),
               ),
               SizedBox(

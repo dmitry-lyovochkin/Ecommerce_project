@@ -61,9 +61,11 @@ class DetailsList {
 class CartList {
   Future<List<GetCartItems>> getCarts() async {
     final response = await http.get(
-        Uri.parse('https://shopapi-0575.restdb.io/rest/cart'),
-        headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
+      Uri.parse('https://shopapi-0575.restdb.io/rest/cart'),
+      headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
+// print(response.body);
 
+// print (response.body.runtimeType);
 
     if (response.statusCode == 200) {
       final List<dynamic> userJson = json.decode(response.body);
