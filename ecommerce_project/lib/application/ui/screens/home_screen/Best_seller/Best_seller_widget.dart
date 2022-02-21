@@ -24,14 +24,10 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
             return GridView.builder(
               itemCount: (snapshot.data as List<Best_seller>).length,
               itemBuilder: (context, index) => GridWidget(
-                pictureUrls:
-                    (snapshot.data as List<Best_seller>)[index].picture,
+                pictureUrls: (snapshot.data as List<Best_seller>)[index].picture,
                 titleItems: (snapshot.data as List<Best_seller>)[index].title,
-                priceWithoutDiscount:
-                    (snapshot.data as List<Best_seller>)[index]
-                        .price_without_discount,
-                discountPrice:
-                    (snapshot.data as List<Best_seller>)[index].discount_price,
+                priceWithoutDiscount: (snapshot.data as List<Best_seller>)[index].price_without_discount,
+                discountPrice: (snapshot.data as List<Best_seller>)[index].discount_price,
               ),
               // isFavorites:
               //     (snapshot.data as List<Best_seller>)[index].discount_price),
@@ -64,6 +60,7 @@ class GridWidget extends StatelessWidget {
   final int priceWithoutDiscount;
   final int discountPrice;
   final String pictureUrls;
+
   const GridWidget({
     Key? key,
     // required this.isFavorites,
@@ -85,8 +82,7 @@ class GridWidget extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => const ProductDetailsWidget()),
+              MaterialPageRoute(builder: (context) => const ProductDetailsWidget()),
             );
           },
           child: Stack(alignment: Alignment.topCenter, children: [
@@ -111,8 +107,7 @@ class GridWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(5),
                     primary: Colors.white,
                     minimumSize: const Size(15, 15)),
-                child: const Icon(Icons.favorite_border,
-                    color: IconColors.appColor, size: 15),
+                child: const Icon(Icons.favorite_border, color: IconColors.appColor, size: 15),
               ),
             ),
             Positioned(
@@ -140,18 +135,15 @@ class GridWidget extends StatelessWidget {
             Positioned(
               bottom: 16,
               left: 35,
-              child: Text(
-                titleItems,
-                textAlign: TextAlign.end,
-                style: const TextStyle(
-                  fontFamily: 'MarkPronormal400',
-                  fontSize: 10,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.buttonBarColor)
-              ),
+              child: Text(titleItems,
+                  textAlign: TextAlign.end,
+                  style: const TextStyle(
+                      fontFamily: 'MarkPronormal400',
+                      fontSize: 10,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.buttonBarColor)),
             ),
           ]),
         ));
-
   }
 }

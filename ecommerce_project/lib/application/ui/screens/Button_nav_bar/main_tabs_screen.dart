@@ -4,7 +4,6 @@ import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/custom_icons.dart';
 import 'package:flutter/material.dart';
 
-
 class BottomNavBarWidget extends StatefulWidget {
   const BottomNavBarWidget({Key? key}) : super(key: key);
 
@@ -26,8 +25,9 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       'Index 5: School',
     ),
   ];
-    // без BottomNavBar
-    void onSelectTub(int index) {
+
+  // без BottomNavBar
+  void onSelectTub(int index) {
     if (index != 1) {
       setState(() {
         _selectedIndex = index;
@@ -48,8 +48,8 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
 
   @override
   Widget build(BuildContext context) {
-      return Scaffold(
-      body:  _widgetOptions.elementAt(_selectedIndex),
+    return Scaffold(
+      body: _widgetOptions.elementAt(_selectedIndex),
       bottomNavigationBar: ClipRRect(
         borderRadius: BorderRadius.circular(25),
         child: SizedBox(
@@ -61,17 +61,14 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
             backgroundColor: AppColors.buttonBarColor,
             unselectedItemColor: Colors.white,
             onTap: onSelectTub,
-            items: [   
+            items: [
               BottomNavigationBarItem(
                 icon: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: const [
                     Text(
                       '●   Explorer',
-                      style: TextStyle(
-                        color: Colors.white, 
-                        fontSize: 15
-                      ),
+                      style: TextStyle(color: Colors.white, fontSize: 15),
                     ),
                   ],
                 ),
