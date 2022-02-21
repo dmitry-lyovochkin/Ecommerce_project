@@ -120,7 +120,7 @@ class _CartWidgetState extends State<CartWidget> {
                             itemBuilder: (context, index) {
                               return Card(
                                 color: /* AppColors.buttonBarColor */Colors.red,
-                                child: ListTile(
+                                child: ListTile(f
                                   leading: Image.network(
                                     state.loadedCart[index].images, 
                                     fit: BoxFit.fill,
