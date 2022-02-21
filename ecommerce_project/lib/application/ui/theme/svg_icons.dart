@@ -80,3 +80,11 @@ final Widget svgGroup18 = SvgPicture.asset(
   // height: 74,
   // fit: BoxFit.scaleDown,
 );
+
+const String assetCart = "assets/Cart.svg";
+final Widget svgCart = SvgPicture.asset(
+  assetCart,
+  // color: Colors.red,
+  height: 38,
+  fit: BoxFit.scaleDown,
+);

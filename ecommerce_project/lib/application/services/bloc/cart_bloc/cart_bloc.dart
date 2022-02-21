@@ -13,7 +13,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<CartLoadEvent>((event, emit) async {
       emit(CartLoadingState());
       try {
-        final List<GetCartItems> _loadedCartList = await cartRepository.getAllCart();
+        final List<Basket> _loadedCartList = await cartRepository.getAllCart();
         emit(CartLoadedState(loadedCart: _loadedCartList));
       } catch (_) {
         emit(CartErrorState());

@@ -3,5 +3,5 @@ import 'package:ecommerce_project/application/services/API/model_cart.dart';
 
 class CartRepository {
   final CartList _cartProvider = CartList();
-  Future<List<GetCartItems>> getAllCart() => _cartProvider.getCarts();
+  Future<List<Basket>> getAllCart() => _cartProvider.getCarts();
 }

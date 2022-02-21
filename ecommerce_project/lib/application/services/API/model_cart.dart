@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 class GetCartItems {
-  final String id;
+  final int id;
   final String delivery;
   final int total;
   final List<Basket> basket;
@@ -13,7 +13,7 @@ class GetCartItems {
   });
 
   GetCartItems copyWith({
-    String? id,
+    int? id,
     String? delivery,
     int? total,
     List<Basket>? basket,
@@ -37,7 +37,7 @@ class GetCartItems {
 
   factory GetCartItems.fromMap(Map<String, dynamic> map) {
     return GetCartItems(
-      id: map['id'] ?? '',
+      id: map['total']?.toInt() ?? 0,
       delivery: map['delivery'] ?? '',
       total: map['total']?.toInt() ?? 0,
       basket: List<Basket>.from(map['basket']?.map((x) => Basket.fromMap(x))),

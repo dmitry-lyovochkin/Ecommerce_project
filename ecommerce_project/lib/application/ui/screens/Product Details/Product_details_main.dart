@@ -88,9 +88,9 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                   ),
                 ),
                 ProductSliderWidget(list: state.loadedDetails),
-                const SizedBox(height: 10),
+                const SizedBox(height: 5),
                 SizedBox(
-                  height: 450,
+                  height: 455,
                   child: Card(
                     color: Colors.white,
                     elevation: 3,
@@ -98,7 +98,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                       borderRadius: BorderRadius.circular(30),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 5, left: 30, right: 30),
+                      padding: const EdgeInsets.only(top: 20, left: 30, right: 30),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

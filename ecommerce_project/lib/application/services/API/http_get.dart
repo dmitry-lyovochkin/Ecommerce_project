@@ -59,7 +59,7 @@ class DetailsList {
 /* проверку на null возможно */
 
 class CartList {
-  Future<List<GetCartItems>> getCarts() async {
+  Future<List<Basket>> getCarts() async {
     final response = await http.get(
       Uri.parse('https://shopapi-0575.restdb.io/rest/cart'),
       headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
@@ -69,13 +69,34 @@ class CartList {
 
     if (response.statusCode == 200) {
       final List<dynamic> userJson = json.decode(response.body);
-      List<GetCartItems> list = [];
+      List<Basket> list = [];
       userJson.map((json) {
-        for (var i = 0; i < json.length; i++) {
-          list.add(GetCartItems.fromMap(json['cart_list'][i]));
+        for (var i = 0; i < json['basket'].length; i++) {
+          list.add(Basket.fromMap(json['basket'][i]));
         }
       }).toList();
       return list;
+    } else {
+      throw Exception('Failed to load');
+    }
+  }
+}
+
+class CartMainList {
+  Future<List<GetCartItems>> getMainCarts() async {
+    final response = await http.get(
+      Uri.parse('https://shopapi-0575.restdb.io/rest/cart'),
+      headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
+
+    if (response.statusCode == 200) {
+      final List<dynamic> userJson = json.decode(response.body);
+      List<GetCartItems> listMain = [];
+      userJson.map((json) {
+        for (var i = 0; i < json['basket'].length; i++) {
+          listMain.add(GetCartItems.fromMap(json['basket'][i]));
+        }
+      }).toList();
+      return listMain;
     } else {
       throw Exception('Failed to load');
     }

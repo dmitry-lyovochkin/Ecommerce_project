@@ -1,3 +1,5 @@
+import 'package:ecommerce_project/application/services/API/model_cart.dart';
+
 abstract class CartState {}
 
 // class DetailsEmptyState extends DetailsState {}
@@ -5,7 +7,7 @@ abstract class CartState {}
 class CartLoadingState extends CartState {}
 
 class CartLoadedState extends CartState {
-  List<dynamic> loadedCart;
+  List<Basket> loadedCart;
   CartLoadedState({required this.loadedCart});
 }
 
