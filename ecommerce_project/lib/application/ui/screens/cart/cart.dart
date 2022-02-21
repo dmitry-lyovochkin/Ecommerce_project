@@ -140,7 +140,7 @@ class _CartWidgetState extends State<CartWidget> {
                                     style: const TextStyle(
                                         fontFamily: 'MarkPronormal700',
                                         fontSize: 15,
-                                        fontWeight: FontWeight.w800,
+                                        fontWeight: FontWeight.w800,d
                                         color: Colors.grey)),
                                 // Text(
                                 //   '\$' + state.loadedMainCart[0].total.toString() + ' us',
