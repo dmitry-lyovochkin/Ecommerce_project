@@ -138,7 +138,7 @@ class _CartWidgetState extends State<CartWidget> {
                                   ),
                                   subtitle: Text(
                                     '\$' + state.loadedCart[index].price.toString(),
-                                    style: const TextStyle(
+                                    style: const TextStyle(d
                                       
                                       fontSize: 21,
                                       fontFamily: 'MarkPronormal400',
