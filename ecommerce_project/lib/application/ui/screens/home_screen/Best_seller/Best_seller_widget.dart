@@ -28,9 +28,9 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
                 titleItems: (snapshot.data as List<Best_seller>)[index].title,
                 priceWithoutDiscount: (snapshot.data as List<Best_seller>)[index].price_without_discount,
                 discountPrice: (snapshot.data as List<Best_seller>)[index].discount_price,
+                isFavorites: (snapshot.data as List<Best_seller>)[index].is_favorites
               ),
-              // isFavorites:
-              //     (snapshot.data as List<Best_seller>)[index].discount_price),
+              
 
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
@@ -55,20 +55,22 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
 }
 
 class GridWidget extends StatelessWidget {
-  // final bool isFavorites;
+  final bool isFavorites;
   final String titleItems;
   final int priceWithoutDiscount;
   final int discountPrice;
   final String pictureUrls;
 
-  const GridWidget({
+  GridWidget({
     Key? key,
-    // required this.isFavorites,
+    required this.isFavorites,
     required this.titleItems,
     required this.priceWithoutDiscount,
     required this.discountPrice,
     required this.pictureUrls,
   }) : super(key: key);
+
+  bool toggle = false;
 
   @override
   Widget build(BuildContext context) {
@@ -109,7 +111,10 @@ class GridWidget extends StatelessWidget {
                     padding: const EdgeInsets.all(5),
                     primary: Colors.white,
                     minimumSize: const Size(15, 15)),
-                child: const Icon(Icons.favorite_border, color: IconColors.appColor, size: 15),
+                child: isFavorites
+                 ?  const Icon(Icons.favorite, color: IconColors.appColor, size: 15)
+                 :  const Icon(Icons.favorite_border, color: IconColors.appColor, size: 15)
+
               ),
             ),
             Positioned(

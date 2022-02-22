@@ -114,7 +114,7 @@ class _CartWidgetState extends State<CartWidget> {
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 35, bottom: 150),
+                          padding: const EdgeInsets.only(top: 35, bottom: 130),
                           child: ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
