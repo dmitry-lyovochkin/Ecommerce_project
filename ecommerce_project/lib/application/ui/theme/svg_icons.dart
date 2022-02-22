@@ -90,13 +90,13 @@ const String assetMinus = "assets/Minus.svg";
 final Widget svgMinus = SvgPicture.asset(
   assetMinus,
   color: Colors.white,
-  height: 38,
+  height: 50,
   fit: BoxFit.scaleDown,
 );
 const String assetPlus = "assets/Plus.svg";
 final Widget svgPlus = SvgPicture.asset(
   assetPlus,
   color: Colors.white,
-  height: 38,
+  height: 50,
   fit: BoxFit.scaleDown,
 );

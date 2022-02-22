@@ -4,10 +4,11 @@ import 'package:meta/meta.dart';
 part 'counter_event.dart';
 part 'counter_state.dart';
 
-class CounterBloc extends Bloc<CounterEvent, CounterState> {
-  CounterBloc() : super(CounterInitial()) {
-    on<CounterEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+class CounterCubit extends Cubit<int> {
+  CounterCubit() : super(0) {
+    void increment() => emit(state + 1);
+    void decrement() => emit(state - 1);
+    // on<Increment>((event, emit) => _addToValue(1, emit));
+    // on<Decrement>((event, emit) => _addToValue(-1, emit));
   }
 }

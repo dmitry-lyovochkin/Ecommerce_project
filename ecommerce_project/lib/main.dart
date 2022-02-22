@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() {
   BlocOverrides.runZoned(
     () => runApp(const MyApp()),
-    blocObserver: CounterObserver(),
+    // blocObserver: CounterObserver(),
   );
 }
 
