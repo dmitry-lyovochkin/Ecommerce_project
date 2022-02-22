@@ -4,7 +4,6 @@ import 'package:ecommerce_project/application/services/API/model_store.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
-
 class HotSalesWidget extends StatefulWidget {
   const HotSalesWidget({Key? key}) : super(key: key);
 
@@ -24,14 +23,10 @@ class _HotSalesWidgetState extends State<HotSalesWidget> {
             return CarouselSlider.builder(
               itemCount: (snapshot.data as List<Home_store>).length,
               itemBuilder: (context, index, _) => NewWidget(
-                pictureUrl:
-                    (snapshot.data as List<Home_store>)[index].picture,
-                titlePhone: 
-                    (snapshot.data as List<Home_store>)[index].title,
-                subtitleSuper: 
-                    (snapshot.data as List<Home_store>)[index].subtitle,
-                isNew: 
-                    (snapshot.data as List<Home_store>)[index].is_new),
+                  pictureUrl: (snapshot.data as List<Home_store>)[index].picture,
+                  titlePhone: (snapshot.data as List<Home_store>)[index].title,
+                  subtitleSuper: (snapshot.data as List<Home_store>)[index].subtitle,
+                  isNew: (snapshot.data as List<Home_store>)[index].is_new),
               options: CarouselOptions(
                 height: 200,
                 aspectRatio: 5.0,
@@ -53,8 +48,9 @@ class NewWidget extends StatelessWidget {
   final String pictureUrl;
   final String titlePhone;
   final String subtitleSuper;
-   bool isNew;
-   NewWidget({
+  bool isNew;
+
+  NewWidget({
     Key? key,
     required this.pictureUrl,
     required this.titlePhone,
@@ -81,66 +77,45 @@ class NewWidget extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 67),
                 child: Text((titlePhone),
-                  style: const TextStyle(
-                    fontFamily: 'SFPro',
-                    fontSize: 27,
-                    fontWeight: FontWeight.w800,
-                    color: Colors.white)),
+                    style: const TextStyle(
+                        fontFamily: 'SFPro', fontSize: 27, fontWeight: FontWeight.w800, color: Colors.white)),
               ),
             ),
-            
             Positioned(
               top: 103,
               left: 28,
               child: Text((subtitleSuper),
-                style: const TextStyle(
-                  fontFamily: 'SFPro',
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.white)),
+                  style: const TextStyle(
+                      fontFamily: 'SFPro', fontSize: 12, fontWeight: FontWeight.w400, color: Colors.white)),
             ),
             Positioned(
-              top: 10,
-              left: 16,
-              child: isNew != false ? ElevatedButton( /* показ New */
-                onPressed: () {}, 
-                child: const Text('New', 
-                  style: TextStyle(
-                    fontFamily: 'SFPro',
-                    fontSize: 11,
-                    fontWeight: FontWeight.w800,
-                    color: Colors.white
-                  )
-                ),
-                style: ElevatedButton.styleFrom(
-                  primary: IconColors.appColor,
-                  minimumSize: const Size(15,30),
-                  shape: const CircleBorder()
-                ),
-              )
-              : Container()
-            ),
+                top: 10,
+                left: 16,
+                child: isNew != false
+                    ? ElevatedButton(
+                        /* показ New */
+                        onPressed: () {},
+                        child: const Text('New',
+                            style: TextStyle(
+                                fontFamily: 'SFPro', fontSize: 11, fontWeight: FontWeight.w800, color: Colors.white)),
+                        style: ElevatedButton.styleFrom(
+                            primary: IconColors.appColor, minimumSize: const Size(15, 30), shape: const CircleBorder()),
+                      )
+                    : Container()),
             Positioned(
               top: 130,
               left: 28,
               child: ElevatedButton(
-                onPressed: () {}, 
-                child: const Text('Buy now!', 
-                  style: TextStyle(
-                    fontFamily: 'SFPro',
-                    fontSize: 12,
-                    fontWeight: FontWeight.w800,
-                    color: Colors.black
-                  )
-                ),
+                onPressed: () {},
+                child: const Text('Buy now!',
+                    style:
+                        TextStyle(fontFamily: 'SFPro', fontSize: 12, fontWeight: FontWeight.w800, color: Colors.black)),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.white,
-                  padding: const EdgeInsets.symmetric(horizontal: 29),
-                  minimumSize: const Size(15,25)
-                ),
+                    primary: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 29),
+                    minimumSize: const Size(15, 25)),
               ),
             )
-            
           ],
         ));
   }

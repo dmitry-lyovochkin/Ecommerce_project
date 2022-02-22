@@ -2,7 +2,6 @@ import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-
 const String assetPhone = 'assets/Phone.svg';
 final Widget svgPhone = SvgPicture.asset(
   assetPhone,
@@ -10,7 +9,6 @@ final Widget svgPhone = SvgPicture.asset(
   height: 74,
   fit: BoxFit.scaleDown,
 );
-
 
 const String assetComputer = 'assets/Computer.svg';
 final Widget svgComputer = SvgPicture.asset(

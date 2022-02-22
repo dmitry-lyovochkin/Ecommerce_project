@@ -12,24 +12,21 @@ class CategoryWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: const [
-          SizedBox(height: 45),
-          _GeolocWidget(),
-          _TitleSelectCategory(),
-          SectionButtonsWidget(),
-          SizedBox(height: 10),
-          _SearchWidget(),
-          SizedBox(height: 15),
-          _TitleHotSales(),
-          HotSalesWidget(),
-          SizedBox(height: 10),
-          _TitleBestSeller(),
-          BestSellerWidget(),
-          SizedBox(height: 40),
-      ]
-      )
-    );
+        child: Column(children: const [
+      SizedBox(height: 45),
+      _GeolocWidget(),
+      _TitleSelectCategory(),
+      SectionButtonsWidget(),
+      SizedBox(height: 10),
+      _SearchWidget(),
+      SizedBox(height: 15),
+      _TitleHotSales(),
+      HotSalesWidget(),
+      SizedBox(height: 10),
+      _TitleBestSeller(),
+      BestSellerWidget(),
+      SizedBox(height: 40),
+    ]));
   }
 }
 
@@ -50,11 +47,11 @@ class _GeolocWidget extends StatelessWidget {
             icon: svgGeolocation,
           ),
           const Text('Zihuatanejo, Gro',
-            style: TextStyle(
-              fontFamily: 'MarkPronormal400',
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
-              color: AppColors.buttonBarColor)),
+              style: TextStyle(
+                  fontFamily: 'MarkPronormal400',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.buttonBarColor)),
           IconButton(
             padding: const EdgeInsets.only(right: 20),
             onPressed: () {},
@@ -84,17 +81,13 @@ class _SearchWidget extends StatelessWidget {
           margin: const EdgeInsets.only(left: 30),
           height: 34,
           width: 300,
-          decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(50)),
+          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(50)),
           child: TextField(
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: const EdgeInsets.symmetric(vertical: 0),
               hintText: 'Search',
-              hintStyle: const TextStyle(
-                fontSize: 13,
-                fontFamily: 'MarkPronormal400',
-                fontWeight: FontWeight.w400),
+              hintStyle: const TextStyle(fontSize: 13, fontFamily: 'MarkPronormal400', fontWeight: FontWeight.w400),
               prefixIcon: svgSearch,
             ),
           ),
