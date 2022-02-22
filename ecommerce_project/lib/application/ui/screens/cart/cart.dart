@@ -112,41 +112,85 @@ class _CartWidgetState extends State<CartWidget> {
                     ),
                     child: Column(
                       children: [
-                        SingleChildScrollView(
-                          child: ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            shrinkWrap: true,
-                            itemCount: (state.loadedCart).length,
-                            itemBuilder: (context, index) {
-                              return Card(
-                                color: /* AppColors.buttonBarColor */Colors.red,
-                                child: ListTile(
-                                  leading: Image.network(
-                                    state.loadedCart[index].images, 
-                                    fit: BoxFit.fill,
-                                    height: 250,
-                                    width: 75,
-                                  ),
-                                  title:  Text(
-                                    state.loadedCart[index].title,
-                                    style: const TextStyle(
-                                      fontSize: 21,
-                                      fontFamily: 'MarkPronormal400',
-                                      fontWeight: FontWeight.w600,
-                                      color: Colors.white
+                        ListView.builder(
+                          scrollDirection: Axis.vertical,
+                          shrinkWrap: true,
+                          itemCount: (state.loadedCart).length,
+                          itemBuilder: (context, index) {
+                            return Card(
+                              color: AppColors.buttonBarColor/* Colors.red */,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadiusDirectional.circular(12)
+                                      ),
+                                      height: 90,
+                                      width: 90,
+                                        child: Padding(
+                                          padding: const EdgeInsets.only(top: 2, bottom: 2, left: 2, right: 12 ),
+                                          child: Image.network(
+                                            state.loadedCart[index].images, 
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
                                     ),
-                                  ),
-                                  subtitle: Text(
-                                    '\$' + state.loadedCart[index].price.toString(),
-                                    style: const TextStyle(
-                                      
-                                      fontSize: 21,
-                                      fontFamily: 'MarkPronormal400',
-                                      fontWeight: FontWeight.w600,
-                                      color: IconColors.appColor
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 20),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            state.loadedCart[index].title,
+                                            style: const TextStyle(
+                                              fontSize: 21,
+                                              fontFamily: 'MarkPronormal400',
+                                              fontWeight: FontWeight.w600,
+                                              color: Colors.white
+                                            ),
+                                          ),
+                                          Text(
+                                            '\$' + state.loadedCart[index].price.toString(),
+                                            textAlign: TextAlign.start,
+                                            style: const TextStyle(
+                                              fontSize: 21,
+                                              fontFamily: 'MarkPronormal400',
+                                              fontWeight: FontWeight.w600,
+                                              color: IconColors.appColor
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                  ),
-                                  trailing: ElevatedButton(
+                                    // SizedBox(width: 10,),
+                                    Container(
+                                      height: 80,
+                                      width: 26,
+                                      decoration: BoxDecoration(
+                                        color: ContainerColor.appColor,
+                                        borderRadius: BorderRadiusDirectional.circular(12)
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Expanded(
+                                            child: IconButton(
+                                              onPressed: () {},
+                                              icon: svgMinus
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: IconButton(
+                                              onPressed: () {},
+                                              icon: svgPlus
+                                            ),
+                                          ),
+                                        ],
+                                      )
+                                    ),
+                                  ElevatedButton(
                                     onPressed: () {},
                                     style: ElevatedButton.styleFrom(
                                       shape: const CircleBorder(), 
@@ -158,11 +202,13 @@ class _CartWidgetState extends State<CartWidget> {
                                       height: 19,
                                     )
                                   ),
-                                  contentPadding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
-                                )
+                          
+                            ]
+                            ),
+                              )
                               );
-                            }
-                          ),
+                              }
+                          
                         ),
                         const Divider(
                           color: Colors.white,
@@ -219,11 +265,14 @@ class _CartWidgetState extends State<CartWidget> {
                             ],
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        // const SizedBox(height: 20),
+                        const Divider(
+                          // color: Colors.grey,
+                        ),
                         const Divider(
                           color: Colors.white,
                         ),
-                        const SizedBox(height: 20),
+                        const SizedBox(height: 30),
                         ElevatedButton(
                           onPressed: () {},
                           child: const Text(

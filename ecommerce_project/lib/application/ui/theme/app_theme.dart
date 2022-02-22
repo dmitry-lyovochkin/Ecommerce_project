@@ -29,3 +29,6 @@ abstract class IconColors {
 abstract class BorderColor {
   static const appColor = Color.fromRGBO(220, 220, 220, 1);
 }
+abstract class ContainerColor {
+  static const appColor = Color.fromRGBO(40, 40, 67, 1);
+}

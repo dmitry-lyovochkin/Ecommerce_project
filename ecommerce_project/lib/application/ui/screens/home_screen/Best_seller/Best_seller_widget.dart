@@ -85,7 +85,9 @@ class GridWidget extends StatelessWidget {
               MaterialPageRoute(builder: (context) => const ProductDetailsWidget()),
             );
           },
-          child: Stack(alignment: Alignment.topCenter, children: [
+          child: Stack(
+            alignment: Alignment.topCenter, 
+            children: [
             SizedBox(
               // height: 120,
               // width: 190,
