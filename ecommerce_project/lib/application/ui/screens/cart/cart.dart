@@ -1,6 +1,7 @@
 
 import 'package:ecommerce_project/application/services/API/model_cart.dart';
 import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_bloc.dart';
+import 'package:ecommerce_project/application/services/bloc/counter_bloc/counter_bloc.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
 import 'package:flutter/material.dart';
@@ -17,23 +18,16 @@ class CartWidget extends StatefulWidget {
 }
 
 class _CartWidgetState extends State<CartWidget> {
-  final cartRepository = CartRepository();
+  // final cartRepository = CartRepository();
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CartBloc>(
+    return BlocProvider<CounterBloc>(
       create: (context) => 
-        CartBloc(cartRepository)..add(CartLoadEvent()),
+        CounterBloc(),
       child: Scaffold(
-        body: BlocBuilder<CartBloc, CartState>(
-          builder: (context, state) {
-          if (state is CartLoadingState) {
-            return const Center( 
-              child: CircularProgressIndicator()
-            );
-          }
-          if (state is CartLoadedState) { 
-            return SingleChildScrollView(
+        body:
+             SingleChildScrollView(
               child: Column(
                 children: [
                   Padding(
@@ -118,7 +112,7 @@ class _CartWidgetState extends State<CartWidget> {
                           child: ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
-                            itemCount: (state.loadedCart).length,
+                            itemCount: 2,
                             itemBuilder: (context, index) {
                               return Card(
                                 color: AppColors.buttonBarColor/* Colors.red */,
@@ -135,10 +129,10 @@ class _CartWidgetState extends State<CartWidget> {
                                         width: 90,
                                           child: Padding(
                                             padding: const EdgeInsets.only(top: 2, bottom: 2, left: 2, right: 12 ),
-                                            child: Image.network(
-                                              state.loadedCart[index].images, 
-                                              fit: BoxFit.contain,
-                                            ),
+                                            // child: Image.network(
+                                            //   state.loadedCart[index].images, 
+                                            //   fit: BoxFit.contain,
+                                            // ),
                                           ),
                                       ),
                                       Padding(
@@ -147,7 +141,8 @@ class _CartWidgetState extends State<CartWidget> {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              state.loadedCart[index].title,
+                                              // state.loadedCart[index].title,
+                                              "gwergewfewfewf",
                                               style: const TextStyle(
                                                 fontSize: 21,
                                                 fontFamily: 'MarkPronormal400',
@@ -157,7 +152,8 @@ class _CartWidgetState extends State<CartWidget> {
                                             ),
                                             const SizedBox(height: 7,),
                                             Text(
-                                              '\$' + state.loadedCart[index].price.toString(),
+                                              // '\$' + state.loadedCart[index].price.toString(),
+                                              "fewf",
                                               textAlign: TextAlign.start,
                                               style: const TextStyle(
                                                 fontSize: 21,
@@ -169,7 +165,7 @@ class _CartWidgetState extends State<CartWidget> {
                                           ],
                                         ),
                                       ),
-                                      const SizedBox(width: 20),
+                                      // const SizedBox(width: 20),
                                       Container(
                                         // margin: const EdgeInsets.only(left: 30),
                                         height: 100,
@@ -182,25 +178,19 @@ class _CartWidgetState extends State<CartWidget> {
                                           children: [
                                             Expanded(
                                               child: IconButton(
-                                                onPressed: () {},
+                                                onPressed: () => context.read<CounterBloc>().add(const CounterEvent.increment()) ,
                                                 icon: svgMinus,
                                               ),
                                             ),
                                             Expanded(
                                               child: IconButton(
                                                 onPressed: () {},
-                                                icon: const Text(
-                                                  '2', 
-                                                  style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 20
-                                                  )
-                                                ),
+                                                icon: const CounterText(),
                                               ),
                                             ),
                                             Expanded(
                                               child: IconButton(
-                                                onPressed: () {},
+                                                onPressed: () => context.read<CounterBloc>().add(const CounterEvent.decrement()),
                                                 icon: svgPlus
                                               ),
                                             ),
@@ -313,19 +303,24 @@ class _CartWidgetState extends State<CartWidget> {
                   )
                 ]
               ),
-            );
-          }
-          if (state is CartErrorState) {
-            return const Center(
-              child: Text('Error getcing details')
-            );
-          }
-          return const CircularProgressIndicator();
-          }
+            )
+         
         )
-      )
+      
     );
   }
 }
   
-  
+class CounterText extends StatelessWidget {
+  const CounterText({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final state = context.watch<CounterBloc>().state;
+    return state.when(
+      initial: () => const CircularProgressIndicator(), 
+      loading: () => const CircularProgressIndicator(), 
+      loaded: (counter) => Text('$counter', style: const TextStyle(color: Colors.red),),
+    );
+  }
+}

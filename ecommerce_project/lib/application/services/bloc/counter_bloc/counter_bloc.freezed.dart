@@ -18,6 +18,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$CounterEventTearOff {
   const _$CounterEventTearOff();
 
+  CounterStartEvent start() {
+    return const CounterStartEvent();
+  }
+
   CounterIncrementEvent increment() {
     return const CounterIncrementEvent();
   }
@@ -34,18 +38,21 @@ const $CounterEvent = _$CounterEventTearOff();
 mixin _$CounterEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() start,
     required TResult Function() increment,
     required TResult Function() decrement,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? start,
     TResult Function()? increment,
     TResult Function()? decrement,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? start,
     TResult Function()? increment,
     TResult Function()? decrement,
     required TResult orElse(),
@@ -53,18 +60,21 @@ mixin _$CounterEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(CounterStartEvent value) start,
     required TResult Function(CounterIncrementEvent value) increment,
     required TResult Function(CounterDecrementEvent value) decrement,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CounterStartEvent value)? start,
     TResult Function(CounterIncrementEvent value)? increment,
     TResult Function(CounterDecrementEvent value)? decrement,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(CounterStartEvent value)? start,
     TResult Function(CounterIncrementEvent value)? increment,
     TResult Function(CounterDecrementEvent value)? decrement,
     required TResult orElse(),
@@ -86,6 +96,117 @@ class _$CounterEventCopyWithImpl<$Res> implements $CounterEventCopyWith<$Res> {
   final CounterEvent _value;
   // ignore: unused_field
   final $Res Function(CounterEvent) _then;
+}
+
+/// @nodoc
+abstract class $CounterStartEventCopyWith<$Res> {
+  factory $CounterStartEventCopyWith(
+          CounterStartEvent value, $Res Function(CounterStartEvent) then) =
+      _$CounterStartEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$CounterStartEventCopyWithImpl<$Res>
+    extends _$CounterEventCopyWithImpl<$Res>
+    implements $CounterStartEventCopyWith<$Res> {
+  _$CounterStartEventCopyWithImpl(
+      CounterStartEvent _value, $Res Function(CounterStartEvent) _then)
+      : super(_value, (v) => _then(v as CounterStartEvent));
+
+  @override
+  CounterStartEvent get _value => super._value as CounterStartEvent;
+}
+
+/// @nodoc
+
+class _$CounterStartEvent implements CounterStartEvent {
+  const _$CounterStartEvent();
+
+  @override
+  String toString() {
+    return 'CounterEvent.start()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is CounterStartEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() start,
+    required TResult Function() increment,
+    required TResult Function() decrement,
+  }) {
+    return start();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? start,
+    TResult Function()? increment,
+    TResult Function()? decrement,
+  }) {
+    return start?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? start,
+    TResult Function()? increment,
+    TResult Function()? decrement,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CounterStartEvent value) start,
+    required TResult Function(CounterIncrementEvent value) increment,
+    required TResult Function(CounterDecrementEvent value) decrement,
+  }) {
+    return start(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CounterStartEvent value)? start,
+    TResult Function(CounterIncrementEvent value)? increment,
+    TResult Function(CounterDecrementEvent value)? decrement,
+  }) {
+    return start?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CounterStartEvent value)? start,
+    TResult Function(CounterIncrementEvent value)? increment,
+    TResult Function(CounterDecrementEvent value)? decrement,
+    required TResult orElse(),
+  }) {
+    if (start != null) {
+      return start(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CounterStartEvent implements CounterEvent {
+  const factory CounterStartEvent() = _$CounterStartEvent;
 }
 
 /// @nodoc
@@ -129,6 +250,7 @@ class _$CounterIncrementEvent implements CounterIncrementEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() start,
     required TResult Function() increment,
     required TResult Function() decrement,
   }) {
@@ -138,6 +260,7 @@ class _$CounterIncrementEvent implements CounterIncrementEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? start,
     TResult Function()? increment,
     TResult Function()? decrement,
   }) {
@@ -147,6 +270,7 @@ class _$CounterIncrementEvent implements CounterIncrementEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? start,
     TResult Function()? increment,
     TResult Function()? decrement,
     required TResult orElse(),
@@ -160,6 +284,7 @@ class _$CounterIncrementEvent implements CounterIncrementEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(CounterStartEvent value) start,
     required TResult Function(CounterIncrementEvent value) increment,
     required TResult Function(CounterDecrementEvent value) decrement,
   }) {
@@ -169,6 +294,7 @@ class _$CounterIncrementEvent implements CounterIncrementEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CounterStartEvent value)? start,
     TResult Function(CounterIncrementEvent value)? increment,
     TResult Function(CounterDecrementEvent value)? decrement,
   }) {
@@ -178,6 +304,7 @@ class _$CounterIncrementEvent implements CounterIncrementEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(CounterStartEvent value)? start,
     TResult Function(CounterIncrementEvent value)? increment,
     TResult Function(CounterDecrementEvent value)? decrement,
     required TResult orElse(),
@@ -234,6 +361,7 @@ class _$CounterDecrementEvent implements CounterDecrementEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() start,
     required TResult Function() increment,
     required TResult Function() decrement,
   }) {
@@ -243,6 +371,7 @@ class _$CounterDecrementEvent implements CounterDecrementEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? start,
     TResult Function()? increment,
     TResult Function()? decrement,
   }) {
@@ -252,6 +381,7 @@ class _$CounterDecrementEvent implements CounterDecrementEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? start,
     TResult Function()? increment,
     TResult Function()? decrement,
     required TResult orElse(),
@@ -265,6 +395,7 @@ class _$CounterDecrementEvent implements CounterDecrementEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(CounterStartEvent value) start,
     required TResult Function(CounterIncrementEvent value) increment,
     required TResult Function(CounterDecrementEvent value) decrement,
   }) {
@@ -274,6 +405,7 @@ class _$CounterDecrementEvent implements CounterDecrementEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CounterStartEvent value)? start,
     TResult Function(CounterIncrementEvent value)? increment,
     TResult Function(CounterDecrementEvent value)? decrement,
   }) {
@@ -283,6 +415,7 @@ class _$CounterDecrementEvent implements CounterDecrementEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(CounterStartEvent value)? start,
     TResult Function(CounterIncrementEvent value)? increment,
     TResult Function(CounterDecrementEvent value)? decrement,
     required TResult orElse(),
@@ -302,16 +435,16 @@ abstract class CounterDecrementEvent implements CounterEvent {
 class _$CounterStateTearOff {
   const _$CounterStateTearOff();
 
-  _CounterInitialState initial() {
-    return const _CounterInitialState();
+  CounterInitialState initial() {
+    return const CounterInitialState();
   }
 
-  _CounterLoadingState loading() {
-    return const _CounterLoadingState();
+  CounterLoadingState loading() {
+    return const CounterLoadingState();
   }
 
-  _CounterLoadedState loaded({required int counter}) {
-    return _CounterLoadedState(
+  CounterLoadedState loaded({required int counter}) {
+    return CounterLoadedState(
       counter: counter,
     );
   }
@@ -346,23 +479,23 @@ mixin _$CounterState {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CounterInitialState value) initial,
-    required TResult Function(_CounterLoadingState value) loading,
-    required TResult Function(_CounterLoadedState value) loaded,
+    required TResult Function(CounterInitialState value) initial,
+    required TResult Function(CounterLoadingState value) loading,
+    required TResult Function(CounterLoadedState value) loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_CounterInitialState value)? initial,
-    TResult Function(_CounterLoadingState value)? loading,
-    TResult Function(_CounterLoadedState value)? loaded,
+    TResult Function(CounterInitialState value)? initial,
+    TResult Function(CounterLoadingState value)? loading,
+    TResult Function(CounterLoadedState value)? loaded,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CounterInitialState value)? initial,
-    TResult Function(_CounterLoadingState value)? loading,
-    TResult Function(_CounterLoadedState value)? loaded,
+    TResult Function(CounterInitialState value)? initial,
+    TResult Function(CounterLoadingState value)? loading,
+    TResult Function(CounterLoadedState value)? loaded,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -385,28 +518,28 @@ class _$CounterStateCopyWithImpl<$Res> implements $CounterStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$CounterInitialStateCopyWith<$Res> {
-  factory _$CounterInitialStateCopyWith(_CounterInitialState value,
-          $Res Function(_CounterInitialState) then) =
-      __$CounterInitialStateCopyWithImpl<$Res>;
+abstract class $CounterInitialStateCopyWith<$Res> {
+  factory $CounterInitialStateCopyWith(
+          CounterInitialState value, $Res Function(CounterInitialState) then) =
+      _$CounterInitialStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$CounterInitialStateCopyWithImpl<$Res>
+class _$CounterInitialStateCopyWithImpl<$Res>
     extends _$CounterStateCopyWithImpl<$Res>
-    implements _$CounterInitialStateCopyWith<$Res> {
-  __$CounterInitialStateCopyWithImpl(
-      _CounterInitialState _value, $Res Function(_CounterInitialState) _then)
-      : super(_value, (v) => _then(v as _CounterInitialState));
+    implements $CounterInitialStateCopyWith<$Res> {
+  _$CounterInitialStateCopyWithImpl(
+      CounterInitialState _value, $Res Function(CounterInitialState) _then)
+      : super(_value, (v) => _then(v as CounterInitialState));
 
   @override
-  _CounterInitialState get _value => super._value as _CounterInitialState;
+  CounterInitialState get _value => super._value as CounterInitialState;
 }
 
 /// @nodoc
 
-class _$_CounterInitialState implements _CounterInitialState {
-  const _$_CounterInitialState();
+class _$CounterInitialState implements CounterInitialState {
+  const _$CounterInitialState();
 
   @override
   String toString() {
@@ -416,7 +549,7 @@ class _$_CounterInitialState implements _CounterInitialState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _CounterInitialState);
+        (other.runtimeType == runtimeType && other is CounterInitialState);
   }
 
   @override
@@ -459,9 +592,9 @@ class _$_CounterInitialState implements _CounterInitialState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CounterInitialState value) initial,
-    required TResult Function(_CounterLoadingState value) loading,
-    required TResult Function(_CounterLoadedState value) loaded,
+    required TResult Function(CounterInitialState value) initial,
+    required TResult Function(CounterLoadingState value) loading,
+    required TResult Function(CounterLoadedState value) loaded,
   }) {
     return initial(this);
   }
@@ -469,9 +602,9 @@ class _$_CounterInitialState implements _CounterInitialState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_CounterInitialState value)? initial,
-    TResult Function(_CounterLoadingState value)? loading,
-    TResult Function(_CounterLoadedState value)? loaded,
+    TResult Function(CounterInitialState value)? initial,
+    TResult Function(CounterLoadingState value)? loading,
+    TResult Function(CounterLoadedState value)? loaded,
   }) {
     return initial?.call(this);
   }
@@ -479,9 +612,9 @@ class _$_CounterInitialState implements _CounterInitialState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CounterInitialState value)? initial,
-    TResult Function(_CounterLoadingState value)? loading,
-    TResult Function(_CounterLoadedState value)? loaded,
+    TResult Function(CounterInitialState value)? initial,
+    TResult Function(CounterLoadingState value)? loading,
+    TResult Function(CounterLoadedState value)? loaded,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -491,33 +624,33 @@ class _$_CounterInitialState implements _CounterInitialState {
   }
 }
 
-abstract class _CounterInitialState implements CounterState {
-  const factory _CounterInitialState() = _$_CounterInitialState;
+abstract class CounterInitialState implements CounterState {
+  const factory CounterInitialState() = _$CounterInitialState;
 }
 
 /// @nodoc
-abstract class _$CounterLoadingStateCopyWith<$Res> {
-  factory _$CounterLoadingStateCopyWith(_CounterLoadingState value,
-          $Res Function(_CounterLoadingState) then) =
-      __$CounterLoadingStateCopyWithImpl<$Res>;
+abstract class $CounterLoadingStateCopyWith<$Res> {
+  factory $CounterLoadingStateCopyWith(
+          CounterLoadingState value, $Res Function(CounterLoadingState) then) =
+      _$CounterLoadingStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$CounterLoadingStateCopyWithImpl<$Res>
+class _$CounterLoadingStateCopyWithImpl<$Res>
     extends _$CounterStateCopyWithImpl<$Res>
-    implements _$CounterLoadingStateCopyWith<$Res> {
-  __$CounterLoadingStateCopyWithImpl(
-      _CounterLoadingState _value, $Res Function(_CounterLoadingState) _then)
-      : super(_value, (v) => _then(v as _CounterLoadingState));
+    implements $CounterLoadingStateCopyWith<$Res> {
+  _$CounterLoadingStateCopyWithImpl(
+      CounterLoadingState _value, $Res Function(CounterLoadingState) _then)
+      : super(_value, (v) => _then(v as CounterLoadingState));
 
   @override
-  _CounterLoadingState get _value => super._value as _CounterLoadingState;
+  CounterLoadingState get _value => super._value as CounterLoadingState;
 }
 
 /// @nodoc
 
-class _$_CounterLoadingState implements _CounterLoadingState {
-  const _$_CounterLoadingState();
+class _$CounterLoadingState implements CounterLoadingState {
+  const _$CounterLoadingState();
 
   @override
   String toString() {
@@ -527,7 +660,7 @@ class _$_CounterLoadingState implements _CounterLoadingState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _CounterLoadingState);
+        (other.runtimeType == runtimeType && other is CounterLoadingState);
   }
 
   @override
@@ -570,9 +703,9 @@ class _$_CounterLoadingState implements _CounterLoadingState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CounterInitialState value) initial,
-    required TResult Function(_CounterLoadingState value) loading,
-    required TResult Function(_CounterLoadedState value) loaded,
+    required TResult Function(CounterInitialState value) initial,
+    required TResult Function(CounterLoadingState value) loading,
+    required TResult Function(CounterLoadedState value) loaded,
   }) {
     return loading(this);
   }
@@ -580,9 +713,9 @@ class _$_CounterLoadingState implements _CounterLoadingState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_CounterInitialState value)? initial,
-    TResult Function(_CounterLoadingState value)? loading,
-    TResult Function(_CounterLoadedState value)? loaded,
+    TResult Function(CounterInitialState value)? initial,
+    TResult Function(CounterLoadingState value)? loading,
+    TResult Function(CounterLoadedState value)? loaded,
   }) {
     return loading?.call(this);
   }
@@ -590,9 +723,9 @@ class _$_CounterLoadingState implements _CounterLoadingState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CounterInitialState value)? initial,
-    TResult Function(_CounterLoadingState value)? loading,
-    TResult Function(_CounterLoadedState value)? loaded,
+    TResult Function(CounterInitialState value)? initial,
+    TResult Function(CounterLoadingState value)? loading,
+    TResult Function(CounterLoadedState value)? loaded,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -602,34 +735,34 @@ class _$_CounterLoadingState implements _CounterLoadingState {
   }
 }
 
-abstract class _CounterLoadingState implements CounterState {
-  const factory _CounterLoadingState() = _$_CounterLoadingState;
+abstract class CounterLoadingState implements CounterState {
+  const factory CounterLoadingState() = _$CounterLoadingState;
 }
 
 /// @nodoc
-abstract class _$CounterLoadedStateCopyWith<$Res> {
-  factory _$CounterLoadedStateCopyWith(
-          _CounterLoadedState value, $Res Function(_CounterLoadedState) then) =
-      __$CounterLoadedStateCopyWithImpl<$Res>;
+abstract class $CounterLoadedStateCopyWith<$Res> {
+  factory $CounterLoadedStateCopyWith(
+          CounterLoadedState value, $Res Function(CounterLoadedState) then) =
+      _$CounterLoadedStateCopyWithImpl<$Res>;
   $Res call({int counter});
 }
 
 /// @nodoc
-class __$CounterLoadedStateCopyWithImpl<$Res>
+class _$CounterLoadedStateCopyWithImpl<$Res>
     extends _$CounterStateCopyWithImpl<$Res>
-    implements _$CounterLoadedStateCopyWith<$Res> {
-  __$CounterLoadedStateCopyWithImpl(
-      _CounterLoadedState _value, $Res Function(_CounterLoadedState) _then)
-      : super(_value, (v) => _then(v as _CounterLoadedState));
+    implements $CounterLoadedStateCopyWith<$Res> {
+  _$CounterLoadedStateCopyWithImpl(
+      CounterLoadedState _value, $Res Function(CounterLoadedState) _then)
+      : super(_value, (v) => _then(v as CounterLoadedState));
 
   @override
-  _CounterLoadedState get _value => super._value as _CounterLoadedState;
+  CounterLoadedState get _value => super._value as CounterLoadedState;
 
   @override
   $Res call({
     Object? counter = freezed,
   }) {
-    return _then(_CounterLoadedState(
+    return _then(CounterLoadedState(
       counter: counter == freezed
           ? _value.counter
           : counter // ignore: cast_nullable_to_non_nullable
@@ -640,8 +773,8 @@ class __$CounterLoadedStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CounterLoadedState implements _CounterLoadedState {
-  const _$_CounterLoadedState({required this.counter});
+class _$CounterLoadedState implements CounterLoadedState {
+  const _$CounterLoadedState({required this.counter});
 
   @override
   final int counter;
@@ -655,7 +788,7 @@ class _$_CounterLoadedState implements _CounterLoadedState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CounterLoadedState &&
+            other is CounterLoadedState &&
             const DeepCollectionEquality().equals(other.counter, counter));
   }
 
@@ -665,8 +798,8 @@ class _$_CounterLoadedState implements _CounterLoadedState {
 
   @JsonKey(ignore: true)
   @override
-  _$CounterLoadedStateCopyWith<_CounterLoadedState> get copyWith =>
-      __$CounterLoadedStateCopyWithImpl<_CounterLoadedState>(this, _$identity);
+  $CounterLoadedStateCopyWith<CounterLoadedState> get copyWith =>
+      _$CounterLoadedStateCopyWithImpl<CounterLoadedState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -705,9 +838,9 @@ class _$_CounterLoadedState implements _CounterLoadedState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_CounterInitialState value) initial,
-    required TResult Function(_CounterLoadingState value) loading,
-    required TResult Function(_CounterLoadedState value) loaded,
+    required TResult Function(CounterInitialState value) initial,
+    required TResult Function(CounterLoadingState value) loading,
+    required TResult Function(CounterLoadedState value) loaded,
   }) {
     return loaded(this);
   }
@@ -715,9 +848,9 @@ class _$_CounterLoadedState implements _CounterLoadedState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_CounterInitialState value)? initial,
-    TResult Function(_CounterLoadingState value)? loading,
-    TResult Function(_CounterLoadedState value)? loaded,
+    TResult Function(CounterInitialState value)? initial,
+    TResult Function(CounterLoadingState value)? loading,
+    TResult Function(CounterLoadedState value)? loaded,
   }) {
     return loaded?.call(this);
   }
@@ -725,9 +858,9 @@ class _$_CounterLoadedState implements _CounterLoadedState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_CounterInitialState value)? initial,
-    TResult Function(_CounterLoadingState value)? loading,
-    TResult Function(_CounterLoadedState value)? loaded,
+    TResult Function(CounterInitialState value)? initial,
+    TResult Function(CounterLoadingState value)? loading,
+    TResult Function(CounterLoadedState value)? loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
@@ -737,12 +870,12 @@ class _$_CounterLoadedState implements _CounterLoadedState {
   }
 }
 
-abstract class _CounterLoadedState implements CounterState {
-  const factory _CounterLoadedState({required int counter}) =
-      _$_CounterLoadedState;
+abstract class CounterLoadedState implements CounterState {
+  const factory CounterLoadedState({required int counter}) =
+      _$CounterLoadedState;
 
   int get counter;
   @JsonKey(ignore: true)
-  _$CounterLoadedStateCopyWith<_CounterLoadedState> get copyWith =>
+  $CounterLoadedStateCopyWith<CounterLoadedState> get copyWith =>
       throw _privateConstructorUsedError;
 }
