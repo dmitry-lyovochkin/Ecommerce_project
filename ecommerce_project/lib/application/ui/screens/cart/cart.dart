@@ -2,6 +2,7 @@
 import 'package:ecommerce_project/application/services/API/model_cart.dart';
 import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_bloc.dart';
 import 'package:ecommerce_project/application/services/bloc/counter_bloc/counter_bloc.dart';
+import 'package:ecommerce_project/application/services/bloc/counter_bloc/counter_event.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
 import 'package:flutter/material.dart';
@@ -25,9 +26,12 @@ class _CartWidgetState extends State<CartWidget> {
     return BlocProvider<CounterBloc>(
       create: (context) => 
         CounterBloc(),
+        
       child: Scaffold(
-        body:
-             SingleChildScrollView(
+        
+        body:BlocBuilder<CounterBloc, CounterState>(
+              builder: (context, state) {
+            return  SingleChildScrollView(
               child: Column(
                 children: [
                   Padding(
@@ -127,8 +131,8 @@ class _CartWidgetState extends State<CartWidget> {
                                         ),
                                         height: 90,
                                         width: 90,
-                                          child: Padding(
-                                            padding: const EdgeInsets.only(top: 2, bottom: 2, left: 2, right: 12 ),
+                                          child: const Padding(
+                                            padding: EdgeInsets.only(top: 2, bottom: 2, left: 2, right: 12 ),
                                             // child: Image.network(
                                             //   state.loadedCart[index].images, 
                                             //   fit: BoxFit.contain,
@@ -140,10 +144,10 @@ class _CartWidgetState extends State<CartWidget> {
                                         child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text(
+                                            const Text(
                                               // state.loadedCart[index].title,
                                               "gwergewfewfewf",
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                 fontSize: 21,
                                                 fontFamily: 'MarkPronormal400',
                                                 fontWeight: FontWeight.w600,
@@ -151,11 +155,11 @@ class _CartWidgetState extends State<CartWidget> {
                                               ),
                                             ),
                                             const SizedBox(height: 7,),
-                                            Text(
+                                            const Text(
                                               // '\$' + state.loadedCart[index].price.toString(),
                                               "fewf",
                                               textAlign: TextAlign.start,
-                                              style: const TextStyle(
+                                              style: TextStyle(
                                                 fontSize: 21,
                                                 fontFamily: 'MarkPronormal400',
                                                 fontWeight: FontWeight.w600,
@@ -178,19 +182,18 @@ class _CartWidgetState extends State<CartWidget> {
                                           children: [
                                             Expanded(
                                               child: IconButton(
-                                                onPressed: () => context.read<CounterBloc>().add(const CounterEvent.increment()) ,
+                                                onPressed: () => context.read<CounterBloc>().add(Decrement()),
                                                 icon: svgMinus,
                                               ),
                                             ),
                                             Expanded(
                                               child: IconButton(
                                                 onPressed: () {},
-                                                icon: const CounterText(),
-                                              ),
+                                                icon: Text(state.counterValue.toString(), style: const TextStyle(color: Colors.white, fontSize: 18), ))
                                             ),
                                             Expanded(
                                               child: IconButton(
-                                                onPressed: () => context.read<CounterBloc>().add(const CounterEvent.decrement()),
+                                                onPressed: () => context.read<CounterBloc>().add(Increment()),
                                                 icon: svgPlus
                                               ),
                                             ),
@@ -303,24 +306,28 @@ class _CartWidgetState extends State<CartWidget> {
                   )
                 ]
               ),
-            )
+            );
          
-        )
+        
       
-    );
+         
   }
+  )
+  )
+    );
+    
 }
   
-class CounterText extends StatelessWidget {
-  const CounterText({Key? key}) : super(key: key);
+// class CounterText extends StatelessWidget {
+//   const CounterText({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    final state = context.watch<CounterBloc>().state;
-    return state.when(
-      initial: () => const CircularProgressIndicator(), 
-      loading: () => const CircularProgressIndicator(), 
-      loaded: (counter) => Text('$counter', style: const TextStyle(color: Colors.red),),
-    );
-  }
+//   @override
+//   Widget build(BuildContext context) {
+//     final state = context.watch<CounterBloc>().state;
+//     return state.when(
+//       initial: () => const CircularProgressIndicator(), 
+//       loading: () => const CircularProgressIndicator(), 
+//       loaded: (counter) => Text('$counter', style: const TextStyle(color: Colors.red),),
+//     );
+//   }
 }

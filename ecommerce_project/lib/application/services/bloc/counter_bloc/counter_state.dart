@@ -1,11 +1,23 @@
 part of 'counter_bloc.dart';
 
-@freezed
-class CounterState with _$CounterState {
-  const factory CounterState.initial() = CounterInitialState;
-  const factory CounterState.loading() = CounterLoadingState;
-  const factory CounterState.loaded({required int counter}) = CounterLoadedState;
+// @freezed
+// class CounterState with _$CounterState {
+//   const factory CounterState.initial() = CounterInitialState;
+//   const factory CounterState.loading() = CounterLoadingState;
+//   const factory CounterState.loaded({required int counter}) = CounterLoadedState;
+// }
+
+
+class CounterState {
+  int counterValue;
+
+  CounterState({required this.counterValue});
 }
+
+// class CounterInitial extends CounterState {
+//   CounterInitial({required int counterValue}) : super(counterValue: 0);
+
+// }
 
 // @immutable
 // abstract class CounterState {}
