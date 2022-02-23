@@ -19,7 +19,7 @@ class CartWidget extends StatefulWidget {
 }
 
 class _CartWidgetState extends State<CartWidget> {
-  // final cartRepository = CartRepository();
+  final cartRepository = CartRepository();
 
   @override
   Widget build(BuildContext context) {
@@ -191,7 +191,7 @@ class _CartWidgetState extends State<CartWidget> {
                                             Expanded(
                                               child: IconButton(
                                                 onPressed: () {},
-                                                icon: Text('sa'/* state.counterValue.toString(), style: const TextStyle(color: Colors.white, fontSize: 18), ) */)
+                                                icon: Text(state.counterValue.toString(), style: const TextStyle(color: Colors.white, fontSize: 18))
                                               ),
                                             ),
                                             Expanded(
