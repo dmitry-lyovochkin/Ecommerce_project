@@ -8,11 +8,11 @@ part of 'counter_bloc.dart';
 // }
 
 
-class CounterState {
-  int counterValue;
+// class CounterState {
+//   int counterValue;
 
-  CounterState({required this.counterValue});
-}
+//   CounterState({required this.counterValue});
+// }
 
 // class CounterInitial extends CounterState {
 //   CounterInitial({required int counterValue}) : super(counterValue: 0);

@@ -58,20 +58,19 @@ class CounterObserver extends BlocObserver {
   }
 }
 
-class CounterBloc extends Bloc<CounterEvent, CounterState> {
-  /// {@macro counter_cubit}
-  CounterBloc() : super(CounterState(counterValue: 0)) {
-    on<CounterEvent>(((event, emit) {
-      if (event is Increment) {
-        emit(CounterState(counterValue: state.counterValue + 1));
-      } else {
-        if (state.counterValue > 0) {
-        emit(CounterState(counterValue: state.counterValue - 1));
-        }
-      }
-    }));
-  }
-}
+// class CounterBloc extends Bloc<CounterEvent, CounterState> {
+//   CounterBloc() : super(CounterState(counterValue: 0)) {
+//     on<CounterEvent>(((event, emit) {
+//       if (event is Increment) {
+//         emit(CounterState(counterValue: state.counterValue + 1));
+//       } else {
+//         if (state.counterValue > 0) {
+//         emit(CounterState(counterValue: state.counterValue - 1));
+//         }
+//       }
+//     }));
+//   }
+// }
 
 //   /// Add 1 to the current state.
 //   void increment() => emit(state + 1);

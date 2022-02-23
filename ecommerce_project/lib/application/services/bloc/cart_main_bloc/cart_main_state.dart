@@ -1,14 +1,14 @@
-import 'package:ecommerce_project/application/services/API/model_cart.dart';
+// import 'package:ecommerce_project/application/services/API/model_cart.dart';
 
-abstract class CartMainState {}
+// abstract class CartMainState {}
 
-// class DetailsEmptyState extends DetailsState {}
+// // class DetailsEmptyState extends DetailsState {}
 
-class CartMainLoadingState extends CartMainState {}
+// class CartMainLoadingState extends CartMainState {}
 
-class CartMainLoadedState extends CartMainState {
-  List<GetCartItems> loadedMainCart;
-  CartMainLoadedState({required this.loadedMainCart});
-}
+// class CartMainLoadedState extends CartMainState {
+//   List<GetCartItems> loadedMainCart;
+//   CartMainLoadedState({required this.loadedMainCart});
+// }
 
-class CartMainErrorState extends CartMainState {}
+// class CartMainErrorState extends CartMainState {}

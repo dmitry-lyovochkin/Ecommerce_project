@@ -23,15 +23,19 @@ class _CartWidgetState extends State<CartWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CounterBloc>(
+    return BlocProvider<CartBloc>(
       create: (context) => 
-        CounterBloc(),
-        
+        CartBloc(cartRepository)..add(CartLoadEvent()),
       child: Scaffold(
-        
-        body:BlocBuilder<CounterBloc, CounterState>(
-              builder: (context, state) {
-            return  SingleChildScrollView(
+        body: BlocBuilder<CartBloc, CartState>(
+          builder: (context, state) {
+          if (state is CartLoadingState) {
+            return const Center( 
+              child: CircularProgressIndicator()
+            );
+          }
+          if (state is CartLoadedState) { 
+            return SingleChildScrollView(
               child: Column(
                 children: [
                   Padding(
@@ -131,12 +135,12 @@ class _CartWidgetState extends State<CartWidget> {
                                         ),
                                         height: 90,
                                         width: 90,
-                                          child: const Padding(
-                                            padding: EdgeInsets.only(top: 2, bottom: 2, left: 2, right: 12 ),
-                                            // child: Image.network(
-                                            //   state.loadedCart[index].images, 
-                                            //   fit: BoxFit.contain,
-                                            // ),
+                                          child:  Padding(
+                                            padding: const EdgeInsets.only(top: 2, bottom: 2, left: 2, right: 12 ),
+                                            child: Image.network(
+                                              state.loadedCart[index].images, 
+                                              fit: BoxFit.contain,
+                                            ),
                                           ),
                                       ),
                                       Padding(
@@ -144,10 +148,9 @@ class _CartWidgetState extends State<CartWidget> {
                                         child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            const Text(
-                                              // state.loadedCart[index].title,
-                                              "gwergewfewfewf",
-                                              style: TextStyle(
+                                             Text(
+                                              state.loadedCart[index].title,
+                                              style: const TextStyle(
                                                 fontSize: 21,
                                                 fontFamily: 'MarkPronormal400',
                                                 fontWeight: FontWeight.w600,
@@ -155,11 +158,10 @@ class _CartWidgetState extends State<CartWidget> {
                                               ),
                                             ),
                                             const SizedBox(height: 7,),
-                                            const Text(
-                                              // '\$' + state.loadedCart[index].price.toString(),
-                                              "fewf",
+                                             Text(
+                                              '\$' + state.loadedCart[index].price.toString(),
                                               textAlign: TextAlign.start,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                 fontSize: 21,
                                                 fontFamily: 'MarkPronormal400',
                                                 fontWeight: FontWeight.w600,
@@ -182,18 +184,19 @@ class _CartWidgetState extends State<CartWidget> {
                                           children: [
                                             Expanded(
                                               child: IconButton(
-                                                onPressed: () => context.read<CounterBloc>().add(Decrement()),
+                                                onPressed: () => context.read<CartBloc>().add(Decrement()),
                                                 icon: svgMinus,
                                               ),
                                             ),
                                             Expanded(
                                               child: IconButton(
                                                 onPressed: () {},
-                                                icon: Text(state.counterValue.toString(), style: const TextStyle(color: Colors.white, fontSize: 18), ))
+                                                icon: Text('sa'/* state.counterValue.toString(), style: const TextStyle(color: Colors.white, fontSize: 18), ) */)
+                                              ),
                                             ),
                                             Expanded(
                                               child: IconButton(
-                                                onPressed: () => context.read<CounterBloc>().add(Increment()),
+                                                onPressed: () => context.read<CartBloc>().add(Increment()),
                                                 icon: svgPlus
                                               ),
                                             ),
@@ -307,11 +310,19 @@ class _CartWidgetState extends State<CartWidget> {
                 ]
               ),
             );
+            }
+          if (state is CartErrorState) {
+            return const Center(
+              child: Text('Error getcing details')
+            );
+          }
+          return const CircularProgressIndicator();
+          }
          
         
       
          
-  }
+  
   )
   )
     );

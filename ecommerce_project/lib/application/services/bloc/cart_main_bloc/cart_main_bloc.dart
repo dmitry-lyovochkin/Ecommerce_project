@@ -9,18 +9,18 @@ import 'package:ecommerce_project/application/services/bloc/cart_main_bloc/cart_
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 
-class CartMainBloc extends Bloc<CartMainEvent, CartMainState> {
-  final CartMainRepository cartMainRepository;
+// class CartMainBloc extends Bloc<CartMainEvent, CartMainState> {
+//   final CartMainRepository cartMainRepository;
   
-  CartMainBloc(this.cartMainRepository) : super(CartMainLoadingState()) {
-    on<CartMainLoadEvent>((event, emit) async {
-      emit(CartMainLoadingState());
-      try {
-        final List<GetCartItems> _loadedCartMainList = await cartMainRepository.getMainCart();
-        emit(CartMainLoadedState(loadedMainCart: _loadedCartMainList));
-      } catch (_) {
-        emit(CartMainErrorState());
-      }
-    });
-  }
-}
+//   CartMainBloc(this.cartMainRepository) : super(CartMainLoadingState()) {
+//     on<CartMainLoadEvent>((event, emit) async {
+//       emit(CartMainLoadingState());
+//       try {
+//         final List<GetCartItems> _loadedCartMainList = await cartMainRepository.getMainCart();
+//         emit(CartMainLoadedState(loadedMainCart: _loadedCartMainList));
+//       } catch (_) {
+//         emit(CartMainErrorState());
+//       }
+//     });
+//   }
+// }
