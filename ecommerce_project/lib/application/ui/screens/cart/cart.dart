@@ -25,7 +25,7 @@ class _CartWidgetState extends State<CartWidget> {
   Widget build(BuildContext context) {
     return BlocProvider<CartBloc>(
       create: (context) => 
-        CartBloc(cartRepository)..add(CartLoadEvent()),
+        CartBloc(cartRepository)..add(const CartLoadEvent()),
       child: Scaffold(
         body: BlocBuilder<CartBloc, CartState>(
           builder: (context, state) {
@@ -184,19 +184,20 @@ class _CartWidgetState extends State<CartWidget> {
                                           children: [
                                             Expanded(
                                               child: IconButton(
-                                                onPressed: () => context.read<CartBloc>().add(Decrement()),
+                                                onPressed: () {},
                                                 icon: svgMinus,
+                                              ),
+                                            ),
+                                            Expanded(
+                                              
+                                              child: IconButton(
+                                                onPressed: () {},
+                                                icon:  const Text('2', style:  TextStyle(color: Colors.white, fontSize: 18))
                                               ),
                                             ),
                                             Expanded(
                                               child: IconButton(
                                                 onPressed: () {},
-                                                icon: Text(state.counterValue.toString(), style: const TextStyle(color: Colors.white, fontSize: 18))
-                                              ),
-                                            ),
-                                            Expanded(
-                                              child: IconButton(
-                                                onPressed: () => context.read<CartBloc>().add(Increment()),
                                                 icon: svgPlus
                                               ),
                                             ),
@@ -234,22 +235,22 @@ class _CartWidgetState extends State<CartWidget> {
                             children:  [
                               const Text(
                                 'Total',
-                                style: const TextStyle(
+                                style:  TextStyle(
                                   fontFamily: 'MarkPronormal700',
                                   fontSize: 15,
                                   fontWeight: FontWeight.w800,
                                   color: Colors.grey
                                 )
                               ),
-                              // Text(
-                              //   '\$' + state.loadedMainCart[0].total.toString() + ' us',
-                              //   style: const TextStyle(
-                              //     fontFamily: 'MarkPronormal700',
-                              //     fontSize: 15,
-                              //     fontWeight: FontWeight.w800,
-                              //     color: Colors.white
-                              //   )
-                              // ),
+                              Text(
+                                '\$' + state.finalPrice.toString() + ' us',
+                                style: const TextStyle(
+                                  fontFamily: 'MarkPronormal700',
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.white
+                                )
+                              ),
                             ],
                           ),
                         ),

@@ -8,34 +8,36 @@ import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_state
 
 class CartBloc extends Bloc<CartEvent, CartState> {
   final CartRepository cartRepository;
-  int counterValue =  0;
+
   
   CartBloc(this.cartRepository) : super(CartLoadingState()) {
-    on<CartLoadEvent>(_getBasket);
-    on<CartEvent>(_counter);
-    // on<CartMainLoadEvent>(_getCartMain);
+    on<CartLoadEvent>((event, emit)async {
+      emit(CartLoadingState());
+          try {
+            final List<Basket> _loadedCartList = await cartRepository.getAllCart();
+            int finalPrice = 0;
+            _loadedCartList.forEach((element) {
+              finalPrice += element.price;
+            });
+            emit(CartLoadedState(loadedCart: _loadedCartList, finalPrice: finalPrice));
+          } catch (_) {
+            emit(CartErrorState());
+          }
+    });
   }
   
 
-  void _getBasket (event, emit) async {
-    emit(CartLoadingState());
-    try {
-      final List<Basket> _loadedCartList = await cartRepository.getAllCart();
-      emit(CartLoadedState(loadedCart: _loadedCartList));
-    } catch (_) {
-      emit(CartErrorState());
-    }
-  }
 
-  void _counter (event, emit) {
-    if (event is Increment) {
-      emit(CounterState(counterValue: counterValue + 1));
-    } else {
-      if (counterValue > 0) {
-      emit(CounterState(counterValue: counterValue - 1));
-      }
-    }
-  }
+  // void _counter (event, emit) {
+  // // var counterValue = 0;
+  //   if (event is Increment) {
+  //     emit(CounterState(counterValue: counterValue + 1));
+  //   } else {
+  //     if (counterValue > 0) {
+  //     emit(CounterState(counterValue: counterValue - 1));
+  //     }
+  //   }
+  // }
   // void _getCartMain(event, emit) async {
   //     emit(CartMainLoadingState());
   //     try {
