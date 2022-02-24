@@ -25,11 +25,11 @@ class _SectionButtonsWidgetState extends State<SectionButtonsWidget> {
     return SizedBox(
       height: 110,
       width: double.maxFinite,
-      child: ListView(
-        // itemCount: categories.length,
+      child: ListView.builder(
+        itemCount: categories.length,
         scrollDirection: Axis.horizontal,
-        // itemBuilder: (BuildContext context, int index) {
-          children: [ Container(
+        itemBuilder: (BuildContext context, int index) {
+          return Container(
             padding: const EdgeInsets.only(
               left: 10,
             ),
@@ -42,44 +42,37 @@ class _SectionButtonsWidgetState extends State<SectionButtonsWidget> {
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        categories[0]['isTap'] = !categories[0]['isTap'];
+                        categories[index]['isTap'] = !categories[index]['isTap'];
                       });
-                      
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      primary: categories[0]['isTap'] ? Colors.white : IconColors.appColor ,
-                    ),
-                    child: SvgPicture.asset(
-              categories[0]['IconPath'],
-              fit: BoxFit.scaleDown,
-              color: Colors.grey,
-              height: 60,
+              },
+              style: ElevatedButton.styleFrom(
+                shape: const CircleBorder(),
+                primary: categories[index]['isTap'] ? IconColors.appColor : Colors.white,
+              ),
+              child: SvgPicture.asset(
+                categories[index]['IconPath'],
+                fit: BoxFit.scaleDown,
+                color: Colors.grey,
+                height: 60,
+              ),
             ),
           ),
-        ),
-        Text(
-          '${categories[0]['name']}',
-          style:  TextStyle(
-            color: categories[0]['isTap'] ?AppColors.buttonBarColor : IconColors.appColor,
-            fontSize: 12,
-            fontFamily: 'MarkPronormal400',
-            fontWeight: FontWeight.w600,
+          Text(
+            '${categories[index]['name']}',
+            style:  TextStyle(
+              color: categories[index]['isTap'] ?IconColors.appColor : AppColors.buttonBarColor  ,
+              fontSize: 12,
+              fontFamily: 'MarkPronormal400',
+              fontWeight: FontWeight.w600,
+            ),
           ),
-        ),
-      ],
-    ),
-  )
-]));
-// @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       height: 110,
-//       width: double.maxFinite,
-//       child: ListView(
-//         scrollDirection: Axis.horizontal,
-//           children: list, 
-//       ),
-//     );
-//   }
+        ],
+      ),
+    );
+  
+
+
+}
+)
+);
 }}
