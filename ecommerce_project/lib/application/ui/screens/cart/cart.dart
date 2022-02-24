@@ -171,7 +171,7 @@ class _CartWidgetState extends State<CartWidget> {
                                           ],
                                         ),
                                       ),
-                                      // const SizedBox(width: 20),
+                                      const SizedBox(width: 20),
                                       Container(
                                         // margin: const EdgeInsets.only(left: 30),
                                         height: 100,
@@ -189,7 +189,6 @@ class _CartWidgetState extends State<CartWidget> {
                                               ),
                                             ),
                                             Expanded(
-                                              
                                               child: IconButton(
                                                 onPressed: () {},
                                                 icon:  const Text('2', style:  TextStyle(color: Colors.white, fontSize: 18))
@@ -268,15 +267,15 @@ class _CartWidgetState extends State<CartWidget> {
                                   color: Colors.grey
                                 )
                               ),
-                              // Text(
-                              //   state.loadedCart[0].delivery,
-                              //   style: const TextStyle(
-                              //     fontFamily: 'MarkPronormal700',
-                              //     fontSize: 15,
-                              //     fontWeight: FontWeight.w800,
-                              //     color: Colors.white
-                              //   )
-                              // ),
+                              Text(
+                                /* state.loadedCart[0].delivery, */ 'Free',
+                                style: TextStyle(
+                                  fontFamily: 'MarkPronormal700',
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w800,
+                                  color: Colors.white
+                                )
+                              ),
                             ],
                           ),
                         ),

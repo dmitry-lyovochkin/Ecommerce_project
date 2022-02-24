@@ -11,13 +11,13 @@ class SectionButtonsWidget extends StatefulWidget {
 
 class _SectionButtonsWidgetState extends State<SectionButtonsWidget> {
   final List<dynamic> categories = [
-    {'name': 'Phones', 'IconPath': 'assets/Phone.svg'},
-    {'name': 'Computer', 'IconPath': 'assets/Computer.svg'},
-    {'name': 'Health', 'IconPath': 'assets/Health.svg'},
-    {'name': 'Books', 'IconPath': 'assets/Books.svg'},
-    {'name': 'Phone', 'IconPath': 'assets/Books.svg'},
-    {'name': 'Phone', 'IconPath': 'assets/Books.svg'},
-    {'name': 'Phone', 'IconPath': 'assets/Books.svg'}
+    {'name': 'Phones', 'IconPath': 'assets/Phone.svg', 'isTap': false},
+    {'name': 'Computer', 'IconPath': 'assets/Computer.svg', 'isTap': false},
+    {'name': 'Health', 'IconPath': 'assets/Health.svg', 'isTap': false},
+    {'name': 'Books', 'IconPath': 'assets/Books.svg', 'isTap': false},
+    {'name': 'Phone', 'IconPath': 'assets/Books.svg', 'isTap': false},
+    {'name': 'Phone', 'IconPath': 'assets/Books.svg', 'isTap': false},
+    {'name': 'Phone', 'IconPath': 'assets/Books.svg', 'isTap': false}
   ];
 
   @override
@@ -25,11 +25,11 @@ class _SectionButtonsWidgetState extends State<SectionButtonsWidget> {
     return SizedBox(
       height: 110,
       width: double.maxFinite,
-      child: ListView.builder(
-        itemCount: categories.length,
+      child: ListView(
+        // itemCount: categories.length,
         scrollDirection: Axis.horizontal,
-        itemBuilder: (BuildContext context, int index) {
-          return Container(
+        // itemBuilder: (BuildContext context, int index) {
+          children: [ Container(
             padding: const EdgeInsets.only(
               left: 10,
             ),
@@ -40,33 +40,46 @@ class _SectionButtonsWidgetState extends State<SectionButtonsWidget> {
                   width: 84,
                   height: 82,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        categories[0]['isTap'] = !categories[0]['isTap'];
+                      });
+                      
+                    },
                     style: ElevatedButton.styleFrom(
                       shape: const CircleBorder(),
-                      primary: Colors.white,
+                      primary: categories[0]['isTap'] ? Colors.white : IconColors.appColor ,
                     ),
                     child: SvgPicture.asset(
-                      categories[index]['IconPath'],
-                      fit: BoxFit.scaleDown,
-                      color: Colors.grey,
-                      height: 60,
-                    ),
-                  ),
-                ),
-                Text(
-                  '${categories[index]['name']}',
-                  style: const TextStyle(
-                    color: AppColors.buttonBarColor,
-                    fontSize: 12,
-                    fontFamily: 'MarkPronormal400',
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ],
+              categories[0]['IconPath'],
+              fit: BoxFit.scaleDown,
+              color: Colors.grey,
+              height: 60,
             ),
-          );
-        },
-      ),
-    );
-  }
-}
+          ),
+        ),
+        Text(
+          '${categories[0]['name']}',
+          style:  TextStyle(
+            color: categories[0]['isTap'] ?AppColors.buttonBarColor : IconColors.appColor,
+            fontSize: 12,
+            fontFamily: 'MarkPronormal400',
+            fontWeight: FontWeight.w600,
+          ),
+        ),
+      ],
+    ),
+  )
+]));
+// @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       height: 110,
+//       width: double.maxFinite,
+//       child: ListView(
+//         scrollDirection: Axis.horizontal,
+//           children: list, 
+//       ),
+//     );
+//   }
+}}

@@ -10,7 +10,7 @@ abstract class CartState extends Equatable  {
 class CartLoadingState extends CartState {
 
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 class CartLoadedState extends CartState {
@@ -23,7 +23,7 @@ class CartLoadedState extends CartState {
 
 
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [loadedCart, finalPrice];
 }
 
 class CartErrorState extends CartState {
@@ -42,7 +42,7 @@ class CounterState extends CartState {
 
 
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 // class CartMainLoadingState extends CartState {
