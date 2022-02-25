@@ -120,7 +120,7 @@ class _CartWidgetState extends State<CartWidget> {
                           child: ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
-                            itemCount: 2,
+                            itemCount: state.loadedCart.length,
                             itemBuilder: (context, index) {
                               return Card(
                                 color: AppColors.buttonBarColor/* Colors.red */,
@@ -311,18 +311,13 @@ class _CartWidgetState extends State<CartWidget> {
               ),
             );
             }
-          if (state is CartErrorState) {
-            return const Center(
-              child: Text('Error getcing details')
-            );
+            if (state is CartErrorState) {
+              return const Center(
+                child: Text('Error getcing details')
+              );
+            }
+             return const CircularProgressIndicator();
           }
-          return const CircularProgressIndicator();
-          }
-         
-        
-      
-         
-  
   )
   )
     );

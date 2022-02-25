@@ -1,3 +1,4 @@
+import 'package:badges/badges.dart';
 import 'package:ecommerce_project/application/ui/screens/cart/cart.dart';
 import 'package:ecommerce_project/application/ui/screens/home_screen/category_widget.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
@@ -26,7 +27,6 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
     ),
   ];
 
-  // без BottomNavBar
   void onSelectTub(int index) {
     if (index != 1) {
       setState(() {
@@ -39,12 +39,6 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       );
     }
   }
-
-  // void _onItemTapped(int index) {
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -74,8 +68,12 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                 ),
                 label: "",
               ),
-              const BottomNavigationBarItem(
-                icon: Icon(CustomIcons.vector, size: 19),
+               BottomNavigationBarItem(
+                icon: Badge(
+                  child: const Icon(CustomIcons.vector, size: 19),
+                  badgeContent: const Text("2"),
+                  position: BadgePosition.topStart(top: -14, start: 12)
+                ),
                 label: "",
               ),
               const BottomNavigationBarItem(

@@ -10,6 +10,8 @@ class SectionButtonsWidget extends StatefulWidget {
 }
 
 class _SectionButtonsWidgetState extends State<SectionButtonsWidget> {
+  int selectedIndex = 0;
+
   final List<dynamic> categories = [
     {'name': 'Phones', 'IconPath': 'assets/Phone.svg', 'isTap': false},
     {'name': 'Computer', 'IconPath': 'assets/Computer.svg', 'isTap': false},
@@ -42,37 +44,35 @@ class _SectionButtonsWidgetState extends State<SectionButtonsWidget> {
                   child: ElevatedButton(
                     onPressed: () {
                       setState(() {
-                        categories[index]['isTap'] = !categories[index]['isTap'];
+                        selectedIndex = index;
                       });
-              },
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-                primary: categories[index]['isTap'] ? IconColors.appColor : Colors.white,
-              ),
-              child: SvgPicture.asset(
-                categories[index]['IconPath'],
-                fit: BoxFit.scaleDown,
-                color: Colors.grey,
-                height: 60,
-              ),
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                      primary: selectedIndex == index ? IconColors.appColor : Colors.white,
+                    ),
+                    child: SvgPicture.asset(
+                      categories[index]['IconPath'],
+                      fit: BoxFit.scaleDown,
+                      color: selectedIndex == index ? Colors.white : Colors.grey,
+                      height: 60,
+                    ),
+                  ),
+                ),
+                Text(
+                  '${categories[index]['name']}',
+                  style:  TextStyle(
+                    color: selectedIndex == index ?IconColors.appColor : AppColors.buttonBarColor  ,
+                    fontSize: 12,
+                    fontFamily: 'MarkPronormal400',
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
             ),
-          ),
-          Text(
-            '${categories[index]['name']}',
-            style:  TextStyle(
-              color: categories[index]['isTap'] ?IconColors.appColor : AppColors.buttonBarColor  ,
-              fontSize: 12,
-              fontFamily: 'MarkPronormal400',
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
-      ),
+          );
+        }
+      )
     );
-  
-
-
+  }
 }
-)
-);
-}}
