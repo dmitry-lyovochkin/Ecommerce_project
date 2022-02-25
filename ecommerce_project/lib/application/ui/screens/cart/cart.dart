@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_bloc.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
@@ -133,8 +134,8 @@ class _CartWidgetState extends State<CartWidget> {
                                         width: 90,
                                           child:  Padding(
                                             padding: const EdgeInsets.only(top: 2, bottom: 2, left: 2, right: 12 ),
-                                            child: Image.network(
-                                              state.loadedCart[index].images, 
+                                            child: CachedNetworkImage(
+                                              imageUrl: state.loadedCart[index].images, 
                                               fit: BoxFit.contain,
                                             ),
                                           ),
