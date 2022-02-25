@@ -174,12 +174,6 @@ class _FilterBrandWidgetState extends State<FilterBrandWidget> {
         color: Colors.grey,
       ),
       isExpanded: true,
-      // elevation: 60,
-      // style: const TextStyle(color: AppColors.buttonBarColor),
-      // underline: Container(
-      //   height: 2,
-      //   color: Colors.deepPurpleAccent,
-      // ),
       onChanged: (String? newValue) {
         setState(() {
           dropdownValue = newValue!;
@@ -189,11 +183,13 @@ class _FilterBrandWidgetState extends State<FilterBrandWidget> {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value,
-              style: const TextStyle(
-                  fontFamily: 'MarkPronormal400',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.buttonBarColor)),
+            style: const TextStyle(
+              fontFamily: 'MarkPronormal400',
+              fontSize: 18,
+              fontWeight: FontWeight.w400,
+              color: AppColors.buttonBarColor
+            )
+          ),
         );
       }).toList(),
     );
@@ -220,12 +216,6 @@ class _FilterPriceWidgetState extends State<FilterPriceWidget> {
         color: Colors.grey,
       ),
       isExpanded: true,
-      // elevation: 60,
-      // style: const TextStyle(color: AppColors.buttonBarColor),
-      // underline: Container(
-      //   height: 2,
-      //   color: Colors.deepPurpleAccent,
-      // ),
       onChanged: (String? newValue) {
         setState(() {
           dropdownValue = newValue!;
@@ -236,11 +226,13 @@ class _FilterPriceWidgetState extends State<FilterPriceWidget> {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value,
-              style: const TextStyle(
-                  fontFamily: 'MarkPronormal400',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.buttonBarColor)),
+            style: const TextStyle(
+              fontFamily: 'MarkPronormal400',
+              fontSize: 18,
+              fontWeight: FontWeight.w400,
+              color: AppColors.buttonBarColor
+            )
+          ),
         );
       }).toList(),
     );
@@ -267,12 +259,6 @@ class _FilterSizeWidgetState extends State<FilterSizeWidget> {
         color: Colors.grey,
       ),
       isExpanded: true,
-      // elevation: 60,
-      // style: const TextStyle(color: AppColors.buttonBarColor),
-      // underline: Container(
-      //   height: 2,
-      //   color: Colors.deepPurpleAccent,
-      // ),
       onChanged: (String? newValue) {
         setState(() {
           dropdownValue = newValue!;
@@ -283,11 +269,13 @@ class _FilterSizeWidgetState extends State<FilterSizeWidget> {
         return DropdownMenuItem<String>(
           value: value,
           child: Text(value,
-              style: const TextStyle(
-                  fontFamily: 'MarkPronormal400',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w400,
-                  color: AppColors.buttonBarColor)),
+            style: const TextStyle(
+              fontFamily: 'MarkPronormal400',
+              fontSize: 18,
+              fontWeight: FontWeight.w400,
+              color: AppColors.buttonBarColor
+            )
+          ),
         );
       }).toList(),
     );

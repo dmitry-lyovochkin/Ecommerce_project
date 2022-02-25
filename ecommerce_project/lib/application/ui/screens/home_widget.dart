@@ -1,32 +1,35 @@
-import 'package:ecommerce_project/application/ui/screens/home_screen/Best_seller/Best_seller_widget.dart';
-import 'package:ecommerce_project/application/ui/screens/home_screen/Filter_options.dart';
-import 'package:ecommerce_project/application/ui/screens/home_screen/Hot_sales/Slider_widget.dart';
-import 'package:ecommerce_project/application/ui/screens/home_screen/Select_category/Section_buttons.dart';
+import 'package:ecommerce_project/application/ui/screens/Best_seller/Best_seller_widget.dart';
+import 'package:ecommerce_project/application/ui/screens/Hot_sales/Slider_widget.dart';
+import 'package:ecommerce_project/application/ui/screens/Select_category/Section_buttons.dart';
+import 'package:ecommerce_project/application/ui/screens/Filter/filter_options.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
 import 'package:flutter/material.dart';
 
-class CategoryWidget extends StatelessWidget {
-  const CategoryWidget({Key? key}) : super(key: key);
+class HomeWidget extends StatelessWidget {
+  const HomeWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        child: Column(children: const [
-      SizedBox(height: 45),
-      _GeolocWidget(),
-      _TitleSelectCategory(),
-      SectionButtonsWidget(),
-      SizedBox(height: 10),
-      _SearchWidget(),
-      SizedBox(height: 15),
-      _TitleHotSales(),
-      HotSalesWidget(),
-      SizedBox(height: 10),
-      _TitleBestSeller(),
-      BestSellerWidget(),
-      SizedBox(height: 40),
-    ]));
+      child: Column(
+        children: const [
+          SizedBox(height: 45),
+          _GeolocWidget(),
+          _TitleSelectCategory(),
+          SectionButtonsWidget(),
+          SizedBox(height: 10),
+          _SearchWidget(),
+          SizedBox(height: 15),
+          _TitleHotSales(),
+          HotSalesWidget(),
+          SizedBox(height: 10),
+          _TitleBestSeller(),
+          BestSellerWidget(),
+          SizedBox(height: 40),
+        ]
+      )
+    );
   }
 }
 
@@ -46,7 +49,8 @@ class _GeolocWidget extends StatelessWidget {
             onPressed: () {},
             icon: svgGeolocation,
           ),
-          const Text('Zihuatanejo, Gro',
+          const Text(
+            'Zihuatanejo, Gro',
             style: TextStyle(
               fontFamily: 'MarkPronormal400',
               fontSize: 14,
