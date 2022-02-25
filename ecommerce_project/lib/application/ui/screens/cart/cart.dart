@@ -198,25 +198,22 @@ class _CartWidgetState extends State<CartWidget> {
                                           ],
                                         )
                                       ),
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      style: ElevatedButton.styleFrom(
-                                        shape: const CircleBorder(), 
-                                        primary: AppColors.buttonBarColor
-                                      ), 
-                                      child: SvgPicture.asset(
-                                        assetCart,
-                                        // color: Colors.red,
-                                        height: 19,
-                                      )
-                                    ),
-                            
-                              ]
-                              ),
+                                      ElevatedButton(
+                                        onPressed: () {},
+                                        style: ElevatedButton.styleFrom(
+                                          shape: const CircleBorder(), 
+                                          primary: AppColors.buttonBarColor
+                                        ), 
+                                        child: SvgPicture.asset(
+                                          assetCart,
+                                          height: 19,
+                                        )
+                                      ),
+                                    ]
+                                  ),
                                 )
-                                );
-                                }
-                            
+                              );
+                            }
                           ),
                         ),
                         const Divider(
@@ -310,9 +307,8 @@ class _CartWidgetState extends State<CartWidget> {
             }
              return const CircularProgressIndicator();
           }
-  )
-  )
+        )
+      )
     );
-    
-}
+  }
 }
