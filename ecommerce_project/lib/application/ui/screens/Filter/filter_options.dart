@@ -22,7 +22,9 @@ class FilterOptionsWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 20),
             child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 child: const Icon(Icons.close, size: 18, color: Colors.white),
                 style: ElevatedButton.styleFrom(
                   primary: AppColors.buttonBarColor,

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_project/application/services/API/http_get.dart';
 import 'package:ecommerce_project/application/services/API/model_store.dart';
@@ -60,89 +61,98 @@ class Slideridget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 17),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        image: DecorationImage(
-          image: NetworkImage(pictureUrl),
-          fit: BoxFit.cover,
-          alignment: Alignment.topLeft,
+    return Stack(
+      children: [
+        Center(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: CachedNetworkImage(
+              imageUrl: pictureUrl,
+              height: 450,
+              width: 380,
+              fit: BoxFit.cover,
+              alignment: Alignment.topLeft,
+            ),
+          ),
         ),
-      ),
-      child: Stack(
-        children: [
-          SizedBox(
-            width: 500,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 67),
-              child: Text((titlePhone),
-                style: const TextStyle(
-                  fontFamily: 'SFPro', 
-                  fontSize: 27, 
-                  fontWeight: FontWeight.w800, 
-                  color: Colors.white
-                )
+        
+        Padding(
+          padding: const EdgeInsets.only(left: 15),
+          child: Stack(
+            children: [
+              SizedBox(
+                width: 500,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 67),
+                  child: Text((titlePhone),
+                    style: const TextStyle(
+                      fontFamily: 'SFPro', 
+                      fontSize: 27, 
+                      fontWeight: FontWeight.w800, 
+                      color: Colors.white
+                    )
+                  ),
+                ),
               ),
-            ),
-          ),
-          Positioned(
-            top: 103,
-            left: 28,
-            child: Text((subtitleSuper),
-              style: const TextStyle(
-                fontFamily: 'SFPro', 
-                fontSize: 12, 
-                fontWeight: FontWeight.w400, 
-                color: Colors.white
-              )
-            ),
-          ),
-          Positioned(
-            top: 10,
-            left: 16,
-            child: isNew != false
-              ? ElevatedButton(
-                onPressed: () {},
-                child: const Text('New',
-                  style: TextStyle(
+              Positioned(
+                top: 103,
+                left: 28,
+                child: Text((subtitleSuper),
+                  style: const TextStyle(
                     fontFamily: 'SFPro', 
-                    fontSize: 11, 
-                    fontWeight: FontWeight.w800, 
+                    fontSize: 12, 
+                    fontWeight: FontWeight.w400, 
                     color: Colors.white
                   )
                 ),
-                style: ElevatedButton.styleFrom(
-                  primary: IconColors.appColor, 
-                  minimumSize: const Size(15, 30), 
-                  shape: const CircleBorder()
+              ),
+              Positioned(
+                top: 10,
+                left: 16,
+                child: isNew != false
+                  ? ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('New',
+                      style: TextStyle(
+                        fontFamily: 'SFPro', 
+                        fontSize: 11, 
+                        fontWeight: FontWeight.w800, 
+                        color: Colors.white
+                      )
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      primary: IconColors.appColor, 
+                      minimumSize: const Size(15, 30), 
+                      shape: const CircleBorder()
+                    ),
+                  )
+                  : Container()
+              ),
+              Positioned(
+                top: 130,
+                left: 28,
+                child: ElevatedButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Buy now!',
+                    style: TextStyle(
+                      fontFamily: 'SFPro', 
+                      fontSize: 12, 
+                      fontWeight: FontWeight.w800, 
+                      color: Colors.black
+                    )
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 29),
+                    minimumSize: const Size(15, 25)
+                  ),
                 ),
               )
-              : Container()
+            ],
           ),
-          Positioned(
-            top: 130,
-            left: 28,
-            child: ElevatedButton(
-              onPressed: () {},
-              child: const Text(
-                'Buy now!',
-                style: TextStyle(
-                  fontFamily: 'SFPro', 
-                  fontSize: 12, 
-                  fontWeight: FontWeight.w800, 
-                  color: Colors.black
-                )
-              ),
-              style: ElevatedButton.styleFrom(
-                primary: Colors.white,
-                padding: const EdgeInsets.symmetric(horizontal: 29),
-                minimumSize: const Size(15, 25)
-              ),
-            ),
-          )
-        ],
-      )
+        ),
+      ],
     );
   }
 }
