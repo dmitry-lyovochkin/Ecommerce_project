@@ -56,16 +56,12 @@ class DetailsList {
     }
   }
 }
-/* проверку на null возможно */
 
 class CartList {
   Future<List<Basket>> getCarts() async {
     final response = await http.get(
       Uri.parse('https://shopapi-0575.restdb.io/rest/cart'),
       headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
-// print(response.body);
-
-// print (response.body.runtimeType);
 
     if (response.statusCode == 200) {
       final List<dynamic> userJson = json.decode(response.body);
@@ -103,28 +99,3 @@ class CartMainList {
   }
 }
 
-// class CartList1 {
-//   Future<List<GetCartItems>> getCarts() async {
-//     final response = await http.get(
-//         Uri.parse('https://shopapi-0575.restdb.io/rest/cart'),
-//         headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
-
-//    if (response.statusCode == 200) {
-//       return getCartItemsFromJson(response.body);
-//     } else {
-//       throw Exception('Failed to load');
-//     }
-//   }
-// }
-
-  // Future<GetCartItems> getCarts() async {
-  //   final response = await http.get(
-  //       Uri.parse('https://shopapi-0575.restdb.io/rest/cart'),
-  //       headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
-
-  //  if (response.statusCode == 200) {
-  //     return GetCartItems.fromJson(json.decode(response.body));
-  //   } else {
-  //     throw Exception('Failed to load');
-  //   }
-  // }

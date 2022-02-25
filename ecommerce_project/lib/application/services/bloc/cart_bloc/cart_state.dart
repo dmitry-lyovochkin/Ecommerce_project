@@ -44,23 +44,3 @@ class CounterState extends CartState {
   @override
   List<Object?> get props => [];
 }
-
-// class CartMainLoadingState extends CartState {
-
-//   @override
-//   List<Object?> get props => throw UnimplementedError();
-// }
-
-// class CartMainLoadedState extends CartState {
-//   List<GetCartItems> loadedMainCart;
-//   CartMainLoadedState({required this.loadedMainCart});
-
-//   @override
-//   List<Object?> get props => throw UnimplementedError();
-// }
-
-// class CartMainErrorState extends CartState {
-
-//   @override
-//   List<Object?> get props => throw UnimplementedError();
-// }

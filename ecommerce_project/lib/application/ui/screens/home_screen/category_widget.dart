@@ -47,11 +47,13 @@ class _GeolocWidget extends StatelessWidget {
             icon: svgGeolocation,
           ),
           const Text('Zihuatanejo, Gro',
-              style: TextStyle(
-                  fontFamily: 'MarkPronormal400',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.buttonBarColor)),
+            style: TextStyle(
+              fontFamily: 'MarkPronormal400',
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
+              color: AppColors.buttonBarColor
+            )
+          ),
           IconButton(
             padding: const EdgeInsets.only(right: 20),
             onPressed: () {},
@@ -124,10 +126,11 @@ class _TitleSelectCategory extends StatelessWidget {
             child: const Text(
               'view all',
               style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'MarkPronormal400',
-                  fontWeight: FontWeight.w500,
-                  color: IconColors.appColor),
+                fontSize: 15,
+                fontFamily: 'MarkPronormal400',
+                fontWeight: FontWeight.w500,
+                color: IconColors.appColor
+              ),
             ),
           )
         ],
@@ -155,10 +158,11 @@ class _TitleHotSales extends StatelessWidget {
             child: const Text(
               'see more',
               style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'MarkPronormal400',
-                  fontWeight: FontWeight.w500,
-                  color: IconColors.appColor),
+                fontSize: 15,
+                fontFamily: 'MarkPronormal400',
+                fontWeight: FontWeight.w500,
+                color: IconColors.appColor
+              ),
             ),
           )
         ],
@@ -185,17 +189,19 @@ class _TitleBestSeller extends StatelessWidget {
             child: const Text(
               'see more',
               style: TextStyle(
-                  fontSize: 15,
-                  fontFamily: 'MarkPronormal400',
-                  fontWeight: FontWeight.w500,
-                  color: IconColors.appColor),
+                fontSize: 15,
+                fontFamily: 'MarkPronormal400',
+                fontWeight: FontWeight.w500,
+                color: IconColors.appColor
+              ),
             ),
             onPressed: () {
               showModalBottomSheet(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return const FilterOptionsWidget();
-                  });
+                context: context,
+                builder: (BuildContext context) {
+                  return const FilterOptionsWidget();
+                }
+              );
             },
           )
         ],

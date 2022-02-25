@@ -1,4 +1,3 @@
-
 import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_bloc.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
@@ -120,7 +119,7 @@ class _CartWidgetState extends State<CartWidget> {
                             itemCount: state.loadedCart.length,
                             itemBuilder: (context, index) {
                               return Card(
-                                color: AppColors.buttonBarColor/* Colors.red */,
+                                color: AppColors.buttonBarColor,
                                 child: Padding(
                                   padding: const EdgeInsets.only(top: 15, bottom: 20, left: 20),
                                   child: Row(
@@ -170,7 +169,6 @@ class _CartWidgetState extends State<CartWidget> {
                                       ),
                                       const SizedBox(width: 20),
                                       Container(
-                                        // margin: const EdgeInsets.only(left: 30),
                                         height: 100,
                                         width: 30,
                                         decoration: BoxDecoration(
@@ -276,10 +274,7 @@ class _CartWidgetState extends State<CartWidget> {
                             ],
                           ),
                         ),
-                        // const SizedBox(height: 20),
-                        const Divider(
-                          // color: Colors.grey,
-                        ),
+                        const Divider(),
                         const Divider(
                           color: Colors.white,
                         ),
@@ -320,17 +315,4 @@ class _CartWidgetState extends State<CartWidget> {
     );
     
 }
-  
-// class CounterText extends StatelessWidget {
-//   const CounterText({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     final state = context.watch<CounterBloc>().state;
-//     return state.when(
-//       initial: () => const CircularProgressIndicator(), 
-//       loading: () => const CircularProgressIndicator(), 
-//       loaded: (counter) => Text('$counter', style: const TextStyle(color: Colors.red),),
-//     );
-//   }
 }

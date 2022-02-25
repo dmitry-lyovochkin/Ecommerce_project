@@ -13,19 +13,6 @@ class CartLoadEvent extends CartEvent{
   List<Object?> get props => throw UnimplementedError(); 
 }
 
-// class CounterEvent extends CartEvent {
-//   int counetValue = 0;
-//   CounterEvent({
-//     required this.counetValue,
-//   });
-
-//   @override
-//   List<Object?> get props => throw UnimplementedError();
-
-  
-// }
-
-
 
 class Increment extends CartEvent {
   final int counterValue;

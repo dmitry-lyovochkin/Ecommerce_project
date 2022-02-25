@@ -29,145 +29,145 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
         DetailsBloc(detailsRepository)..add(DetailsLoadEvent()),
       child: Scaffold(
         body: BlocBuilder<DetailsBloc, DetailsState>(
-          builder: (context, state) {
-          if (state is DetailsLoadingState) {
-            return const Center( 
-              child: CircularProgressIndicator()
-            );
-          }
-          if (state is DetailsLoadedState) { 
-          return SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 40, bottom: 20, left: 30, right: 30),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween, 
-                    children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Icon(
-                          Icons.arrow_back_ios_new_sharp,
-                          size: 19, color: Colors.white
-                        ),
-                        style: ElevatedButton.styleFrom(
-                          primary: AppColors.buttonBarColor,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)
+          builder: (context, state) { 
+            if (state is DetailsLoadingState) {
+              return const Center( 
+                child: CircularProgressIndicator()
+              );
+            }
+            if (state is DetailsLoadedState) { 
+            return SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 40, bottom: 20, left: 30, right: 30),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Icon(
+                            Icons.arrow_back_ios_new_sharp,
+                            size: 19, color: Colors.white
                           ),
-                          padding: const EdgeInsets.all(10),
-                          minimumSize: const Size(15, 15),
+                          style: ElevatedButton.styleFrom(
+                            primary: AppColors.buttonBarColor,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10)
+                            ),
+                            padding: const EdgeInsets.all(10),
+                            minimumSize: const Size(15, 15),
+                          ),
                         ),
-                      ),
-                      const Text(
-                        'Product Details',
-                        style: TextStyle(
-                          fontFamily: 'MarkPronormal400',
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.buttonBarColor,
-                        )
-                      ),
-                      ElevatedButton(
-                        onPressed: () {},
-                        child: const Icon(
-                          CustomIcons.vector,
-                          color: Colors.white,
-                          size: 15,
+                        const Text(
+                          'Product Details',
+                          style: TextStyle(
+                            fontFamily: 'MarkPronormal400',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w700,
+                            color: AppColors.buttonBarColor,
+                          )
                         ),
-                        style: ElevatedButton.styleFrom(
+                        ElevatedButton(
+                          onPressed: () {},
+                          child: const Icon(
+                            CustomIcons.vector,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                          style: ElevatedButton.styleFrom(
                             primary: IconColors.appColor,
                             shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            padding: const EdgeInsets.all(11),
-                            minimumSize: const Size(15, 15)),
-                      )
-                    ]
-                  ),
-                ),
-                ProductSliderWidget(list: state.loadedDetails),
-                const SizedBox(height: 5),
-                SizedBox(
-                  height: 455,
-                  child: Card(
-                    color: Colors.white,
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 20, left: 30, right: 30),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            // crossAxisAlignment: CrossAxisAlignment.end,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                state.loadedDetails[0].title,
-                                style: const TextStyle(
-                                  fontFamily: 'MarkPronormal400',
-                                  fontWeight: FontWeight.w700,
-                                  fontSize: 24, 
-                                  color: AppColors.buttonBarColor
-                                ),
-                              ),
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: const Icon(
-                                  Icons.favorite_border,
-                                  color: Colors.grey,
-                                  size: 18,
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  primary: AppColors.buttonBarColor,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10)
-                                  ),
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 9, vertical: 7),
-                                  minimumSize: const Size(7, 7)
-                                ),
-                              )
-                            ],
-                          ),
-                          RatingBar.builder(
-                            itemSize: 22,
-                            initialRating: state.loadedDetails[0].rating.toDouble(),
-                            minRating: 1,
-                            direction: Axis.horizontal,
-                            allowHalfRating: true,
-                            ignoreGestures: true,
-                            itemCount: 5,
-                            itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
-                            itemBuilder: (context, _) => const Icon(
-                              Icons.star,
-                              color: Colors.amber,
+                              borderRadius: BorderRadius.circular(10)
                             ),
-                            onRatingUpdate: (rating1) {
-                              // print(rating1);
-                            },
+                            padding: const EdgeInsets.all(11),
+                            minimumSize: const Size(15, 15)
                           ),
-                          const SizedBox(height: 25),
-                          MyDemo(),
-                        ],
+                        )
+                      ]
+                    ),
+                  ),
+                  ProductSliderWidget(list: state.loadedDetails),
+                  const SizedBox(height: 5),
+                  SizedBox(
+                    height: 455,
+                    child: Card(
+                      color: Colors.white,
+                      elevation: 3,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 20, left: 30, right: 30),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  state.loadedDetails[0].title,
+                                  style: const TextStyle(
+                                    fontFamily: 'MarkPronormal400',
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: 24, 
+                                    color: AppColors.buttonBarColor
+                                  ),
+                                ),
+                                ElevatedButton(
+                                  onPressed: () {},
+                                  child: const Icon(
+                                    Icons.favorite_border,
+                                    color: Colors.grey,
+                                    size: 18,
+                                  ),
+                                  style: ElevatedButton.styleFrom(
+                                    primary: AppColors.buttonBarColor,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 9, vertical: 7),
+                                    minimumSize: const Size(7, 7)
+                                  ),
+                                )
+                              ],
+                            ),
+                            RatingBar.builder(
+                              itemSize: 22,
+                              initialRating: state.loadedDetails[0].rating.toDouble(),
+                              minRating: 1,
+                              direction: Axis.horizontal,
+                              allowHalfRating: true,
+                              ignoreGestures: true,
+                              itemCount: 5,
+                              itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+                              itemBuilder: (context, _) => const Icon(
+                                Icons.star,
+                                color: Colors.amber,
+                              ),
+                              onRatingUpdate: (rating1) {
+                              },
+                            ),
+                            const SizedBox(height: 25),
+                            MyDemo(),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                )
-              ]
-            ),
-          );
-        } 
-        if (state is DetailsErrorState) {
-            return const Center(
-              child: Text('Error getcing details')
+                  )
+                ]
+              ),
             );
-          }
-          return const CircularProgressIndicator();
+            } 
+            if (state is DetailsErrorState) {
+              return const Center(
+                child: Text('Error getcing details')
+              );
+            }
+            return const CircularProgressIndicator();
           }
         )
       )
@@ -244,46 +244,47 @@ class MyDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-        child: DefaultTabController(
-          length: 3,
-          child: Column(
-            children: <Widget>[
-              Container(
-                constraints: const BoxConstraints.expand(height: 35),
-                child: TabBar(
-                  labelStyle: const TextStyle(
-                    fontFamily: 'MarkPronormal400',
-                    fontSize: 19,
-                    fontWeight: FontWeight.w700,
-                    color: AppColors.buttonBarColor,
-                  ),
-                  labelColor: AppColors.buttonBarColor,
-                  indicator: const UnderlineTabIndicator(
-                    borderSide:
-                        BorderSide(color: IconColors.appColor, width: 3),
-                    insets: EdgeInsets.symmetric(horizontal: 20),
-                  ),
-                  unselectedLabelColor: Colors.grey,
-                  unselectedLabelStyle: const TextStyle(
-                    fontFamily: 'MarkPronormal400',
-                    fontSize: 19,
-                    fontWeight: FontWeight.w400,
-                    color: AppColors.buttonBarColor,
-                  ),
-                  tabs: tabss,
+      child: DefaultTabController(
+        length: 3,
+        child: Column(
+          children: <Widget>[
+            Container(
+              constraints: const BoxConstraints.expand(height: 35),
+              child: TabBar(
+                labelStyle: const TextStyle(
+                  fontFamily: 'MarkPronormal400',
+                  fontSize: 19,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.buttonBarColor,
                 ),
+                labelColor: AppColors.buttonBarColor,
+                indicator: const UnderlineTabIndicator(
+                  borderSide:
+                      BorderSide(color: IconColors.appColor, width: 3),
+                  insets: EdgeInsets.symmetric(horizontal: 20),
+                ),
+                unselectedLabelColor: Colors.grey,
+                unselectedLabelStyle: const TextStyle(
+                  fontFamily: 'MarkPronormal400',
+                  fontSize: 19,
+                  fontWeight: FontWeight.w400,
+                  color: AppColors.buttonBarColor,
+                ),
+                tabs: tabss,
               ),
-              const SizedBox(height: 18),
-              const Expanded(
-                child: TabBarView(children: [
-                  ProductWidget(),
-                  Text("Details Body"),
-                  Text("Features Body"),
-                ]),
-              )
-            ],
-          ),
-        ));
+            ),
+            const SizedBox(height: 18),
+            const Expanded(
+              child: TabBarView(children: [
+                ProductWidget(),
+                Text("Details Body"),
+                Text("Features Body"),
+              ]),
+            )
+          ],
+        ),
+      )
+    );
   }
 }
 
@@ -320,7 +321,8 @@ class ProductWidget extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const CartWidget()),
+                builder: (context) => const CartWidget()
+              ),
             );
           },
           child: const Text(
@@ -344,20 +346,13 @@ class ProductWidget extends StatelessWidget {
 }
 
 class ButtonsRowWidget extends StatefulWidget {
-  /* final List<dynamic> listCard; */
   const ButtonsRowWidget({
-    Key? key, /* required this.listCard */
+    Key? key, 
   }) : super(key: key);
   @override
   State<ButtonsRowWidget> createState() => _ButtonsRowWidgetState();
 }
 class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
-// @override
-// void initState() {
-//   super.initState();
-//   final counterBloc = BlocProvider.of<DetailsBloc>(context)..add(DetailsLoadEvent());
-  
-// }
   bool _toggle = true;
   bool _toggle1 = false;
   bool button = false;
@@ -383,7 +378,6 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
 
   @override
   Widget build(BuildContext context) {
-// Color color1 = _colorFromHex(state.loadedDetails[0].color[0]);
     return BlocBuilder<DetailsBloc, DetailsState>(
       builder: (context, state) {
         if (state is DetailsLoadingState) {

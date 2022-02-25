@@ -12,7 +12,6 @@ class HotSalesWidget extends StatefulWidget {
 }
 
 class _HotSalesWidgetState extends State<HotSalesWidget> {
-// Написать сюда модельку(рефакторинг возможно как у Жени)
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,7 @@ class _HotSalesWidgetState extends State<HotSalesWidget> {
         if (snapshot.hasData) {
           return CarouselSlider.builder(
             itemCount: (snapshot.data as List<Homestore>).length,
-            itemBuilder: (context, index, _) => NewWidget(
+            itemBuilder: (context, index, _) => Slideridget(
               pictureUrl: (snapshot.data as List<Homestore>)[index].picture,
               titlePhone: (snapshot.data as List<Homestore>)[index].title,
               subtitleSuper: (snapshot.data as List<Homestore>)[index].subtitle,
@@ -45,13 +44,13 @@ class _HotSalesWidgetState extends State<HotSalesWidget> {
   }
 }
 
-class NewWidget extends StatelessWidget {
+class Slideridget extends StatelessWidget {
   final String pictureUrl;
   final String titlePhone;
   final String subtitleSuper;
   bool isNew;
 
-  NewWidget({
+  Slideridget({
     Key? key,
     required this.pictureUrl,
     required this.titlePhone,
@@ -62,62 +61,88 @@ class NewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: const EdgeInsets.symmetric(horizontal: 17),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
-          image: DecorationImage(
-            image: NetworkImage(pictureUrl),
-            fit: BoxFit.cover,
-            alignment: Alignment.topLeft,
-          ),
+      margin: const EdgeInsets.symmetric(horizontal: 17),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        image: DecorationImage(
+          image: NetworkImage(pictureUrl),
+          fit: BoxFit.cover,
+          alignment: Alignment.topLeft,
         ),
-        child: Stack(
-          children: [
-            SizedBox(
-              width: 500,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 67),
-                child: Text((titlePhone),
-                    style: const TextStyle(
-                        fontFamily: 'SFPro', fontSize: 27, fontWeight: FontWeight.w800, color: Colors.white)),
+      ),
+      child: Stack(
+        children: [
+          SizedBox(
+            width: 500,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 67),
+              child: Text((titlePhone),
+                style: const TextStyle(
+                  fontFamily: 'SFPro', 
+                  fontSize: 27, 
+                  fontWeight: FontWeight.w800, 
+                  color: Colors.white
+                )
               ),
             ),
-            Positioned(
-              top: 103,
-              left: 28,
-              child: Text((subtitleSuper),
-                  style: const TextStyle(
-                      fontFamily: 'SFPro', fontSize: 12, fontWeight: FontWeight.w400, color: Colors.white)),
+          ),
+          Positioned(
+            top: 103,
+            left: 28,
+            child: Text((subtitleSuper),
+              style: const TextStyle(
+                fontFamily: 'SFPro', 
+                fontSize: 12, 
+                fontWeight: FontWeight.w400, 
+                color: Colors.white
+              )
             ),
-            Positioned(
-                top: 10,
-                left: 16,
-                child: isNew != false
-                    ? ElevatedButton(
-                        /* показ New */
-                        onPressed: () {},
-                        child: const Text('New',
-                            style: TextStyle(
-                                fontFamily: 'SFPro', fontSize: 11, fontWeight: FontWeight.w800, color: Colors.white)),
-                        style: ElevatedButton.styleFrom(
-                            primary: IconColors.appColor, minimumSize: const Size(15, 30), shape: const CircleBorder()),
-                      )
-                    : Container()),
-            Positioned(
-              top: 130,
-              left: 28,
-              child: ElevatedButton(
+          ),
+          Positioned(
+            top: 10,
+            left: 16,
+            child: isNew != false
+              ? ElevatedButton(
                 onPressed: () {},
-                child: const Text('Buy now!',
-                    style:
-                        TextStyle(fontFamily: 'SFPro', fontSize: 12, fontWeight: FontWeight.w800, color: Colors.black)),
+                child: const Text('New',
+                  style: TextStyle(
+                    fontFamily: 'SFPro', 
+                    fontSize: 11, 
+                    fontWeight: FontWeight.w800, 
+                    color: Colors.white
+                  )
+                ),
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
-                    padding: const EdgeInsets.symmetric(horizontal: 29),
-                    minimumSize: const Size(15, 25)),
+                  primary: IconColors.appColor, 
+                  minimumSize: const Size(15, 30), 
+                  shape: const CircleBorder()
+                ),
+              )
+              : Container()
+          ),
+          Positioned(
+            top: 130,
+            left: 28,
+            child: ElevatedButton(
+              onPressed: () {},
+              child: const Text(
+                'Buy now!',
+                style: TextStyle(
+                  fontFamily: 'SFPro', 
+                  fontSize: 12, 
+                  fontWeight: FontWeight.w800, 
+                  color: Colors.black
+                )
               ),
-            )
-          ],
-        ));
+              style: ElevatedButton.styleFrom(
+                primary: Colors.white,
+                padding: const EdgeInsets.symmetric(horizontal: 29),
+                minimumSize: const Size(15, 25)
+              ),
+            ),
+          )
+        ],
+      )
+    );
   }
 }

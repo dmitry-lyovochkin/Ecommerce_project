@@ -18,39 +18,34 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
     final double itemHeight = (size.height - kToolbarHeight - 138) / 2;
     final double itemWidth = size.width / 2;
     return FutureBuilder(
-        future: getPostsBestSeller(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return GridView.builder(
-              itemCount: (snapshot.data as List<Bestseller>).length,
-              itemBuilder: (context, index) => GridWidget(
-                pictureUrls: (snapshot.data as List<Bestseller>)[index].picture,
-                titleItems: (snapshot.data as List<Bestseller>)[index].title,
-                priceWithoutDiscount: (snapshot.data as List<Bestseller>)[index].pricewithoutdiscount,
-                discountPrice: (snapshot.data as List<Bestseller>)[index].discountprice,
-                isFavorites: (snapshot.data as List<Bestseller>)[index].isfavorites
-              ),
-              
-
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                childAspectRatio: (itemWidth / itemHeight),
-                // childAspectRatio: 20,
-                // crossAxisSpacing: 7,
-                // mainAxisSpacing: 7
-              ),
-              // scrollDirection: Axis.vertical,
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              scrollDirection: Axis.vertical,
-            );
-          } else if (snapshot.hasError) {
-            return const Text('Error');
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
+      future: getPostsBestSeller(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return GridView.builder(
+            itemCount: (snapshot.data as List<Bestseller>).length,
+            itemBuilder: (context, index) => GridWidget(
+              pictureUrls: (snapshot.data as List<Bestseller>)[index].picture,
+              titleItems: (snapshot.data as List<Bestseller>)[index].title,
+              priceWithoutDiscount: (snapshot.data as List<Bestseller>)[index].pricewithoutdiscount,
+              discountPrice: (snapshot.data as List<Bestseller>)[index].discountprice,
+              isFavorites: (snapshot.data as List<Bestseller>)[index].isfavorites
+            ),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: (itemWidth / itemHeight),
+            ),
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            scrollDirection: Axis.vertical,
           );
-        });
+        } else if (snapshot.hasError) {
+          return const Text('Error');
+        }
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+    );
   }
 }
 
@@ -75,46 +70,40 @@ class GridWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        margin: const EdgeInsets.all(7),
-        elevation: 2,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
-        ),
-        child: InkWell(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ProductDetailsWidget()),
-            );
-          },
-          child: Stack(
-            alignment: Alignment.topCenter, 
-            children: [
+      margin: const EdgeInsets.all(7),
+      elevation: 2,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const ProductDetailsWidget()),
+          );
+        },
+        child: Stack(
+          alignment: Alignment.topCenter, 
+          children: [
             SizedBox(
-              // height: 120,
-              // width: 190,
               child: Image.network(
                 pictureUrls,
                 height: 180,
-                // width: 180,
                 fit: BoxFit.cover,
-                // alignment: Alignment.center,
               ),
             ),
             Positioned(
-              //  top: 2,
               right: 15,
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                    shape: const CircleBorder(),
-                    padding: const EdgeInsets.all(5),
-                    primary: Colors.white,
-                    minimumSize: const Size(15, 15)),
+                  shape: const CircleBorder(),
+                  padding: const EdgeInsets.all(5),
+                  primary: Colors.white,
+                  minimumSize: const Size(15, 15)),
                 child: isFavorites
-                 ?  const Icon(Icons.favorite, color: IconColors.appColor, size: 15)
-                 :  const Icon(Icons.favorite_border, color: IconColors.appColor, size: 15)
-
+                ?  const Icon(Icons.favorite, color: IconColors.appColor, size: 15)
+                :  const Icon(Icons.favorite_border, color: IconColors.appColor, size: 15)
               ),
             ),
             Positioned(
@@ -123,19 +112,23 @@ class GridWidget extends StatelessWidget {
               child: Row(
                 children: [
                   Text('\$' + priceWithoutDiscount.toString(),
-                      style: const TextStyle(
-                          fontFamily: 'MarkProbold',
-                          fontSize: 17,
-                          fontWeight: FontWeight.w700,
-                          color: AppColors.buttonBarColor)),
+                    style: const TextStyle(
+                      fontFamily: 'MarkProbold',
+                      fontSize: 17,
+                      fontWeight: FontWeight.w700,
+                      color: AppColors.buttonBarColor
+                    )
+                  ),
                   const SizedBox(width: 10),
                   Text('\$' + discountPrice.toString(),
-                      style: TextStyle(
-                          fontFamily: 'MarkPronormal400',
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.grey[400],
-                          decoration: TextDecoration.lineThrough)),
+                    style: TextStyle(
+                      fontFamily: 'MarkPronormal400',
+                      fontSize: 11,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.grey[400],
+                      decoration: TextDecoration.lineThrough
+                    )
+                  ),
                 ],
               ),
             ),
@@ -143,14 +136,18 @@ class GridWidget extends StatelessWidget {
               bottom: 16,
               left: 35,
               child: Text(titleItems,
-                  textAlign: TextAlign.end,
-                  style: const TextStyle(
-                      fontFamily: 'MarkPronormal400',
-                      fontSize: 10,
-                      fontWeight: FontWeight.w700,
-                      color: AppColors.buttonBarColor)),
+                textAlign: TextAlign.end,
+                style: const TextStyle(
+                  fontFamily: 'MarkPronormal400',
+                  fontSize: 10,
+                  fontWeight: FontWeight.w700,
+                  color: AppColors.buttonBarColor
+                )
+              ),
             ),
-          ]),
-        ));
+          ]
+        ),
+      )
+    );
   }
 }
