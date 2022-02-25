@@ -77,7 +77,7 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                 label: "",
               ),
               const BottomNavigationBarItem(
-                icon: Icon(CustomIcons.vector__1_, size: 18),
+                icon: Icon(CustomIcons.vector1, size: 18),
                 label: "",
               ),
               const BottomNavigationBarItem(

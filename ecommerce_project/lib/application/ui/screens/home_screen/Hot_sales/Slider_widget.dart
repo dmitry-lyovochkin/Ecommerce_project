@@ -17,30 +17,31 @@ class _HotSalesWidgetState extends State<HotSalesWidget> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-        future: getPosts(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return CarouselSlider.builder(
-              itemCount: (snapshot.data as List<Home_store>).length,
-              itemBuilder: (context, index, _) => NewWidget(
-                  pictureUrl: (snapshot.data as List<Home_store>)[index].picture,
-                  titlePhone: (snapshot.data as List<Home_store>)[index].title,
-                  subtitleSuper: (snapshot.data as List<Home_store>)[index].subtitle,
-                  isNew: (snapshot.data as List<Home_store>)[index].is_new),
-              options: CarouselOptions(
-                height: 200,
-                aspectRatio: 5.0,
-                initialPage: 0,
-                viewportFraction: 1,
-              ),
-            );
-          } else if (snapshot.hasError) {
-            return const Text('Error');
-          }
-          return const Center(
-            child: CircularProgressIndicator(),
+      future: getPosts(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return CarouselSlider.builder(
+            itemCount: (snapshot.data as List<Homestore>).length,
+            itemBuilder: (context, index, _) => NewWidget(
+              pictureUrl: (snapshot.data as List<Homestore>)[index].picture,
+              titlePhone: (snapshot.data as List<Homestore>)[index].title,
+              subtitleSuper: (snapshot.data as List<Homestore>)[index].subtitle,
+              isNew: (snapshot.data as List<Homestore>)[index].isnew),
+            options: CarouselOptions(
+              height: 200,
+              aspectRatio: 5.0,
+              initialPage: 0,
+              viewportFraction: 1,
+            ),
           );
-        });
+        } else if (snapshot.hasError) {
+          return const Text('Error');
+        }
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+    );
   }
 }
 

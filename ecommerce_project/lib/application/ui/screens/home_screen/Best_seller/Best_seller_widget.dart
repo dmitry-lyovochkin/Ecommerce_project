@@ -22,13 +22,13 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             return GridView.builder(
-              itemCount: (snapshot.data as List<Best_seller>).length,
+              itemCount: (snapshot.data as List<Bestseller>).length,
               itemBuilder: (context, index) => GridWidget(
-                pictureUrls: (snapshot.data as List<Best_seller>)[index].picture,
-                titleItems: (snapshot.data as List<Best_seller>)[index].title,
-                priceWithoutDiscount: (snapshot.data as List<Best_seller>)[index].price_without_discount,
-                discountPrice: (snapshot.data as List<Best_seller>)[index].discount_price,
-                isFavorites: (snapshot.data as List<Best_seller>)[index].is_favorites
+                pictureUrls: (snapshot.data as List<Bestseller>)[index].picture,
+                titleItems: (snapshot.data as List<Bestseller>)[index].title,
+                priceWithoutDiscount: (snapshot.data as List<Bestseller>)[index].pricewithoutdiscount,
+                discountPrice: (snapshot.data as List<Bestseller>)[index].discountprice,
+                isFavorites: (snapshot.data as List<Bestseller>)[index].isfavorites
               ),
               
 

@@ -1,8 +1,5 @@
 
-import 'package:ecommerce_project/application/services/API/model_cart.dart';
 import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_bloc.dart';
-import 'package:ecommerce_project/application/services/bloc/counter_bloc/counter_bloc.dart';
-import 'package:ecommerce_project/application/services/bloc/counter_bloc/counter_event.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
 import 'package:flutter/material.dart';

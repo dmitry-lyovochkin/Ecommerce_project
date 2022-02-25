@@ -25,39 +25,13 @@ class CartBloc extends Bloc<CartEvent, CartState> {
           }
     });
   }
-  
-
-
-  // void _counter (event, emit) {
-  // // var counterValue = 0;
-  //   if (event is Increment) {
-  //     emit(CounterState(counterValue: counterValue + 1));
-  //   } else {
-  //     if (counterValue > 0) {
-  //     emit(CounterState(counterValue: counterValue - 1));
-  //     }
-  //   }
-  // }
-  // void _getCartMain(event, emit) async {
-  //     emit(CartMainLoadingState());
-  //     try {
-  //       final List<GetCartItems> _loadedCartMainList = await cartMainRepository.getMainCart();
-  //       emit(CartMainLoadedState(loadedMainCart: _loadedCartMainList));
-  //     } catch (_) {
-  //       emit(CartMainErrorState());
-  //     }
-  //   }
-
 }
-
-// class CounterState extends CartState{
-//   int counterValue;
-
-//   CounterState({required this.counterValue});
-// }
-// class CounterInitial extends CounterState {
-//   CounterInitial({required int counterValue}) : super(counterValue: 0);
-
-// }
+class CounterObserver extends BlocObserver {
+  @override
+  void onChange(BlocBase bloc, Change change) {
+    super.onChange(bloc, change);
+    print('${bloc.runtimeType} $change');
+  }
+}
 
 
