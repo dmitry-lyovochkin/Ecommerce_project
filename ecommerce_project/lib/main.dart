@@ -1,9 +1,14 @@
-import 'package:ecommerce_project/application/ui/screens/Button_nav_bar/main_tabs_screen.dart';
+import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_bloc.dart';
+import 'package:ecommerce_project/application/ui/bottom_nav_bar/bottom_nav_bar.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
-  runApp(const MyApp());
+  BlocOverrides.runZoned(
+    () => runApp(const MyApp()),
+    blocObserver: CounterObserver(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -16,11 +21,6 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.light,
       debugShowCheckedModeBanner: false,
       home: const BottomNavBarWidget(),
-      // initialRoute: '/first',
-      // routes: {
-      //   '/first': (context) => const CategoryWidget(),
-      //   '/second': (context) => const ProductDetailsWidget(),
-      // },
     );
   }
 }

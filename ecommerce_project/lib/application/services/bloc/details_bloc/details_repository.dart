@@ -5,4 +5,3 @@ class DetailsRepository {
   final DetailsList _detailsProvider = DetailsList();
   Future<List<GetDetails>> getAllDetails() => _detailsProvider.getProducts();
 }
-// обертка над запросом.Теперь всё взамодействие будет чеоез getAllDetails()

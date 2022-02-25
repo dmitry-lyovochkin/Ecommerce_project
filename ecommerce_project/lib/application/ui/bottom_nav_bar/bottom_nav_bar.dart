@@ -1,5 +1,6 @@
+import 'package:badges/badges.dart';
 import 'package:ecommerce_project/application/ui/screens/cart/cart.dart';
-import 'package:ecommerce_project/application/ui/screens/home_screen/category_widget.dart';
+import 'package:ecommerce_project/application/ui/screens/home_widget.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/custom_icons.dart';
 import 'package:flutter/material.dart';
@@ -14,19 +15,24 @@ class BottomNavBarWidget extends StatefulWidget {
 class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
   int _selectedIndex = 0;
   static const List _widgetOptions = [
-    CategoryWidget(),
-    Text(
-      'Index 3: School',
+    HomeWidget(),
+    Center(
+      child: Text(
+        'Favourites',
+      ),
     ),
-    Text(
-      'Index 4: School',
+    Center(
+      child: Text(
+        'Favourites',
+      ),
     ),
-    Text(
-      'Index 5: School',
+    Center(
+      child: Text(
+        'Settings',
+      ),
     ),
   ];
 
-  // без BottomNavBar
   void onSelectTub(int index) {
     if (index != 1) {
       setState(() {
@@ -39,12 +45,6 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
       );
     }
   }
-
-  // void _onItemTapped(int index) {
-  //   setState(() {
-  //     _selectedIndex = index;
-  //   });
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -74,12 +74,16 @@ class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
                 ),
                 label: "",
               ),
-              const BottomNavigationBarItem(
-                icon: Icon(CustomIcons.vector, size: 19),
+               BottomNavigationBarItem(
+                icon: Badge(
+                  child: const Icon(CustomIcons.vector, size: 19),
+                  badgeContent: const Text("2"),
+                  position: BadgePosition.topStart(top: -14, start: 12)
+                ),
                 label: "",
               ),
               const BottomNavigationBarItem(
-                icon: Icon(CustomIcons.vector__1_, size: 18),
+                icon: Icon(CustomIcons.vector1, size: 18),
                 label: "",
               ),
               const BottomNavigationBarItem(

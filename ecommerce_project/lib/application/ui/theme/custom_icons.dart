@@ -25,11 +25,11 @@ class CustomIcons {
   static const _kFontFam = 'MyFlutterApp';
   static const String? _kFontPkg = null;
 
-  static const IconData fiber_manual_record = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // static const IconData fibermanualrecord = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData profile = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData explorer = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData vector__1_ = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // static const IconData explorer = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData vector1 = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData vector = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData brightness_1 = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData new_project__3_ = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // static const IconData brightness_1 = IconData(0xe805, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  // static const IconData new_project__3_ = IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
