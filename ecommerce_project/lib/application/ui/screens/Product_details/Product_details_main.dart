@@ -75,7 +75,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                           child: const Icon(
                             CustomIcons.vector,
                             color: Colors.white,
-                            size: 15,
+                            size: 17,
                           ),
                           style: ElevatedButton.styleFrom(
                             primary: IconColors.appColor,
@@ -118,18 +118,16 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                 ),
                                 ElevatedButton(
                                   onPressed: () {},
-                                  child: const Icon(
-                                    Icons.favorite_border,
-                                    color: Colors.grey,
-                                    size: 18,
-                                  ),
+                                  child: state.loadedDetails[0].isFavorites 
+                                    ? const Icon(Icons.favorite, color: IconColors.appColor, size: 18)
+                                    : const Icon(Icons.favorite_border, color: IconColors.appColor, size: 15),
                                   style: ElevatedButton.styleFrom(
                                     primary: AppColors.buttonBarColor,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10)
                                     ),
                                     padding: const EdgeInsets.symmetric(
-                                      horizontal: 9, vertical: 7),
+                                      horizontal: 9, vertical: 9),
                                     minimumSize: const Size(7, 7)
                                   ),
                                 )
@@ -277,8 +275,8 @@ class MyDemo extends StatelessWidget {
             const Expanded(
               child: TabBarView(children: [
                 ProductWidget(),
-                Text("Details Body"),
-                Text("Features Body"),
+                Center(child: Text("Details Body")),
+                Center(child: Text("Features Body")),
               ]),
             )
           ],
@@ -326,7 +324,7 @@ class ProductWidget extends StatelessWidget {
             );
           },
           child: const Text(
-            'Add to Cart     \$1,500.00',
+            'Add to Cart     \$1,500.00'/*  + '\$' + state.loadedDetails. */,
             style: TextStyle(
               fontFamily: 'MarkPronormal400',
               fontSize: 20,
@@ -353,28 +351,14 @@ class ButtonsRowWidget extends StatefulWidget {
   State<ButtonsRowWidget> createState() => _ButtonsRowWidgetState();
 }
 class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
-  bool _toggle = true;
-  bool _toggle1 = false;
-  bool button = false;
-  int button1 = 0;
-  bool array = false;
-  final List<bool> aarray = [true];
-  final List<bool> aarray1 = [false];
   
   Color _colorFromApi(String hexColor) {
     final hexCode = hexColor.replaceAll('#', '');
     return Color(int.parse('FF$hexCode', radix: 16));
   }
 
-  Icon fab = const Icon(
-    Icons.check_outlined,
-  );
-  Icon fab1 = const Icon(
-    Icons.check_outlined,
-  );
-
-  int fabIconNumber = 0;
-  int fab1IconNumber = 0;
+  int selectedButtonColor = 0;
+  int selectedButtonNum = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -389,24 +373,22 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
           return Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Center(
-                child: SizedBox(
-                  height: 40,
-                  child: FloatingActionButton(
-                    heroTag: "btn1",
-                    elevation: 0,
-                    child: Visibility(
-                      visible: aarray[0],
-                      child: const Icon(
-                        Icons.check_outlined
-                      )
-                    ),
-                    backgroundColor: _colorFromApi(state.loadedDetails[0].color[0]),
-                    foregroundColor: Colors.white,
-                    onPressed: () => setState(() {
-                      aarray[0] = !aarray[0];
-                    }),
-                  ),
+              SizedBox(
+                height: 40,
+                child: FloatingActionButton(
+                  heroTag: "btn1",
+                  elevation: 0,
+                  child: selectedButtonColor == 0 
+                    ? const Icon(
+                      Icons.check_outlined
+                      ) 
+                    : const SizedBox(),
+                  backgroundColor: _colorFromApi(state.loadedDetails[0].color[0]),
+                  foregroundColor: Colors.white,
+                  onPressed: () => 
+                    setState(() {
+                      selectedButtonColor = 0;
+                  }),
                 ),
               ),
               SizedBox(
@@ -414,16 +396,15 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
                 child: FloatingActionButton(
                   heroTag: "btn2",
                   elevation: 0,
-                  child: Visibility(
-                    visible: aarray1[0],
-                    child: const Icon(
+                  child: selectedButtonColor == 1 
+                    ? const Icon(
                       Icons.check_outlined
-                    )
-                  ),
+                    ) 
+                    : const SizedBox(),
                   backgroundColor: _colorFromApi(state.loadedDetails[0].color[1]),
                   foregroundColor: Colors.white,
                   onPressed: () => setState(() {
-                    aarray1[0] = !aarray1[0];
+                    selectedButtonColor = 1;
                   }),
                 ),
               ),
@@ -432,17 +413,17 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
                 child: Text(
                   state.loadedDetails[0].capacity[0], 
                   style: TextStyle(
-                    color: _toggle ? Colors.white : Colors.grey,
+                    color: selectedButtonNum == 0 ? Colors.white : Colors.grey,
                   ),
                 ),
                 onPressed: () => {
                     setState(() {
-                      _toggle = !_toggle;
+                      selectedButtonNum = 0;
                     }
                   )
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: _toggle ? IconColors.appColor : Colors.white,
+                  primary: selectedButtonNum == 0 ? IconColors.appColor : Colors.white,
                   elevation: 0,
                   padding: const EdgeInsets.all(7),
                   shape: RoundedRectangleBorder(
@@ -455,17 +436,17 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
                 child: Text(
                   state.loadedDetails[0].capacity[1], 
                   style: TextStyle(
-                    color: _toggle1 ? Colors.white : Colors.grey,
+                    color: selectedButtonNum == 1 ? Colors.white : Colors.grey,
                   ),
                 ),
                 onPressed: () => {
                     setState(() {
-                      _toggle1 = !_toggle1;
+                      selectedButtonNum = 1;
                     }
                   )
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: _toggle1 ? IconColors.appColor : Colors.white,
+                  primary: selectedButtonNum == 1 ? IconColors.appColor : Colors.white,
                   elevation: 0,
                   padding: const EdgeInsets.all(5),
                   shape: RoundedRectangleBorder(
