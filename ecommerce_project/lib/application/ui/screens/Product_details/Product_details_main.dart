@@ -75,7 +75,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                           child: const Icon(
                             CustomIcons.vector,
                             color: Colors.white,
-                            size: 15,
+                            size: 17,
                           ),
                           style: ElevatedButton.styleFrom(
                             primary: IconColors.appColor,
@@ -118,18 +118,16 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                 ),
                                 ElevatedButton(
                                   onPressed: () {},
-                                  child: const Icon(
-                                    Icons.favorite_border,
-                                    color: Colors.grey,
-                                    size: 18,
-                                  ),
+                                  child: state.loadedDetails[0].isFavorites 
+                                    ? const Icon(Icons.favorite, color: IconColors.appColor, size: 18)
+                                    : const Icon(Icons.favorite_border, color: IconColors.appColor, size: 15),
                                   style: ElevatedButton.styleFrom(
                                     primary: AppColors.buttonBarColor,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10)
                                     ),
                                     padding: const EdgeInsets.symmetric(
-                                      horizontal: 9, vertical: 7),
+                                      horizontal: 9, vertical: 9),
                                     minimumSize: const Size(7, 7)
                                   ),
                                 )
@@ -325,9 +323,9 @@ class ProductWidget extends StatelessWidget {
               ),
             );
           },
-          child: const Text(
-            'Add to Cart     \$1,500.00',
-            style: TextStyle(
+          child:  Text(
+            'Add to Cart     \$1,500.00'/*  + '\$' + state.loadedDetails. */,
+            style: const TextStyle(
               fontFamily: 'MarkPronormal400',
               fontSize: 20,
               fontWeight: FontWeight.w700,
@@ -355,9 +353,7 @@ class ButtonsRowWidget extends StatefulWidget {
 class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
   bool _toggle = true;
   bool _toggle1 = false;
-  bool button = false;
-  int button1 = 0;
-  bool array = false;
+
   final List<bool> aarray = [true];
   final List<bool> aarray1 = [false];
   
@@ -366,15 +362,7 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
     return Color(int.parse('FF$hexCode', radix: 16));
   }
 
-  Icon fab = const Icon(
-    Icons.check_outlined,
-  );
-  Icon fab1 = const Icon(
-    Icons.check_outlined,
-  );
-
-  int fabIconNumber = 0;
-  int fab1IconNumber = 0;
+  int selectedButtonNum = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -389,24 +377,23 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
           return Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Center(
-                child: SizedBox(
-                  height: 40,
-                  child: FloatingActionButton(
-                    heroTag: "btn1",
-                    elevation: 0,
-                    child: Visibility(
-                      visible: aarray[0],
-                      child: const Icon(
-                        Icons.check_outlined
-                      )
-                    ),
-                    backgroundColor: _colorFromApi(state.loadedDetails[0].color[0]),
-                    foregroundColor: Colors.white,
-                    onPressed: () => setState(() {
-                      aarray[0] = !aarray[0];
-                    }),
+              SizedBox(
+                height: 40,
+                child: FloatingActionButton(
+                  heroTag: "btn1",
+                  elevation: 0,
+                  child: Visibility(
+                    visible: aarray[0],
+                    child: const Icon(
+                      Icons.check_outlined
+                    )
                   ),
+                  backgroundColor: _colorFromApi(state.loadedDetails[0].color[0]),
+                  foregroundColor: Colors.white,
+                  onPressed: () => 
+                    setState(() {
+                      aarray[0] = !aarray[0];
+                  }),
                 ),
               ),
               SizedBox(

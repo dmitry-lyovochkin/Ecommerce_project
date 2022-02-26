@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_project/application/services/API/http_get.dart';
 import 'package:ecommerce_project/application/services/API/model_store.dart';
-import 'package:ecommerce_project/application/ui/screens/Product%20Details/Product_details_main.dart';
+import 'package:ecommerce_project/application/ui/screens/Product_details/Product_details_main.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
