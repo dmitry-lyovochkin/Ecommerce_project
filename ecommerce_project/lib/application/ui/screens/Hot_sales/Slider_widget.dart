@@ -22,7 +22,7 @@ class _HotSalesWidgetState extends State<HotSalesWidget> {
         if (snapshot.hasData) {
           return CarouselSlider.builder(
             itemCount: (snapshot.data as List<Homestore>).length,
-            itemBuilder: (context, index, _) => Slideridget(
+            itemBuilder: (context, index, _) => SliderWidget(
               pictureUrl: (snapshot.data as List<Homestore>)[index].picture,
               titlePhone: (snapshot.data as List<Homestore>)[index].title,
               subtitleSuper: (snapshot.data as List<Homestore>)[index].subtitle,
@@ -45,13 +45,13 @@ class _HotSalesWidgetState extends State<HotSalesWidget> {
   }
 }
 
-class Slideridget extends StatelessWidget {
+class SliderWidget extends StatelessWidget {
   final String pictureUrl;
   final String titlePhone;
   final String subtitleSuper;
   bool isNew;
 
-  Slideridget({
+  SliderWidget({
     Key? key,
     required this.pictureUrl,
     required this.titlePhone,
