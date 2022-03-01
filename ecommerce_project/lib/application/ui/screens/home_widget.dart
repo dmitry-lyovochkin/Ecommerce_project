@@ -12,22 +12,27 @@ class HomeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: const [
-          SizedBox(height: 45),
-          _GeolocWidget(),
-          _TitleSelectCategory(),
-          SectionButtonsWidget(),
-          SizedBox(height: 10),
-          _SearchWidget(),
-          SizedBox(height: 15),
-          _TitleHotSales(),
-          HotSalesWidget(),
-          SizedBox(height: 10),
-          _TitleBestSeller(),
-          BestSellerWidget(),
-          SizedBox(height: 40),
-        ]
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15),
+        child: Column(
+          children: const [
+            SizedBox(height: 45),
+            _GeolocWidget(),
+            _TitleSelectCategory(),
+            SizedBox(height: 15),
+            SelectCategoryWidget(),
+            SizedBox(height: 10),
+            _SearchWidget(),
+            SizedBox(height: 15),
+            _TitleHotSales(),
+            SizedBox(height: 20),
+            HotSalesWidget(),
+            SizedBox(height: 10),
+            _TitleBestSeller(),
+            BestSellerWidget(),
+            SizedBox(height: 40),
+          ]
+        ),
       )
     );
   }
@@ -40,36 +45,50 @@ class _GeolocWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 105),
-      child: Row(
-        children: [
-          IconButton(
-            padding: const EdgeInsets.only(left: 15),
-            onPressed: () {},
-            icon: svgGeolocation,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Row(
+          children: [
+            ElevatedButton(
+              onPressed: () {},
+              child: svgGeolocation,
+              style: ElevatedButton.styleFrom(
+                shape: const CircleBorder(),
+                primary: Colors.grey[50],
+                elevation: 0
+              ),
+            ),
+            const Text(
+              'Zihuatanejo, Gro',
+              style: TextStyle(
+                fontFamily: 'MarkPronormal400',
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
+                color: AppColors.buttonBarColor
+              )
+            ),
+            ElevatedButton(
+              onPressed: () {},
+              child: svgDown,
+              style: ElevatedButton.styleFrom(
+                shape: const CircleBorder(),
+                primary: Colors.grey[50],
+                elevation: 0
+              ),
+            ),
+          ],
+        ),
+        ElevatedButton(
+          onPressed: () {},
+          child: svgFilter,
+          style: ElevatedButton.styleFrom(
+            shape: const CircleBorder(),
+            primary: Colors.grey[50],
+            elevation: 0
           ),
-          const Text(
-            'Zihuatanejo, Gro',
-            style: TextStyle(
-              fontFamily: 'MarkPronormal400',
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
-              color: AppColors.buttonBarColor
-            )
-          ),
-          IconButton(
-            padding: const EdgeInsets.only(right: 20),
-            onPressed: () {},
-            icon: svgDown,
-          ),
-          IconButton(
-            padding: const EdgeInsets.only(left: 48),
-            onPressed: () {},
-            icon: svgFilter,
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -83,18 +102,18 @@ class _SearchWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Container(
-          margin: const EdgeInsets.only(left: 30),
-          height: 34,
-          width: 300,
-          decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(50)),
-          child: TextField(
-            decoration: InputDecoration(
-              border: InputBorder.none,
-              contentPadding: const EdgeInsets.symmetric(vertical: 0),
-              hintText: 'Search',
-              hintStyle: const TextStyle(fontSize: 13, fontFamily: 'MarkPronormal400', fontWeight: FontWeight.w400),
-              prefixIcon: svgSearch,
+        Expanded(
+          child: Container(
+            height: 34,
+            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(50)),
+            child: TextField(
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: const EdgeInsets.symmetric(vertical: 0),
+                hintText: 'Search',
+                hintStyle: const TextStyle(fontSize: 13, fontFamily: 'MarkPronormal400', fontWeight: FontWeight.w400),
+                prefixIcon: svgSearch,
+              ),
             ),
           ),
         ),
@@ -116,29 +135,26 @@ class _TitleSelectCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 20, left: 17),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text(
-            'Select Category',
-            style: TextStyle(fontSize: 25, color: AppColors.buttonBarColor),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: const Text(
-              'view all',
-              style: TextStyle(
-                fontSize: 15,
-                fontFamily: 'MarkPronormal400',
-                fontWeight: FontWeight.w500,
-                color: IconColors.appColor
-              ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text(
+          'Select Category',
+          style: TextStyle(fontSize: 25, color: AppColors.buttonBarColor),
+        ),
+        TextButton(
+          onPressed: () {},
+          child: const Text(
+            'view all',
+            style: TextStyle(
+              fontSize: 15,
+              fontFamily: 'MarkPronormal400',
+              fontWeight: FontWeight.w500,
+              color: IconColors.appColor
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }
@@ -148,29 +164,26 @@ class _TitleHotSales extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 20, left: 17),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text(
-            'Hot Sales',
-            style: TextStyle(fontSize: 25, color: AppColors.buttonBarColor),
-          ),
-          TextButton(
-            onPressed: () {},
-            child: const Text(
-              'see more',
-              style: TextStyle(
-                fontSize: 15,
-                fontFamily: 'MarkPronormal400',
-                fontWeight: FontWeight.w500,
-                color: IconColors.appColor
-              ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text(
+          'Hot Sales',
+          style: TextStyle(fontSize: 25, color: AppColors.buttonBarColor),
+        ),
+        TextButton(
+          onPressed: () {},
+          child: const Text(
+            'see more',
+            style: TextStyle(
+              fontSize: 15,
+              fontFamily: 'MarkPronormal400',
+              fontWeight: FontWeight.w500,
+              color: IconColors.appColor
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }
@@ -180,36 +193,33 @@ class _TitleBestSeller extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(right: 20, left: 17),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text(
-            'Best Seller',
-            style: TextStyle(fontSize: 25, color: AppColors.buttonBarColor),
-          ),
-          TextButton(
-            child: const Text(
-              'see more',
-              style: TextStyle(
-                fontSize: 15,
-                fontFamily: 'MarkPronormal400',
-                fontWeight: FontWeight.w500,
-                color: IconColors.appColor
-              ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const Text(
+          'Best Seller',
+          style: TextStyle(fontSize: 25, color: AppColors.buttonBarColor),
+        ),
+        TextButton(
+          child: const Text(
+            'see more',
+            style: TextStyle(
+              fontSize: 15,
+              fontFamily: 'MarkPronormal400',
+              fontWeight: FontWeight.w500,
+              color: IconColors.appColor
             ),
-            onPressed: () {
-              showModalBottomSheet(
-                context: context,
-                builder: (BuildContext context) {
-                  return const FilterOptionsWidget();
-                }
-              );
-            },
-          )
-        ],
-      ),
+          ),
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (BuildContext context) {
+                return const FilterOptionsWidget();
+              }
+            );
+          },
+        )
+      ],
     );
   }
 }

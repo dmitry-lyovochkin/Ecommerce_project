@@ -63,21 +63,18 @@ class SliderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Center(
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(10),
-            child: CachedNetworkImage(
-              imageUrl: pictureUrl,
-              height: 450,
-              width: 380,
-              fit: BoxFit.cover,
-              alignment: Alignment.topLeft,
-            ),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(10),
+          child: CachedNetworkImage(
+            imageUrl: pictureUrl,
+            height: 450,
+            width: double.maxFinite,
+            fit: BoxFit.cover,
+            alignment: Alignment.topLeft,
           ),
         ),
-        
         Padding(
-          padding: const EdgeInsets.only(left: 15),
+          padding: const EdgeInsets.only(left: 3),
           child: Stack(
             children: [
               SizedBox(
@@ -95,7 +92,7 @@ class SliderWidget extends StatelessWidget {
                 ),
               ),
               Positioned(
-                top: 103,
+                top: 105,
                 left: 28,
                 child: Text((subtitleSuper),
                   style: const TextStyle(

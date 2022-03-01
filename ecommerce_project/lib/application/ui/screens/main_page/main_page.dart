@@ -5,14 +5,14 @@ import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/custom_icons.dart';
 import 'package:flutter/material.dart';
 
-class BottomNavBarWidget extends StatefulWidget {
-  const BottomNavBarWidget({Key? key}) : super(key: key);
+class MainPageWidget extends StatefulWidget {
+  const MainPageWidget({Key? key}) : super(key: key);
 
   @override
-  State<BottomNavBarWidget> createState() => _BottomNavBarWidgetState();
+  State<MainPageWidget> createState() => _MainPageWidgetState();
 }
 
-class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
+class _MainPageWidgetState extends State<MainPageWidget> {
   int _selectedIndex = 0;
   static const List _widgetOptions = [
     HomeWidget(),

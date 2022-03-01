@@ -16,7 +16,7 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight - 138) / 2;
+    final double itemHeight = (size.height - kToolbarHeight - 138) / 2.05;
     final double itemWidth = size.width / 2;
     return FutureBuilder(
       future: getPostsBestSeller(),
@@ -72,7 +72,7 @@ class GridWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(7),
-      elevation: 2,
+      elevation: 3,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -94,7 +94,7 @@ class GridWidget extends StatelessWidget {
               ),
             ),
             Positioned(
-              right: 15,
+              right: 10,
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(
@@ -109,18 +109,17 @@ class GridWidget extends StatelessWidget {
             ),
             Positioned(
               bottom: 32,
-              left: 34,
               child: Row(
                 children: [
                   Text('\$' + priceWithoutDiscount.toString(),
                     style: const TextStyle(
                       fontFamily: 'MarkProbold',
-                      fontSize: 17,
+                      fontSize: 18,
                       fontWeight: FontWeight.w700,
                       color: AppColors.buttonBarColor
                     )
                   ),
-                  const SizedBox(width: 10),
+                  const SizedBox(width: 20),
                   Text('\$' + discountPrice.toString(),
                     style: TextStyle(
                       fontFamily: 'MarkPronormal400',
@@ -135,12 +134,10 @@ class GridWidget extends StatelessWidget {
             ),
             Positioned(
               bottom: 16,
-              left: 35,
               child: Text(titleItems,
-                textAlign: TextAlign.end,
                 style: const TextStyle(
                   fontFamily: 'MarkPronormal400',
-                  fontSize: 10,
+                  fontSize: 11,
                   fontWeight: FontWeight.w700,
                   color: AppColors.buttonBarColor
                 )

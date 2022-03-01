@@ -2,24 +2,24 @@ import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class SectionButtonsWidget extends StatefulWidget {
-  const SectionButtonsWidget({Key? key}) : super(key: key);
+class SelectCategoryWidget extends StatefulWidget {
+  const SelectCategoryWidget({Key? key}) : super(key: key);
 
   @override
-  State<SectionButtonsWidget> createState() => _SectionButtonsWidgetState();
+  State<SelectCategoryWidget> createState() => _SelectCategoryWidgetState();
 }
 
-class _SectionButtonsWidgetState extends State<SectionButtonsWidget> {
+class _SelectCategoryWidgetState extends State<SelectCategoryWidget> {
   int _selectedIndex = 0;
 
   final List<dynamic> categories = [
-    {'name': 'Phones', 'IconPath': 'assets/Phone.svg', 'isTap': false},
-    {'name': 'Computer', 'IconPath': 'assets/Computer.svg', 'isTap': false},
-    {'name': 'Health', 'IconPath': 'assets/Health.svg', 'isTap': false},
-    {'name': 'Books', 'IconPath': 'assets/Books.svg', 'isTap': false},
-    {'name': 'Phone', 'IconPath': 'assets/Books.svg', 'isTap': false},
-    {'name': 'Phone', 'IconPath': 'assets/Books.svg', 'isTap': false},
-    {'name': 'Phone', 'IconPath': 'assets/Books.svg', 'isTap': false}
+    {'name': 'Phones', 'IconPath': 'assets/Phone.svg'},
+    {'name': 'Computer', 'IconPath': 'assets/Computer.svg'},
+    {'name': 'Health', 'IconPath': 'assets/Health.svg'},
+    {'name': 'Books', 'IconPath': 'assets/Books.svg'},
+    {'name': '', 'IconPath': 'assets/Phone.svg'},
+    {'name': '', 'IconPath': 'assets/Phone.svg'},
+    {'name': '', 'IconPath': 'assets/Phone.svg'}
   ];
 
   @override
@@ -32,9 +32,9 @@ class _SectionButtonsWidgetState extends State<SectionButtonsWidget> {
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-            padding: const EdgeInsets.only(
-              left: 10,
-            ),
+            // padding: const EdgeInsets.only(
+            //   left: 10,
+            // ),
             child: Column(
               children: [
                 Container(
