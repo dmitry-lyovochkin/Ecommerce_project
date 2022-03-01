@@ -66,23 +66,16 @@ final Widget svgGeolocation = SvgPicture.asset(
 const String assetStar5 = "assets/Star5.svg";
 final Widget svgStar5 = SvgPicture.asset(
   assetStar5,
-  // color: Colors.red,
-  // height: 74,
-  // fit: BoxFit.scaleDown,
 );
 
 const String assetGroup18 = "assets/Group18.svg";
 final Widget svgGroup18 = SvgPicture.asset(
   assetGroup18,
-  // color: Colors.red,
-  // height: 74,
-  // fit: BoxFit.scaleDown,
 );
 
 const String assetCart = "assets/Cart.svg";
 final Widget svgCart = SvgPicture.asset(
   assetCart,
-  // color: Colors.red,
   height: 38,
   fit: BoxFit.scaleDown,
 );

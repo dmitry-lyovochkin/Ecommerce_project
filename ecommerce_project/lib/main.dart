@@ -1,5 +1,5 @@
 import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_bloc.dart';
-import 'package:ecommerce_project/application/ui/screens/main_page/main_page.dart';
+import 'package:ecommerce_project/application/ui/screens/home/home_widget.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: AppTheme.light,
       debugShowCheckedModeBanner: false,
-      home: const MainPageWidget(),
+      home: const HomeWidget(),
     );
   }
 }

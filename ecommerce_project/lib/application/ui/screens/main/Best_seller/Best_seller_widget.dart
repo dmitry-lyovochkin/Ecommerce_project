@@ -107,40 +107,45 @@ class GridWidget extends StatelessWidget {
                 :  const Icon(Icons.favorite_border, color: IconColors.appColor, size: 15)
               ),
             ),
-            Positioned(
-              bottom: 32,
-              child: Row(
+            Padding(
+              padding: const EdgeInsets.only(bottom: 20,),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Text('\$' + priceWithoutDiscount.toString(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('\$' + priceWithoutDiscount.toString(),
+                        style: const TextStyle(
+                          fontFamily: 'MarkProbold',
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                          color: AppColors.buttonBarColor
+                        )
+                      ),
+                      const SizedBox(width: 20),
+                      Text('\$' + discountPrice.toString(),
+                        style: TextStyle(
+                          fontFamily: 'MarkPronormal400',
+                          fontSize: 11,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.grey[400],
+                          decoration: TextDecoration.lineThrough
+                        )
+                      ),
+                    ],
+                  ),
+                  Text(
+                    titleItems,
                     style: const TextStyle(
-                      fontFamily: 'MarkProbold',
-                      fontSize: 18,
+                      fontFamily: 'MarkPronormal400',
+                      fontSize: 11,
                       fontWeight: FontWeight.w700,
                       color: AppColors.buttonBarColor
                     )
                   ),
-                  const SizedBox(width: 20),
-                  Text('\$' + discountPrice.toString(),
-                    style: TextStyle(
-                      fontFamily: 'MarkPronormal400',
-                      fontSize: 11,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.grey[400],
-                      decoration: TextDecoration.lineThrough
-                    )
-                  ),
                 ],
-              ),
-            ),
-            Positioned(
-              bottom: 16,
-              child: Text(titleItems,
-                style: const TextStyle(
-                  fontFamily: 'MarkPronormal400',
-                  fontSize: 11,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.buttonBarColor
-                )
               ),
             ),
           ]

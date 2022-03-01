@@ -36,7 +36,7 @@ class _CartWidgetState extends State<CartWidget> {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 60, left: 30, right: 30),
+                    padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween, 
                       children: [
@@ -58,7 +58,7 @@ class _CartWidgetState extends State<CartWidget> {
                             minimumSize: const Size(15, 15),
                           ),
                         ),
-                        const SizedBox(width: 150),
+                        const SizedBox(width: 140),
                         const Text(
                           'Add address',
                           style: TextStyle(
@@ -87,16 +87,20 @@ class _CartWidgetState extends State<CartWidget> {
                       ]
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 50, right: 200),
-                    child: Text(
-                      'My Cart',
-                      style: TextStyle(
-                        fontFamily: 'MarkPronormal700',
-                        fontSize: 35,
-                        fontWeight: FontWeight.w800,
-                        color: AppColors.buttonBarColor
-                      )
+                  const Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        'My Cart',
+                        textAlign: TextAlign.start,
+                        style: TextStyle(
+                          fontFamily: 'MarkPronormal700',
+                          fontSize: 35,
+                          fontWeight: FontWeight.w800,
+                          color: AppColors.buttonBarColor
+                        )
+                      ),
                     ),
                   ),
                   const SizedBox(height: 50),
@@ -122,7 +126,7 @@ class _CartWidgetState extends State<CartWidget> {
                               return Card(
                                 color: AppColors.buttonBarColor,
                                 child: Padding(
-                                  padding: const EdgeInsets.only(top: 15, bottom: 20, left: 20),
+                                  padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
                                   child: Row(
                                     children: [
                                       Container(
@@ -141,11 +145,11 @@ class _CartWidgetState extends State<CartWidget> {
                                           ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsets.only(left: 20),
+                                        padding: const EdgeInsets.symmetric(horizontal: 10),
                                         child: Column(
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                             Text(
+                                            Text(
                                               state.loadedCart[index].title,
                                               style: const TextStyle(
                                                 fontSize: 21,
@@ -155,7 +159,7 @@ class _CartWidgetState extends State<CartWidget> {
                                               ),
                                             ),
                                             const SizedBox(height: 7,),
-                                             Text(
+                                            Text(
                                               '\$' + state.loadedCart[index].price.toString(),
                                               textAlign: TextAlign.start,
                                               style: const TextStyle(
@@ -168,7 +172,7 @@ class _CartWidgetState extends State<CartWidget> {
                                           ],
                                         ),
                                       ),
-                                      const SizedBox(width: 20),
+                                      // const SizedBox(width: 20),
                                       Container(
                                         height: 100,
                                         width: 30,
@@ -199,16 +203,18 @@ class _CartWidgetState extends State<CartWidget> {
                                           ],
                                         )
                                       ),
-                                      ElevatedButton(
-                                        onPressed: () {},
-                                        style: ElevatedButton.styleFrom(
-                                          shape: const CircleBorder(), 
-                                          primary: AppColors.buttonBarColor
-                                        ), 
-                                        child: SvgPicture.asset(
-                                          assetCart,
-                                          height: 19,
-                                        )
+                                      Expanded(
+                                        child: ElevatedButton(
+                                          onPressed: () {},
+                                          style: ElevatedButton.styleFrom(
+                                            shape: const CircleBorder(), 
+                                            primary: AppColors.buttonBarColor
+                                          ), 
+                                          child: SvgPicture.asset(
+                                            assetCart,
+                                            height: 18,
+                                          )
+                                        ),
                                       ),
                                     ]
                                   ),

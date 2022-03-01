@@ -1,21 +1,21 @@
 import 'package:badges/badges.dart';
 import 'package:ecommerce_project/application/ui/screens/cart/cart.dart';
-import 'package:ecommerce_project/application/ui/screens/home_widget.dart';
+import 'package:ecommerce_project/application/ui/screens/main/main_widget.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/custom_icons.dart';
 import 'package:flutter/material.dart';
 
-class MainPageWidget extends StatefulWidget {
-  const MainPageWidget({Key? key}) : super(key: key);
+class HomeWidget extends StatefulWidget {
+  const HomeWidget({Key? key}) : super(key: key);
 
   @override
-  State<MainPageWidget> createState() => _MainPageWidgetState();
+  State<HomeWidget> createState() => _HomeWidgetState();
 }
 
-class _MainPageWidgetState extends State<MainPageWidget> {
+class _HomeWidgetState extends State<HomeWidget> {
   int _selectedIndex = 0;
   static const List _widgetOptions = [
-    HomeWidget(),
+    MainWidget(),
     Center(
       child: Text(
         'Favourites',

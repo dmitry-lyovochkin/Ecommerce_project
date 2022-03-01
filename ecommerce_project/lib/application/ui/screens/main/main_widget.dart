@@ -1,13 +1,15 @@
-import 'package:ecommerce_project/application/ui/screens/Best_seller/Best_seller_widget.dart';
-import 'package:ecommerce_project/application/ui/screens/Hot_sales/Slider_widget.dart';
-import 'package:ecommerce_project/application/ui/screens/Select_category/Section_buttons.dart';
-import 'package:ecommerce_project/application/ui/screens/Filter/filter_options.dart';
+import 'package:ecommerce_project/application/ui/screens/main/Best_seller/Best_seller_widget.dart';
+import 'package:ecommerce_project/application/ui/screens/main/Filter/filter_options.dart';
+import 'package:ecommerce_project/application/ui/screens/main/Geolocation/geolocation_widget.dart';
+import 'package:ecommerce_project/application/ui/screens/main/Select_category/Section_buttons.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
 import 'package:flutter/material.dart';
 
-class HomeWidget extends StatelessWidget {
-  const HomeWidget({Key? key}) : super(key: key);
+import 'Hot_sales/Slider_widget.dart';
+
+class MainWidget extends StatelessWidget {
+  const MainWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class HomeWidget extends StatelessWidget {
         child: Column(
           children: const [
             SizedBox(height: 45),
-            _GeolocWidget(),
+            GeolocationWidget(),
             _TitleSelectCategory(),
             SizedBox(height: 15),
             SelectCategoryWidget(),
@@ -34,61 +36,6 @@ class HomeWidget extends StatelessWidget {
           ]
         ),
       )
-    );
-  }
-}
-
-class _GeolocWidget extends StatelessWidget {
-  const _GeolocWidget({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        Row(
-          children: [
-            ElevatedButton(
-              onPressed: () {},
-              child: svgGeolocation,
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-                primary: Colors.grey[50],
-                elevation: 0
-              ),
-            ),
-            const Text(
-              'Zihuatanejo, Gro',
-              style: TextStyle(
-                fontFamily: 'MarkPronormal400',
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                color: AppColors.buttonBarColor
-              )
-            ),
-            ElevatedButton(
-              onPressed: () {},
-              child: svgDown,
-              style: ElevatedButton.styleFrom(
-                shape: const CircleBorder(),
-                primary: Colors.grey[50],
-                elevation: 0
-              ),
-            ),
-          ],
-        ),
-        ElevatedButton(
-          onPressed: () {},
-          child: svgFilter,
-          style: ElevatedButton.styleFrom(
-            shape: const CircleBorder(),
-            primary: Colors.grey[50],
-            elevation: 0
-          ),
-        ),
-      ],
     );
   }
 }
@@ -118,7 +65,14 @@ class _SearchWidget extends StatelessWidget {
           ),
         ),
         ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (BuildContext context) {
+                return const FilterOptionsWidget();
+              }
+            );
+          },
           style: ElevatedButton.styleFrom(
             shape: const CircleBorder(),
             primary: IconColors.appColor,
@@ -210,14 +164,7 @@ class _TitleBestSeller extends StatelessWidget {
               color: IconColors.appColor
             ),
           ),
-          onPressed: () {
-            showModalBottomSheet(
-              context: context,
-              builder: (BuildContext context) {
-                return const FilterOptionsWidget();
-              }
-            );
-          },
+          onPressed: () {},
         )
       ],
     );

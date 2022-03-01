@@ -43,7 +43,9 @@ class FilterOptionsWidget extends StatelessWidget {
                 )
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pop(context);
+                },
                 child: const Text(
                   'Done',
                   style: TextStyle(
