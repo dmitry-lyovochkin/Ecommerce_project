@@ -91,14 +91,16 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                   ),
                   ProductSliderWidget(list: state.loadedDetails),
                   const SizedBox(height: 5),
-                  SizedBox(
-                    height: 455,
-                    child: Card(
+                  Container(
+                    height: 450,
+                    width: double.maxFinite,
+                    decoration: const BoxDecoration(
                       color: Colors.white,
-                      elevation: 3,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
+                      borderRadius:  BorderRadius.only(
+                        topLeft: Radius.circular(30.0),
+                        topRight: Radius.circular(30.0)
+                      )
+                    ),
                       child: Padding(
                         padding: const EdgeInsets.only(top: 20, left: 30, right: 30),
                         child: Column(
@@ -155,7 +157,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                         ),
                       ),
                     ),
-                  )
+                  
                 ]
               ),
             );
@@ -251,7 +253,7 @@ class MyDemo extends StatelessWidget {
               child: TabBar(
                 labelStyle: const TextStyle(
                   fontFamily: 'MarkPronormal400',
-                  fontSize: 19,
+                  fontSize: 18,
                   fontWeight: FontWeight.w700,
                   color: AppColors.buttonBarColor,
                 ),
@@ -264,7 +266,7 @@ class MyDemo extends StatelessWidget {
                 unselectedLabelColor: Colors.grey,
                 unselectedLabelStyle: const TextStyle(
                   fontFamily: 'MarkPronormal400',
-                  fontSize: 19,
+                  fontSize: 17,
                   fontWeight: FontWeight.w400,
                   color: AppColors.buttonBarColor,
                 ),
@@ -312,45 +314,45 @@ class ProductWidget extends StatelessWidget {
           )
         ),
         const SizedBox(height: 10),
-        const ButtonsRowWidget(),
-        const SizedBox(height: 25),
-        ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const CartWidget()
-              ),
-            );
-          },
-          child: const Text(
-            'Add to Cart     \$1,500.00'/*  + '\$' + state.loadedDetails. */,
-            style: TextStyle(
-              fontFamily: 'MarkPronormal400',
-              fontSize: 20,
-              fontWeight: FontWeight.w700,
-              color: Colors.white,
-            ),
-          ),
-          style: ElevatedButton.styleFrom(
-            primary: IconColors.appColor,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-            padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 49),
-          ),
-        ),
+        const ButtonsDetailWidget(),
+        // const SizedBox(height: 25),
+        // ElevatedButton(
+        //   onPressed: () {
+        //     Navigator.push(
+        //       context,
+        //       MaterialPageRoute(
+        //         builder: (context) => const CartWidget()
+        //       ),
+        //     );
+        //   },
+        //   child: const Text(
+        //     'Add to Cart     \$1,500.00'/*  + '\$' + state.loadedDetails. */,
+        //     style: TextStyle(
+        //       fontFamily: 'MarkPronormal400',
+        //       fontSize: 20,
+        //       fontWeight: FontWeight.w700,
+        //       color: Colors.white,
+        //     ),
+        //   ),
+        //   style: ElevatedButton.styleFrom(
+        //     primary: IconColors.appColor,
+        //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        //     padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 40),
+        //   ),
+        // ),
       ],
     );
   }
 }
 
-class ButtonsRowWidget extends StatefulWidget {
-  const ButtonsRowWidget({
+class ButtonsDetailWidget extends StatefulWidget {
+  const ButtonsDetailWidget({
     Key? key, 
   }) : super(key: key);
   @override
-  State<ButtonsRowWidget> createState() => _ButtonsRowWidgetState();
+  State<ButtonsDetailWidget> createState() => _ButtonsDetailWidgetState();
 }
-class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
+class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
   
   Color _colorFromApi(String hexColor) {
     final hexCode = hexColor.replaceAll('#', '');
@@ -370,91 +372,120 @@ class _ButtonsRowWidgetState extends State<ButtonsRowWidget> {
           );
         }
         if (state is DetailsLoadedState) {
-          return Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(
-                height: 40,
-                child: FloatingActionButton(
-                  heroTag: "btn1",
-                  elevation: 0,
-                  child: selectedButtonColor == 0 
-                    ? const Icon(
-                      Icons.check_outlined
-                      ) 
-                    : const SizedBox(),
-                  backgroundColor: _colorFromApi(state.loadedDetails[0].color[0]),
-                  foregroundColor: Colors.white,
-                  onPressed: () => 
-                    setState(() {
-                      selectedButtonColor = 0;
-                  }),
-                ),
+          return Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: <Widget>[
+                  SizedBox(
+                    height: 40,
+                    child: FloatingActionButton(
+                      heroTag: "btn1",
+                      elevation: 0,
+                      child: selectedButtonColor == 0 
+                        ? const Icon(
+                          Icons.check_outlined
+                          ) 
+                        : const SizedBox(),
+                      backgroundColor: _colorFromApi(state.loadedDetails[0].color[0]),
+                      foregroundColor: Colors.white,
+                      onPressed: () => 
+                        setState(() {
+                          selectedButtonColor = 0;
+                      }),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 40,
+                    child: FloatingActionButton(
+                      heroTag: "btn2",
+                      elevation: 0,
+                      child: selectedButtonColor == 1 
+                        ? const Icon(
+                          Icons.check_outlined
+                        ) 
+                        : const SizedBox(),
+                      backgroundColor: _colorFromApi(state.loadedDetails[0].color[1]),
+                      foregroundColor: Colors.white,
+                      onPressed: () => setState(() {
+                        selectedButtonColor = 1;
+                      }),
+                    ),
+                  ),
+                  const SizedBox(width: 60),
+                  ElevatedButton(
+                    child: Text(
+                      state.loadedDetails[0].capacity[0], 
+                      style: TextStyle(
+                        color: selectedButtonNum == 0 ? Colors.white : Colors.grey,
+                      ),
+                    ),
+                    onPressed: () => {
+                        setState(() {
+                          selectedButtonNum = 0;
+                        }
+                      )
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: selectedButtonNum == 0 ? IconColors.appColor : Colors.white,
+                      elevation: 0,
+                      padding: const EdgeInsets.all(7),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)
+                      )
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  ElevatedButton(
+                    child: Text(
+                      state.loadedDetails[0].capacity[1], 
+                      style: TextStyle(
+                        color: selectedButtonNum == 1 ? Colors.white : Colors.grey,
+                      ),
+                    ),
+                    onPressed: () => {
+                        setState(() {
+                          selectedButtonNum = 1;
+                        }
+                      )
+                    },
+                    style: ElevatedButton.styleFrom(
+                      primary: selectedButtonNum == 1 ? IconColors.appColor : Colors.white,
+                      elevation: 0,
+                      padding: const EdgeInsets.all(5),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)
+                      )
+                    ),
+                  )
+                ]
               ),
-              SizedBox(
-                height: 40,
-                child: FloatingActionButton(
-                  heroTag: "btn2",
-                  elevation: 0,
-                  child: selectedButtonColor == 1 
-                    ? const Icon(
-                      Icons.check_outlined
-                    ) 
-                    : const SizedBox(),
-                  backgroundColor: _colorFromApi(state.loadedDetails[0].color[1]),
-                  foregroundColor: Colors.white,
-                  onPressed: () => setState(() {
-                    selectedButtonColor = 1;
-                  }),
-                ),
-              ),
-              const SizedBox(width: 60),
+              const SizedBox(height: 40),
               ElevatedButton(
-                child: Text(
-                  state.loadedDetails[0].capacity[0], 
-                  style: TextStyle(
-                    color: selectedButtonNum == 0 ? Colors.white : Colors.grey,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CartWidget()
+                    ),
+                  );
+                },
+                child:  Text(
+                  'Add to Cart    \$' + state.loadedDetails[0].price.toString(),
+                  style: const TextStyle(
+                    fontFamily: 'MarkPronormal400',
+                    fontSize: 20,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white,
                   ),
                 ),
-                onPressed: () => {
-                    setState(() {
-                      selectedButtonNum = 0;
-                    }
-                  )
-                },
                 style: ElevatedButton.styleFrom(
-                  primary: selectedButtonNum == 0 ? IconColors.appColor : Colors.white,
-                  elevation: 0,
-                  padding: const EdgeInsets.all(7),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)
-                  )
+                  primary: IconColors.appColor,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 60),
                 ),
               ),
-              const SizedBox(width: 20),
-              ElevatedButton(
-                child: Text(
-                  state.loadedDetails[0].capacity[1], 
-                  style: TextStyle(
-                    color: selectedButtonNum == 1 ? Colors.white : Colors.grey,
-                  ),
-                ),
-                onPressed: () => {
-                    setState(() {
-                      selectedButtonNum = 1;
-                    }
-                  )
-                },
-                style: ElevatedButton.styleFrom(
-                  primary: selectedButtonNum == 1 ? IconColors.appColor : Colors.white,
-                  elevation: 0,
-                  padding: const EdgeInsets.all(5),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)
-                  )
-                ),
-              )
-            ]
+            ],
           );
         } 
         if (state is DetailsErrorState) {

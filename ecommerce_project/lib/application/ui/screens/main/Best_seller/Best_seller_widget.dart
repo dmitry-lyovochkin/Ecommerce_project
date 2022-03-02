@@ -16,8 +16,8 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    final double itemHeight = (size.height - kToolbarHeight - 138) / 2.05;
-    final double itemWidth = size.width / 2;
+    final double itemHeight = (size.height - kToolbarHeight - 138) / 2;
+    final double itemWidth = size.width / 2.1;
     return FutureBuilder(
       future: getPostsBestSeller(),
       builder: (context, snapshot) {
@@ -108,7 +108,7 @@ class GridWidget extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 20,),
+              padding: const EdgeInsets.symmetric(vertical: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.end,
