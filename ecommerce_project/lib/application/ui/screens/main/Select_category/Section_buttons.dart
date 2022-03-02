@@ -31,45 +31,40 @@ class _SelectCategoryWidgetState extends State<SelectCategoryWidget> {
         itemCount: categories.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
-          return Container(
-            // padding: const EdgeInsets.only(
-            //   left: 10,
-            // ),
-            child: Column(
-              children: [
-                Container(
-                  padding: const EdgeInsets.only(bottom: 10),
-                  width: 84,
-                  height: 82,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      setState(() {
-                        _selectedIndex = index;
-                      });
-                    },
-                    style: ElevatedButton.styleFrom(
-                      shape: const CircleBorder(),
-                      primary: _selectedIndex == index ? IconColors.appColor : Colors.white,
-                    ),
-                    child: SvgPicture.asset(
-                      categories[index]['IconPath'],
-                      fit: BoxFit.scaleDown,
-                      color: _selectedIndex == index ? Colors.white : Colors.grey,
-                      height: 60,
-                    ),
+          return Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.only(bottom: 10),
+                width: 90,
+                height: 82,
+                child: ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      _selectedIndex = index;
+                    });
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: const CircleBorder(),
+                    primary: _selectedIndex == index ? IconColors.appColor : Colors.white,
+                  ),
+                  child: SvgPicture.asset(
+                    categories[index]['IconPath'],
+                    fit: BoxFit.scaleDown,
+                    color: _selectedIndex == index ? Colors.white : Colors.grey,
+                    height: 60,
                   ),
                 ),
-                Text(
-                  '${categories[index]['name']}',
-                  style:  TextStyle(
-                    color: _selectedIndex == index ?IconColors.appColor : AppColors.buttonBarColor  ,
-                    fontSize: 12,
-                    fontFamily: 'MarkPronormal400',
-                    fontWeight: FontWeight.w600,
-                  ),
+              ),
+              Text(
+                '${categories[index]['name']}',
+                style:  TextStyle(
+                  color: _selectedIndex == index ?IconColors.appColor : AppColors.buttonBarColor  ,
+                  fontSize: 12,
+                  fontFamily: 'MarkPronormal400',
+                  fontWeight: FontWeight.w600,
                 ),
-              ],
-            ),
+              ),
+            ],
           );
         }
       )
