@@ -1,10 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_event.dart';
+import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_repository.dart';
+import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:ecommerce_project/application/services/API/model_cart.dart';
-import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_event.dart';
-import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_repository.dart';
-import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
   final CartRepository cartRepository;

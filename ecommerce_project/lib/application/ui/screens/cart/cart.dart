@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_bloc.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
+import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_bloc.dart';
+import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_event.dart';
+import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_repository.dart';
+import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_repository.dart';
-import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_event.dart';
-import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_state.dart';
 class CartWidget extends StatefulWidget {
   const CartWidget({Key? key}) : super(key: key);
 

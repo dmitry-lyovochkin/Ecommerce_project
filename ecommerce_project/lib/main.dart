@@ -1,6 +1,6 @@
-import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_bloc.dart';
 import 'package:ecommerce_project/application/ui/screens/home/home_widget.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
+import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
