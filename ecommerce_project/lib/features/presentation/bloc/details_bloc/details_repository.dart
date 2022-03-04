@@ -1,5 +1,5 @@
 import 'package:ecommerce_project/application/services/API/http_get.dart';
-import 'package:ecommerce_project/application/services/API/model_details.dart';
+import 'package:ecommerce_project/features/data/models/details_model.dart';
 
 class DetailsRepository {
   final DetailsList _detailsProvider = DetailsList();

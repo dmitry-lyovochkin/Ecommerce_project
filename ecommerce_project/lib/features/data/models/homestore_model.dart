@@ -1,12 +1,12 @@
 
 import 'dart:convert';
 
-class ReposnseStore {
+class Store {
   final String id;
   final List<Homestore> homestore;
   final List<Bestseller> bestseller;
   
-  ReposnseStore({
+  Store({
     required this.id,
     required this.homestore,
     required this.bestseller,
@@ -14,12 +14,12 @@ class ReposnseStore {
 
   // String get title => null!;
 
-  ReposnseStore copyWith({
+  Store copyWith({
     String? id,
     List<Homestore>? homestore,
     List<Bestseller>? bestseller,
   }) {
-    return ReposnseStore(
+    return Store(
       id: id ?? this.id,
       homestore: homestore ?? this.homestore,
       bestseller: bestseller ?? this.bestseller,
@@ -34,8 +34,8 @@ class ReposnseStore {
     };
   }
 
-  factory ReposnseStore.fromMap(Map<String, dynamic> map) {
-    return ReposnseStore(
+  factory Store.fromMap(Map<String, dynamic> map) {
+    return Store(
       id: map['_id'] ?? '',
       homestore: List<Homestore>.from(map['home_store']?.map((x) => Homestore.fromMap(x))),
       bestseller: List<Bestseller>.from(map['best_seller']?.map((x) => Bestseller.fromMap(x))),
@@ -44,7 +44,7 @@ class ReposnseStore {
 
   String toJson() => json.encode(toMap());
 
-  factory ReposnseStore.fromJson(String source) => ReposnseStore.fromMap(json.decode(source));
+  factory Store.fromJson(String source) => Store.fromMap(json.decode(source));
 
   @override
   String toString() => 'Reposnsestore(_id: $id, home_store: $homestore, best_seller: $bestseller)';

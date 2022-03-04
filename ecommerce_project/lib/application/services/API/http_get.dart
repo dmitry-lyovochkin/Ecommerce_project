@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:ecommerce_project/application/services/API/model_cart.dart';
-import 'package:ecommerce_project/application/services/API/model_store.dart';
-import 'package:ecommerce_project/application/services/API/model_details.dart';
+import 'package:ecommerce_project/features/data/models/cart_model.dart';
+import 'package:ecommerce_project/features/data/models/homestore_model.dart';
+import 'package:ecommerce_project/features/data/models/details_model.dart';
 import 'package:http/http.dart' as http;
 
 Future<List<Homestore>> getPosts() async {

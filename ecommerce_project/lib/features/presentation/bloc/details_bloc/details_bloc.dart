@@ -1,4 +1,4 @@
-import 'package:ecommerce_project/application/services/API/model_details.dart';
+import 'package:ecommerce_project/features/data/models/details_model.dart';
 import 'package:ecommerce_project/features/presentation/bloc/details_bloc/details_event.dart';
 import 'package:ecommerce_project/features/presentation/bloc/details_bloc/details_repository.dart';
 import 'package:ecommerce_project/features/presentation/bloc/details_bloc/details_state.dart';
