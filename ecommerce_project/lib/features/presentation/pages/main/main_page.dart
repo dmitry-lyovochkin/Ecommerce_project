@@ -1,15 +1,15 @@
-import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
-import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
-import 'package:ecommerce_project/features/presentation/pages/main/Best_seller/Best_seller_widget.dart';
-import 'package:ecommerce_project/features/presentation/pages/main/Filter/filter_options.dart';
-import 'package:ecommerce_project/features/presentation/pages/main/Geolocation/geolocation_widget.dart';
-import 'package:ecommerce_project/features/presentation/pages/main/Select_category/Section_buttons.dart';
+import 'package:ecommerce_project/common/app_colors/app_colors.dart';
+import 'package:ecommerce_project/common/app_custom_icons.dart/svg_icons.dart';
+import 'package:ecommerce_project/features/presentation/widgets/main/Best_seller/Best_seller_widget.dart';
+import 'package:ecommerce_project/features/presentation/widgets/main/Filter/filter_widget.dart';
+import 'package:ecommerce_project/features/presentation/widgets/main/Geolocation/geolocation_widget.dart';
+import 'package:ecommerce_project/features/presentation/widgets/main/Hot_sales/slider_widget.dart';
+import 'package:ecommerce_project/features/presentation/widgets/main/Select_category/select_category_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../pages/main/Hot_sales/Slider_widget.dart';
 
-class MainWidget extends StatelessWidget {
-  const MainWidget({Key? key}) : super(key: key);
+class MainPage extends StatelessWidget {
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -69,13 +69,13 @@ class _SearchWidget extends StatelessWidget {
             showModalBottomSheet(
               context: context,
               builder: (BuildContext context) {
-                return const FilterOptionsWidget();
+                return const FilterWidget();
               }
             );
           },
           style: ElevatedButton.styleFrom(
             shape: const CircleBorder(),
-            primary: IconColors.appColor,
+            primary: AppColors.iconColor,
           ),
           child: svgQrcode,
         )
@@ -104,7 +104,7 @@ class _TitleSelectCategory extends StatelessWidget {
               fontSize: 15,
               fontFamily: 'MarkPronormal400',
               fontWeight: FontWeight.w500,
-              color: IconColors.appColor
+              color: AppColors.iconColor
             ),
           ),
         )
@@ -133,7 +133,7 @@ class _TitleHotSales extends StatelessWidget {
               fontSize: 15,
               fontFamily: 'MarkPronormal400',
               fontWeight: FontWeight.w500,
-              color: IconColors.appColor
+              color: AppColors.iconColor
             ),
           ),
         )
@@ -161,7 +161,7 @@ class _TitleBestSeller extends StatelessWidget {
               fontSize: 15,
               fontFamily: 'MarkPronormal400',
               fontWeight: FontWeight.w500,
-              color: IconColors.appColor
+              color: AppColors.iconColor
             ),
           ),
           onPressed: () {},

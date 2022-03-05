@@ -1,4 +1,4 @@
-import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
+import 'package:ecommerce_project/common/app_colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

@@ -1,4 +1,4 @@
-import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
+import 'package:ecommerce_project/common/app_colors/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -45,7 +45,7 @@ class _SelectCategoryWidgetState extends State<SelectCategoryWidget> {
                   },
                   style: ElevatedButton.styleFrom(
                     shape: const CircleBorder(),
-                    primary: _selectedIndex == index ? IconColors.appColor : Colors.white,
+                    primary: _selectedIndex == index ? AppColors.iconColor : Colors.white,
                   ),
                   child: SvgPicture.asset(
                     categories[index]['IconPath'],
@@ -58,7 +58,7 @@ class _SelectCategoryWidgetState extends State<SelectCategoryWidget> {
               Text(
                 '${categories[index]['name']}',
                 style:  TextStyle(
-                  color: _selectedIndex == index ?IconColors.appColor : AppColors.buttonBarColor  ,
+                  color: _selectedIndex == index ? AppColors.iconColor : AppColors.buttonBarColor  ,
                   fontSize: 12,
                   fontFamily: 'MarkPronormal400',
                   fontWeight: FontWeight.w600,

@@ -1,25 +1,25 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
-import 'package:ecommerce_project/application/ui/theme/custom_icons.dart';
-import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
+import 'package:ecommerce_project/common/app_colors/app_colors.dart';
+import 'package:ecommerce_project/common/app_custom_icons.dart/custom_icons.dart';
+import 'package:ecommerce_project/common/app_custom_icons.dart/svg_icons.dart';
 import 'package:ecommerce_project/features/presentation/bloc/details_bloc/details_bloc.dart';
 import 'package:ecommerce_project/features/presentation/bloc/details_bloc/details_event.dart';
 import 'package:ecommerce_project/features/presentation/bloc/details_bloc/details_repository.dart';
 import 'package:ecommerce_project/features/presentation/bloc/details_bloc/details_state.dart';
-import 'package:ecommerce_project/features/presentation/pages/cart/cart.dart';
+import 'package:ecommerce_project/features/presentation/pages/cart/cart_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ProductDetailsWidget extends StatefulWidget {
-  const ProductDetailsWidget({Key? key}) : super(key: key);
+class ProductDetailsPage extends StatefulWidget {
+  const ProductDetailsPage({Key? key}) : super(key: key);
 
   @override
-  State<ProductDetailsWidget> createState() => _ProductDetailsWidgetState();
+  State<ProductDetailsPage> createState() => _ProductDetailsPageState();
 }
 
-class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
+class _ProductDetailsPageState extends State<ProductDetailsPage> {
   final detailsRepository = DetailsRepository();
   
   @override
@@ -78,7 +78,7 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                             size: 17,
                           ),
                           style: ElevatedButton.styleFrom(
-                            primary: IconColors.appColor,
+                            primary: AppColors.iconColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)
                             ),
@@ -121,8 +121,8 @@ class _ProductDetailsWidgetState extends State<ProductDetailsWidget> {
                                 ElevatedButton(
                                   onPressed: () {},
                                   child: state.loadedDetails[0].isFavorites 
-                                    ? const Icon(Icons.favorite, color: IconColors.appColor, size: 18)
-                                    : const Icon(Icons.favorite_border, color: IconColors.appColor, size: 15),
+                                    ? const Icon(Icons.favorite, color: AppColors.iconColor, size: 18)
+                                    : const Icon(Icons.favorite_border, color: AppColors.iconColor, size: 15),
                                   style: ElevatedButton.styleFrom(
                                     primary: AppColors.buttonBarColor,
                                     shape: RoundedRectangleBorder(
@@ -259,8 +259,10 @@ class MyDemo extends StatelessWidget {
                 ),
                 labelColor: AppColors.buttonBarColor,
                 indicator: const UnderlineTabIndicator(
-                  borderSide:
-                      BorderSide(color: IconColors.appColor, width: 3),
+                  borderSide: BorderSide(
+                    color: AppColors.iconColor, 
+                    width: 3
+                  ),
                   insets: EdgeInsets.symmetric(horizontal: 20),
                 ),
                 unselectedLabelColor: Colors.grey,
@@ -402,7 +404,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                       )
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: selectedButtonNum == 0 ? IconColors.appColor : Colors.white,
+                      primary: selectedButtonNum == 0 ? AppColors.iconColor : Colors.white,
                       elevation: 0,
                       padding: const EdgeInsets.all(7),
                       shape: RoundedRectangleBorder(
@@ -425,7 +427,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                       )
                     },
                     style: ElevatedButton.styleFrom(
-                      primary: selectedButtonNum == 1 ? IconColors.appColor : Colors.white,
+                      primary: selectedButtonNum == 1 ? AppColors.iconColor : Colors.white,
                       elevation: 0,
                       padding: const EdgeInsets.all(5),
                       shape: RoundedRectangleBorder(
@@ -455,7 +457,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: IconColors.appColor,
+                  primary: AppColors.iconColor,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                   padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 60),
                 ),

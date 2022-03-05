@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:ecommerce_project/common/app_colors/app_colors.dart';
 import 'package:ecommerce_project/features/data/datasources/RemoteDataSource/homestore_remote_data_source.dart';
 import 'package:ecommerce_project/features/data/models/homestore_model.dart';
-import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class HotSalesWidget extends StatefulWidget {
@@ -118,7 +118,7 @@ class SliderWidget extends StatelessWidget {
                       )
                     ),
                     style: ElevatedButton.styleFrom(
-                      primary: IconColors.appColor, 
+                      primary: AppColors.iconColor, 
                       minimumSize: const Size(15, 30), 
                       shape: const CircleBorder()
                     ),

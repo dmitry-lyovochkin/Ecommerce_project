@@ -25,6 +25,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     });
   }
 }
+
 class CounterObserver extends BlocObserver {
   @override
   void onChange(BlocBase bloc, Change change) {

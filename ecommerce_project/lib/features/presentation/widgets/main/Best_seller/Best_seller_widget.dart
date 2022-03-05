@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommerce_project/common/app_colors/app_colors.dart';
 import 'package:ecommerce_project/features/data/datasources/RemoteDataSource/bestseller_remote_data_source.dart';
 import 'package:ecommerce_project/features/data/models/bestseller_model.dart';
-import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
-import 'package:ecommerce_project/features/presentation/pages/Product_details/Product_details_main.dart';
+import 'package:ecommerce_project/features/presentation/pages/product_details/product_details_page.dart';
 import 'package:flutter/material.dart';
 
 class BestSellerWidget extends StatefulWidget {
@@ -80,7 +80,7 @@ class GridWidget extends StatelessWidget {
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const ProductDetailsWidget()),
+            MaterialPageRoute(builder: (context) => const ProductDetailsPage()),
           );
         },
         child: Stack(
@@ -103,8 +103,8 @@ class GridWidget extends StatelessWidget {
                   primary: Colors.white,
                   minimumSize: const Size(15, 15)),
                 child: isFavorites
-                ?  const Icon(Icons.favorite, color: IconColors.appColor, size: 15)
-                :  const Icon(Icons.favorite_border, color: IconColors.appColor, size: 15)
+                ?  const Icon(Icons.favorite, color: AppColors.iconColor, size: 15)
+                :  const Icon(Icons.favorite_border, color: AppColors.iconColor, size: 15)
               ),
             ),
             Padding(

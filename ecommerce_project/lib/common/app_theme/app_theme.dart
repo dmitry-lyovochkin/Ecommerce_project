@@ -16,18 +16,3 @@ abstract class AppTheme {
     ),
   );
 }
-
-abstract class AppColors {
-  static const buttonBarColor = Color.fromRGBO(1, 0, 53, 1);
-}
-
-abstract class IconColors {
-  static const appColor = Color.fromRGBO(245, 110, 78, 1);
-}
-
-abstract class BorderColor {
-  static const appColor = Color.fromRGBO(220, 220, 220, 1);
-}
-abstract class ContainerColor {
-  static const appColor = Color.fromRGBO(40, 40, 67, 1);
-}

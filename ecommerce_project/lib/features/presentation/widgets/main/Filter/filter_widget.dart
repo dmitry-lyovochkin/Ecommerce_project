@@ -1,8 +1,8 @@
-import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
+import 'package:ecommerce_project/common/app_colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
-class FilterOptionsWidget extends StatelessWidget {
-  const FilterOptionsWidget({
+class FilterWidget extends StatelessWidget {
+  const FilterWidget({
     Key? key,
   }) : super(key: key);
 
@@ -56,7 +56,7 @@ class FilterOptionsWidget extends StatelessWidget {
                   )
                 ),
                 style: ElevatedButton.styleFrom(
-                  primary: IconColors.appColor,
+                  primary: AppColors.iconColor,
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
               )
@@ -85,7 +85,7 @@ class FilterOptionsWidget extends StatelessWidget {
               width: 347,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: BorderColor.appColor,
+                  color: AppColors.borderColor,
                 ),
                 borderRadius: BorderRadius.circular(6)
               ),
@@ -115,7 +115,7 @@ class FilterOptionsWidget extends StatelessWidget {
               width: 347,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: BorderColor.appColor,
+                  color: AppColors.borderColor,
                 ),
                 borderRadius: BorderRadius.circular(6)
               ),
@@ -145,7 +145,7 @@ class FilterOptionsWidget extends StatelessWidget {
               width: 347,
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: BorderColor.appColor,
+                  color: AppColors.borderColor,
                 ),
                 borderRadius: BorderRadius.circular(6)
               ),

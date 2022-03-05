@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
-import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
+import 'package:ecommerce_project/common/app_colors/app_colors.dart';
+import 'package:ecommerce_project/common/app_custom_icons.dart/svg_icons.dart';
 import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_bloc.dart';
 import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_event.dart';
 import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_repository.dart';
@@ -76,7 +76,7 @@ class _CartWidgetState extends State<CartWidget> {
                             height: 18,
                           ),
                           style: ElevatedButton.styleFrom(
-                            primary: IconColors.appColor,
+                            primary: AppColors.iconColor,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(10)
                             ),
@@ -166,7 +166,7 @@ class _CartWidgetState extends State<CartWidget> {
                                                 fontSize: 21,
                                                 fontFamily: 'MarkPronormal400',
                                                 fontWeight: FontWeight.w600,
-                                                color: IconColors.appColor
+                                                color: AppColors.iconColor
                                               ),
                                             ),
                                           ],
@@ -177,7 +177,7 @@ class _CartWidgetState extends State<CartWidget> {
                                         height: 100,
                                         width: 30,
                                         decoration: BoxDecoration(
-                                          color: ContainerColor.appColor,
+                                          color: AppColors.containerColor,
                                           borderRadius: BorderRadiusDirectional.circular(12)
                                         ),
                                         child: Column(
@@ -295,7 +295,7 @@ class _CartWidgetState extends State<CartWidget> {
                             ),
                           ),
                           style: ElevatedButton.styleFrom(
-                            primary: IconColors.appColor,
+                            primary: AppColors.iconColor,
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 115),
                           ),

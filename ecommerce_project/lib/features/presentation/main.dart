@@ -1,6 +1,6 @@
-import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
+import 'package:ecommerce_project/common/app_theme/app_theme.dart';
 import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_bloc.dart';
-import 'package:ecommerce_project/features/presentation/pages/home/home_widget.dart';
+import 'package:ecommerce_project/features/presentation/widgets/home/home_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

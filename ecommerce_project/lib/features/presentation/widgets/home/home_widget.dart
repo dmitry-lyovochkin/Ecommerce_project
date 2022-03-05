@@ -1,8 +1,8 @@
 import 'package:badges/badges.dart';
-import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
-import 'package:ecommerce_project/application/ui/theme/custom_icons.dart';
-import 'package:ecommerce_project/features/presentation/pages/cart/cart.dart';
-import 'package:ecommerce_project/features/presentation/widgets/main_widget.dart';
+import 'package:ecommerce_project/common/app_colors/app_colors.dart';
+import 'package:ecommerce_project/common/app_custom_icons.dart/custom_icons.dart';
+import 'package:ecommerce_project/features/presentation/pages/cart/cart_page.dart';
+import 'package:ecommerce_project/features/presentation/pages/main/main_page.dart';
 import 'package:flutter/material.dart';
 
 class HomeWidget extends StatefulWidget {
@@ -15,7 +15,7 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> {
   int _selectedIndex = 0;
   static const List _widgetOptions = [
-    MainWidget(),
+    MainPage(),
     Center(
       child: Text(
         'Favourites',
