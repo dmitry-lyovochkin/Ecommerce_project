@@ -3,7 +3,7 @@ import 'package:ecommerce_project/common/app_colors/app_colors.dart';
 import 'package:ecommerce_project/common/app_custom_icons.dart/svg_icons.dart';
 import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_bloc.dart';
 import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_event.dart';
-import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_repository.dart';
+import 'package:ecommerce_project/features/data/repositories/cart_repository/cart_repository.dart';
 import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

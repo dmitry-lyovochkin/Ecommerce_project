@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_event.dart';
-import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_repository.dart';
+import 'package:ecommerce_project/features/data/repositories/cart_repository/cart_repository.dart';
 import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ecommerce_project/features/data/models/cart_model.dart';
