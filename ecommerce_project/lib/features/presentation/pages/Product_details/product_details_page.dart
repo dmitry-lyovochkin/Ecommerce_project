@@ -71,7 +71,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           )
                         ),
                         ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const CartWidget()
+                              ),
+                            );
+                          },
                           child: const Icon(
                             CustomIcons.vector,
                             color: Colors.white,

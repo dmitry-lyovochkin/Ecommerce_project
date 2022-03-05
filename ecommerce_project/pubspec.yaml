@@ -31,10 +31,10 @@ flutter:
   fonts:
     - family: MyFlutterApp
       fonts:
-        - asset: icons_font/MyFlutterApp.ttf
+        - asset: fonts/MyFlutterApp.ttf
     - family: CategoryIcons
       fonts:
-        - asset: icons_font/CategoryIcons.ttf
+        - asset: fonts/CategoryIcons.ttf
     - family: MarkPronormal400
       fonts:
         - asset: fonts/MARKPRO.OTF
@@ -62,5 +62,5 @@ flutter:
 
   assets:
     - assets/
-    - assets/icons/
+    - assets/icons_png/
   uses-material-design: true
