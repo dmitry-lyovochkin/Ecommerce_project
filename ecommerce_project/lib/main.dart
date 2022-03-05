@@ -1,6 +1,6 @@
-import 'package:ecommerce_project/application/services/bloc/cart_bloc/cart_bloc.dart';
-import 'package:ecommerce_project/application/ui/bottom_nav_bar/bottom_nav_bar.dart';
-import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
+import 'package:ecommerce_project/common/app_theme/app_theme.dart';
+import 'package:ecommerce_project/features/presentation/bloc/cart_bloc/cart_bloc.dart';
+import 'package:ecommerce_project/features/presentation/widgets/home/home_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: AppTheme.light,
       debugShowCheckedModeBanner: false,
-      home: const BottomNavBarWidget(),
+      home: const HomeWidget(),
     );
   }
 }
