@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_project/application/services/API/http_get.dart';
-import 'package:ecommerce_project/features/data/models/homestore_model.dart';
+import 'package:ecommerce_project/features/data/datasources/RemoteDataSource/bestseller_remote_data_source.dart';
+import 'package:ecommerce_project/features/data/models/store_model.dart';
 import 'package:ecommerce_project/application/ui/screens/Product_details/Product_details_main.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:flutter/material.dart';
