@@ -1,12 +1,12 @@
-import 'package:ecommerce_project/application/ui/screens/main/Best_seller/Best_seller_widget.dart';
-import 'package:ecommerce_project/application/ui/screens/main/Filter/filter_options.dart';
-import 'package:ecommerce_project/application/ui/screens/main/Geolocation/geolocation_widget.dart';
-import 'package:ecommerce_project/application/ui/screens/main/Select_category/Section_buttons.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
+import 'package:ecommerce_project/features/presentation/pages/main/Best_seller/Best_seller_widget.dart';
+import 'package:ecommerce_project/features/presentation/pages/main/Filter/filter_options.dart';
+import 'package:ecommerce_project/features/presentation/pages/main/Geolocation/geolocation_widget.dart';
+import 'package:ecommerce_project/features/presentation/pages/main/Select_category/Section_buttons.dart';
 import 'package:flutter/material.dart';
 
-import 'Hot_sales/Slider_widget.dart';
+import '../pages/main/Hot_sales/Slider_widget.dart';
 
 class MainWidget extends StatelessWidget {
   const MainWidget({Key? key}) : super(key: key);

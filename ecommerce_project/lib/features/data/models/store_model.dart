@@ -55,6 +55,7 @@ class Store {
 
   @override
   int get hashCode => id.hashCode ^ homestore.hashCode ^ bestseller.hashCode;
+
 }
 
 

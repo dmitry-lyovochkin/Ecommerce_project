@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:ecommerce_project/application/ui/screens/cart/cart.dart';
 import 'package:ecommerce_project/application/ui/theme/app_theme.dart';
 import 'package:ecommerce_project/application/ui/theme/custom_icons.dart';
 import 'package:ecommerce_project/application/ui/theme/svg_icons.dart';
@@ -7,6 +6,7 @@ import 'package:ecommerce_project/features/presentation/bloc/details_bloc/detail
 import 'package:ecommerce_project/features/presentation/bloc/details_bloc/details_event.dart';
 import 'package:ecommerce_project/features/presentation/bloc/details_bloc/details_repository.dart';
 import 'package:ecommerce_project/features/presentation/bloc/details_bloc/details_state.dart';
+import 'package:ecommerce_project/features/presentation/pages/cart/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
