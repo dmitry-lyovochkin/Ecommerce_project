@@ -102,7 +102,7 @@ class GridWidget extends StatelessWidget {
                   padding: const EdgeInsets.all(5),
                   primary: Colors.white,
                   minimumSize: const Size(15, 15)),
-                child: isFavorites
+                child: isFavorites == true
                 ?  const Icon(Icons.favorite, color: AppColors.iconColor, size: 15)
                 :  const Icon(Icons.favorite_border, color: AppColors.iconColor, size: 15)
               ),

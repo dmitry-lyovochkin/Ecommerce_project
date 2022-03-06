@@ -127,7 +127,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 ),
                                 ElevatedButton(
                                   onPressed: () {},
-                                  child: state.loadedDetails[0].isFavorites 
+                                  child: state.loadedDetails[0].isFavorites == true 
                                     ? const Icon(Icons.favorite, color: AppColors.iconColor, size: 18)
                                     : const Icon(Icons.favorite_border, color: AppColors.iconColor, size: 15),
                                   style: ElevatedButton.styleFrom(
