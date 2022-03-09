@@ -8,20 +8,19 @@ import 'package:ecommerce_project/features/cart/data/models/cart_model.dart';
 class CartBloc extends Bloc<CartEvent, CartState> {
   final CartRepository cartRepository;
 
-  
   CartBloc(this.cartRepository) : super(CartLoadingState()) {
     on<CartLoadEvent>((event, emit)async {
       emit(CartLoadingState());
-          try {
-            final List<Basket> _loadedCartList = await cartRepository.getAllCart();
-            int finalPrice = 0;
-            _loadedCartList.forEach((element) {
-              finalPrice += element.price;
-            });
-            emit(CartLoadedState(loadedCart: _loadedCartList, finalPrice: finalPrice));
-          } catch (_) {
-            emit(CartErrorState());
-          }
+        try {
+          final List<Basket> _loadedCartList = await cartRepository.getAllCart();
+          int finalPrice = 0;
+          _loadedCartList.forEach((element) {
+            finalPrice += element.price;
+          });
+          emit(CartLoadedState(loadedCart: _loadedCartList, finalPrice: finalPrice));
+        } catch (_) {
+          emit(CartErrorState());
+        }
     });
   }
 }

@@ -1,10 +1,9 @@
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
-import 'package:ecommerce_project/common/app_custom_icons.dart/svg_icons.dart';
 import 'package:ecommerce_project/features/home/presentation/widgets/Best_seller/Best_seller_widget.dart';
-import 'package:ecommerce_project/features/home/presentation/widgets/Filter/filter_widget.dart';
 import 'package:ecommerce_project/features/home/presentation/widgets/Geolocation/geolocation_widget.dart';
 import 'package:ecommerce_project/features/home/presentation/widgets/Hot_sales/slider_widget.dart';
 import 'package:ecommerce_project/features/home/presentation/widgets/Select_category/select_category_widget.dart';
+import 'package:ecommerce_project/features/home/presentation/widgets/search/search_widget.dart';
 import 'package:flutter/material.dart';
 
 
@@ -24,7 +23,7 @@ class HomePage extends StatelessWidget {
             SizedBox(height: 15),
             SelectCategoryWidget(),
             SizedBox(height: 10),
-            _SearchWidget(),
+            SearchWidget(),
             SizedBox(height: 15),
             _TitleHotSales(),
             SizedBox(height: 20),
@@ -40,49 +39,7 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class _SearchWidget extends StatelessWidget {
-  const _SearchWidget({
-    Key? key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Container(
-            height: 34,
-            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(50)),
-            child: TextField(
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                contentPadding: const EdgeInsets.symmetric(vertical: 0),
-                hintText: 'Search',
-                hintStyle: const TextStyle(fontSize: 13, fontFamily: 'MarkPronormal400', fontWeight: FontWeight.w400),
-                prefixIcon: svgSearch,
-              ),
-            ),
-          ),
-        ),
-        ElevatedButton(
-          onPressed: () {
-            showModalBottomSheet(
-              context: context,
-              builder: (BuildContext context) {
-                return const FilterWidget();
-              }
-            );
-          },
-          style: ElevatedButton.styleFrom(
-            shape: const CircleBorder(),
-            primary: AppColors.iconColor,
-          ),
-          child: svgQrcode,
-        )
-      ],
-    );
-  }
-}
 
 class _TitleSelectCategory extends StatelessWidget {
   const _TitleSelectCategory({Key? key}) : super(key: key);
