@@ -13,12 +13,14 @@ class HomeLoadingState extends HomeState {
 
 class HomeLoadedState extends HomeState {
   List<Homestore> loadedHomestore;
+  List<Bestseller> loadedBestseller;
   HomeLoadedState({
     required this.loadedHomestore,
+    required this.loadedBestseller,
   });
 
   @override
-  List<Object> get props => [loadedHomestore];
+  List<Object> get props => [loadedHomestore, loadedBestseller];
 }
 
 class HomeErrorState extends HomeState {

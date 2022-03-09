@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
+import 'package:ecommerce_project/features/home/data/repositories/bestseller_repository.dart';
 import 'package:ecommerce_project/features/home/data/repositories/home_repository.dart';
 import 'package:ecommerce_project/features/home/presentation/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,12 @@ class HotSalesWidget extends StatefulWidget {
 
 class _HotSalesWidgetState extends State<HotSalesWidget> {
   final homeRepository = HomeStoreRepository();
+  final bestSellerRepository = BestSellerRepository() ;
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<HomeBloc>(
-      create: (context) => HomeBloc(homeRepository)..add(const HomeLoadEvent()),
+      create: (context) => HomeBloc(homeRepository, bestSellerRepository)..add(const HomeLoadEvent()),
       child: BlocBuilder<HomeBloc, HomeState>(
         builder: (context, state) {
         if (state is HomeLoadingState) {
@@ -46,7 +48,7 @@ class _HotSalesWidgetState extends State<HotSalesWidget> {
         }
         if (state is HomeErrorState) {
           return const Center(
-            child: Text('Error getcing details')
+            child: Text('Error getcing picture')
           );
         }
           return const CircularProgressIndicator();
