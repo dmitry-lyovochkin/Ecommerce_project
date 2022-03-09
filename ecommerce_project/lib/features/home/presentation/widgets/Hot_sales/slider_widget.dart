@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
-import 'package:ecommerce_project/features/home/data/datasources/RemoteDataSource/homestore_remote_data_source.dart';
-import 'package:ecommerce_project/features/home/data/models/homestore_model.dart';
+import 'package:ecommerce_project/features/home/data/repositories/bestseller_repository.dart';
+import 'package:ecommerce_project/features/home/data/repositories/home_repository.dart';
+import 'package:ecommerce_project/features/home/presentation/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HotSalesWidget extends StatefulWidget {
   const HotSalesWidget({Key? key}) : super(key: key);
@@ -13,34 +15,45 @@ class HotSalesWidget extends StatefulWidget {
 }
 
 class _HotSalesWidgetState extends State<HotSalesWidget> {
+  final homeRepository = HomeStoreRepository();
+  final bestSellerRepository = BestSellerRepository() ;
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: getPosts(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
+    return BlocProvider<HomeBloc>(
+      create: (context) => HomeBloc(homeRepository, bestSellerRepository)..add(const HomeLoadEvent()),
+      child: BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+        if (state is HomeLoadingState) {
+          return const Center( 
+            child: CircularProgressIndicator()
+          );
+        }
+        if (state is HomeLoadedState) { 
           return CarouselSlider.builder(
-            itemCount: (snapshot.data as List<Homestore>).length,
+            itemCount: state.loadedHomestore.length,
             itemBuilder: (context, index, _) => SliderWidget(
-              pictureUrl: (snapshot.data as List<Homestore>)[index].picture,
-              titlePhone: (snapshot.data as List<Homestore>)[index].title,
-              subtitleSuper: (snapshot.data as List<Homestore>)[index].subtitle,
-              isNew: (snapshot.data as List<Homestore>)[index].isnew),
+              pictureUrl: state.loadedHomestore[index].picture,
+              titlePhone: state.loadedHomestore[index].title,
+              subtitleSuper: state.loadedHomestore[index].subtitle,
+              isNew: state.loadedHomestore[index].isnew
+            ),
             options: CarouselOptions(
               height: 200,
               aspectRatio: 5.0,
               initialPage: 0,
               viewportFraction: 1,
-            ),
-          );
-        } else if (snapshot.hasError) {
-          return const Text('Error');
+            )
+          );  
         }
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      }
+        if (state is HomeErrorState) {
+          return const Center(
+            child: Text('Error getcing picture')
+          );
+        }
+          return const CircularProgressIndicator();
+        }
+      )
     );
   }
 }
@@ -49,9 +62,9 @@ class SliderWidget extends StatelessWidget {
   final String pictureUrl;
   final String titlePhone;
   final String subtitleSuper;
-  bool isNew;
+  final bool isNew;
 
-  SliderWidget({
+  const SliderWidget({
     Key? key,
     required this.pictureUrl,
     required this.titlePhone,

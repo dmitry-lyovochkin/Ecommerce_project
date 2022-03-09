@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
-import 'package:ecommerce_project/features/home/data/datasources/RemoteDataSource/bestseller_remote_data_source.dart';
-import 'package:ecommerce_project/features/home/data/models/bestseller_model.dart';
+import 'package:ecommerce_project/features/home/data/repositories/bestseller_repository.dart';
+import 'package:ecommerce_project/features/home/data/repositories/home_repository.dart';
+import 'package:ecommerce_project/features/home/presentation/bloc/home_bloc.dart';
 import 'package:ecommerce_project/features/product/presentation/pages/product_details_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BestSellerWidget extends StatefulWidget {
   const BestSellerWidget({Key? key}) : super(key: key);
@@ -13,23 +15,32 @@ class BestSellerWidget extends StatefulWidget {
 }
 
 class _BestSellerWidgetState extends State<BestSellerWidget> {
+  final homeRepository = HomeStoreRepository();
+  final bestSellerRepository = BestSellerRepository() ;
+  
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     final double itemHeight = (size.height - kToolbarHeight - 138) / 2;
     final double itemWidth = size.width / 2.1;
-    return FutureBuilder(
-      future: getPostsBestSeller(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
+    return BlocProvider<HomeBloc>(
+      create: (context) => HomeBloc(homeRepository, bestSellerRepository)..add(const HomeLoadEvent()),
+      child: BlocBuilder<HomeBloc, HomeState>(
+        builder: (context, state) {
+        if (state is HomeLoadingState) {
+          return const Center( 
+            child: CircularProgressIndicator()
+          );
+        }
+        if (state is HomeLoadedState) { 
           return GridView.builder(
-            itemCount: (snapshot.data as List<Bestseller>).length,
+            itemCount: state.loadedBestseller.length,
             itemBuilder: (context, index) => GridWidget(
-              pictureUrls: (snapshot.data as List<Bestseller>)[index].picture,
-              titleItems: (snapshot.data as List<Bestseller>)[index].title,
-              priceWithoutDiscount: (snapshot.data as List<Bestseller>)[index].pricewithoutdiscount,
-              discountPrice: (snapshot.data as List<Bestseller>)[index].discountprice,
-              isFavorites: (snapshot.data as List<Bestseller>)[index].isfavorites
+              pictureUrls: state.loadedBestseller[index].picture,
+              titleItems: state.loadedBestseller[index].title,
+              priceWithoutDiscount: state.loadedBestseller[index].pricewithoutdiscount,
+              discountPrice: state.loadedBestseller[index].discountprice,
+              isFavorites: state.loadedBestseller[index].isfavorites
             ),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
@@ -39,13 +50,15 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
             shrinkWrap: true,
             scrollDirection: Axis.vertical,
           );
-        } else if (snapshot.hasError) {
-          return const Text('Error');
         }
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      }
+        if (state is HomeErrorState) {
+          return const Center(
+            child: Text('Error getcing bestseller')
+          );
+        }
+          return const CircularProgressIndicator();
+        }
+      )
     );
   }
 }
@@ -57,7 +70,7 @@ class GridWidget extends StatelessWidget {
   final int discountPrice;
   final String pictureUrls;
 
-  GridWidget({
+  const GridWidget({
     Key? key,
     required this.isFavorites,
     required this.titleItems,
@@ -66,13 +79,13 @@ class GridWidget extends StatelessWidget {
     required this.pictureUrls,
   }) : super(key: key);
 
-  bool toggle = false;
+  final bool toggle = false;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(7),
-      elevation: 3,
+      elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
