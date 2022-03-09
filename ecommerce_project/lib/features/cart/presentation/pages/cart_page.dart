@@ -1,4 +1,3 @@
-import 'package:ecommerce_project/features/cart/data/repositories/cart_repository.dart';
 import 'package:ecommerce_project/features/cart/presentation/widgets/items_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,13 +20,12 @@ class CartWidget extends StatefulWidget {
 
 class _CartWidgetState extends State<CartWidget> {
   final basketRepository = BasketRepository();
-  final cartRepository = CartRepository();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CartBloc>(
       create: (context) => 
-        CartBloc(basketRepository, cartRepository)..add(const CartLoadEvent()),
+        CartBloc(basketRepository)..add(const CartLoadEvent()),
       child: Scaffold(
         body: BlocBuilder<CartBloc, CartState>(
           builder: (context, state) {
@@ -170,8 +168,8 @@ class _CartWidgetState extends State<CartWidget> {
                           padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 65),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children:   [
-                              const Text(
+                            children:  const  [
+                               Text(
                                 'Delivery',
                                 style: TextStyle(
                                   fontFamily: 'MarkPronormal700',
@@ -181,8 +179,8 @@ class _CartWidgetState extends State<CartWidget> {
                                 )
                               ),
                               Text(
-                                state.loadedCart.delivery,
-                                style: const TextStyle(
+                                /* state.loadedBasket.delivery, */ "free",
+                                style:  TextStyle(
                                   fontFamily: 'MarkPronormal700',
                                   fontSize: 15,
                                   fontWeight: FontWeight.w800,

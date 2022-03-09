@@ -62,9 +62,9 @@ class SliderWidget extends StatelessWidget {
   final String pictureUrl;
   final String titlePhone;
   final String subtitleSuper;
-  bool isNew;
+  final bool isNew;
 
-  SliderWidget({
+  const SliderWidget({
     Key? key,
     required this.pictureUrl,
     required this.titlePhone,

@@ -12,9 +12,9 @@ class HomeLoadingState extends HomeState {
 }
 
 class HomeLoadedState extends HomeState {
-  List<Homestore> loadedHomestore;
-  List<Bestseller> loadedBestseller;
-  HomeLoadedState({
+  final List<Homestore> loadedHomestore;
+  final List<Bestseller> loadedBestseller;
+  const HomeLoadedState({
     required this.loadedHomestore,
     required this.loadedBestseller,
   });

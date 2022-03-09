@@ -14,18 +14,16 @@ class CartLoadingState extends CartState {
 }
 
 class CartLoadedState extends CartState {
-  List<Basket> loadedBasket;
-  GetCartItems loadedCart;
-  int finalPrice;   
-  CartLoadedState({
+  final List<Basket> loadedBasket;
+  final int finalPrice;   
+  const CartLoadedState({
     required this.loadedBasket,
-    required this.loadedCart,
     required this.finalPrice,
   });
 
 
   @override
-  List<Object?> get props => [loadedBasket, finalPrice, loadedCart];
+  List<Object?> get props => [loadedBasket, finalPrice];
 }
 
 class CartErrorState extends CartState {
@@ -37,8 +35,8 @@ class CartErrorState extends CartState {
 
 
 class CounterState extends CartState {
-  int counterValue;
-  CounterState({
+  final int counterValue;
+  const CounterState({
     required this.counterValue,
   });
 

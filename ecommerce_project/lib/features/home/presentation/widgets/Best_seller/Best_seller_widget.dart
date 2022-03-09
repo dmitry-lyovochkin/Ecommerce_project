@@ -70,7 +70,7 @@ class GridWidget extends StatelessWidget {
   final int discountPrice;
   final String pictureUrls;
 
-  GridWidget({
+  const GridWidget({
     Key? key,
     required this.isFavorites,
     required this.titleItems,
@@ -79,7 +79,7 @@ class GridWidget extends StatelessWidget {
     required this.pictureUrls,
   }) : super(key: key);
 
-  bool toggle = false;
+  final bool toggle = false;
 
   @override
   Widget build(BuildContext context) {
