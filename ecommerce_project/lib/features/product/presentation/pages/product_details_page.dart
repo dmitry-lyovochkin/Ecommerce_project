@@ -75,7 +75,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                builder: (context) => const CartWidget()
+                                builder: (context) =>  CartWidget()
                               ),
                             );
                           },

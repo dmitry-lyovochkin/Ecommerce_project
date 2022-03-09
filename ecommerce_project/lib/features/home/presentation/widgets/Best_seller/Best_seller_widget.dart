@@ -1,7 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
-import 'package:ecommerce_project/features/home/data/datasources/RemoteDataSource/bestseller_remote_data_source.dart';
-import 'package:ecommerce_project/features/home/data/models/bestseller_model.dart';
 import 'package:ecommerce_project/features/home/data/repositories/bestseller_repository.dart';
 import 'package:ecommerce_project/features/home/data/repositories/home_repository.dart';
 import 'package:ecommerce_project/features/home/presentation/bloc/home_bloc.dart';
@@ -87,7 +85,7 @@ class GridWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(7),
-      elevation: 3,
+      elevation: 2,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),

@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:ecommerce_project/features/cart/data/models/cart_model.dart';
 
-class CartList {
-  Future<List<Basket>> getCarts() async {
+class BasketList {
+  Future<List<Basket>> getBasket() async {
     final response = await http.get(
       Uri.parse('https://shopapi-0575.restdb.io/rest/cart'),
       headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
