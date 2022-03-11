@@ -10,13 +10,9 @@ class BestSellerList {
         headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
 
     if (response.statusCode == 200) {
-      final List<dynamic> userJson = json.decode(response.body);
+      final responsejson = json.decode(response.body)[0];
       List<Bestseller> list = [];
-      userJson.map((json) {
-        for (var i = 0; i < json['best_seller'].length; i++) {
-          list.add(Bestseller.fromMap(json['best_seller'][i]));
-        }
-      }).toList();
+        responsejson['best_seller'].forEach((e)=> list.add(Bestseller.fromMap(e)));
       return list;
     } else {
       throw Exception('Failed to load');

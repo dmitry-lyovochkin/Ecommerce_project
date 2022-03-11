@@ -9,13 +9,9 @@ class HomeStoreList {
         headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
 
     if (response.statusCode == 200) {
-      final List<dynamic> userJson = json.decode(response.body);
+      final responsejson = json.decode(response.body)[0];
       List<Homestore> list = [];
-      userJson.map((json) {
-        for (var i = 0; i < json.length; i++) {
-          list.add(Homestore.fromMap(json['home_store'][i]));
-        }
-      }).toList();
+        responsejson['home_store'].forEach((e)=> list.add(Homestore.fromMap(e)));
       return list;
     } else {
       throw Exception('Failed to load');

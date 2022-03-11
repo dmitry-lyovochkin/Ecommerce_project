@@ -9,13 +9,9 @@ class BasketList {
       headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
 
     if (response.statusCode == 200) {
-      final List<dynamic> userJson = json.decode(response.body);
+      final userJson = json.decode(response.body)[0];
       List<Basket> list = [];
-      userJson.map((json) {
-        for (var i = 0; i < json['basket'].length; i++) {
-          list.add(Basket.fromMap(json['basket'][i]));
-        }
-      }).toList();
+        userJson['basket'].forEach((e)=> list.add(Basket.fromMap(e)));
       return list;
     } else {
       throw Exception('Failed to load');
