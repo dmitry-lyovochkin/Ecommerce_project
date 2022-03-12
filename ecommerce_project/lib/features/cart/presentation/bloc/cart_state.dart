@@ -1,4 +1,4 @@
-import 'package:ecommerce_project/features/cart/data/models/basket.model.dart';
+import 'package:ecommerce_project/features/cart/data/models/basket_model.dart';
 import 'package:equatable/equatable.dart';
 
 import 'package:ecommerce_project/features/cart/data/models/cart_model.dart';
@@ -16,7 +16,7 @@ class CartLoadingState extends CartState {
 
 class CartLoadedState extends CartState {
   final List<Basket> loadedBasket;
-  final GetCartItems loadedGetCartItems;
+  final List<GetCartItems> loadedGetCartItems;
   final int finalPrice;   
   const CartLoadedState({
     required this.loadedBasket,

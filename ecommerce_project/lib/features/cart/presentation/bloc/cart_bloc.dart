@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce_project/features/cart/data/models/basket.model.dart';
+import 'package:ecommerce_project/features/cart/data/models/basket_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:ecommerce_project/features/cart/data/models/cart_model.dart';
@@ -17,7 +17,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       emit(CartLoadingState());
         try {
           final List<Basket> _loadedBasketList = await basketRepository.getAllBasket();
-          final GetCartItems _loadedCartItemsList = await getCartItemsRepository.getAllCart();
+          final List<GetCartItems> _loadedCartItemsList = await getCartItemsRepository.getAllCart();
           int finalPrice = 0;
           _loadedBasketList.forEach((element) {
             finalPrice += element.price;

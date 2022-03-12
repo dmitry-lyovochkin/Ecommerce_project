@@ -133,7 +133,7 @@ class _CartWidgetState extends State<CartWidget> {
                                 images: state.loadedBasket[index].images,
                                 title: state.loadedBasket[index].title,
                                 items: state.loadedBasket.length, 
-                                delivery: state.loadedGetCartItems.delivery,
+                                delivery: state.loadedGetCartItems[0].delivery,
                               );
                             }
                           ),
@@ -182,7 +182,8 @@ class _CartWidgetState extends State<CartWidget> {
                                 )
                               ),
                               Text(
-                                state.loadedGetCartItems.delivery, 
+                                // state.loadedGetCartItems[0].delivery.toString(), 
+                                'fwe',
                                 style:  const TextStyle(
                                   fontFamily: 'MarkPronormal700',
                                   fontSize: 15,

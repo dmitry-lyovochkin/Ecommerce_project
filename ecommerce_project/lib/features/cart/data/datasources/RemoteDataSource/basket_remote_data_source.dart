@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:ecommerce_project/features/cart/data/models/basket.model.dart';
+import 'package:ecommerce_project/features/cart/data/models/basket_model.dart';
 import 'package:http/http.dart' as http;
 
 class BasketList {
@@ -11,7 +11,7 @@ class BasketList {
     if (response.statusCode == 200) {
       final userJson = json.decode(response.body)[0];
       List<Basket> list = [];
-        userJson['basket'].forEach((e)=> list.add(Basket.fromMap(e)));
+        userJson['basket'].forEach((e)=> list.add(Basket.fromJson(e)));
       return list;
     } else {
       throw Exception('Failed to load');
