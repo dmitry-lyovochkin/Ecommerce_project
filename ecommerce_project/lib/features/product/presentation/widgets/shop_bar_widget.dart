@@ -3,7 +3,7 @@ import 'package:ecommerce_project/features/product/presentation/widgets/product_
 import 'package:flutter/material.dart';
 
 class ShopBarWidget extends StatelessWidget {
-  final List<Widget> tabss = const [
+  final List<Widget> tabs = const [
     Tab(text: "Shop"),
     Tab(text: "Details"),
     Tab(text: "Features"),
@@ -42,16 +42,18 @@ class ShopBarWidget extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                   color: AppColors.buttonBarColor,
                 ),
-                tabs: tabss,
+                tabs: tabs,
               ),
             ),
             const SizedBox(height: 18),
             const Expanded(
-              child: TabBarView(children: [
-                ProductWidget(),
-                Center(child: Text("Details Body")),
-                Center(child: Text("Features Body")),
-              ]),
+              child: TabBarView(
+                children: [
+                  ProductWidget(),
+                  Center(child: Text("Details Body")),
+                  Center(child: Text("Features Body")),
+                ]
+              ),
             )
           ],
         ),

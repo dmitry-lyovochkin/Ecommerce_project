@@ -1,6 +1,6 @@
 import 'dart:convert';
+import 'package:ecommerce_project/features/cart/data/models/basket.model.dart';
 import 'package:http/http.dart' as http;
-import 'package:ecommerce_project/features/cart/data/models/cart_model.dart';
 
 class BasketList {
   Future<List<Basket>> getBasket() async {

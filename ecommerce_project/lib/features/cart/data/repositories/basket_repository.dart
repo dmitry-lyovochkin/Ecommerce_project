@@ -1,5 +1,5 @@
 import 'package:ecommerce_project/features/cart/data/datasources/RemoteDataSource/basket_remote_data_source.dart';
-import 'package:ecommerce_project/features/cart/data/models/cart_model.dart';
+import 'package:ecommerce_project/features/cart/data/models/basket.model.dart';
 
 class BasketRepository {
   final BasketList _basketProvider = BasketList();

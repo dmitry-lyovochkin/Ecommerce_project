@@ -1,3 +1,4 @@
+import 'package:ecommerce_project/features/cart/data/repositories/cart_repository.dart';
 import 'package:ecommerce_project/features/cart/presentation/widgets/items_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,12 +21,13 @@ class CartWidget extends StatefulWidget {
 
 class _CartWidgetState extends State<CartWidget> {
   final basketRepository = BasketRepository();
+  final getCartItemsRepository = CartRepository();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CartBloc>(
       create: (context) => 
-        CartBloc(basketRepository)..add(const CartLoadEvent()),
+        CartBloc(basketRepository, getCartItemsRepository)..add(const CartLoadEvent()),
       child: Scaffold(
         body: BlocBuilder<CartBloc, CartState>(
           builder: (context, state) {
@@ -39,7 +41,7 @@ class _CartWidgetState extends State<CartWidget> {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 20),
+                    padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween, 
                       children: [
@@ -106,7 +108,7 @@ class _CartWidgetState extends State<CartWidget> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 30),
                   Container(
                     height: 680,
                     width: double.maxFinite,
@@ -120,7 +122,7 @@ class _CartWidgetState extends State<CartWidget> {
                     child: Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(top: 35, bottom: 130),
+                          padding: const EdgeInsets.only(top: 15, bottom: 130),
                           child: ListView.builder(
                             scrollDirection: Axis.vertical,
                             shrinkWrap: true,
@@ -130,7 +132,8 @@ class _CartWidgetState extends State<CartWidget> {
                                 price: state.loadedBasket[index].price,
                                 images: state.loadedBasket[index].images,
                                 title: state.loadedBasket[index].title,
-                                items: state.loadedBasket.length
+                                items: state.loadedBasket.length, 
+                                delivery: state.loadedGetCartItems.delivery,
                               );
                             }
                           ),
@@ -168,8 +171,8 @@ class _CartWidgetState extends State<CartWidget> {
                           padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 65),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children:  const  [
-                               Text(
+                            children: [
+                               const Text(
                                 'Delivery',
                                 style: TextStyle(
                                   fontFamily: 'MarkPronormal700',
@@ -179,8 +182,8 @@ class _CartWidgetState extends State<CartWidget> {
                                 )
                               ),
                               Text(
-                                /* state.loadedBasket.delivery, */ "free",
-                                style:  TextStyle(
+                                state.loadedGetCartItems.delivery, 
+                                style:  const TextStyle(
                                   fontFamily: 'MarkPronormal700',
                                   fontSize: 15,
                                   fontWeight: FontWeight.w800,

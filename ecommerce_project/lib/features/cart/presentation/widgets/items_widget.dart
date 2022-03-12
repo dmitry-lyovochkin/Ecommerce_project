@@ -1,21 +1,24 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:ecommerce_project/common/app_colors/app_colors.dart';
-import 'package:ecommerce_project/common/app_custom_icons.dart/svg_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:ecommerce_project/common/app_colors/app_colors.dart';
+import 'package:ecommerce_project/common/app_custom_icons.dart/svg_icons.dart';
 
 class CartItemsWidget extends StatelessWidget {
   final String images;
   final int price;
   final String title;
   final int items;
+  final String delivery;
 
   const CartItemsWidget({
+    Key? key,
     required this.images,
     required this.price,
     required this.title,
     required this.items,
-    Key? key,
+    required this.delivery,
   }) : super(key: key);
 
   @override
@@ -69,7 +72,6 @@ class CartItemsWidget extends StatelessWidget {
                 ],
               ),
             ),
-            // const SizedBox(width: 20),
             Container(
               height: 100,
               width: 30,
