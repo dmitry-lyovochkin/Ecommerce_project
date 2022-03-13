@@ -23,7 +23,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
             finalPrice += element.price;
           });
           emit(CartLoadedState(loadedBasket: _loadedBasketList, finalPrice: finalPrice, loadedGetCartItems: _loadedCartItemsList));
-        } catch (_) {
+        } catch (e, s) {
+          print("Обработка исключения $e");
+          print("Стек $s");
           emit(CartErrorState());
         }
     });

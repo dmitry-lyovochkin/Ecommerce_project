@@ -21,7 +21,7 @@ class CartMainList {
     final response = await http.get(
       Uri.parse('https://shopapi-0575.restdb.io/rest/cart'),
       headers: {'x-apikey': '61ddae2e95cb716ea5ee48e4'});
-
+  try {
     if (response.statusCode == 200) {
       final userJson = json.decode(response.body)[0];
       List<GetCartItems> list = [];
@@ -30,8 +30,15 @@ class CartMainList {
     } else {
       throw Exception('Failed to load');
     }
-  }
+    
+  } catch (e, s){
+    print("Обработка  $e");
+    print("Стек1 $s");
+} else {
+  throw Exception();
 }
 
 
 
+  }
+  }

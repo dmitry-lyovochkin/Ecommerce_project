@@ -5,10 +5,10 @@ part 'cart_model.g.dart';
 
 @JsonSerializable()
 class GetCartItems {
-  final int id;
-  final String delivery;
-  final int total;
-  final List<Basket> basket;
+  final int? id;
+  final String? delivery;
+  final int? total;
+  final List<Basket>? basket;
   
   GetCartItems({
     required this.id,

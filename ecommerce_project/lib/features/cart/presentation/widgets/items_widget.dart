@@ -10,7 +10,7 @@ class CartItemsWidget extends StatelessWidget {
   final int price;
   final String title;
   final int items;
-  final String delivery;
+  final String? delivery;
 
   const CartItemsWidget({
     Key? key,
