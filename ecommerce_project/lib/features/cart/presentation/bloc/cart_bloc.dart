@@ -17,15 +17,13 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       emit(CartLoadingState());
         try {
           final List<Basket> _loadedBasketList = await basketRepository.getAllBasket();
-          final List<GetCartItems> _loadedCartItemsList = await getCartItemsRepository.getAllCart();
+          final List<Cart> _loadedCartItemsList = await getCartItemsRepository.getAllCart();
           int finalPrice = 0;
           _loadedBasketList.forEach((element) {
             finalPrice += element.price;
           });
-          emit(CartLoadedState(loadedBasket: _loadedBasketList, finalPrice: finalPrice, loadedGetCartItems: _loadedCartItemsList));
-        } catch (e, s) {
-          print("Обработка исключения $e");
-          print("Стек $s");
+          emit(CartLoadedState(loadedBasket: _loadedBasketList, finalPrice: finalPrice, loadedCart: _loadedCartItemsList));
+        } catch (event) {
           emit(CartErrorState());
         }
     });

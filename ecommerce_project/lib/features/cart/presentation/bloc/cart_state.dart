@@ -16,17 +16,17 @@ class CartLoadingState extends CartState {
 
 class CartLoadedState extends CartState {
   final List<Basket> loadedBasket;
-  final List<GetCartItems> loadedGetCartItems;
+  final List<Cart> loadedCart;
   final int finalPrice;   
   const CartLoadedState({
     required this.loadedBasket,
-    required this.loadedGetCartItems,
+    required this.loadedCart,
     required this.finalPrice,
   });
 
 
   @override
-  List<Object?> get props => [loadedBasket, finalPrice, loadedGetCartItems];
+  List<Object?> get props => [loadedBasket, finalPrice, loadedCart];
 }
 
 class CartErrorState extends CartState {
