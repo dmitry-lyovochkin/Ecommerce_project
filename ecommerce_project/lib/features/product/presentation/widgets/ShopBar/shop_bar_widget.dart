@@ -1,12 +1,12 @@
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
-import 'package:ecommerce_project/features/product/presentation/widgets/product_widget.dart';
+import 'package:ecommerce_project/features/product/presentation/widgets/Product/product_widget.dart';
 import 'package:flutter/material.dart';
 
 class ShopBarWidget extends StatelessWidget {
   final List<Widget> tabs = const [
-    Tab(text: "Shop"),
-    Tab(text: "Details"),
-    Tab(text: "Features"),
+    Tab(text: 'Shop'),
+    Tab(text: 'Details'),
+    Tab(text: 'Features'),
   ];
 
   const ShopBarWidget({Key? key}) : super(key: key);
@@ -50,8 +50,8 @@ class ShopBarWidget extends StatelessWidget {
               child: TabBarView(
                 children: [
                   ProductWidget(),
-                  Center(child: Text("Details Body")),
-                  Center(child: Text("Features Body")),
+                  Center(child: Text('Details Body')),
+                  Center(child: Text('Features Body')),
                 ]
               ),
             )

@@ -3,13 +3,13 @@ import 'package:ecommerce_project/features/cart/presentation/widgets/items_widge
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
 import 'package:ecommerce_project/common/app_custom_icons.dart/svg_icons.dart';
 import 'package:ecommerce_project/features/cart/data/repositories/basket_repository.dart';
 import 'package:ecommerce_project/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:ecommerce_project/features/cart/presentation/bloc/cart_event.dart';
 import 'package:ecommerce_project/features/cart/presentation/bloc/cart_state.dart';
+
 class CartWidget extends StatefulWidget {
   const CartWidget({
     Key? key,
@@ -183,7 +183,6 @@ class _CartWidgetState extends State<CartWidget> {
                               ),
                               Text(
                                 state.loadedCart[0].delivery.toString(), 
-                                // 'fwe',
                                 style:  const TextStyle(
                                   fontFamily: 'MarkPronormal700',
                                   fontSize: 15,

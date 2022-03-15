@@ -122,7 +122,8 @@ class SliderWidget extends StatelessWidget {
                 child: isNew != false
                   ? ElevatedButton(
                     onPressed: () {},
-                    child: const Text('New',
+                    child: const Text(
+                      'New',
                       style: TextStyle(
                         fontFamily: 'SFPro', 
                         fontSize: 11, 

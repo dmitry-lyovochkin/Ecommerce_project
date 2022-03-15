@@ -7,6 +7,7 @@ class Bestseller {
   final int pricewithoutdiscount;
   final int discountprice;
   final String picture;
+  
   Bestseller({
     required this.id,
     required this.isfavorites,

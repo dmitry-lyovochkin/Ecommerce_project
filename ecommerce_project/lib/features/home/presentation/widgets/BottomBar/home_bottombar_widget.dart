@@ -80,7 +80,7 @@ class _HomeBottomWidgetState extends State<HomeBottomWidget> {
                       ),
                     ],
                   ),
-                  label: "",
+                  label: '',
                 ),
                 BottomNavigationBarItem(
                   icon: Badge(
@@ -88,15 +88,15 @@ class _HomeBottomWidgetState extends State<HomeBottomWidget> {
                     badgeContent: const BottomNavBarWidget(),
                     position: BadgePosition.topStart(top: -14, start: 12)
                   ),
-                  label: "",
+                  label: '',
                 ),
                 const BottomNavigationBarItem(
                   icon: Icon(CustomIcons.vector1, size: 18),
-                  label: "",
+                  label: '',
                 ),
                 const BottomNavigationBarItem(
                   icon: Icon(CustomIcons.profile, size: 18),
-                  label: "",
+                  label: '',
                 ),
               ],
             ),

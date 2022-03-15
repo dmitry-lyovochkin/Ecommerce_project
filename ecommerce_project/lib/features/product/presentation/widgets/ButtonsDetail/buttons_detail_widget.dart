@@ -9,15 +9,11 @@ class ButtonsDetailWidget extends StatefulWidget {
   const ButtonsDetailWidget({
     Key? key, 
   }) : super(key: key);
+
   @override
   State<ButtonsDetailWidget> createState() => _ButtonsDetailWidgetState();
 }
 class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
-  
-  Color _colorFromApi(String hexColor) {
-    final hexCode = hexColor.replaceAll('#', '');
-    return Color(int.parse('FF$hexCode', radix: 16));
-  }
 
   int selectedButtonColor = 0;
   int selectedButtonNum = 0;
@@ -43,11 +39,11 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                       heroTag: "btn1",
                       elevation: 0,
                       child: selectedButtonColor == 0 
-                        ? const Icon(
+                        ? const Icon( 
                           Icons.check_outlined
                           ) 
                         : const SizedBox(),
-                      backgroundColor: _colorFromApi(state.loadedDetails[0].color[0]),
+                      backgroundColor: colorFromApi(state.loadedDetails[0].color[0]),
                       foregroundColor: Colors.white,
                       onPressed: () => 
                         setState(() {
@@ -65,7 +61,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                           Icons.check_outlined
                         ) 
                         : const SizedBox(),
-                      backgroundColor: _colorFromApi(state.loadedDetails[0].color[1]),
+                      backgroundColor: colorFromApi(state.loadedDetails[0].color[1]),
                       foregroundColor: Colors.white,
                       onPressed: () => setState(() {
                         selectedButtonColor = 1;
@@ -83,8 +79,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                     onPressed: () => {
                         setState(() {
                           selectedButtonNum = 0;
-                        }
-                      )
+                        })
                     },
                     style: ElevatedButton.styleFrom(
                       primary: selectedButtonNum == 0 ? AppColors.iconColor : Colors.white,
@@ -106,8 +101,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                     onPressed: () => {
                         setState(() {
                           selectedButtonNum = 1;
-                        }
-                      )
+                        })
                     },
                     style: ElevatedButton.styleFrom(
                       primary: selectedButtonNum == 1 ? AppColors.iconColor : Colors.white,

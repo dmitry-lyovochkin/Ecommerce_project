@@ -7,6 +7,7 @@ class Homestore {
   final String subtitle;
   final String picture;
   final bool isbuy;
+  
   Homestore({
     required this.id,
     required this.isnew,

@@ -7,4 +7,8 @@ class AppColors {
   static const containerColor = Color.fromRGBO(40, 40, 67, 1);
 }
 
+  Color colorFromApi(String hexColor) {
+    final hexCode = hexColor.replaceAll('#', '');
+    return Color(int.parse('FF$hexCode', radix: 16));
+  }
 
