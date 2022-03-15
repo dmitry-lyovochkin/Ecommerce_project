@@ -6,10 +6,10 @@ import 'package:ecommerce_project/common/app_colors/app_colors.dart';
 import 'package:ecommerce_project/common/app_custom_icons.dart/svg_icons.dart';
 
 class CartItemsWidget extends StatelessWidget {
-  final String images;
-  final int price;
-  final String title;
-  final int items;
+  final String? images;
+  final int? price;
+  final String? title;
+  final int? items;
   final String? delivery;
 
   const CartItemsWidget({
@@ -39,7 +39,7 @@ class CartItemsWidget extends StatelessWidget {
                 child:  Padding(
                   padding: const EdgeInsets.only(top: 2, bottom: 2, left: 2, right: 12 ),
                   child: CachedNetworkImage(
-                    imageUrl: images, 
+                    imageUrl: images!, 
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -50,7 +50,7 @@ class CartItemsWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
+                    title!,
                     style: const TextStyle(
                       fontSize: 21,
                       fontFamily: 'MarkPronormal400',

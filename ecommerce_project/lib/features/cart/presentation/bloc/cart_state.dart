@@ -35,15 +35,3 @@ class CartErrorState extends CartState {
   List<Object?> get props => throw UnimplementedError();
 }
 
-
-
-class CounterState extends CartState {
-  final int counterValue;
-  const CounterState({
-    required this.counterValue,
-  });
-
-
-  @override
-  List<Object?> get props => [];
-}
