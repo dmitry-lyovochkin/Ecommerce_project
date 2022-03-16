@@ -52,7 +52,7 @@ class ModelWidget extends StatelessWidget {
           fit: BoxFit.fitWidth,
           alignment: Alignment.center,
         ),
-      )
+      ),
     );
   }
 }

@@ -31,7 +31,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           builder: (context, state) { 
             if (state is DetailsLoadingState) {
               return const Center( 
-                child: CircularProgressIndicator()
+                child: CircularProgressIndicator(),
               );
             }
             if (state is DetailsLoadedState) { 
@@ -49,12 +49,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             },
                             child: const Icon(
                               Icons.arrow_back_ios_new_sharp,
-                              size: 19, color: Colors.white
+                              size: 19, color: Colors.white,
                             ),
                             style: ElevatedButton.styleFrom(
                               primary: AppColors.buttonBarColor,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)
+                                borderRadius: BorderRadius.circular(10),
                               ),
                               padding: const EdgeInsets.all(10),
                               minimumSize: const Size(15, 15),
@@ -67,14 +67,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                               fontSize: 18,
                               fontWeight: FontWeight.w700,
                               color: AppColors.buttonBarColor,
-                            )
+                            ),
                           ),
                           ElevatedButton(
                             onPressed: () {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) =>  const CartWidget()
+                                  builder: (context) =>  const CartWidget(),
                                 ),
                               );
                             },
@@ -86,13 +86,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             style: ElevatedButton.styleFrom(
                               primary: AppColors.iconColor,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)
+                                borderRadius: BorderRadius.circular(10),
                               ),
                               padding: const EdgeInsets.all(11),
-                              minimumSize: const Size(15, 15)
+                              minimumSize: const Size(15, 15),
                             ),
-                          )
-                        ]
+                          ),
+                        ],
                       ),
                     ),
                     ProductSliderWidget(list: state.loadedDetails),
@@ -104,8 +104,8 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         color: Colors.white,
                         borderRadius:  BorderRadius.only(
                           topLeft: Radius.circular(30.0),
-                          topRight: Radius.circular(30.0)
-                        )
+                          topRight: Radius.circular(30.0),
+                        ),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.only(top: 20, left: 30, right: 30),
@@ -121,7 +121,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                     fontFamily: 'MarkPronormal400',
                                     fontWeight: FontWeight.w700,
                                     fontSize: 24, 
-                                    color: AppColors.buttonBarColor
+                                    color: AppColors.buttonBarColor,
                                   ),
                                 ),
                                 ElevatedButton(
@@ -132,13 +132,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   style: ElevatedButton.styleFrom(
                                     primary: AppColors.buttonBarColor,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)
+                                      borderRadius: BorderRadius.circular(10),
                                     ),
                                     padding: const EdgeInsets.symmetric(
-                                      horizontal: 9, vertical: 9),
-                                    minimumSize: const Size(7, 7)
+                                      horizontal: 9, vertical: 9,),
+                                    minimumSize: const Size(7, 7),
                                   ),
-                                )
+                                ),
                               ],
                             ),
                             RatingBar.builder(
@@ -163,19 +163,19 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         ),
                       ),
                     ),
-                  ]
+                  ],
                 ),
               );
             } 
             if (state is DetailsErrorState) {
               return const Center(
-                child: Text('Error getcing details')
+                child: Text('Error getcing details'),
               );
             }
             return const CircularProgressIndicator();
-          }
-        )
-      )
+          },
+        ),
+      ),
     );
   }
 }

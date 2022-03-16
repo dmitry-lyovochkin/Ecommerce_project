@@ -27,11 +27,11 @@ class ProductWidget extends StatelessWidget {
               fontWeight: FontWeight.w700,
               color: AppColors.buttonBarColor,
             ),
-          )
+          ),
         ),
         const SizedBox(height: 10),
         const ButtonsDetailWidget(),
-      ]
+      ],
     );
   }
 }

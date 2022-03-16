@@ -26,53 +26,43 @@ class _CartWidgetState extends State<CartWidget> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<CartBloc>(
-      create: (context) => 
-        CartBloc(basketRepository, getCartItemsRepository)..add(const CartLoadEvent()),
-      child: Scaffold(
-        body: BlocBuilder<CartBloc, CartState>(
-          builder: (context, state) {
+        create: (context) => CartBloc(basketRepository, getCartItemsRepository)
+          ..add(const CartLoadEvent()),
+        child: Scaffold(
+            body: BlocBuilder<CartBloc, CartState>(builder: (context, state) {
           if (state is CartLoadingState) {
-            return const Center( 
-              child: CircularProgressIndicator()
-            );
+            return const Center(child: CircularProgressIndicator());
           }
-          if (state is CartLoadedState) { 
+          if (state is CartLoadedState) {
             return SingleChildScrollView(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween, 
+              child: Column(children: [
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         ElevatedButton(
                           onPressed: () {
                             Navigator.pop(context);
                           },
-                          child: const Icon(
-                            Icons.arrow_back_ios_new_sharp,
-                            size: 19, 
-                            color: Colors.white
-                          ),
+                          child: const Icon(Icons.arrow_back_ios_new_sharp,
+                              size: 19, color: Colors.white),
                           style: ElevatedButton.styleFrom(
                             primary: AppColors.buttonBarColor,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)
-                            ),
+                                borderRadius: BorderRadius.circular(10)),
                             padding: const EdgeInsets.all(10),
                             minimumSize: const Size(15, 15),
                           ),
                         ),
                         const SizedBox(width: 140),
-                        const Text(
-                          'Add address',
-                          style: TextStyle(
-                            fontFamily: 'MarkPronormal400',
-                            fontSize: 15,
-                            fontWeight: FontWeight.w700,
-                            color: AppColors.buttonBarColor
-                          )
-                        ),
+                        const Text('Add address',
+                            style: TextStyle(
+                                fontFamily: 'MarkPronormal400',
+                                fontSize: 15,
+                                fontWeight: FontWeight.w700,
+                                color: AppColors.buttonBarColor)),
                         ElevatedButton(
                           onPressed: () {},
                           child: SvgPicture.asset(
@@ -81,115 +71,97 @@ class _CartWidgetState extends State<CartWidget> {
                             height: 18,
                           ),
                           style: ElevatedButton.styleFrom(
-                            primary: AppColors.iconColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)
-                            ),
-                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                            minimumSize: const Size(15, 16)
-                          ),
+                              primary: AppColors.iconColor,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10)),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 10),
+                              minimumSize: const Size(15, 16)),
                         ),
-                      ]
-                    ),
-                  ),
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        'My Cart',
+                      ]),
+                ),
+                const Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Text('My Cart',
                         textAlign: TextAlign.start,
                         style: TextStyle(
-                          fontFamily: 'MarkPronormal700',
-                          fontSize: 35,
-                          fontWeight: FontWeight.w800,
-                          color: AppColors.buttonBarColor
-                        )
-                      ),
-                    ),
+                            fontFamily: 'MarkPronormal700',
+                            fontSize: 35,
+                            fontWeight: FontWeight.w800,
+                            color: AppColors.buttonBarColor)),
                   ),
-                  const SizedBox(height: 30),
-                  Container(
+                ),
+                const SizedBox(height: 30),
+                Container(
                     height: 680,
                     width: double.maxFinite,
                     decoration: const BoxDecoration(
-                      color: AppColors.buttonBarColor,
-                      borderRadius:  BorderRadius.only(
-                        topLeft: Radius.circular(30.0),
-                        topRight: Radius.circular(30.0)
-                      )
-                    ),
+                        color: AppColors.buttonBarColor,
+                        borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30.0),
+                            topRight: Radius.circular(30.0))),
                     child: Column(
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 15, bottom: 130),
                           child: ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            shrinkWrap: true,
-                            itemCount: state.loadedBasket.length,
-                            itemBuilder: (context, index) {
-                              return CartItemsWidget(
-                                price: state.loadedBasket[index].price,
-                                images: state.loadedBasket[index].images,
-                                title: state.loadedBasket[index].title,
-                                items: state.loadedBasket.length, 
-                                delivery: state.loadedCart[0].delivery,
-                              );
-                            }
-                          ),
+                              scrollDirection: Axis.vertical,
+                              shrinkWrap: true,
+                              itemCount: state.loadedBasket.length,
+                              itemBuilder: (context, index) {
+                                return CartItemsWidget(
+                                  price: state.loadedBasket[index].price,
+                                  images: state.loadedBasket[index].images,
+                                  title: state.loadedBasket[index].title,
+                                  items: state.loadedBasket.length,
+                                  delivery: state.loadedCart[0].delivery,
+                                );
+                              }),
                         ),
                         const Divider(
                           color: Colors.white,
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 65),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 65),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children:  [
-                              const Text(
-                                'Total',
-                                style:  TextStyle(
-                                  fontFamily: 'MarkPronormal700',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.grey
-                                )
-                              ),
-                              Text(
-                                '\$' + state.finalPrice.toString() + ' us',
-                                style: const TextStyle(
-                                  fontFamily: 'MarkPronormal700',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.white
-                                )
-                              ),
+                            children: [
+                              const Text('Total',
+                                  style: TextStyle(
+                                      fontFamily: 'MarkPronormal700',
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.grey)),
+                              Text('\$' + state.finalPrice.toString() + ' us',
+                                  style: const TextStyle(
+                                      fontFamily: 'MarkPronormal700',
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.white)),
                             ],
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 65),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 65),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                               const Text(
-                                'Delivery',
-                                style: TextStyle(
-                                  fontFamily: 'MarkPronormal700',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.grey
-                                )
-                              ),
-                              Text(
-                                state.loadedCart[0].delivery.toString(), 
-                                style:  const TextStyle(
-                                  fontFamily: 'MarkPronormal700',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w800,
-                                  color: Colors.white
-                                )
-                              ),
+                              const Text('Delivery',
+                                  style: TextStyle(
+                                      fontFamily: 'MarkPronormal700',
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.grey)),
+                              Text(state.loadedCart[0].delivery.toString(),
+                                  style: const TextStyle(
+                                      fontFamily: 'MarkPronormal700',
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w800,
+                                      color: Colors.white)),
                             ],
                           ),
                         ),
@@ -211,27 +183,21 @@ class _CartWidgetState extends State<CartWidget> {
                           ),
                           style: ElevatedButton.styleFrom(
                             primary: AppColors.iconColor,
-                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                            padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 115),
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 13, horizontal: 115),
                           ),
                         )
                       ],
-                    )
-                  )
-                ]
-              ),
+                    ))
+              ]),
             );
-            }
-            if (state is CartErrorState) {
-              return const Center(
-                child: Text('Error getcing details')
-              );
-            }
-             return const CircularProgressIndicator();
           }
-        )
-      )
-    );
+          if (state is CartErrorState) {
+            return const Center(child: Text('Error getcing details'));
+          }
+          return const CircularProgressIndicator();
+        })));
   }
 }
-

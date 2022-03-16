@@ -31,7 +31,7 @@ class ShopBarWidget extends StatelessWidget {
                 indicator: const UnderlineTabIndicator(
                   borderSide: BorderSide(
                     color: AppColors.iconColor, 
-                    width: 3
+                    width: 3,
                   ),
                   insets: EdgeInsets.symmetric(horizontal: 20),
                 ),
@@ -52,12 +52,12 @@ class ShopBarWidget extends StatelessWidget {
                   ProductWidget(),
                   Center(child: Text('Details Body')),
                   Center(child: Text('Features Body')),
-                ]
+                ],
               ),
-            )
+            ),
           ],
         ),
-      )
+      ),
     );
   }
 }

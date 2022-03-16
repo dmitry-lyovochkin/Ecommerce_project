@@ -24,7 +24,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
       builder: (context, state) {
         if (state is DetailsLoadingState) {
           return const Center( 
-            child: CircularProgressIndicator()
+            child: CircularProgressIndicator(),
           );
         }
         if (state is DetailsLoadedState) {
@@ -40,7 +40,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                       elevation: 0,
                       child: selectedButtonColor == 0 
                         ? const Icon( 
-                          Icons.check_outlined
+                          Icons.check_outlined,
                           ) 
                         : const SizedBox(),
                       backgroundColor: colorFromApi(state.loadedDetails[0].color[0]),
@@ -108,11 +108,11 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                       elevation: 0,
                       padding: const EdgeInsets.all(5),
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)
-                      )
+                        borderRadius: BorderRadius.circular(12),
+                      ),
                     ),
-                  )
-                ]
+                  ),
+                ],
               ),
               const SizedBox(height: 40),
               ElevatedButton(
@@ -144,11 +144,11 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
         } 
         if (state is DetailsErrorState) {
           return const Center(
-            child: Text('Error getcing details')
+            child: Text('Error getcing details'),
           );
         }
         return const CircularProgressIndicator();
-      }
+      },
     );
   }
 }
