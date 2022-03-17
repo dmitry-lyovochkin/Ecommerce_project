@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class Homestore {
+class HomestoreModel {
   final int id;
   final bool isnew;
   final String title;
@@ -8,7 +8,7 @@ class Homestore {
   final String picture;
   final bool isbuy;
   
-  Homestore({
+  HomestoreModel({
     required this.id,
     required this.isnew,
     required this.title,
@@ -17,7 +17,11 @@ class Homestore {
     required this.isbuy,
   });
 
-  Homestore copyWith({
+  // factory HomestoreModel.fromJson(Map<String, dynamic> json) => _$HomestoreModelFromJson(json);
+
+  // Map<String, dynamic> toJson() => _$HomestoreModelToJson(this);
+// }
+  HomestoreModel copyWith({
     int? id,
     bool? isnew,
     String? title,
@@ -25,7 +29,7 @@ class Homestore {
     String? picture,
     bool? isbuy,
   }) {
-    return Homestore(
+    return HomestoreModel(
       id: id ?? this.id,
       isnew: isnew ?? this.isnew,
       title: title ?? this.title,
@@ -46,8 +50,8 @@ class Homestore {
     };
   }
 
-  factory Homestore.fromMap(Map<String, dynamic> map) {
-    return Homestore(
+  factory HomestoreModel.fromMap(Map<String, dynamic> map) {
+    return HomestoreModel(
       id: map['id']?.toInt() ?? 0,
       isnew: map['is_new'] ?? false,
       title: map['title'] ?? '',
@@ -59,7 +63,7 @@ class Homestore {
 
   String toJson() => json.encode(toMap());
 
-  factory Homestore.fromJson(String source) => Homestore.fromMap(json.decode(source));
+  factory HomestoreModel.fromJson(String source) => HomestoreModel.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -70,7 +74,7 @@ class Homestore {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
   
-    return other is Homestore &&
+    return other is HomestoreModel &&
       other.id == id &&
       other.isnew == isnew &&
       other.title == title &&

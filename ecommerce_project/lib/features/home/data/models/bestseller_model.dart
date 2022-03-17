@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class Bestseller {
+class BestsellerModel {
   final int id;
   final bool isfavorites;
   final String title;
@@ -8,7 +8,7 @@ class Bestseller {
   final int discountprice;
   final String picture;
   
-  Bestseller({
+  BestsellerModel({
     required this.id,
     required this.isfavorites,
     required this.title,
@@ -17,7 +17,7 @@ class Bestseller {
     required this.picture,
   });
 
-  Bestseller copyWith({
+  BestsellerModel copyWith({
     int? id,
     bool? isfavorites,
     String? title,
@@ -25,7 +25,7 @@ class Bestseller {
     int? discountprice,
     String? picture,
   }) {
-    return Bestseller(
+    return BestsellerModel(
       id: id ?? this.id,
       isfavorites: isfavorites ?? this.isfavorites,
       title: title ?? this.title,
@@ -46,8 +46,8 @@ class Bestseller {
     };
   }
 
-  factory Bestseller.fromMap(Map<String, dynamic> map) {
-    return Bestseller(
+  factory BestsellerModel.fromMap(Map<String, dynamic> map) {
+    return BestsellerModel(
       id: map['id']?.toInt() ?? 0,
       isfavorites: map['is_favorites'] ?? false,
       title: map['title'] ?? '',
@@ -59,7 +59,7 @@ class Bestseller {
 
   String toJson() => json.encode(toMap());
 
-  factory Bestseller.fromJson(String source) => Bestseller.fromMap(json.decode(source));
+  factory BestsellerModel.fromJson(String source) => BestsellerModel.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -70,7 +70,7 @@ class Bestseller {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
   
-    return other is Bestseller &&
+    return other is BestsellerModel &&
       other.id == id &&
       other.isfavorites == isfavorites &&
       other.title == title &&

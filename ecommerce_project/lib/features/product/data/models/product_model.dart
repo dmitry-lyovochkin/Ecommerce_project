@@ -1,12 +1,12 @@
 
 import 'dart:convert';
 
-List<GetProduct> getDetailsFromJson(String str) => List<GetProduct>.from(json.decode(str).map((x) => GetProduct.fromJson(x)));
+List<ProductModel> getDetailsFromJson(String str) => List<ProductModel>.from(json.decode(str).map((x) => ProductModel.fromJson(x)));
 
-String getDetailsToJson(List<GetProduct> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String getDetailsToJson(List<ProductModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class GetProduct {
-    GetProduct({
+class ProductModel {
+    ProductModel({
       required this.id,
       required this.cpu,
       required this.camera,
@@ -35,7 +35,7 @@ class GetProduct {
     List<String> color;
     List<String> capacity;
 
-    factory GetProduct.fromJson(Map<String, dynamic> json) => GetProduct(
+    factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
         id: json["_id"],
         cpu: json["CPU"],
         camera: json["camera"],

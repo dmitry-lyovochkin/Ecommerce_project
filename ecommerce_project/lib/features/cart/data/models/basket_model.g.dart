@@ -6,14 +6,15 @@ part of 'basket_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Basket _$BasketFromJson(Map<String, dynamic> json) => Basket(
+BasketModel _$BasketModelFromJson(Map<String, dynamic> json) => BasketModel(
       id: json['id'] as int,
       images: json['images'] as String,
       price: json['price'] as int,
       title: json['title'] as String,
     );
 
-Map<String, dynamic> _$BasketToJson(Basket instance) => <String, dynamic>{
+Map<String, dynamic> _$BasketModelToJson(BasketModel instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'images': instance.images,
       'price': instance.price,

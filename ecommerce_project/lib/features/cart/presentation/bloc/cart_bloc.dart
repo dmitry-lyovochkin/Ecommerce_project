@@ -16,8 +16,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<CartLoadEvent>((event, emit)async {
       emit(CartLoadingState());
         try {
-          final List<Basket> _loadedBasketList = await basketRepository.getAllBasket();
-          final List<Cart> _loadedCartItemsList = await getCartItemsRepository.getAllCart();
+          final List<BasketModel> _loadedBasketList = await basketRepository.getAllBasket();
+          final List<CartModel> _loadedCartItemsList = await getCartItemsRepository.getAllCart();
           int finalPrice = 0;
           _loadedBasketList.forEach((element) {
             finalPrice += element.price;

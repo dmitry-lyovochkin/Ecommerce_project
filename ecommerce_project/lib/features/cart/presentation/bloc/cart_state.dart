@@ -15,8 +15,8 @@ class CartLoadingState extends CartState {
 }
 
 class CartLoadedState extends CartState {
-  final List<Basket> loadedBasket;
-  final List<Cart> loadedCart;
+  final List<BasketModel> loadedBasket;
+  final List<CartModel> loadedCart;
   final int finalPrice;   
   const CartLoadedState({
     required this.loadedBasket,

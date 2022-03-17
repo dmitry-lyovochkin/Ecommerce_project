@@ -64,11 +64,11 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
 }
 
 class GridWidget extends StatelessWidget {
-  final bool isFavorites;
-  final String titleItems;
-  final int priceWithoutDiscount;
-  final int discountPrice;
-  final String pictureUrls;
+  final bool? isFavorites;
+  final String? titleItems;
+  final int? priceWithoutDiscount;
+  final int? discountPrice;
+  final String? pictureUrls;
 
   const GridWidget({
     Key? key,
@@ -101,7 +101,7 @@ class GridWidget extends StatelessWidget {
           children: [
             SizedBox(
               child: CachedNetworkImage(
-                imageUrl: pictureUrls,
+                imageUrl: pictureUrls!,
                 height: 180,
                 fit: BoxFit.cover,
               ),
@@ -151,7 +151,7 @@ class GridWidget extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    titleItems,
+                    titleItems!,
                     style: const TextStyle(
                       fontFamily: 'MarkPronormal400',
                       fontSize: 11,

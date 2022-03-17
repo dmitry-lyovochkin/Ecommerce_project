@@ -3,5 +3,5 @@ import 'package:ecommerce_project/features/home/data/models/bestseller_model.dar
 
 class BestSellerRepository {
   final BestSellerApi _bestSellerProvider = BestSellerApi();
-  Future<List<Bestseller>> getBestSellerList() => _bestSellerProvider.getBestSeller();
+  Future<List<BestsellerModel>> getBestSellerList() => _bestSellerProvider.getBestSeller();
 }

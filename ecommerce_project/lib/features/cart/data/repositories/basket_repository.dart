@@ -3,5 +3,5 @@ import 'package:ecommerce_project/features/cart/data/models/basket_model.dart';
 
 class BasketRepository {
   final BasketList _basketProvider = BasketList();
-  Future<List<Basket>> getAllBasket() => _basketProvider.getBasket();
+  Future<List<BasketModel>> getAllBasket() => _basketProvider.getBasket();
 }

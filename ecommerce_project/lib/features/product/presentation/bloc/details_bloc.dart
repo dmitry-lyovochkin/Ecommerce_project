@@ -11,7 +11,7 @@ class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
     on<DetailsLoadEvent>((event, emit) async {
       emit(DetailsLoadingState());
       try {
-        final List<GetProduct> _loadedDetailsList = await detailsRepository.getAllDetails();
+        final List<ProductModel> _loadedDetailsList = await detailsRepository.getAllDetails();
         emit(DetailsLoadedState(loadedDetails: _loadedDetailsList));
       } catch (_) {
         emit(DetailsErrorState());

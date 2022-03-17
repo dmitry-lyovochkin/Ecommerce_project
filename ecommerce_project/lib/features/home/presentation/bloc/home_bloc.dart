@@ -16,8 +16,8 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeLoadEvent>((event, emit) async{
       emit(HomeLoadingState());
         try {
-          final List<Homestore> _loadedHomeStoreList = await homeRepository.getHomeStoreList();
-          final List<Bestseller> _loadedBestSellerList = await bestSellerRepository.getBestSellerList();
+          final List<HomestoreModel> _loadedHomeStoreList = await homeRepository.getHomeStoreList();
+          final List<BestsellerModel> _loadedBestSellerList = await bestSellerRepository.getBestSellerList();
           emit(HomeLoadedState(loadedHomestore: _loadedHomeStoreList, loadedBestseller: _loadedBestSellerList));
         } catch (_) {
           emit(HomeErrorState());

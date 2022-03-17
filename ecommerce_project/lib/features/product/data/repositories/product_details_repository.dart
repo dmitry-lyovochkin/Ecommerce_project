@@ -3,5 +3,5 @@ import 'package:ecommerce_project/features/product/data/models/product_model.dar
 
 class ProductDetailsRepository {
   final ProductList _detailsProvider = ProductList();
-  Future<List<GetProduct>> getAllDetails() => _detailsProvider.getProducts();
+  Future<List<ProductModel>> getAllDetails() => _detailsProvider.getProducts();
 }

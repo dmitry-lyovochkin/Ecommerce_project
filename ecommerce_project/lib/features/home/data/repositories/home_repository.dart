@@ -3,5 +3,5 @@ import 'package:ecommerce_project/features/home/data/models/homestore_model.dart
 
 class HomeStoreRepository {
   final HomeStoreList _homeStoreProvider = HomeStoreList();
-  Future<List<Homestore>> getHomeStoreList() => _homeStoreProvider.getPostsHomeStore();
+  Future<List<HomestoreModel>> getHomeStoreList() => _homeStoreProvider.getPostsHomeStore();
 }
