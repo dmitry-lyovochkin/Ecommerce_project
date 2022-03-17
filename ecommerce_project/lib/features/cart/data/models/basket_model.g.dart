@@ -7,10 +7,10 @@ part of 'basket_model.dart';
 // **************************************************************************
 
 BasketModel _$BasketModelFromJson(Map<String, dynamic> json) => BasketModel(
-      id: json['id'] as int,
-      images: json['images'] as String,
-      price: json['price'] as int,
-      title: json['title'] as String,
+      id: json['id'],
+      images: json['images'],
+      price: json['price'],
+      title: json['title'],
     );
 
 Map<String, dynamic> _$BasketModelToJson(BasketModel instance) =>
