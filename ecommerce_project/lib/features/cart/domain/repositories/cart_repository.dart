@@ -3,8 +3,8 @@ import 'package:ecommerce_project/core/error/failure.dart';
 import 'package:ecommerce_project/features/cart/domain/entities/cart_entity.dart';
 
 abstract class CartRepository {
-  Future<Either<Failure, List<CartEntity>>> getAllCarts(String delivery);
-  Future<Either<Failure, List<CartEntity>>> getAllBaskets(String query); /* query вместо name */
+  Future<Either<Failure, List<CartEntity>>> getAllCarts();
+  Future<Either<Failure, List<CartEntity>>> getAllBaskets(); /* query вместо name */
 }
 
 /* Either dartz используется для представления любых двух типов одновременно и 

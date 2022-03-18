@@ -1,30 +1,29 @@
 import 'package:bloc/bloc.dart';
-import 'package:ecommerce_project/features/cart/data/models/basket_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import 'package:ecommerce_project/features/cart/data/models/cart_model.dart';
-import 'package:ecommerce_project/features/cart/data/repositories/basket_repository.dart';
-import 'package:ecommerce_project/features/cart/data/repositories/cart_repository.dart';
+import 'package:ecommerce_project/features/cart/domain/usecases/get_all_carts.dart';
 import 'package:ecommerce_project/features/cart/presentation/bloc/cart_event.dart';
 import 'package:ecommerce_project/features/cart/presentation/bloc/cart_state.dart';
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-  final BasketRepository basketRepository;
-  final CartRepository getCartItemsRepository;
+  // final BasketRepository basketRepository;
+  // final CartRepository getCartItemsRepository;
+  final GetAllCartsUseCase getAllCartUseCase;
 
-  CartBloc(this.basketRepository, this.getCartItemsRepository) : super(CartLoadingState()) {
+  CartBloc({required this.getAllCartUseCase}) : super(CartLoadingState()) {
     on<CartLoadEvent>((event, emit)async {
       emit(CartLoadingState());
         try {
-          final List<BasketModel> _loadedBasketList = await basketRepository.getAllBasket();
-          final List<CartModel> _loadedCartItemsList = await getCartItemsRepository.getAllCart();
+          // final List<BasketModel> _loadedBasketList = await basketRepository.getAllBasket();
+          // final List<CartModel> _loadedCartItemsList = await getCartItemsRepository.getAllCart();
+          final _loadedCartList = await getAllCartUseCase();
           int finalPrice = 0;
-          _loadedBasketList.forEach((element) {
-            finalPrice += element.price;
-          });
-          emit(CartLoadedState(loadedBasket: _loadedBasketList, finalPrice: finalPrice, loadedCart: _loadedCartItemsList));
+          _loadedCartList.fold((l) => const CartErrorState(message: 'error'), 
+            (r) => CartLoadedState(loadedCart: r, finalPrice: 5000));
+            
+          emit(CartLoadedState( finalPrice: finalPrice, loadedCart: _loadedCartList));
         } catch (event) {
-          emit(CartErrorState());
+          emit(CartErrorState(message: ));
+
         }
     });
   }
