@@ -12,19 +12,10 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc({required this.getAllCartUseCase}) : super(CartLoadingState()) {
     on<CartLoadEvent>((event, emit)async {
       emit(CartLoadingState());
-        try {
-          // final List<BasketModel> _loadedBasketList = await basketRepository.getAllBasket();
-          // final List<CartModel> _loadedCartItemsList = await getCartItemsRepository.getAllCart();
-          final _loadedCartList = await getAllCartUseCase();
-          int finalPrice = 0;
-          _loadedCartList.fold((l) => const CartErrorState(message: 'error'), 
-            (r) => CartLoadedState(loadedCart: r, finalPrice: 5000));
-            
-          emit(CartLoadedState( finalPrice: finalPrice, loadedCart: _loadedCartList));
-        } catch (event) {
-          emit(CartErrorState(message: ));
-
-        }
+      final _loadedCartList = await getAllCartUseCase();
+      int finalPrice = 0;
+      _loadedCartList.fold((l) => emit(const CartErrorState(message: 'error')), 
+        (r) => emit(CartLoadedState(loadedCart: r, finalPrice: 5000)));
     });
   }
 }

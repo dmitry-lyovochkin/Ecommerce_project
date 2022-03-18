@@ -22,7 +22,7 @@ class CartLoadingState extends CartState {
 
 class CartLoadedState extends CartState {
   // final List<BasketModel> loadedBasket;
-  final Either<Failure, List<CartEntity>> loadedCart;
+  final List<CartEntity> loadedCart;
   final int finalPrice;  
 
   const CartLoadedState({
