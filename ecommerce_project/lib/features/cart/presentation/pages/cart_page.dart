@@ -1,41 +1,28 @@
-import 'package:ecommerce_project/features/cart/data/repositories/cart_repository.dart';
-import 'package:ecommerce_project/features/cart/presentation/widgets/items_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
 import 'package:ecommerce_project/common/app_custom_icons.dart/svg_icons.dart';
-import 'package:ecommerce_project/features/cart/data/repositories/basket_repository.dart';
 import 'package:ecommerce_project/features/cart/presentation/bloc/cart_bloc.dart';
-import 'package:ecommerce_project/features/cart/presentation/bloc/cart_event.dart';
 import 'package:ecommerce_project/features/cart/presentation/bloc/cart_state.dart';
+import 'package:ecommerce_project/features/cart/presentation/widgets/items_widget.dart';
 
-class CartWidget extends StatefulWidget {
+class CartWidget extends StatelessWidget {
   const CartWidget({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<CartWidget> createState() => _CartWidgetState();
-}
-
-class _CartWidgetState extends State<CartWidget> {
-  final basketRepository = BasketRepository();
-  final getCartItemsRepository = CartRepository();
-
-  @override
   Widget build(BuildContext context) {
-    return BlocProvider<CartBloc>(
-        create: (context) => CartBloc(basketRepository, getCartItemsRepository)
-          ..add(const CartLoadEvent()),
-        child: Scaffold(
-            body: BlocBuilder<CartBloc, CartState>(builder: (context, state) {
+    return Scaffold(
+      body: BlocBuilder<CartBloc, CartState>(builder: (context, state) {
           if (state is CartLoadingState) {
             return const Center(child: CircularProgressIndicator());
           }
           if (state is CartLoadedState) {
             return SingleChildScrollView(
-              child: Column(children: [
+              child: Column(
+                children: [
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
@@ -98,19 +85,21 @@ class _CartWidgetState extends State<CartWidget> {
                     height: 680,
                     width: double.maxFinite,
                     decoration: const BoxDecoration(
-                        color: AppColors.buttonBarColor,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(30.0),
-                            topRight: Radius.circular(30.0))),
+                      color: AppColors.buttonBarColor,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30.0),
+                        topRight: Radius.circular(30.0)
+                      )
+                    ),
                     child: Column(
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(top: 15, bottom: 130),
                           child: ListView.builder(
-                              scrollDirection: Axis.vertical,
-                              shrinkWrap: true,
-                              itemCount: state.loadedBasket.length,
-                              itemBuilder: (context, index) {
+                            scrollDirection: Axis.vertical,
+                            shrinkWrap: true,
+                            itemCount: state.loadedBasket.length,
+                            itemBuilder: (context, index) {
                                 return CartItemsWidget(
                                   price: state.loadedBasket[index].price,
                                   images: state.loadedBasket[index].images,
@@ -135,7 +124,7 @@ class _CartWidgetState extends State<CartWidget> {
                                       fontSize: 15,
                                       fontWeight: FontWeight.w800,
                                       color: Colors.grey)),
-                              Text('\$' + state.finalPrice.toString() + ' us',
+                              Text('\$' + state.loadedCart[0].total.toString() + ' us',
                                   style: const TextStyle(
                                       fontFamily: 'MarkPronormal700',
                                       fontSize: 15,
@@ -198,6 +187,8 @@ class _CartWidgetState extends State<CartWidget> {
             return const Center(child: Text('Error getcing details'));
           }
           return const CircularProgressIndicator();
-        })));
+        }
+        )
+        );
   }
 }

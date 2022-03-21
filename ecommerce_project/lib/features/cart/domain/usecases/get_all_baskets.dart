@@ -4,13 +4,13 @@ import 'package:ecommerce_project/core/usecases/usecase.dart';
 import 'package:ecommerce_project/features/cart/domain/entities/cart_entity.dart';
 import 'package:ecommerce_project/features/cart/domain/repositories/cart_repository.dart';
 
-class GetAllBaskets extends UseCase<List<CartEntity>, void> {
+class GetAllBasketsUseCase extends UseCase<List<BasketEntity>, void> {
   final CartRepository cartRepository;
 
-  GetAllBaskets(this.cartRepository);
+  GetAllBasketsUseCase(this.cartRepository);
 
   @override
-  Future<Either<Failure, List<CartEntity>>> call({void params}) async {
+  Future<Either<Failure, List<BasketEntity>>> call({void params}) async {
     return await cartRepository.getAllBaskets();
   }
 }

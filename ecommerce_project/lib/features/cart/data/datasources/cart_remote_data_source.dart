@@ -22,13 +22,14 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
   Future<List<CartModel>> getAllBaskets() => _getCartFromUrl(cartUrl); 
   
   Future<List<CartModel>> _getCartFromUrl(String url) async {
-    final response = await client.get(Uri.parse(url),
-    headers: apiKey);
+    final response = await client.get(
+      Uri.parse(url),
+      headers: apiKey
+    );
 
     if (response.statusCode == 200) {
-      final carts = json.decode(response.body);
-      List<CartModel> list = carts.map<CartModel>((e) => CartModel.fromJson(e)).toList();
-        return list;
+      final jsonCarts = json.decode(response.body) as List<dynamic>;
+      return jsonCarts.map((e) => CartModel.fromJson(e as Map<String, dynamic>)).toList();
     } else {
       throw ServerException();
     }

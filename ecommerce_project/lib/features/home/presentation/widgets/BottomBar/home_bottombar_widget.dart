@@ -1,15 +1,12 @@
 import 'package:badges/badges.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
 import 'package:ecommerce_project/common/app_custom_icons.dart/custom_icons.dart';
-import 'package:ecommerce_project/features/cart/data/repositories/basket_repository.dart';
-import 'package:ecommerce_project/features/cart/data/repositories/cart_repository.dart';
 import 'package:ecommerce_project/features/cart/presentation/bloc/cart_bloc.dart';
-import 'package:ecommerce_project/features/cart/presentation/bloc/cart_event.dart';
 import 'package:ecommerce_project/features/cart/presentation/bloc/cart_state.dart';
 import 'package:ecommerce_project/features/cart/presentation/pages/cart_page.dart';
 import 'package:ecommerce_project/features/home/presentation/pages/home_page.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeBottomWidget extends StatefulWidget {
   const HomeBottomWidget({Key? key}) : super(key: key);
@@ -19,8 +16,6 @@ class HomeBottomWidget extends StatefulWidget {
 }
 
 class _HomeBottomWidgetState extends State<HomeBottomWidget> {
-  final basketRepository = BasketRepository();
-  final getCartItemsRepository = CartRepository();
   int _selectedIndex = 0;
   static const List _widgetOptions = [
     HomePage(),
@@ -53,10 +48,7 @@ class _HomeBottomWidgetState extends State<HomeBottomWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CartBloc>(
-      create: (context) => 
-        CartBloc(basketRepository, getCartItemsRepository)..add(const CartLoadEvent()),
-      child: Scaffold(
+    return Scaffold(
         body: _widgetOptions.elementAt(_selectedIndex),
         bottomNavigationBar: ClipRRect(
           borderRadius: BorderRadius.circular(25),
@@ -102,23 +94,15 @@ class _HomeBottomWidgetState extends State<HomeBottomWidget> {
             ),
           ),
         ),
-      )
-    );
+      );
+    
   }
 }
 
-class BottomNavBarWidget extends StatefulWidget {
+class BottomNavBarWidget extends StatelessWidget {
   const BottomNavBarWidget({
     Key? key,
   }) : super(key: key);
-
-  @override
-  State<BottomNavBarWidget> createState() => _BottomNavBarWidgetState();
-}
-
-class _BottomNavBarWidgetState extends State<BottomNavBarWidget> {
-  final basketRepository = BasketRepository();
-  final getCartItemsRepository = CartRepository();
 
   @override
   Widget build(BuildContext context) {

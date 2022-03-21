@@ -117,12 +117,12 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
               const SizedBox(height: 40),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const CartWidget()
-                    ),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) => const CartWidget()
+                  //   ),
+                  // );
                 },
                 child:  Text(
                   'Add to Cart    \$' + state.loadedDetails[0].price.toString(),

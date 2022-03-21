@@ -11,7 +11,7 @@ class CartRepositoryImpl implements CartRepository {
   CartRepositoryImpl({required this.cartRemoteDataSource});
 
   @override
-  Future<Either<Failure, List<CartEntity>>> getAllBaskets() {
+  Future<Either<Failure, List<BasketEntity>>> getAllBaskets() {
     throw UnimplementedError();
   }
 

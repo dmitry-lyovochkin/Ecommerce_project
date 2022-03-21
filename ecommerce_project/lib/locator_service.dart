@@ -22,7 +22,6 @@ Future<void> init() async {
 
 // External
   injection.registerLazySingleton(() => http.Client());
-
+ 
 
 } 
-// 10

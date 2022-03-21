@@ -9,6 +9,7 @@ class GetAllCartsUseCase extends UseCase<List<CartEntity>, void> {
 
   GetAllCartsUseCase(this.cartRepository);
 
+  @override
   Future<Either<Failure, List<CartEntity>>> call({void params}) async {
     return await cartRepository.getAllCarts();
   }
