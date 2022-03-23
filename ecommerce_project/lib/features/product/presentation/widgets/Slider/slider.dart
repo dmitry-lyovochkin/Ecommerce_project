@@ -2,7 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class ProductSliderWidget extends StatefulWidget {
-  final List<dynamic> list;
+  final List<dynamic>? list;
 
   const ProductSliderWidget({
     Key? key, 
@@ -17,10 +17,10 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
   @override
   Widget build(BuildContext context) {
     return CarouselSlider.builder(
-      itemCount: widget.list.length,
+      itemCount: widget.list!.length,
       itemBuilder: (context, index, _) 
         => ModelWidget(
-            imagesUrl: widget.list[index].images[index],
+            imagesUrl: widget.list![index].images[index],
         ),
       options: CarouselOptions(
         height: 330,

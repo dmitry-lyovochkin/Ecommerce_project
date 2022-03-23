@@ -1,4 +1,4 @@
-import 'package:ecommerce_project/features/cart/domain/entities/cart_entity.dart';
+import 'package:ecommerce_project/features/cart/domain/entities/basket_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'basket_model.g.dart';
@@ -18,8 +18,6 @@ class BasketModel extends BasketEntity{
   );
 
 factory BasketModel.fromJson(Map<String, dynamic> json) => _$BasketModelFromJson(json);
-
 Map<String, dynamic> toJson() => _$BasketModelToJson(this);
-
 }
 

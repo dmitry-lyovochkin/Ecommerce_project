@@ -1,7 +1,6 @@
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
-import 'package:ecommerce_project/features/cart/presentation/pages/cart_page.dart';
-import 'package:ecommerce_project/features/product/presentation/bloc/details_bloc.dart';
-import 'package:ecommerce_project/features/product/presentation/bloc/details_state.dart';
+import 'package:ecommerce_project/features/product/presentation/bloc/product_bloc.dart';
+import 'package:ecommerce_project/features/product/presentation/bloc/product_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,14 +19,14 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<DetailsBloc, DetailsState>(
+    return BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
-        if (state is DetailsLoadingState) {
+        if (state is ProductLoadingState) {
           return const Center( 
             child: CircularProgressIndicator(),
           );
         }
-        if (state is DetailsLoadedState) {
+        if (state is ProductLoadedState) {
           return Column(
             children: [
               Row(
@@ -43,7 +42,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                           Icons.check_outlined,
                           ) 
                         : const SizedBox(),
-                      backgroundColor: colorFromApi(state.loadedDetails[0].color[0]),
+                      backgroundColor: colorFromApi(state.loadedProduct[0].color[0]),
                       foregroundColor: Colors.white,
                       onPressed: () => 
                         setState(() {
@@ -61,7 +60,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                           Icons.check_outlined
                         ) 
                         : const SizedBox(),
-                      backgroundColor: colorFromApi(state.loadedDetails[0].color[1]),
+                      backgroundColor: colorFromApi(state.loadedProduct[0].color[1]),
                       foregroundColor: Colors.white,
                       onPressed: () => setState(() {
                         selectedButtonColor = 1;
@@ -71,7 +70,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                   const SizedBox(width: 60),
                   ElevatedButton(
                     child: Text(
-                      state.loadedDetails[0].capacity[0], 
+                      state.loadedProduct[0].capacity[0], 
                       style: TextStyle(
                         color: selectedButtonNum == 0 ? Colors.white : Colors.grey,
                       ),
@@ -93,7 +92,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                   const SizedBox(width: 20),
                   ElevatedButton(
                     child: Text(
-                      state.loadedDetails[0].capacity[1], 
+                      state.loadedProduct[0].capacity[1], 
                       style: TextStyle(
                         color: selectedButtonNum == 1 ? Colors.white : Colors.grey,
                       ),
@@ -125,7 +124,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                   // );
                 },
                 child:  Text(
-                  'Add to Cart    \$' + state.loadedDetails[0].price.toString(),
+                  'Add to Cart    \$' + state.loadedProduct[0].price.toString(),
                   style: const TextStyle(
                     fontFamily: 'MarkPronormal400',
                     fontSize: 20,
@@ -142,7 +141,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
             ],
           );
         } 
-        if (state is DetailsErrorState) {
+        if (state is ProductErrorState) {
           return const Center(
             child: Text('Error getcing details'),
           );

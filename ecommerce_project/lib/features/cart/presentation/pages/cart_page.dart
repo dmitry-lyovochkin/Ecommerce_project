@@ -118,7 +118,8 @@ class CartWidget extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text('Total',
+                              const Text(
+                                'Total',
                                   style: TextStyle(
                                       fontFamily: 'MarkPronormal700',
                                       fontSize: 15,

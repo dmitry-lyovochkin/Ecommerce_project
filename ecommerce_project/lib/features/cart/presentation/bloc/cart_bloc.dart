@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:ecommerce_project/features/cart/domain/entities/basket_entity.dart';
 import 'package:ecommerce_project/features/cart/domain/entities/cart_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ecommerce_project/features/cart/domain/usecases/get_all_carts.dart';
@@ -11,20 +12,15 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc({required this.getAllCartUseCase}) : super(CartLoadingState()) {
     on<CartLoadEvent>((event, emit) async {
       emit(CartLoadingState());
-      List<BasketEntity> _loadedBasketList = [];
-      final _loadedCartList = await getAllCartUseCase();
-      List<CartEntity> _cartList = [];
+        List<BasketEntity> _loadedBasketList = [];
+        final _loadedCartList = await getAllCartUseCase();
+        List<CartEntity> _cartList = [];
+        
+        _loadedCartList.fold((l) => emit(const CartErrorState(message: 'error')), 
+          (r) => _cartList.addAll(r));
 
-// перестала работать реализация
-      // int finalPrice = 0;
-      // _loadedBasketList.forEach((element) {
-      //   finalPrice += element.price;
-      // });
-      
-      _loadedCartList.fold((l) => emit(const CartErrorState(message: 'error')), 
-        (r) => _cartList.addAll(r));
-      _loadedBasketList = _cartList.map<List<BasketEntity>>((e) => e.basket!).expand((element) => element).toList();
-      emit(CartLoadedState(loadedBasket: _loadedBasketList, loadedCart: _cartList,));
+        _loadedBasketList = _cartList.map<List<BasketEntity>>((e) => e.basket!).expand((element) => element).toList();
+      emit(CartLoadedState(loadedBasket: _loadedBasketList, loadedCart: _cartList));
     });
   }
 }

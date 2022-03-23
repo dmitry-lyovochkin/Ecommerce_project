@@ -1,8 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
-import 'package:ecommerce_project/features/home/data/repositories/bestseller_repository.dart';
-import 'package:ecommerce_project/features/home/data/repositories/home_repository.dart';
 import 'package:ecommerce_project/features/home/presentation/bloc/home_bloc.dart';
+import 'package:ecommerce_project/features/home/presentation/bloc/home_state.dart';
 import 'package:ecommerce_project/features/product/presentation/pages/product_details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,60 +14,56 @@ class BestSellerWidget extends StatefulWidget {
 }
 
 class _BestSellerWidgetState extends State<BestSellerWidget> {
-  final homeRepository = HomeStoreRepository();
-  final bestSellerRepository = BestSellerRepository() ;
   
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     final double itemHeight = (size.height - kToolbarHeight - 138) / 2;
     final double itemWidth = size.width / 2.1;
-    return BlocProvider<HomeBloc>(
-      create: (context) => HomeBloc(homeRepository, bestSellerRepository)..add(const HomeLoadEvent()),
-      child: BlocBuilder<HomeBloc, HomeState>(
-        builder: (context, state) {
-        if (state is HomeLoadingState) {
-          return const Center( 
-            child: CircularProgressIndicator()
-          );
-        }
-        if (state is HomeLoadedState) { 
-          return GridView.builder(
-            itemCount: state.loadedBestseller.length,
-            itemBuilder: (context, index) => GridWidget(
-              pictureUrls: state.loadedBestseller[index].picture,
-              titleItems: state.loadedBestseller[index].title,
-              priceWithoutDiscount: state.loadedBestseller[index].pricewithoutdiscount,
-              discountPrice: state.loadedBestseller[index].discountprice,
-              isFavorites: state.loadedBestseller[index].isfavorites
-            ),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              childAspectRatio: (itemWidth / itemHeight),
-            ),
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            scrollDirection: Axis.vertical,
-          );
-        }
-        if (state is HomeErrorState) {
-          return const Center(
-            child: Text('Error getcing bestseller')
-          );
-        }
-          return const CircularProgressIndicator();
-        }
-      )
+
+    return BlocBuilder<HomeBloc, HomeState>(
+      builder: (context, state) {
+      if (state is HomeLoadingState) {
+        return const Center( 
+          child: CircularProgressIndicator()
+        );
+      }
+      if (state is HomeLoadedState) { 
+        return GridView.builder(
+          itemCount: state.loadedBestseller.length,
+          itemBuilder: (context, index) => GridWidget(
+            pictureUrls: state.loadedBestseller[index].picture,
+            titleItems: state.loadedBestseller[index].title,
+            priceWithoutDiscount: state.loadedBestseller[index].pricewithoutdiscount,
+            discountPrice: state.loadedBestseller[index].discountprice,
+            isFavorites: state.loadedBestseller[index].isfavorites
+          ),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            childAspectRatio: (itemWidth / itemHeight),
+          ),
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          scrollDirection: Axis.vertical,
+        );
+      }
+      if (state is HomeErrorState) {
+        return const Center(
+          child: Text('Error getcing bestseller')
+        );
+      }
+        return const CircularProgressIndicator();
+      }
     );
   }
 }
 
 class GridWidget extends StatelessWidget {
-  final bool? isFavorites;
-  final String? titleItems;
-  final int? priceWithoutDiscount;
-  final int? discountPrice;
-  final String? pictureUrls;
+  final bool isFavorites;
+  final String titleItems;
+  final int priceWithoutDiscount;
+  final int discountPrice;
+  final String pictureUrls;
 
   const GridWidget({
     Key? key,
@@ -101,7 +96,7 @@ class GridWidget extends StatelessWidget {
           children: [
             SizedBox(
               child: CachedNetworkImage(
-                imageUrl: pictureUrls!,
+                imageUrl: pictureUrls,
                 height: 180,
                 fit: BoxFit.cover,
               ),
@@ -151,7 +146,7 @@ class GridWidget extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    titleItems!,
+                    titleItems,
                     style: const TextStyle(
                       fontFamily: 'MarkPronormal400',
                       fontSize: 11,

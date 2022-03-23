@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:ecommerce_project/core/error/exception.dart';
 import 'package:ecommerce_project/core/utils/constants.dart';
 import 'package:ecommerce_project/features/cart/data/models/cart_model.dart';
@@ -26,10 +25,11 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
       Uri.parse(url),
       headers: apiKey
     );
-
+    
     if (response.statusCode == 200) {
-      final jsonCarts = json.decode(response.body) as List<dynamic>;
-      return jsonCarts.map((e) => CartModel.fromJson(e as Map<String, dynamic>)).toList();
+      final jsonCarts = json.decode(response.body);
+      List<CartModel> list = jsonCarts.map<CartModel>((e) => CartModel.fromJson(e)).toList();
+      return list;
     } else {
       throw ServerException();
     }

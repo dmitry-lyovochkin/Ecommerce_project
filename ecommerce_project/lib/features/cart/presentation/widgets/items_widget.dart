@@ -1,10 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
 import 'package:ecommerce_project/common/app_custom_icons.dart/svg_icons.dart';
-import 'package:ecommerce_project/features/cart/domain/entities/cart_entity.dart';
 
 class CartItemsWidget extends StatelessWidget {
   final String? images;

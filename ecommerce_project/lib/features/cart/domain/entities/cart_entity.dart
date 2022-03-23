@@ -1,10 +1,14 @@
+import 'package:ecommerce_project/features/cart/data/models/basket_model.dart';
 import 'package:equatable/equatable.dart';
 
+// part 'cart_entity.g.dart';
+
+// @JsonSerializable()
 class CartEntity extends Equatable{
-  final int? id;
+  final String? id;
   final String? delivery;
   final int? total;
-  final List<BasketEntity>? basket;
+  final List<BasketModel>? basket;
 
   const CartEntity({
     required this.id, 
@@ -15,22 +19,7 @@ class CartEntity extends Equatable{
 
   @override
   List<Object?> get props => [id, delivery, total, basket];
-}
 
-
-class BasketEntity extends Equatable{
-  final int id;
-  final String images;
-  final int price;
-  final String title;
-
-  const BasketEntity({
-    required this.id, 
-    required this.images, 
-    required this.price, 
-    required this.title
-  });
-
-  @override
-  List<Object?> get props => [id, images, price, title];
+  // factory CartEntity.fromJson(Map<String, dynamic> json) => _$CartEntityFromJson(json);
+  // Map<String, dynamic> toJson() => _$CartEntityToJson(this);
 }

@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:ecommerce_project/core/error/failure.dart';
 import 'package:ecommerce_project/core/usecases/usecase.dart';
-import 'package:ecommerce_project/features/cart/domain/entities/cart_entity.dart';
+import 'package:ecommerce_project/features/cart/domain/entities/basket_entity.dart';
 import 'package:ecommerce_project/features/cart/domain/repositories/cart_repository.dart';
 
 class GetAllBasketsUseCase extends UseCase<List<BasketEntity>, void> {

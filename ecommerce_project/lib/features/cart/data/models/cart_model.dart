@@ -10,7 +10,7 @@ class CartModel extends CartEntity{
     required id,
     required delivery, 
     required total,
-    required basket,
+    required List<BasketModel>? basket,
   }) : super(
     id: id,
     delivery: delivery,
@@ -19,6 +19,5 @@ class CartModel extends CartEntity{
   );
 
   factory CartModel.fromJson(Map<String, dynamic> json) => _$CartModelFromJson(json);
-
   Map<String, dynamic> toJson() => _$CartModelToJson(this);
 }
