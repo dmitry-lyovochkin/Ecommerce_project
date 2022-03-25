@@ -31,7 +31,7 @@ class _HotSalesWidgetState extends State<HotSalesWidget> {
             pictureUrl: state.loadedHomestore[index].picture,
             titlePhone: state.loadedHomestore[index].title,
             subtitleSuper: state.loadedHomestore[index].subtitle,
-            isNew: state.loadedHomestore[index].isnew
+            isNew: state.loadedHomestore[index].isNew
           ),
           options: CarouselOptions(
             height: 200,

@@ -7,7 +7,6 @@ part of 'store_model.dart';
 // **************************************************************************
 
 StoreModel _$StoreModelFromJson(Map<String, dynamic> json) => StoreModel(
-      id: json['id'],
       homestore: (json['homestore'] as List<dynamic>)
           .map((e) => HomestoreModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -18,7 +17,6 @@ StoreModel _$StoreModelFromJson(Map<String, dynamic> json) => StoreModel(
 
 Map<String, dynamic> _$StoreModelToJson(StoreModel instance) =>
     <String, dynamic>{
-      'id': instance.id,
       'homestore': instance.homestore,
       'bestseller': instance.bestseller,
     };

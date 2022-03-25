@@ -8,11 +8,9 @@ part 'store_model.g.dart';
 @JsonSerializable()
 class StoreModel extends StoreEntity {
   const StoreModel({
-    required id,
     required List<HomestoreModel> homestore,
     required List<BestsellerModel> bestseller,
   }) : super(
-    id: id,
     homestore: homestore,
     bestseller: bestseller,
   );

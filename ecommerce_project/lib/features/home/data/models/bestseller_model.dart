@@ -7,17 +7,17 @@ part 'bestseller_model.g.dart';
 class BestsellerModel extends BestsellerEntity{
   const BestsellerModel({
     required id,
-    required isfavorites,
+    required isFavorites,
     required title,
-    required pricewithoutdiscount,
-    required discountprice,
+    required priceWithoutDiscount,
+    required discountPrice,
     required picture,
   }) : super(
     id: id,
-    isfavorites: isfavorites,
+    isFavorites: isFavorites,
     title: title,
-    pricewithoutdiscount: pricewithoutdiscount,
-    discountprice: discountprice,
+    priceWithoutDiscount: priceWithoutDiscount,
+    discountPrice: discountPrice,
     picture: picture
   );
 

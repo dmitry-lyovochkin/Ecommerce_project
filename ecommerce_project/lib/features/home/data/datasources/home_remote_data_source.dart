@@ -27,7 +27,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   Future<List<StoreModel>> _getHomeFromUrl(String url) async {
     final response = await client.get(
       Uri.parse(url),
-      headers: apiKey
+      // headers: apiKey
     );
 
     if (response.statusCode == 200) {

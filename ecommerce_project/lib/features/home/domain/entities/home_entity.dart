@@ -7,18 +7,18 @@ import 'package:json_annotation/json_annotation.dart';
 
 // @JsonSerializable()
 class StoreEntity extends Equatable{
-  final String id;
   final List<HomestoreModel> homestore;
   final List<BestsellerModel> bestseller;
   
   const StoreEntity({
-    required this.id,
     required this.homestore,
     required this.bestseller,
   });
 
   @override
-  List<Object?> get props => [id, homestore, bestseller];
+  List<Object?> get props => [homestore, bestseller];
+
+  addAll(StoreEntity r) {}
 
   // factory StoreEntity.fromJson(Map<String, dynamic> json) => _$StoreEntityFromJson(json);
   // Map<String, dynamic> toJson() => _$StoreEntityToJson(this);

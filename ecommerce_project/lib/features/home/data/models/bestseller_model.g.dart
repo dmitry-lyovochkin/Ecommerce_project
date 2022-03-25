@@ -9,19 +9,19 @@ part of 'bestseller_model.dart';
 BestsellerModel _$BestsellerModelFromJson(Map<String, dynamic> json) =>
     BestsellerModel(
       id: json['id'],
-      isfavorites: json['isfavorites'],
+      isFavorites: json['isFavorites'],
       title: json['title'],
-      pricewithoutdiscount: json['pricewithoutdiscount'],
-      discountprice: json['discountprice'],
+      priceWithoutDiscount: json['priceWithoutDiscount'],
+      discountPrice: json['discountPrice'],
       picture: json['picture'],
     );
 
 Map<String, dynamic> _$BestsellerModelToJson(BestsellerModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'isfavorites': instance.isfavorites,
+      'isFavorites': instance.isFavorites,
       'title': instance.title,
-      'pricewithoutdiscount': instance.pricewithoutdiscount,
-      'discountprice': instance.discountprice,
+      'priceWithoutDiscount': instance.priceWithoutDiscount,
+      'discountPrice': instance.discountPrice,
       'picture': instance.picture,
     };

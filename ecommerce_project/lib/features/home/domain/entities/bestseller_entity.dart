@@ -6,21 +6,21 @@ import 'package:json_annotation/json_annotation.dart';
 // @JsonSerializable()
 class BestsellerEntity extends Equatable{
   final int id;
-  final bool isfavorites;
+  final bool isFavorites;
   final String title;
-  final int pricewithoutdiscount;
-  final int discountprice;
+  final int priceWithoutDiscount;
+  final int discountPrice;
   final String picture;
   
   const BestsellerEntity({
     required this.id,
-    required this.isfavorites,
+    required this.isFavorites,
     required this.title,
-    required this.pricewithoutdiscount,
-    required this.discountprice,
+    required this.priceWithoutDiscount,
+    required this.discountPrice,
     required this.picture,
   });
 
   @override
-  List<Object?> get props => [id, isfavorites, title, pricewithoutdiscount, discountprice, picture];
+  List<Object?> get props => [id, isFavorites, title, priceWithoutDiscount, discountPrice, picture];
   }

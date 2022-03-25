@@ -7,18 +7,18 @@ part 'homestore_model.g.dart';
 class HomestoreModel extends HomestoreEntity{
   const HomestoreModel({
     required id,
-    required isnew,
+    required isNew,
     required title,
     required subtitle,
     required picture,
-    required isbuy,
+    required isBuy,
   }) : super(
     id: id,
-    isnew: isnew,
+    isNew: isNew,
     title: title,
     subtitle: subtitle,
     picture: picture,
-    isbuy: isbuy
+    isBuy: isBuy
   );
 
   Map<String, dynamic> toJson() => _$HomestoreModelToJson(this);
