@@ -8,11 +8,11 @@ part 'store_model.g.dart';
 @JsonSerializable()
 class StoreModel extends StoreEntity {
   const StoreModel({
-    required List<HomestoreModel> homestore,
-    required List<BestsellerModel> bestseller,
+    required List<HomeStoreModel> homeStore,
+    required List<BestSellerModel> bestSeller,
   }) : super(
-    homestore: homestore,
-    bestseller: bestseller,
+    homeStore: homeStore,
+    bestSeller: bestSeller,
   );
 
   factory StoreModel.fromJson(Map<String, dynamic> json) => _$StoreModelFromJson(json);

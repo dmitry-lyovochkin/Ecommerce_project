@@ -4,8 +4,8 @@ import 'package:json_annotation/json_annotation.dart';
 part 'homestore_model.g.dart';
 
 @JsonSerializable()
-class HomestoreModel extends HomestoreEntity{
-  const HomestoreModel({
+class HomeStoreModel extends HomeStoreEntity{
+  const HomeStoreModel({
     required id,
     required isNew,
     required title,
@@ -21,7 +21,7 @@ class HomestoreModel extends HomestoreEntity{
     isBuy: isBuy
   );
 
-  Map<String, dynamic> toJson() => _$HomestoreModelToJson(this);
-  factory HomestoreModel.fromJson(Map<String, dynamic> json) => _$HomestoreModelFromJson(json);
+  Map<String, dynamic> toJson() => _$HomeStoreModelToJson(this);
+  factory HomeStoreModel.fromJson(Map<String, dynamic> json) => _$HomeStoreModelFromJson(json);
 }
  

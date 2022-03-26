@@ -13,16 +13,16 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc({required this.getAllStoreUseCase}) : super(HomeLoadingState()) {
     on<HomeLoadEvent>((event, emit) async{
       emit(HomeLoadingState());
-        List<HomestoreEntity> _loadedHomeStoreList = [];
-        List<BestsellerEntity> _loadedBestSellerList = [];
+        List<HomeStoreEntity> _loadedHomeStoreList = [];
+        List<BestSellerEntity> _loadedBestSellerList = [];
         final _loadedStoreList = await getAllStoreUseCase();
         List<StoreEntity> _storeList = [];
 
         _loadedStoreList.fold((l) => emit(const HomeErrorState(message: 'error')), 
           (r) => _storeList.addAll(r));
 
-      _loadedHomeStoreList = _storeList.map<List<HomestoreEntity>>((e) => e.homestore).expand((element) => element).toList();
-      _loadedBestSellerList = _storeList.map<List<BestsellerEntity>>((e) => e.bestseller).expand((element) => element).toList();
+      _loadedHomeStoreList = _storeList.map<List<HomeStoreEntity>>((e) => e.homeStore!).expand((element) => element).toList();
+      _loadedBestSellerList = _storeList.map<List<BestSellerEntity>>((e) => e.bestSeller!).expand((element) => element).toList();
 
       emit(HomeLoadedState(loadedHomestore: _loadedHomeStoreList, loadedBestseller: _loadedBestSellerList, loadedStore: _storeList));
     });

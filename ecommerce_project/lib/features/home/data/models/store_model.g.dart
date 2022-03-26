@@ -7,16 +7,16 @@ part of 'store_model.dart';
 // **************************************************************************
 
 StoreModel _$StoreModelFromJson(Map<String, dynamic> json) => StoreModel(
-      homestore: (json['homestore'] as List<dynamic>)
-          .map((e) => HomestoreModel.fromJson(e as Map<String, dynamic>))
+      homeStore: (json['homeStore'] as List<dynamic>)
+          .map((e) => HomeStoreModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      bestseller: (json['bestseller'] as List<dynamic>)
-          .map((e) => BestsellerModel.fromJson(e as Map<String, dynamic>))
+      bestSeller: (json['bestSeller'] as List<dynamic>)
+          .map((e) => BestSellerModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
 Map<String, dynamic> _$StoreModelToJson(StoreModel instance) =>
     <String, dynamic>{
-      'homestore': instance.homestore,
-      'bestseller': instance.bestseller,
+      'homeStore': instance.homeStore,
+      'bestSeller': instance.bestSeller,
     };

@@ -6,32 +6,32 @@ part 'product_model.g.dart';
 @JsonSerializable()
 class ProductModel extends ProductEntity{
   const ProductModel({
-    required id,
-    required cpu,
+    required cPU,
     required camera,
+    required List<String> capacity,
+    required List<String> color,
+    required id,
+    required List<String> images,
     required isFavorites,
     required price,
     required rating,
     required sd,
     required ssd,
     required title,
-    required List<String> images,
-    required List<String> color,
-    required List<String> capacity,
-    }
+  }
   ) : super(
-    id: id,
-    cpu: cpu,
+    cPU: cPU,
     camera: camera,
+    capacity: capacity,
+    color: color,
+    id: id,
+    images: images,
     isFavorites: isFavorites,
     price: price,
     rating: rating,
     sd: sd,
     ssd: ssd,
     title: title,
-    images: images,
-    color: color,
-    capacity: capacity
   );
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => _$ProductModelFromJson(json);

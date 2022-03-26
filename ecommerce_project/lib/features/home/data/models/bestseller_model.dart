@@ -4,8 +4,8 @@ import 'package:json_annotation/json_annotation.dart';
 part 'bestseller_model.g.dart';
 
 @JsonSerializable()
-class BestsellerModel extends BestsellerEntity{
-  const BestsellerModel({
+class BestSellerModel extends BestSellerEntity{
+  const BestSellerModel({
     required id,
     required isFavorites,
     required title,
@@ -21,7 +21,7 @@ class BestsellerModel extends BestsellerEntity{
     picture: picture
   );
 
-  Map<String, dynamic> toJson() => _$BestsellerModelToJson(this);
-  factory BestsellerModel.fromJson(Map<String, dynamic> json) => _$BestsellerModelFromJson(json);
+  Map<String, dynamic> toJson() => _$BestSellerModelToJson(this);
+  factory BestSellerModel.fromJson(Map<String, dynamic> json) => _$BestSellerModelFromJson(json);
 }
 

@@ -11,6 +11,6 @@ class GetAllStoreUseCase extends UseCase<List<StoreEntity>, void> {
 
   @override
   Future<Either<Failure, List<StoreEntity>>> call({void params}) async {
-    return await homeRepository.getAllStore()!;
+    return await homeRepository.getStore()!;
   }
 }

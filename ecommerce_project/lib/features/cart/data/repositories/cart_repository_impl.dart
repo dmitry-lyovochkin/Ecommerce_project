@@ -19,7 +19,7 @@ class CartRepositoryImpl implements CartRepository {
   @override
   Future<Either<Failure, List<CartEntity>>> getAllCarts() async {
     try {
-      final remoteCart = await cartRemoteDataSource.getAllCarts();
+      final remoteCart = await cartRemoteDataSource.getCarts();
       return Right(remoteCart);
     } on ServerException {
       return Left(ServerFailure());

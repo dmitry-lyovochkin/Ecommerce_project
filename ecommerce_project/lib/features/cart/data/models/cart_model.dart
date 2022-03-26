@@ -7,10 +7,10 @@ part 'cart_model.g.dart';
 @JsonSerializable()
 class CartModel extends CartEntity{
   const CartModel({
-    required id,
-    required delivery, 
-    required total,
     required List<BasketModel>? basket,
+    required delivery, 
+    required id,
+    required total,
   }) : super(
     id: id,
     delivery: delivery,

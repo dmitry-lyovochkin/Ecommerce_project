@@ -1,10 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:json_annotation/json_annotation.dart';
 
-// part 'homestore_entity.g.dart';
-
-// @JsonSerializable()
-class HomestoreEntity extends Equatable{
+class HomeStoreEntity extends Equatable{
   final int id;
   final bool isNew;
   final String title;
@@ -12,7 +8,7 @@ class HomestoreEntity extends Equatable{
   final String picture;
   final bool isBuy;
   
-  const HomestoreEntity({
+  const HomeStoreEntity({
     required this.id,
     required this.isNew,
     required this.title,

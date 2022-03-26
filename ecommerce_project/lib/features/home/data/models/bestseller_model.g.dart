@@ -6,8 +6,8 @@ part of 'bestseller_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-BestsellerModel _$BestsellerModelFromJson(Map<String, dynamic> json) =>
-    BestsellerModel(
+BestSellerModel _$BestSellerModelFromJson(Map<String, dynamic> json) =>
+    BestSellerModel(
       id: json['id'],
       isFavorites: json['isFavorites'],
       title: json['title'],
@@ -16,7 +16,7 @@ BestsellerModel _$BestsellerModelFromJson(Map<String, dynamic> json) =>
       picture: json['picture'],
     );
 
-Map<String, dynamic> _$BestsellerModelToJson(BestsellerModel instance) =>
+Map<String, dynamic> _$BestSellerModelToJson(BestSellerModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'isFavorites': instance.isFavorites,

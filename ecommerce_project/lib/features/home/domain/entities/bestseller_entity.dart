@@ -1,10 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:json_annotation/json_annotation.dart';
 
-// part 'bestseller_entity.g.dart';
-
-// @JsonSerializable()
-class BestsellerEntity extends Equatable{
+class BestSellerEntity extends Equatable{
   final int id;
   final bool isFavorites;
   final String title;
@@ -12,7 +8,7 @@ class BestsellerEntity extends Equatable{
   final int discountPrice;
   final String picture;
   
-  const BestsellerEntity({
+  const BestSellerEntity({
     required this.id,
     required this.isFavorites,
     required this.title,

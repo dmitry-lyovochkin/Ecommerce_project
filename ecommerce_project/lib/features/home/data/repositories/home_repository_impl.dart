@@ -13,19 +13,19 @@ class HomeRepositoryImpl implements HomeRepository {
   HomeRepositoryImpl({required this.homeRemoteDataSource});
 
   @override
-  Future<Either<Failure, List<BestsellerEntity>>> getAllBestseller() {
+  Future<Either<Failure, List<BestSellerEntity>>> getBestseller() {
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, List<HomestoreEntity>>> getAllHomestore() {
+  Future<Either<Failure, List<HomeStoreEntity>>> getHomestore() {
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, List<StoreEntity>>> getAllStore() async {
+  Future<Either<Failure, List<StoreEntity>>> getStore() async {
     try {
-      final remoteHome = await homeRemoteDataSource.getAllStore();
+      final remoteHome = await homeRemoteDataSource.getStore();
       return Right(remoteHome);
     } on ServerException {
       return Left(ServerFailure());

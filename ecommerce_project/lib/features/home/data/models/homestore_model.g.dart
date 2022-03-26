@@ -6,8 +6,8 @@ part of 'homestore_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-HomestoreModel _$HomestoreModelFromJson(Map<String, dynamic> json) =>
-    HomestoreModel(
+HomeStoreModel _$HomeStoreModelFromJson(Map<String, dynamic> json) =>
+    HomeStoreModel(
       id: json['id'],
       isNew: json['isNew'],
       title: json['title'],
@@ -16,7 +16,7 @@ HomestoreModel _$HomestoreModelFromJson(Map<String, dynamic> json) =>
       isBuy: json['isBuy'],
     );
 
-Map<String, dynamic> _$HomestoreModelToJson(HomestoreModel instance) =>
+Map<String, dynamic> _$HomeStoreModelToJson(HomeStoreModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'isNew': instance.isNew,

@@ -17,8 +17,8 @@ class HomeLoadingState extends HomeState {
 }
 
 class HomeLoadedState extends HomeState {
-  final List<HomestoreEntity> loadedHomestore;
-  final List<BestsellerEntity> loadedBestseller;
+  final List<HomeStoreEntity> loadedHomestore;
+  final List<BestSellerEntity> loadedBestseller;
   final List<StoreEntity> loadedStore;
 
   const HomeLoadedState({

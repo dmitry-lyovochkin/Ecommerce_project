@@ -1,9 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:json_annotation/json_annotation.dart';
 
-// part 'basket_entity.g.dart';
-
-// @JsonSerializable()
 class BasketEntity extends Equatable{
   final int id;
   final String images;
