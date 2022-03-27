@@ -8,9 +8,9 @@ part 'cart_model.g.dart';
 class CartModel extends CartEntity{
   const CartModel({
     required List<BasketModel>? basket,
-    required delivery, 
-    required id,
-    required total,
+    required String? delivery, 
+    required String? id,
+    required int? total,
   }) : super(
     id: id,
     delivery: delivery,

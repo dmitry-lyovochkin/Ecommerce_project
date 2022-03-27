@@ -32,11 +32,11 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
         return GridView.builder(
           itemCount: state.loadedBestseller.length,
           itemBuilder: (context, index) => GridWidget(
-            pictureUrls: state.loadedBestseller[index].picture,
-            titleItems: state.loadedBestseller[index].title,
-            priceWithoutDiscount: state.loadedBestseller[index].priceWithoutDiscount,
-            discountPrice: state.loadedBestseller[index].discountPrice,
-            isFavorites: state.loadedBestseller[index].isFavorites
+            pictureUrls: state.loadedBestseller[index].picture!,
+            titleItems: state.loadedBestseller[index].title!,
+            priceWithoutDiscount: state.loadedBestseller[index].priceWithoutDiscount!,
+            discountPrice: state.loadedBestseller[index].discountPrice!,
+            isFavorites: state.loadedBestseller[index].isFavorites!
           ),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,

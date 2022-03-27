@@ -3,15 +3,15 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'bestseller_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class BestSellerModel extends BestSellerEntity{
   const BestSellerModel({
-    required id,
-    required isFavorites,
-    required title,
-    required priceWithoutDiscount,
-    required discountPrice,
-    required picture,
+    required int? id,
+    required bool? isFavorites,
+    required String? title,
+    required int? priceWithoutDiscount,
+    required int? discountPrice,
+    required String? picture,
   }) : super(
     id: id,
     isFavorites: isFavorites,

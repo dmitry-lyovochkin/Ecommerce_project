@@ -8,20 +8,20 @@ part of 'homestore_model.dart';
 
 HomeStoreModel _$HomeStoreModelFromJson(Map<String, dynamic> json) =>
     HomeStoreModel(
-      id: json['id'],
-      isNew: json['isNew'],
-      title: json['title'],
-      subtitle: json['subtitle'],
-      picture: json['picture'],
-      isBuy: json['isBuy'],
+      id: json['id'] as int?,
+      isNew: json['is_new'] as bool?,
+      title: json['title'] as String?,
+      subtitle: json['subtitle'] as String?,
+      picture: json['picture'] as String?,
+      isBuy: json['is_buy'] as bool?,
     );
 
 Map<String, dynamic> _$HomeStoreModelToJson(HomeStoreModel instance) =>
     <String, dynamic>{
       'id': instance.id,
-      'isNew': instance.isNew,
+      'is_new': instance.isNew,
       'title': instance.title,
       'subtitle': instance.subtitle,
       'picture': instance.picture,
-      'isBuy': instance.isBuy,
+      'is_buy': instance.isBuy,
     };

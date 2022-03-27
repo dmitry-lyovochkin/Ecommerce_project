@@ -28,10 +28,10 @@ class _HotSalesWidgetState extends State<HotSalesWidget> {
         return CarouselSlider.builder(
           itemCount: state.loadedHomestore.length,
           itemBuilder: (context, index, _) => SliderWidget(
-            pictureUrl: state.loadedHomestore[index].picture,
-            titlePhone: state.loadedHomestore[index].title,
-            subtitleSuper: state.loadedHomestore[index].subtitle,
-            isNew: state.loadedHomestore[index].isNew
+            pictureUrl: state.loadedHomestore[index].picture!,
+            titlePhone: state.loadedHomestore[index].title!,
+            subtitleSuper: state.loadedHomestore[index].subtitle!,
+            isNew: state.loadedHomestore[index].isNew ?? false,
           ),
           options: CarouselOptions(
             height: 200,
@@ -115,7 +115,7 @@ class SliderWidget extends StatelessWidget {
               Positioned(
                 top: 10,
                 left: 16,
-                child: isNew != false
+                child: isNew == true
                   ? ElevatedButton(
                     onPressed: () {},
                     child: const Text(

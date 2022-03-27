@@ -3,15 +3,15 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'homestore_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class HomeStoreModel extends HomeStoreEntity{
   const HomeStoreModel({
-    required id,
-    required isNew,
-    required title,
-    required subtitle,
-    required picture,
-    required isBuy,
+    required int? id,
+    required bool? isNew,
+    required String? title,
+    required String? subtitle,
+    required String? picture,
+    required bool? isBuy,
   }) : super(
     id: id,
     isNew: isNew,

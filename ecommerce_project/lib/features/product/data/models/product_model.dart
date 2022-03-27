@@ -6,7 +6,7 @@ part 'product_model.g.dart';
 @JsonSerializable()
 class ProductModel extends ProductEntity{
   const ProductModel({
-    required cPU,
+    required CPU,
     required camera,
     required List<String> capacity,
     required List<String> color,
@@ -20,7 +20,7 @@ class ProductModel extends ProductEntity{
     required title,
   }
   ) : super(
-    cPU: cPU,
+    CPU: CPU,
     camera: camera,
     capacity: capacity,
     color: color,
