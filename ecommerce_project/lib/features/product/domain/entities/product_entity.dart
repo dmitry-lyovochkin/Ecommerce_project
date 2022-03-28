@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-
 class ProductEntity extends Equatable {
   final String CPU;
   final String camera;

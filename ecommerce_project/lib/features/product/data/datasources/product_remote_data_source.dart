@@ -18,7 +18,6 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
   Future<List<ProductModel>> _getProductFromUrl(String url) async {
     final response = await http.get(
       Uri.parse(url),
-      // headers: apiKey
     );
 
     if (response.statusCode == 200) {
