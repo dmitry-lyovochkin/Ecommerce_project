@@ -17,5 +17,4 @@ class BlocsObserver extends BlocObserver {
     print(bloc);
     print(error);
   }
-
 }

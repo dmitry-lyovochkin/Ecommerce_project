@@ -109,7 +109,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                state.loadedProduct[0].title,
+                                state.loadedProduct[0].title!,
                                 style: const TextStyle(
                                   fontFamily: 'MarkPronormal400',
                                   fontWeight: FontWeight.w700,
@@ -136,7 +136,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           ),
                           RatingBar.builder(
                             itemSize: 22,
-                            initialRating: state.loadedProduct[0].rating.toDouble(),
+                            initialRating: state.loadedProduct[0].rating!.toDouble(),
                             minRating: 1,
                             direction: Axis.horizontal,
                             allowHalfRating: true,

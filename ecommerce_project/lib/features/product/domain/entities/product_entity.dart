@@ -1,17 +1,17 @@
 import 'package:equatable/equatable.dart';
 class ProductEntity extends Equatable {
-  final String CPU;
-  final String camera;
-  final List<String> capacity;
-  final List<String> color;
-  final String id;
-  final List<String> images;
-  final bool isFavorites;
-  final int price;
-  final int rating;
-  final String sd;
-  final String ssd;
-  final String title;
+  final String? CPU;
+  final String? camera;
+  final List<String>? capacity;
+  final List<String>? color;
+  final String? id;
+  final List<String>? images;
+  final bool? isFavorites;
+  final int? price;
+  final double? rating;
+  final String? sd;
+  final String? ssd;
+  final String? title;
 
   const ProductEntity({
     required this.CPU, 
@@ -26,7 +26,6 @@ class ProductEntity extends Equatable {
     required this.sd, 
     required this.ssd, 
     required this.title, 
-    
   });
 
   @override

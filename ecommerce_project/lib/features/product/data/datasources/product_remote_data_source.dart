@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:ecommerce_project/core/error/exception.dart';
 import 'package:ecommerce_project/core/utils/constants.dart';
 import 'package:ecommerce_project/features/product/data/models/product_model.dart';
@@ -21,7 +23,13 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
     );
 
     if (response.statusCode == 200) {
-      return _getProductFromUrl(response.body);
+     final jsonDetail = json.decode(response.body) as Map<String, dynamic>;
+    //  print(jsonDetail.runtimeType);
+
+      List<ProductModel> list = [];
+      ProductModel resposse = ProductModel.fromJson(jsonDetail);
+      list.add(resposse);
+      return list;
     } else {
       throw ServerException();
     }

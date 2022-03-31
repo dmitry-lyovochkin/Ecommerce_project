@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'product_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
 class ProductModel extends ProductEntity{
   const ProductModel({
     required CPU,

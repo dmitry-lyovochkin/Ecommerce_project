@@ -42,7 +42,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                           Icons.check_outlined,
                           ) 
                         : const SizedBox(),
-                      backgroundColor: colorFromApi(state.loadedProduct[0].color[0]),
+                      backgroundColor: colorFromApi(state.loadedProduct[0].color![0]),
                       foregroundColor: Colors.white,
                       onPressed: () => 
                         setState(() {
@@ -60,7 +60,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                           Icons.check_outlined
                         ) 
                         : const SizedBox(),
-                      backgroundColor: colorFromApi(state.loadedProduct[0].color[1]),
+                      backgroundColor: colorFromApi(state.loadedProduct[0].color![1]),
                       foregroundColor: Colors.white,
                       onPressed: () => setState(() {
                         selectedButtonColor = 1;
@@ -70,7 +70,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                   const SizedBox(width: 60),
                   ElevatedButton(
                     child: Text(
-                      state.loadedProduct[0].capacity[0], 
+                      state.loadedProduct[0].capacity![0], 
                       style: TextStyle(
                         color: selectedButtonNum == 0 ? Colors.white : Colors.grey,
                       ),
@@ -92,7 +92,7 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                   const SizedBox(width: 20),
                   ElevatedButton(
                     child: Text(
-                      state.loadedProduct[0].capacity[1], 
+                      state.loadedProduct[0].capacity![1], 
                       style: TextStyle(
                         color: selectedButtonNum == 1 ? Colors.white : Colors.grey,
                       ),
