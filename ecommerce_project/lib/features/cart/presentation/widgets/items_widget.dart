@@ -8,7 +8,6 @@ class CartItemsWidget extends StatelessWidget {
   final String? images;
   final int? price;
   final String? title;
-  final int? items;
   final String? delivery;
 
   const CartItemsWidget({
@@ -16,16 +15,16 @@ class CartItemsWidget extends StatelessWidget {
     required this.images,
     required this.price,
     required this.title,
-    required this.items,
-    required this.delivery,
+    required this.delivery, 
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: const EdgeInsets.only(left: 20),
       color: AppColors.buttonBarColor,
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 20),
         child: Row(
           children: [
             Container(
@@ -33,28 +32,32 @@ class CartItemsWidget extends StatelessWidget {
                 color: Colors.white,
                 borderRadius: BorderRadiusDirectional.circular(12)
               ),
-              height: 90,
-              width: 90,
-                child:  Padding(
-                  padding: const EdgeInsets.only(top: 2, bottom: 2, left: 2, right: 12 ),
+              height: 95,
+              width: 95,
+                child: Padding(
+                  padding: const EdgeInsets.all(5),
                   child: CachedNetworkImage(
                     imageUrl: images!, 
-                    fit: BoxFit.contain,
+                    fit: BoxFit.fitWidth,
                   ),
                 ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 15),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title!,
-                    style: const TextStyle(
-                      fontSize: 21,
-                      fontFamily: 'MarkPronormal400',
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white
+                  SizedBox(
+                    width: 150,
+                    child: Text(
+                      title!,
+                      maxLines: 3,
+                      style: const TextStyle(
+                        fontSize: 21,
+                        fontFamily: 'MarkPronormal400',
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white
+                      ),
                     ),
                   ),
                   const SizedBox(height: 7,),
@@ -71,6 +74,7 @@ class CartItemsWidget extends StatelessWidget {
                 ],
               ),
             ),
+            const Expanded(child: SizedBox()),
             Container(
               height: 100,
               width: 30,
@@ -89,9 +93,9 @@ class CartItemsWidget extends StatelessWidget {
                   Expanded(
                     child: IconButton(
                       onPressed: () {},
-                      icon: Text(
-                        items.toString(),
-                        style: const TextStyle(
+                      icon: const Text(
+                        '1',
+                        style: TextStyle(
                           color: Colors.white, 
                           fontSize: 18
                         )
@@ -107,18 +111,16 @@ class CartItemsWidget extends StatelessWidget {
                 ],
               )
             ),
-            Expanded(
-              child: ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  shape: const CircleBorder(), 
-                  primary: AppColors.buttonBarColor
-                ), 
-                child: SvgPicture.asset(
-                  assetCart,
-                  height: 18,
-                )
-              ),
+            ElevatedButton(
+              onPressed: () {},
+              style: ElevatedButton.styleFrom(
+                shape: const CircleBorder(), 
+                primary: AppColors.buttonBarColor
+              ), 
+              child: SvgPicture.asset(
+                assetCart,
+                height: 18,
+              )
             ),
           ]
         ),

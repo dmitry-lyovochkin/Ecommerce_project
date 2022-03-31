@@ -15,12 +15,12 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         List<BasketEntity> _loadedBasketList = [];
         final _loadedCartList = await getAllCartUseCase();
         List<CartEntity> _cartList = [];
-        
+
         _loadedCartList.fold((l) => emit(const CartErrorState(message: 'error')), 
           (r) => _cartList.addAll(r));
 
         _loadedBasketList = _cartList.map<List<BasketEntity>>((e) => e.basket!).expand((element) => element).toList();
-      emit(CartLoadedState(loadedBasket: _loadedBasketList, loadedCart: _cartList));
+      emit(CartLoadedState(loadedBasket: _loadedBasketList, loadedCart: _cartList, /* countItems: countItems */));
     });
   }
 }
