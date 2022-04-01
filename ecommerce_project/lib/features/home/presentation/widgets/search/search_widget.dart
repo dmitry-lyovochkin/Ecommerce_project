@@ -16,13 +16,20 @@ class SearchWidget extends StatelessWidget {
         Expanded(
           child: Container(
             height: 34,
-            decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(50)),
+            decoration: BoxDecoration(
+              color: Colors.white, 
+              borderRadius: BorderRadius.circular(50)
+            ),
             child: TextField(
               decoration: InputDecoration(
                 border: InputBorder.none,
                 contentPadding: const EdgeInsets.symmetric(vertical: 0),
                 hintText: 'Search',
-                hintStyle: const TextStyle(fontSize: 13, fontFamily: 'MarkPronormal400', fontWeight: FontWeight.w400),
+                hintStyle: const TextStyle(
+                  fontSize: 13, 
+                  fontFamily: 'MarkPronormal400', 
+                  fontWeight: FontWeight.w400
+                ),
                 prefixIcon: svgSearch,
               ),
             ),

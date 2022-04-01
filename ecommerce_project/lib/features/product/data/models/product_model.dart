@@ -1,67 +1,42 @@
+import 'package:ecommerce_project/features/product/domain/entities/product_entity.dart';
+import 'package:json_annotation/json_annotation.dart';
 
-import 'dart:convert';
+part 'product_model.g.dart';
 
-List<GetProduct> getDetailsFromJson(String str) => List<GetProduct>.from(json.decode(str).map((x) => GetProduct.fromJson(x)));
+@JsonSerializable(/* fieldRename: FieldRename.snake, explicitToJson: true */)
+class ProductModel extends ProductEntity{
+  @JsonKey(name: 'CPU')
+  final String? cpu;
 
-String getDetailsToJson(List<GetProduct> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+  const ProductModel({
+    this.cpu,
+    required camera,
+    required List<String>? capacity,
+    required List<String>? color,
+    required id,
+    required List<String>? images,
+    required isFavorites,
+    required price,
+    required rating,
+    required sd,
+    required ssd,
+    required title,
+  }
+  ) : super(
+    cpu: cpu,
+    camera: camera,
+    capacity: capacity,
+    color: color,
+    id: id,
+    images: images,
+    isFavorites: isFavorites,
+    price: price,
+    rating: rating,
+    sd: sd,
+    ssd: ssd,
+    title: title,
+  );
 
-class GetProduct {
-    GetProduct({
-      required this.id,
-      required this.cpu,
-      required this.camera,
-      required this.isFavorites,
-      required this.price,
-      required this.rating,
-      required this.sd,
-      required this.ssd,
-      required this.title,
-      required this.images,
-      required this.color,
-      required this.capacity,
-      }
-    );
-
-    String id;
-    String cpu;
-    String camera;
-    bool isFavorites;
-    int price;
-    int rating;
-    String sd;
-    String ssd;
-    String title;
-    List<String> images;
-    List<String> color;
-    List<String> capacity;
-
-    factory GetProduct.fromJson(Map<String, dynamic> json) => GetProduct(
-        id: json["_id"],
-        cpu: json["CPU"],
-        camera: json["camera"],
-        isFavorites: json["isFavorites"],
-        price: json["price"],
-        rating: json["rating"],
-        sd: json["sd"],
-        ssd: json["ssd"],
-        title: json["title"],
-        images: List<String>.from(json["images"].map((x) => x)),
-        color: List<String>.from(json["color"].map((x) => x)),
-        capacity: List<String>.from(json["capacity"].map((x) => x)),
-    );
-
-    Map<String, dynamic> toJson() => {
-        "_id": id,
-        "CPU": cpu,
-        "camera": camera,
-        "isFavorites": isFavorites,
-        "price": price,
-        "rating": rating,
-        "sd": sd,
-        "ssd": ssd,
-        "title": title,
-        "images": List<dynamic>.from(images.map((x) => x)),
-        "color": List<dynamic>.from(color.map((x) => x)),
-        "capacity": List<dynamic>.from(capacity.map((x) => x)),
-    };
+  factory ProductModel.fromJson(Map<String, dynamic> json) => _$ProductModelFromJson(json);
+  Map<String, dynamic> toJson() => _$ProductModelToJson(this);
 }

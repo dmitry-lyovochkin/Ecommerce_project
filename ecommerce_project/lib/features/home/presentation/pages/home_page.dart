@@ -1,8 +1,8 @@
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
-import 'package:ecommerce_project/features/home/presentation/widgets/Best_seller/Best_seller_widget.dart';
+import 'package:ecommerce_project/features/home/presentation/widgets/BestSeller/best_seller_widget.dart';
 import 'package:ecommerce_project/features/home/presentation/widgets/Geolocation/geolocation_widget.dart';
-import 'package:ecommerce_project/features/home/presentation/widgets/Hot_sales/slider_widget.dart';
-import 'package:ecommerce_project/features/home/presentation/widgets/Select_category/select_category_widget.dart';
+import 'package:ecommerce_project/features/home/presentation/widgets/HotSales/slider_widget.dart';
+import 'package:ecommerce_project/features/home/presentation/widgets/SelectCategory/select_category_widget.dart';
 import 'package:ecommerce_project/features/home/presentation/widgets/search/search_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -32,9 +32,9 @@ class HomePage extends StatelessWidget {
             _TitleBestSeller(),
             BestSellerWidget(),
             SizedBox(height: 40),
-          ]
+          ],
         ),
-      )
+      ),
     );
   }
 }
@@ -122,7 +122,7 @@ class _TitleBestSeller extends StatelessWidget {
             ),
           ),
           onPressed: () {},
-        )
+        ),
       ],
     );
   }

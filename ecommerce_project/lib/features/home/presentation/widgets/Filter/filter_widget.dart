@@ -16,141 +16,125 @@ class FilterWidget extends StatelessWidget {
           topRight: Radius.circular(30.0)
         )
       ),
-      child: Stack(
+      child: Column(
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Icon(Icons.close, size: 18, color: Colors.white),
-                style: ElevatedButton.styleFrom(
-                  primary: AppColors.buttonBarColor,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                  padding: const EdgeInsets.all(10),
-                  minimumSize: const Size(15, 15)
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround, 
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Icon(Icons.close, size: 18, color: Colors.white),
+                  style: ElevatedButton.styleFrom(
+                    primary: AppColors.buttonBarColor,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    padding: const EdgeInsets.all(10),
+                    minimumSize: const Size(15, 15)
+                  ),
                 ),
-              ),
-              const Text(
-                'Filter options',
-                style: TextStyle(
-                  fontFamily: 'MarkPronormal400',
-                  fontSize: 18,
-                  fontWeight: FontWeight.w700,
-                  color: AppColors.buttonBarColor
-                )
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text(
-                  'Done',
+                const Text(
+                  'Filter options',
                   style: TextStyle(
                     fontFamily: 'MarkPronormal400',
                     fontSize: 18,
                     fontWeight: FontWeight.w700,
-                    color: Colors.white
+                    color: AppColors.buttonBarColor
                   )
                 ),
-                style: ElevatedButton.styleFrom(
-                  primary: AppColors.iconColor,
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-              )
-            ]),
-          ),
-          const Positioned(
-            left: 30,
-            top: 105,
-            child: Text(
-              'Brand',
-              style: TextStyle(
-                fontFamily: 'MarkPronormal400',
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: AppColors.buttonBarColor
-              )
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                    'Done',
+                    style: TextStyle(
+                      fontFamily: 'MarkPronormal400',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white
+                    )
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    primary: AppColors.iconColor,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
+                )
+              ]
             ),
           ),
-          Positioned(
-            left: 30,
-            top: 135,
-            child: Container(
-              margin: const EdgeInsets.only(right: 3),
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              height: 37,
-              width: 347,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: AppColors.borderColor,
-                ),
-                borderRadius: BorderRadius.circular(6)
+          const Text(
+            'Brand',
+            style: TextStyle(
+              fontFamily: 'MarkPronormal400',
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: AppColors.buttonBarColor
+            )
+          ),
+          const SizedBox(height: 5),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            height: 37,
+            width: double.maxFinite,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: AppColors.borderColor,
               ),
-              child: const FilterBrandWidget()
+              borderRadius: BorderRadius.circular(6)
             ),
+            child: const FilterBrandWidget()
           ),
-          const Positioned(
-            left: 30,
-            top: 185,
-            child: Text(
-              'Price',
-              style: TextStyle(
-                fontFamily: 'MarkPronormal400',
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: AppColors.buttonBarColor
-              )
-            ),
+          const SizedBox(height: 20),
+          const Text(
+            'Price',
+            style: TextStyle(
+              fontFamily: 'MarkPronormal400',
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: AppColors.buttonBarColor
+            )
           ),
-          Positioned(
-            left: 30,
-            top: 215,
-            child: Container(
-              margin: const EdgeInsets.only(right: 3),
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              height: 37,
-              width: 347,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: AppColors.borderColor,
-                ),
-                borderRadius: BorderRadius.circular(6)
+          const SizedBox(height: 5),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            height: 37,
+            width: double.maxFinite,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: AppColors.borderColor,
               ),
-              child: const FilterPriceWidget()
+              borderRadius: BorderRadius.circular(6)
             ),
+            child: const FilterPriceWidget()
           ),
-          const Positioned(
-            left: 30,
-            top: 265,
-            child: Text(
-              'Size',
-              style: TextStyle(
-                fontFamily: 'MarkPronormal400',
-                fontSize: 18,
-                fontWeight: FontWeight.w700,
-                color: AppColors.buttonBarColor
-              )
-            ),
+          const SizedBox(height: 20),
+          const Text(
+            'Size',
+            style: TextStyle(
+              fontFamily: 'MarkPronormal400',
+              fontSize: 18,
+              fontWeight: FontWeight.w700,
+              color: AppColors.buttonBarColor
+            )
           ),
-          Positioned(
-            left: 30,
-            top: 295,
-            child: Container(
-              margin: const EdgeInsets.only(right: 3),
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              height: 37,
-              width: 347,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: AppColors.borderColor,
-                ),
-                borderRadius: BorderRadius.circular(6)
+          const SizedBox(height: 5),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            height: 37,
+            width: double.maxFinite,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: AppColors.borderColor,
               ),
-              child: const FilterSizeWidget()
+              borderRadius: BorderRadius.circular(6)
             ),
+            child: const FilterSizeWidget()
           ),
         ],
       )
@@ -186,7 +170,8 @@ class _FilterBrandWidgetState extends State<FilterBrandWidget> {
       items: <String>['Samsung', 'Apple', 'Huawei', 'Motorolla'].map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: Text(value,
+          child: Text(
+            value,
             style: const TextStyle(
               fontFamily: 'MarkPronormal400',
               fontSize: 18,
@@ -222,14 +207,15 @@ class _FilterPriceWidgetState extends State<FilterPriceWidget> {
       isExpanded: true,
       onChanged: (String? newValue) {
         setState(() {
-          dropdownValue = newValue!;
+          dropdownValueInt = newValue!;
         });
       },
       items: <String>['\$300 - \$500', '\$500 - \$800', '\$800 - \$1100', '\$1100 - \$1400']
           .map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: Text(value,
+          child: Text(
+            value,
             style: const TextStyle(
               fontFamily: 'MarkPronormal400',
               fontSize: 18,
@@ -265,7 +251,7 @@ class _FilterSizeWidgetState extends State<FilterSizeWidget> {
       isExpanded: true,
       onChanged: (String? newValue) {
         setState(() {
-          dropdownValue = newValue!;
+          dropdownValueSize = newValue!;
         });
       },
       items: <String>['4.5 to 5.5 inches', '5.5 to 6.5 inches', '6.5 to 7.5 inches', '7.5 to 8.5 inches']
