@@ -24,9 +24,9 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
       }
       if (state is ProductLoadedState) {
         return CarouselSlider.builder(
-          itemCount: state.loadedProduct.length,
+          itemCount: state.loadedProduct[0].images!.length,
           itemBuilder: (context, index, _) => ModelWidget(
-            images: state.loadedProduct[index].images![index],
+            images: state.loadedProduct[0].images![index],
           ),
           options: CarouselOptions(
             height: 330,
