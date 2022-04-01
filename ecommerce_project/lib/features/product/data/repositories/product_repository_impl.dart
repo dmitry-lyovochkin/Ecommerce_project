@@ -13,7 +13,7 @@ class ProductRepositoryImpl implements ProductRepository {
   @override
   Future<Either<Failure, List<ProductEntity>>> getAllProducts() async {
     try {
-      final remoteProduct = await productRemoteDataSource.getAllProducts();
+      final remoteProduct = await productRemoteDataSource.getProduct();
       return Right(remoteProduct);
     } on ServerException {
       return Left(ServerFailure());

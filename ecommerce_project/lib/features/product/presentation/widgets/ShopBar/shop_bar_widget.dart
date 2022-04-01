@@ -1,5 +1,5 @@
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
-import 'package:ecommerce_project/features/product/presentation/widgets/Product/product_widget.dart';
+import 'package:ecommerce_project/features/product/presentation/widgets/ButtonsDetail/product_widget.dart';
 import 'package:flutter/material.dart';
 
 class ShopBarWidget extends StatelessWidget {

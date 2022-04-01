@@ -7,15 +7,17 @@ part of 'product_model.dart';
 // **************************************************************************
 
 ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
-      CPU: json['c_p_u'],
+      cpu: json['cpu'],
       camera: json['camera'],
-      capacity:
-          (json['capacity'] as List<dynamic>).map((e) => e as String).toList(),
-      color: (json['color'] as List<dynamic>).map((e) => e as String).toList(),
+      capacity: (json['capacity'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
+      color:
+          (json['color'] as List<dynamic>?)?.map((e) => e as String).toList(),
       id: json['id'],
       images:
-          (json['images'] as List<dynamic>).map((e) => e as String).toList(),
-      isFavorites: json['is_favorites'],
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      isFavorites: json['isFavorites'],
       price: json['price'],
       rating: json['rating'],
       sd: json['sd'],
@@ -25,13 +27,13 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
 
 Map<String, dynamic> _$ProductModelToJson(ProductModel instance) =>
     <String, dynamic>{
-      'c_p_u': instance.CPU,
+      'cpu': instance.cpu,
       'camera': instance.camera,
       'capacity': instance.capacity,
       'color': instance.color,
       'id': instance.id,
       'images': instance.images,
-      'is_favorites': instance.isFavorites,
+      'isFavorites': instance.isFavorites,
       'price': instance.price,
       'rating': instance.rating,
       'sd': instance.sd,

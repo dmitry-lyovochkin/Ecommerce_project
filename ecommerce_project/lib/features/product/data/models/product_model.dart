@@ -3,15 +3,15 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'product_model.g.dart';
 
-@JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
+@JsonSerializable(/* fieldRename: FieldRename.snake, explicitToJson: true */)
 class ProductModel extends ProductEntity{
   const ProductModel({
-    required CPU,
+    required cpu,
     required camera,
-    required List<String> capacity,
-    required List<String> color,
+    required List<String>? capacity,
+    required List<String>? color,
     required id,
-    required List<String> images,
+    required List<String>? images,
     required isFavorites,
     required price,
     required rating,
@@ -20,7 +20,7 @@ class ProductModel extends ProductEntity{
     required title,
   }
   ) : super(
-    CPU: CPU,
+    cpu: cpu,
     camera: camera,
     capacity: capacity,
     color: color,

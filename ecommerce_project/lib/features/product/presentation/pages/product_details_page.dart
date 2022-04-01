@@ -88,10 +88,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       ],
                     ),
                   ),
-                  ProductSliderWidget(list: state.loadedProduct),
+                  const ProductSliderWidget(),
                   const SizedBox(height: 5),
                   Container(
-                    height: 450,
+                    height: 440,
                     width: double.maxFinite,
                     decoration: const BoxDecoration(
                       color: Colors.white,

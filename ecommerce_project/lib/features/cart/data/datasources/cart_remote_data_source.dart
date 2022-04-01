@@ -26,11 +26,11 @@ class CartRemoteDataSourceImpl implements CartRemoteDataSource {
     );
     
     if (response.statusCode == 200) {
-      final jsonCarts = [json.decode(response.body) as Map<String, dynamic>];
-      // print(jsonCarts.runtimeType);
-
-      List<CartModel> list = jsonCarts.map<CartModel>((e) => CartModel.fromJson(e)).toList();
-        return list;
+      final jsonCart = json.decode(response.body) as Map<String, dynamic>;
+      List<CartModel> list = [];
+      CartModel resposse = CartModel.fromJson(jsonCart);
+      list.add(resposse);
+      return list;
     } else {
       throw ServerException();
     }

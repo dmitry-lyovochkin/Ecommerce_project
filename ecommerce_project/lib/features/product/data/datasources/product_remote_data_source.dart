@@ -6,7 +6,7 @@ import 'package:ecommerce_project/features/product/data/models/product_model.dar
 import 'package:http/http.dart' as http;
 
 abstract class ProductRemoteDataSource {
-  Future<List<ProductModel>> getAllProducts();
+  Future<List<ProductModel>> getProduct();
 }
 
 class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
@@ -15,7 +15,7 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
   ProductRemoteDataSourceImpl({required this.client});
 
   @override
-  Future<List<ProductModel>> getAllProducts() => _getProductFromUrl(productUrl);
+  Future<List<ProductModel>> getProduct() => _getProductFromUrl(productUrl);
   
   Future<List<ProductModel>> _getProductFromUrl(String url) async {
     final response = await http.get(
@@ -23,11 +23,9 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource {
     );
 
     if (response.statusCode == 200) {
-     final jsonDetail = json.decode(response.body) as Map<String, dynamic>;
-    //  print(jsonDetail.runtimeType);
-
+     final jsonProduct = json.decode(response.body) as Map<String, dynamic>;
       List<ProductModel> list = [];
-      ProductModel resposse = ProductModel.fromJson(jsonDetail);
+      ProductModel resposse = ProductModel.fromJson(jsonProduct);
       list.add(resposse);
       return list;
     } else {

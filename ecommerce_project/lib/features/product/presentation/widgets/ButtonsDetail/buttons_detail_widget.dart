@@ -1,4 +1,5 @@
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
+import 'package:ecommerce_project/features/cart/presentation/pages/cart_page.dart';
 import 'package:ecommerce_project/features/product/presentation/bloc/product_bloc.dart';
 import 'package:ecommerce_project/features/product/presentation/bloc/product_state.dart';
 import 'package:flutter/material.dart';
@@ -113,15 +114,15 @@ class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
                   ),
                 ],
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //     builder: (context) => const CartWidget()
-                  //   ),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CartWidget()
+                    ),
+                  );
                 },
                 child:  Text(
                   'Add to Cart    \$' + state.loadedProduct[0].price.toString(),
