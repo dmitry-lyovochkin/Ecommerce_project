@@ -14,7 +14,6 @@ class HomeBottomWidget extends StatefulWidget {
   @override
   State<HomeBottomWidget> createState() => _HomeBottomWidgetState();
 }
-
 class _HomeBottomWidgetState extends State<HomeBottomWidget> {
   int _selectedIndex = 0;
   static const List _widgetOptions = [

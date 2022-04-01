@@ -5,8 +5,11 @@ part 'product_model.g.dart';
 
 @JsonSerializable(/* fieldRename: FieldRename.snake, explicitToJson: true */)
 class ProductModel extends ProductEntity{
+  @JsonKey(name: 'CPU')
+  final String? cpu;
+
   const ProductModel({
-    required cpu,
+    this.cpu,
     required camera,
     required List<String>? capacity,
     required List<String>? color,

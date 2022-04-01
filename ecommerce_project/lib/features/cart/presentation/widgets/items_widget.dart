@@ -37,7 +37,7 @@ class CartItemsWidget extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(5),
                   child: CachedNetworkImage(
-                    imageUrl: images!, 
+                    imageUrl: images ?? '', 
                     fit: BoxFit.fitWidth,
                   ),
                 ),

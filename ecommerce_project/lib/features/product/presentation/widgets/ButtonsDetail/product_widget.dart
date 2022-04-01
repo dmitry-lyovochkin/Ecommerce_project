@@ -1,6 +1,6 @@
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
 import 'package:ecommerce_project/common/app_custom_icons.dart/svg_icons.dart';
-import 'package:ecommerce_project/features/product/presentation/widgets/ButtonsDetail/buttons_detail_widget.dart';
+import 'package:ecommerce_project/features/product/presentation/widgets/ButtonsDetail/buttons_product_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -30,7 +30,7 @@ class ProductWidget extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 10),
-        const ButtonsDetailWidget(),
+        const ButtonsProductWidget(),
       ],
     );
   }

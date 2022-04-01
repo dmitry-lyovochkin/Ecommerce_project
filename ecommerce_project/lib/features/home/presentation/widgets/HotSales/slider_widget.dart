@@ -53,10 +53,10 @@ class _HotSalesWidgetState extends State<HotSalesWidget> {
 }
 
 class SliderWidget extends StatelessWidget {
-  final String pictureUrl;
-  final String titlePhone;
-  final String subtitleSuper;
-  final bool isNew;
+  final String? pictureUrl;
+  final String? titlePhone;
+  final String? subtitleSuper;
+  final bool? isNew;
 
   const SliderWidget({
     Key? key,
@@ -73,7 +73,7 @@ class SliderWidget extends StatelessWidget {
         ClipRRect(
           borderRadius: BorderRadius.circular(10),
           child: CachedNetworkImage(
-            imageUrl: pictureUrl,
+            imageUrl: pictureUrl ?? '',
             height: 450,
             width: double.maxFinite,
             fit: BoxFit.cover,
@@ -89,7 +89,7 @@ class SliderWidget extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 67),
                   child: Text(
-                    titlePhone,
+                    titlePhone ?? '',
                     style: const TextStyle(
                       fontFamily: 'SFPro', 
                       fontSize: 27, 
@@ -103,7 +103,7 @@ class SliderWidget extends StatelessWidget {
                 top: 105,
                 left: 28,
                 child: Text(
-                  subtitleSuper,
+                  subtitleSuper ?? '',
                   style: const TextStyle(
                     fontFamily: 'SFPro', 
                     fontSize: 12, 

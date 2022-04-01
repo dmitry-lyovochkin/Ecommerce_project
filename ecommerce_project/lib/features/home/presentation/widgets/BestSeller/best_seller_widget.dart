@@ -1,10 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:ecommerce_project/common/app_colors/app_colors.dart';
 import 'package:ecommerce_project/features/home/presentation/bloc/home_bloc.dart';
 import 'package:ecommerce_project/features/home/presentation/bloc/home_state.dart';
-import 'package:ecommerce_project/features/product/presentation/pages/product_details_page.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ecommerce_project/features/product/presentation/pages/product_product_page.dart';
 
 class BestSellerWidget extends StatefulWidget {
   const BestSellerWidget({Key? key}) : super(key: key);
@@ -32,11 +33,13 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
         return GridView.builder(
           itemCount: state.loadedBestseller.length,
           itemBuilder: (context, index) => GridWidget(
-            pictureUrls: state.loadedBestseller[index].picture!,
-            titleItems: state.loadedBestseller[index].title!,
-            priceWithoutDiscount: state.loadedBestseller[index].priceWithoutDiscount!,
-            discountPrice: state.loadedBestseller[index].discountPrice!,
-            isFavorites: state.loadedBestseller[index].isFavorites!
+            pictureUrl: state.loadedBestseller[index].picture,
+            titleItems: state.loadedBestseller[index].title,
+            priceWithoutDiscount: state.loadedBestseller[index].priceWithoutDiscount,
+            discountPrice: state.loadedBestseller[index].discountPrice,
+            isFavorites: state.loadedBestseller[index].isFavorites,
+            id: state.loadedBestseller[index].id
+
           ),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -59,11 +62,13 @@ class _BestSellerWidgetState extends State<BestSellerWidget> {
 }
 
 class GridWidget extends StatelessWidget {
-  final bool isFavorites;
-  final String titleItems;
-  final int priceWithoutDiscount;
-  final int discountPrice;
-  final String pictureUrls;
+  final bool? isFavorites;
+  final String? titleItems;
+  final int? priceWithoutDiscount;
+  final int? discountPrice;
+  final String? pictureUrl;
+  final int? id;
+
 
   const GridWidget({
     Key? key,
@@ -71,7 +76,8 @@ class GridWidget extends StatelessWidget {
     required this.titleItems,
     required this.priceWithoutDiscount,
     required this.discountPrice,
-    required this.pictureUrls,
+    required this.pictureUrl,
+    required this.id,
   }) : super(key: key);
 
   final bool toggle = false;
@@ -96,7 +102,7 @@ class GridWidget extends StatelessWidget {
           children: [
             SizedBox(
               child: CachedNetworkImage(
-                imageUrl: pictureUrls,
+                imageUrl: pictureUrl ?? '',
                 height: 180,
                 fit: BoxFit.cover,
               ),
@@ -146,7 +152,7 @@ class GridWidget extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    titleItems,
+                    titleItems ?? '',
                     style: const TextStyle(
                       fontFamily: 'MarkPronormal400',
                       fontSize: 11,

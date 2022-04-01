@@ -26,7 +26,7 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
         return CarouselSlider.builder(
           itemCount: state.loadedProduct[0].images!.length,
           itemBuilder: (context, index, _) => ModelWidget(
-            images: state.loadedProduct[0].images![index],
+            image: state.loadedProduct[0].images![index],
           ),
           options: CarouselOptions(
             height: 330,
@@ -51,11 +51,11 @@ class _HotSalesWidgetState extends State<ProductSliderWidget> {
 }
 
 class ModelWidget extends StatelessWidget {
-  final String images;
+  final String? image;
   
   const ModelWidget({
     Key? key,
-    required this.images,
+    required this.image,
   }) : super(key: key);
 
   @override
@@ -63,7 +63,7 @@ class ModelWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: NetworkImage(images),
+          image: NetworkImage(image ?? ''),
           fit: BoxFit.fitWidth,
           alignment: Alignment.center,
         ),

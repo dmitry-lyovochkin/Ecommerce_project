@@ -5,15 +5,15 @@ import 'package:ecommerce_project/features/product/presentation/bloc/product_sta
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ButtonsDetailWidget extends StatefulWidget {
-  const ButtonsDetailWidget({
+class ButtonsProductWidget extends StatefulWidget {
+  const ButtonsProductWidget({
     Key? key, 
   }) : super(key: key);
 
   @override
-  State<ButtonsDetailWidget> createState() => _ButtonsDetailWidgetState();
+  State<ButtonsProductWidget> createState() => _ButtonsProductWidgetState();
 }
-class _ButtonsDetailWidgetState extends State<ButtonsDetailWidget> {
+class _ButtonsProductWidgetState extends State<ButtonsProductWidget> {
 
   int selectedButtonColor = 0;
   int selectedButtonNum = 0;
