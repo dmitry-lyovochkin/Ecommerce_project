@@ -1,16 +1,18 @@
-# ecommerce_project
+# E-commerce Shop
 
-A new Flutter project.
+The project is an online store. Written according to the terms of reference and figma layout.
 
-## Getting Started
+## Technologies that are involved::
+- Dart
+- Flutter
+- Clean Architecture (Domain, Data and Presentation layers)
+- Dependency injection with GetIt
+- http, JsonSerializable
+- Equatable
+- Flutter Bloc
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Application video
+https://user-images.githubusercontent.com/80591456/162633172-fddc2c3c-59c1-4499-99a7-7b6522ada119.mp4
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
