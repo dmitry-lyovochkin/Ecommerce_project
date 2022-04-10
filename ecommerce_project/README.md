@@ -6,7 +6,7 @@ The project is an online store. Written according to the terms of reference and 
 - Dart
 - Flutter
 - Clean Architecture (Domain, Data and Presentation layers)
-- Dependency injection with GetIt
+- Dependency Injection with GetIt
 - http, JsonSerializable
 - Equatable
 - Flutter Bloc
