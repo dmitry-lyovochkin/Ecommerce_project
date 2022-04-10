@@ -1,6 +1,6 @@
 # E-commerce Shop
 
-The project is an online store. Written according to the terms of reference and figma layout.
+The project is an online store. Written according to the terms of reference and Figma layout.
 
 ## Technologies that are involved::
 - Dart
