@@ -9,6 +9,7 @@ class CartItemsWidget extends StatelessWidget {
   final int? price;
   final String? title;
   final String? delivery;
+  final int? id;
 
   const CartItemsWidget({
     Key? key,
@@ -16,6 +17,7 @@ class CartItemsWidget extends StatelessWidget {
     required this.price,
     required this.title,
     required this.delivery, 
+    required this.id, 
   }) : super(key: key);
 
   @override
@@ -50,7 +52,7 @@ class CartItemsWidget extends StatelessWidget {
                   SizedBox(
                     width: 150,
                     child: Text(
-                      title!,
+                      title ?? '',
                       maxLines: 3,
                       style: const TextStyle(
                         fontSize: 21,
@@ -93,9 +95,9 @@ class CartItemsWidget extends StatelessWidget {
                   Expanded(
                     child: IconButton(
                       onPressed: () {},
-                      icon: const Text(
-                        '1',
-                        style: TextStyle(
+                      icon:  Text(
+                        id.toString(),
+                        style: const TextStyle(
                           color: Colors.white, 
                           fontSize: 18
                         )

@@ -102,6 +102,7 @@ class SliderWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 67),
                   child: Text(
                     titlePhone ?? '',
+                    maxLines: 3,
                     style: const TextStyle(
                       fontFamily: 'SFPro', 
                       fontSize: 27, 
