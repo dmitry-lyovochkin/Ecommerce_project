@@ -5,6 +5,7 @@ import 'package:ecommerce_project/features/home/presentation/bloc/home_bloc.dart
 import 'package:ecommerce_project/features/home/presentation/bloc/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shimmer/shimmer.dart';
 
 class HotSalesWidget extends StatefulWidget {
   const HotSalesWidget({Key? key}) : super(key: key);
@@ -14,15 +15,26 @@ class HotSalesWidget extends StatefulWidget {
 }
 
 class _HotSalesWidgetState extends State<HotSalesWidget> {
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
       if (state is HomeLoadingState) {
-        return const Center( 
-          child: CircularProgressIndicator()
-        );
+        return  Center( 
+          child: SizedBox(
+            width: 200.0,
+            height: 100.0,
+            child: Shimmer.fromColors(
+              baseColor: Colors.grey[200]!,
+              highlightColor: Colors.grey[100]!,
+              child: Container(
+                height: 200,
+                width: 200,
+                color: Colors.white
+              )
+              ),
+            ),
+          );
       }
       if (state is HomeLoadedState) { 
         return CarouselSlider.builder(
@@ -90,6 +102,7 @@ class SliderWidget extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 67),
                   child: Text(
                     titlePhone ?? '',
+                    maxLines: 3,
                     style: const TextStyle(
                       fontFamily: 'SFPro', 
                       fontSize: 27, 
