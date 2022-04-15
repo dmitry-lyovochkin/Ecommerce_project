@@ -6,10 +6,11 @@ The project is an online store. It is written according to the technical task an
 - Dart
 - Flutter
 - Clean Architecture (Domain, Data and Presentation layers)
-- Dependency Injection with GetIt
+- Dependency Injection, GetIt
 - http, JsonSerializable
 - Equatable
 - Flutter Bloc
+- Git
 
 
 
